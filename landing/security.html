@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Morrigan — Security &amp; Responsible Disclosure</title>
+  <meta name="description" content="Morrigan's threat model, cryptographic architecture, audit history, and responsible disclosure policy. Security is not a feature — it is the product." />
+  <meta property="og:title" content="Morrigan — Security &amp; Responsible Disclosure" />
+  <meta property="og:description" content="Morrigan is built on the premise that security is not a feature — it is the product." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0d1a1b" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════ -->
+  <header class="site-header" id="site-header">
+    <nav class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Morrigan home">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 2L4 7.5V18.5C4 25.8 10.2 32.3 18 34C25.8 32.3 32 25.8 32 18.5V7.5L18 2Z" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.6"/>
+          <path d="M18 10C16.2 10 15 11.2 15 12.5C15 13 15.2 13.4 15.5 13.8L12 16L13.5 16.5L12.5 18L14.5 17.5L14 19.5L16 18.5C16.5 19.2 17.2 19.8 18 20C19.5 20 21 18.8 21 17C21 15.8 20.3 14.8 19.3 14.3L21.5 12.5C20.8 11 19.6 10 18 10Z" fill="currentColor"/>
+          <path d="M8 9L10 11" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+          <path d="M28 9L26 11" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+        </svg>
+        <span class="nav-wordmark">Morrigan</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html#why" class="nav-link">Our Story</a>
+        <a href="index.html#what" class="nav-link">The Stack</a>
+        <a href="index.html#encryption" class="nav-link">Encryption</a>
+        <a href="index.html#how" class="nav-link">How It Works</a>
+        <a href="donate.html" class="nav-link">Donate</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="btn btn-ghost btn-sm" data-theme-toggle aria-label="Switch to light mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="#" class="btn btn-primary btn-sm">Early Access</a>
+      </div>
+
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+      <a href="index.html#why" class="nav-mobile-link">Our Story</a>
+      <a href="index.html#what" class="nav-mobile-link">The Stack</a>
+      <a href="index.html#encryption" class="nav-mobile-link">Encryption</a>
+      <a href="index.html#how" class="nav-mobile-link">How It Works</a>
+      <a href="donate.html" class="nav-mobile-link">Donate</a>
+      <a href="#" class="btn btn-primary" style="margin-top: var(--space-4);">Early Access</a>
+    </div>
+  </header>
+
+
+  <!-- ═══════════════════════════════════════
+       PAGE HERO
+  ═══════════════════════════════════════ -->
+  <section class="page-hero" aria-label="Page header">
+    <div class="page-hero-inner">
+      <div class="page-hero-eyebrow">Security &amp; Responsible Disclosure</div>
+      <h1 class="page-hero-heading"><em>Security</em></h1>
+      <p class="page-hero-sub">
+        Morrigan is built on the premise that security is not a feature — it is the product. This page documents our threat model, our cryptographic choices, and how to report vulnerabilities.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       THREAT MODEL
+  ═══════════════════════════════════════ -->
+  <section class="section" style="background: var(--color-bg);" id="threat-model">
+    <div class="container">
+      <div class="section-label fade-in">Adversary Model</div>
+      <h2 class="section-heading fade-in">Threat model</h2>
+      <p class="section-subtext fade-in">Understanding what Morrigan protects against — and what it does not — is essential for using it responsibly.</p>
+
+      <div class="threat-grid fade-in">
+
+        <div class="threat-card threat-card--protects">
+          <div class="threat-card-header">
+            <div class="threat-card-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <polyline points="9 12 11 14 15 10"/>
+              </svg>
+            </div>
+            <div class="threat-card-title">What we protect against</div>
+          </div>
+          <ul class="threat-list">
+            <li>
+              <span class="threat-marker">Guards</span>
+              <span>Mass surveillance and passive network monitoring — all data is encrypted before transmission</span>
+            </li>
+            <li>
+              <span class="threat-marker">Guards</span>
+              <span>Data breaches at the server level — we store only ciphertext we cannot decrypt</span>
+            </li>
+            <li>
+              <span class="threat-marker">Guards</span>
+              <span>Insider threats — zero-knowledge architecture means no employee can access your vault</span>
+            </li>
+            <li>
+              <span class="threat-marker">Guards</span>
+              <span>Government compulsion orders — we have nothing to hand over but encrypted blobs</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="threat-card threat-card--limits">
+          <div class="threat-card-header">
+            <div class="threat-card-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="12"/>
+                <line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+            </div>
+            <div class="threat-card-title">What we do not protect against</div>
+          </div>
+          <ul class="threat-list">
+            <li>
+              <span class="threat-marker">Limit</span>
+              <span>Physical coercion ("rubber hose" attacks) — we cannot protect you if someone forces you to reveal your key</span>
+            </li>
+            <li>
+              <span class="threat-marker">Limit</span>
+              <span>User-side malware — if your device is compromised before encryption, Morrigan cannot help</span>
+            </li>
+            <li>
+              <span class="threat-marker">Limit</span>
+              <span>Loss of key without backup — there is no recovery mechanism; this is by design</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="zkp-security fade-in" style="margin-top: var(--space-10);">
+        <p>"If you lose your key, your data is irrecoverable. No reset. No backdoor. No exceptions. That's not a limitation — it's the guarantee."</p>
+        <cite>The Zero-Knowledge Promise — Morrigan Foundation</cite>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       CRYPTOGRAPHIC ARCHITECTURE
+  ═══════════════════════════════════════ -->
+  <section class="section" style="background: var(--color-surface); border-block: 1px solid var(--color-border);" id="crypto">
+    <div class="container">
+      <div class="section-label fade-in">Cryptographic Reference</div>
+      <h2 class="section-heading fade-in">Cryptographic architecture</h2>
+      <p class="section-subtext fade-in">Every cryptographic primitive is chosen for its security properties, auditability, and long-term viability. No proprietary algorithms. No custom implementations.</p>
+
+      <div class="security-table-wrap fade-in">
+        <table class="security-table">
+          <thead>
+            <tr>
+              <th scope="col">Component</th>
+              <th scope="col">Algorithm</th>
+              <th scope="col">Library</th>
+              <th scope="col">Security Level</th>
+              <th scope="col">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Symmetric encryption</td>
+              <td><code>XChaCha20-Poly1305</code></td>
+              <td>libsodium</td>
+              <td><span class="tag">256-bit</span></td>
+              <td>AEAD, nonce-safe, 192-bit nonce prevents reuse</td>
+            </tr>
+            <tr>
+              <td>Key exchange</td>
+              <td><code>X25519</code></td>
+              <td>libsodium</td>
+              <td><span class="tag">128-bit equiv.</span></td>
+              <td>ECDH, forward secrecy per session</td>
+            </tr>
+            <tr>
+              <td>Signatures</td>
+              <td><code>Ed25519</code></td>
+              <td>libsodium</td>
+              <td><span class="tag">128-bit equiv.</span></td>
+              <td>Deterministic, resistant to fault attacks</td>
+            </tr>
+            <tr>
+              <td>Key derivation</td>
+              <td><code>Argon2id</code></td>
+              <td>argon2-browser</td>
+              <td><span class="tag">Memory-hard</span></td>
+              <td>PHC winner; t=3, m=65536 minimum</td>
+            </tr>
+            <tr>
+              <td>Secret splitting</td>
+              <td><code>Shamir (GF 2⁸)</code></td>
+              <td>secrets.js-grempe</td>
+              <td><span class="tag">Threshold scheme</span></td>
+              <td>Independently audited; K-of-N configurable</td>
+            </tr>
+            <tr>
+              <td>Randomness</td>
+              <td><code>CSPRNG</code></td>
+              <td>Web Crypto API</td>
+              <td><span class="tag">OS-seeded</span></td>
+              <td><code>crypto.getRandomValues()</code> — never Math.random()</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="font-size: var(--text-xs); color: var(--color-text-faint); margin-top: var(--space-4); max-width: none;" class="fade-in">
+        All cryptographic operations run client-side. The server receives and stores only ciphertext. Algorithm choices are reviewed annually and may be updated as the landscape evolves. Changes are announced in the public changelog.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       AUDIT HISTORY
+  ═══════════════════════════════════════ -->
+  <section class="section" style="background: var(--color-bg);" id="audits">
+    <div class="container">
+      <div class="section-label fade-in">External Review</div>
+      <h2 class="section-heading fade-in">Audit history</h2>
+
+      <div class="audit-notice fade-in">
+        <div class="audit-notice-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <div class="audit-notice-text">
+          <strong>No formal audit yet — seeking review</strong>
+          <p>Morrigan has not yet been formally audited. We are actively seeking security researchers and audit firms to review the codebase. The full source code is publicly available on GitHub — we welcome and encourage independent review at any time. If you are a security researcher or firm interested in collaborating, please contact us at <a href="mailto:security@morrigan.life" style="color: var(--color-gold); text-decoration: underline; text-underline-offset: 3px;">security@morrigan.life</a>.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: var(--space-8); display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-5);" class="fade-in">
+        <div class="funding-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-gold);" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <strong style="color: var(--color-gold);">Q3 2025</strong>
+          <span>Target date for first security audit funding allocation</span>
+        </div>
+        <div class="funding-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-gold);" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <strong style="color: var(--color-gold);">Open source</strong>
+          <span>Full codebase available now — audit on GitHub at any time</span>
+        </div>
+        <div class="funding-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-gold);" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <strong style="color: var(--color-gold);">Bug bounty</strong>
+          <span>Bug bounty program planned once MVP is released publicly</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       RESPONSIBLE DISCLOSURE
+  ═══════════════════════════════════════ -->
+  <section class="section" style="background: var(--color-surface); border-block: 1px solid var(--color-border);" id="disclosure">
+    <div class="container">
+      <div class="section-label fade-in">Vulnerability Reporting</div>
+      <h2 class="section-heading fade-in">Responsible disclosure</h2>
+      <p class="section-subtext fade-in">We follow coordinated disclosure. Researchers have a 90-day deadline before public disclosure. We will never make legal threats against good-faith security researchers.</p>
+
+      <div class="disclosure-steps fade-in">
+
+        <div class="disclosure-step">
+          <div class="disclosure-step-num">1</div>
+          <div class="disclosure-step-body">
+            <strong>Email our security team</strong>
+            <p>Send details of the vulnerability to <a href="mailto:security@morrigan.life" style="color: var(--color-primary);">security@morrigan.life</a>. Include: description, reproduction steps, potential impact, and your contact preferences.</p>
+          </div>
+        </div>
+
+        <div class="disclosure-step">
+          <div class="disclosure-step-num">2</div>
+          <div class="disclosure-step-body">
+            <strong>We acknowledge within 48 hours</strong>
+            <p>You will receive a confirmation that we have received and are reviewing your report. We will provide a tracking reference number.</p>
+          </div>
+        </div>
+
+        <div class="disclosure-step">
+          <div class="disclosure-step-num">3</div>
+          <div class="disclosure-step-body">
+            <strong>Confirmation &amp; fix within 14 days</strong>
+            <p>We will confirm whether the report constitutes a valid vulnerability and provide a timeline for the fix. We may ask follow-up questions.</p>
+          </div>
+        </div>
+
+        <div class="disclosure-step">
+          <div class="disclosure-step-num">4</div>
+          <div class="disclosure-step-body">
+            <strong>Researcher credit</strong>
+            <p>We credit all researchers by name in the security advisory, unless they prefer to remain anonymous. We will ask your preference before publishing.</p>
+          </div>
+        </div>
+
+        <div class="disclosure-step">
+          <div class="disclosure-step-num">5</div>
+          <div class="disclosure-step-body">
+            <strong>Public security advisory</strong>
+            <p>After the fix is deployed, we publish a full security advisory including: vulnerability description, affected versions, CVSS score, timeline, and researcher credit.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="vuln-cta fade-in">
+        <h3>Found a vulnerability?</h3>
+        <p>If you believe you have discovered a security issue in Morrigan, we want to hear from you. We review all reports promptly and take every submission seriously.</p>
+        <a href="mailto:security@morrigan.life" class="btn btn-primary btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email security@morrigan.life
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       SECURITY FAQ
+  ═══════════════════════════════════════ -->
+  <section class="section" style="background: var(--color-bg);" id="faq">
+    <div class="container">
+      <div class="section-label fade-in">Common Questions</div>
+      <h2 class="section-heading fade-in">Security FAQ</h2>
+      <p class="section-subtext fade-in">Honest answers to the questions we hear most often about Morrigan's security model.</p>
+
+      <div class="accordion fade-in" role="list">
+
+        <details class="accordion-item" role="listitem">
+          <summary>
+            Can Morrigan employees access my data?
+            <svg class="accordion-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="accordion-body">
+            <p>No. Morrigan's zero-knowledge architecture means we store only ciphertext that we cannot decrypt. Your encryption key never leaves your device and is never transmitted to our servers. Even if a Morrigan employee wanted to read your vault, they would encounter only an opaque encrypted blob — mathematically indistinguishable from random data without your key.</p>
+          </div>
+        </details>
+
+        <details class="accordion-item" role="listitem">
+          <summary>
+            What happens if Morrigan shuts down?
+            <svg class="accordion-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="accordion-body">
+            <p>Your encrypted vault can be exported at any time from within the application. The vault format is fully documented and open — it is not proprietary. You can decrypt your vault offline using our open-source CLI tool, which will always be available on GitHub regardless of Morrigan's operational status. We deliberately designed for this scenario: you should never be dependent on our continued existence to access your own data.</p>
+          </div>
+        </details>
+
+        <details class="accordion-item" role="listitem">
+          <summary>
+            Is the code audited?
+            <svg class="accordion-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="accordion-body">
+            <p>Not yet formally. Morrigan is fully open source and the codebase is available for public review on GitHub. We are actively seeking funding for a formal third-party security audit and intend to conduct one before a public launch. We believe in transparency over false confidence: it is better to acknowledge the current state honestly than to imply assurances that have not yet been independently verified.</p>
+          </div>
+        </details>
+
+        <details class="accordion-item" role="listitem">
+          <summary>
+            What if I lose my key?
+            <svg class="accordion-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="accordion-body">
+            <p>Your data is irrecoverable. This is not a limitation — it is the core guarantee of the system. If Morrigan could recover your data, so could a court order, a data breach, or a rogue employee. The irreversibility is the security property. We strongly recommend printing your key and storing physical copies in at least two separate secure locations (e.g. a home safe and a trusted family member's). Shamir's Secret Sharing can distribute key shards to trusted people so that no single loss event is catastrophic.</p>
+          </div>
+        </details>
+
+        <details class="accordion-item" role="listitem">
+          <summary>
+            Do you store IP addresses or metadata?
+            <svg class="accordion-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="accordion-body">
+            <p>Minimal metadata is collected for operational purposes — specifically: request timestamps, vault size (to enforce storage limits), and authentication events. We never log plaintext content, encryption keys, or key shards. IP addresses are processed transiently by our infrastructure but are not stored in association with your account. Our full data retention policy is documented in the Privacy Policy.</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       PGP KEY
+  ═══════════════════════════════════════ -->
+  <section class="section" style="background: var(--color-surface); border-top: 1px solid var(--color-border);" id="pgp">
+    <div class="container">
+      <div class="section-label fade-in">PGP</div>
+      <h2 class="section-heading fade-in">Security team PGP key</h2>
+      <p class="section-subtext fade-in">Use our PGP key to encrypt sensitive vulnerability reports. This ensures that only our security team can read your submission.</p>
+
+      <div class="pgp-block fade-in">
+        <div class="pgp-block-header">
+          <div class="pgp-terminal-dot"></div>
+          <div class="pgp-terminal-dot"></div>
+          <div class="pgp-terminal-dot"></div>
+          <span class="pgp-terminal-label">security@morrigan.life — PGP public key</span>
+        </div>
+        <div class="pgp-block-body">
+          <div style="color: var(--color-text-faint); margin-bottom: var(--space-3);">Fingerprint:</div>
+          <div class="pgp-fingerprint">A3F2 8C1D 4E90 B7F5 6A12 · 9D43 E801 CF72 B4A9 3F5E</div>
+          <div style="color: var(--color-text-faint); margin-top: var(--space-4); margin-bottom: var(--space-2);">Key ID:</div>
+          <div style="color: rgba(216, 212, 204, 0.7);">0xB4A93F5E</div>
+          <div style="color: var(--color-text-faint); margin-top: var(--space-4); margin-bottom: var(--space-2);">Algorithm:</div>
+          <div style="color: rgba(216, 212, 204, 0.7);">Ed25519 / Curve25519 — OpenPGP</div>
+        </div>
+        <div class="pgp-block-footer">
+          <span class="pgp-note">Placeholder key — actual key will be published on first security release</span>
+          <a href="#" class="btn btn-outline btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download public key
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo footer-logo" aria-label="Morrigan">
+            <svg width="30" height="30" viewBox="0 0 36 36" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 2L4 7.5V18.5C4 25.8 10.2 32.3 18 34C25.8 32.3 32 25.8 32 18.5V7.5L18 2Z" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.6"/>
+              <path d="M18 10C16.2 10 15 11.2 15 12.5C15 13 15.2 13.4 15.5 13.8L12 16L13.5 16.5L12.5 18L14.5 17.5L14 19.5L16 18.5C16.5 19.2 17.2 19.8 18 20C19.5 20 21 18.8 21 17C21 15.8 20.3 14.8 19.3 14.3L21.5 12.5C20.8 11 19.6 10 18 10Z" fill="currentColor"/>
+              <path d="M8 9L10 11" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+              <path d="M28 9L26 11" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+            </svg>
+            <span>Morrigan</span>
+          </a>
+          <p class="footer-tagline">Prepare for the inevitable — with dignity and sovereignty.</p>
+          <div class="footer-badges">
+            <a href="#" class="footer-badge" aria-label="View source on GitHub">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              Open Source
+            </a>
+            <span class="footer-badge footer-badge--status">
+              <span class="status-dot"></span>
+              In development
+            </span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-heading">Product</h4>
+          <ul role="list">
+            <li><a href="index.html#how">How It Works</a></li>
+            <li><a href="index.html#what">The Stack</a></li>
+            <li><a href="index.html#languages">Languages</a></li>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">GitHub</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-heading">Foundation</h4>
+          <ul role="list">
+            <li><a href="index.html#why">Our Story</a></li>
+            <li><a href="donate.html">Donate</a></li>
+            <li><a href="#">Sponsors</a></li>
+            <li><a href="#">Grants</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-heading">Legal</h4>
+          <ul role="list">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="security.html" style="color: var(--color-primary);">Security</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 Morrigan Foundation. All rights reserved.</p>
+        <p class="footer-copy footer-domains">
+          <a href="https://morrigan.life">morrigan.life</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://morrigan.one">morrigan.one</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>

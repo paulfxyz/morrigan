@@ -92,4 +92,176 @@
     });
   });
 
-})();
+
+  // ─── RAVEN PARTICLE CANVAS ───────────────────
+  // Subtle teal dots that drift upward across the hero background.
+  (function initRavenCanvas() {
+    const canvas = document.getElementById('raven-canvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    let W, H, particles;
+    const PARTICLE_COUNT = 22;
+    const BASE_COLOR = 'rgba(58, 159, 170, ';
+
+    function resize() {
+      W = canvas.width = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+    }
+
+    function makeParticle() {
+      return {
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 1.8 + 0.5,       // radius 0.5–2.3
+        speed: Math.random() * 0.35 + 0.1,   // drift speed upward
+        drift: (Math.random() - 0.5) * 0.15, // gentle horizontal drift
+        alpha: Math.random() * 0.25 + 0.05,  // max opacity 0.05–0.3
+        phase: Math.random() * Math.PI * 2,  // for alpha pulse
+        phaseSpeed: Math.random() * 0.008 + 0.003,
+      };
+    }
+
+    function initParticles() {
+      particles = [];
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
+        const p = makeParticle();
+        p.y = Math.random() * H; // scatter vertically on init
+        particles.push(p);
+      }
+    }
+
+    function draw(ts) {
+      ctx.clearRect(0, 0, W, H);
+
+      particles.forEach(p => {
+        // Pulse alpha
+        const pulse = 0.5 + 0.5 * Math.sin(p.phase);
+        const a = p.alpha * pulse;
+
+        // Fade at top 15% and bottom 15%
+        const topFade   = Math.min(1, p.y / (H * 0.15));
+        const botFade   = Math.min(1, (H - p.y) / (H * 0.15));
+        const edgeFade  = Math.min(topFade, botFade);
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = BASE_COLOR + (a * edgeFade).toFixed(3) + ')';
+        ctx.fill();
+
+        // Move
+        p.y  -= p.speed;
+        p.x  += p.drift;
+        p.phase += p.phaseSpeed;
+
+        // Reset when it exits top
+        if (p.y + p.r < 0) {
+          p.y = H + p.r;
+          p.x = Math.random() * W;
+        }
+        // Wrap horizontal edges
+        if (p.x < -p.r) p.x = W + p.r;
+        if (p.x > W + p.r) p.x = -p.r;
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    resize();
+    initParticles();
+    requestAnimationFrame(draw);
+
+    // Resize handler — debounced
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        resize();
+        initParticles();
+      }, 150);
+    });
+  }());
+
+
+  // ─── TIMELINE STAGGER-REVEAL ────────────────
+  // Slides timeline entries in from the left with staggered delay.
+  (function initTimelineReveal() {
+    const entries = document.querySelectorAll('[data-timeline]');
+    if (!entries.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      // Fallback: show everything immediately
+      entries.forEach(el => el.classList.add('tl-visible'));
+      return;
+    }
+
+    const io = new IntersectionObserver((records) => {
+      records.forEach(record => {
+        if (record.isIntersecting) {
+          record.target.classList.add('tl-visible');
+          io.unobserve(record.target);
+        }
+      });
+    }, { threshold: 0.25 });
+
+    entries.forEach(el => io.observe(el));
+  }());
+
+
+  // ─── ENCRYPTION BADGE COUNTER ANIMATION ──────
+  // When the encryption section enters viewport, animate the
+  // data-count badges counting up to their target numbers.
+  (function initBadgeCounters() {
+    const badges = document.querySelectorAll('.crypto-card-badge[data-count]');
+    if (!badges.length) return;
+
+    if (!('IntersectionObserver' in window)) return;
+
+    // Store original text and parsed numeric target for each badge
+    badges.forEach(badge => {
+      const original = badge.textContent.trim();
+      const match = original.match(/^(\d+)(.*)/);
+      if (!match) return;
+      badge.dataset.target = match[1];
+      badge.dataset.suffix = match[2] || '';
+      badge.dataset.original = original;
+      badge._counted = false;
+    });
+
+    function animateCounter(badge) {
+      if (badge._counted) return;
+      badge._counted = true;
+
+      const target = parseInt(badge.dataset.target, 10);
+      const suffix = badge.dataset.suffix || '';
+      const duration = 900; // ms
+      const startTime = performance.now();
+
+      function tick(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease out quart
+        const eased = 1 - Math.pow(1 - progress, 4);
+        const current = Math.round(eased * target);
+        badge.textContent = current + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    const io = new IntersectionObserver((records) => {
+      records.forEach(record => {
+        if (record.isIntersecting) {
+          animateCounter(record.target);
+          io.unobserve(record.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    badges.forEach(badge => {
+      if (badge.dataset.target) io.observe(badge);
+    });
+  }());
+
+}());

@@ -43,6 +43,7 @@
       <div class="nav-links">
         <a href="#why" class="nav-link">Our Story</a>
         <a href="#what" class="nav-link">The Stack</a>
+        <a href="#encryption" class="nav-link">Encryption</a>
         <a href="#how" class="nav-link">How It Works</a>
         <a href="#donate" class="nav-link">Donate</a>
       </div>
@@ -62,6 +63,7 @@
     <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
       <a href="#why" class="nav-mobile-link">Our Story</a>
       <a href="#what" class="nav-mobile-link">The Stack</a>
+      <a href="#encryption" class="nav-mobile-link">Encryption</a>
       <a href="#how" class="nav-mobile-link">How It Works</a>
       <a href="#donate" class="nav-mobile-link">Donate</a>
       <a href="#" class="btn btn-primary" style="margin-top: var(--space-4);">Early Access</a>
@@ -74,6 +76,8 @@
   ═══════════════════════════════════════ -->
   <section class="hero" id="hero">
     <div class="hero-bg">
+      <!-- Raven particle canvas — rendered by main.js -->
+      <canvas id="raven-canvas" aria-hidden="true"></canvas>
       <picture>
         <source srcset="assets/hero-bg.webp" type="image/webp" />
         <img src="assets/hero-bg.jpg" alt="Ancient standing stones in teal mist with a raven silhouette, symbolizing Morrigan's watchful guardianship" class="hero-img" />
@@ -100,7 +104,7 @@
       <div class="hero-trust fade-in">
         <span class="trust-item">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          AES-256 / XChaCha20 encryption
+          XChaCha20-Poly1305 encryption
         </span>
         <span class="trust-item">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
@@ -118,6 +122,9 @@
     </a>
   </section>
 
+  <!-- Section divider -->
+  <div class="section-divider" aria-hidden="true"><svg width="100%" height="2" preserveAspectRatio="none"><pattern id="knotwork-1" x="0" y="0" width="40" height="2" patternUnits="userSpaceOnUse"><line x1="0" y1="1" x2="12" y2="1" stroke="currentColor" stroke-width="0.5" opacity="0.3"/><circle cx="14" cy="1" r="1" fill="currentColor" opacity="0.4"/><line x1="16" y1="1" x2="24" y2="1" stroke="currentColor" stroke-width="0.5" opacity="0.3"/><circle cx="26" cy="1" r="1" fill="currentColor" opacity="0.4"/><line x1="28" y1="1" x2="40" y2="1" stroke="currentColor" stroke-width="0.5" opacity="0.3"/></pattern><rect width="100%" height="2" fill="url(#knotwork-1)"/></svg></div>
+
 
   <!-- ═══════════════════════════════════════
        WHY — MY STORY
@@ -125,32 +132,77 @@
   <section class="section section-why" id="why">
     <div class="container">
       <div class="section-label fade-in">Why Morrigan</div>
-      <h2 class="section-heading fade-in">The moment that changed everything</h2>
+      <h2 class="section-heading fade-in">Death entered slowly, then all at once.</h2>
 
       <div class="story-layout fade-in">
         <div class="story-text">
           <p class="story-lead">
-            Someone close to me died suddenly. No warning, no time to prepare. What followed was months of painful uncertainty — digital accounts nobody could access, passwords lost to the void, messages they had always meant to send but never did.
+            In the winter of 2019, I received word that my mentor had been killed in Damascus. He was a man who had shaped how I understood the world — someone who had moved through military intelligence with a rare combination of precision and humanity. ISIS took him without warning. There was no farewell. There rarely is.
           </p>
           <p>
-            That experience made something clear: we prepare our physical estates with lawyers and notaries. But our digital lives — the photos, the writings, the financial access, the final words — exist in a lawless limbo, locked behind encryption that dies with us.
+            That same Christmas, my father died.
           </p>
           <p>
-            I built Morrigan because no company should hold the keys to your last words. No algorithm should decide what survives you. This is personal sovereignty over the one thing no one can take from you: your legacy.
+            I say that plainly because there is no other way to say it. Two losses in a single year, one sudden and geopolitical, one quiet and domestic. Together they broke something open — a sense I had carried, as most of us do, that death remained at a comfortable distance. That there would be time. There would not be time.
+          </p>
+          <p>
+            Since then, I have watched my mother age. My dog too. The arc bends the same way for everyone, and I have learned to see it now — not with dread, but with a clarity I did not ask for and cannot return.
+          </p>
+          <p>
+            What I found myself asking, in the aftermath of those losses, was not a philosophical question. It was a practical one: <em>what happens to the things we leave behind?</em> My mentor left a life's worth of knowledge, relationships, experience — most of it inaccessible, unorganized, unmapped for anyone who came after. My father left accounts nobody could access, passwords written on slips of paper that no one could find.
+          </p>
+          <p>
+            We prepare for physical death — wills, estates, notaries. We do almost nothing to prepare for our digital selves. And that, I have come to believe, is a failure of love as much as logistics.
+          </p>
+          <p>
+            I did not build Morrigan because I believe in privacy in the abstract. I built it because I lived through what it means when the people you love cannot get to the things you meant to leave them. This is personal. It is supposed to be.
           </p>
           <p class="story-attribution">
             — <em>Paul Fleury, founder</em>
           </p>
+
+          <!-- Timeline -->
+          <div class="story-timeline" aria-label="Personal timeline">
+            <div class="timeline-entry" data-timeline>
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <span class="timeline-year">2019</span>
+                <span class="timeline-event">Mentor killed in Damascus</span>
+              </div>
+            </div>
+            <div class="timeline-entry" data-timeline>
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <span class="timeline-year">2019</span>
+                <span class="timeline-event">Father passed, Christmas</span>
+              </div>
+            </div>
+            <div class="timeline-entry timeline-entry--present" data-timeline>
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <span class="timeline-year">Today</span>
+                <span class="timeline-event">Building something that endures</span>
+              </div>
+            </div>
+          </div>
         </div>
+
         <div class="story-aside fade-in">
           <blockquote class="pull-quote">
             <p>"She is not evil — she embodies the natural, inevitable cycle of life and death. She sees what is coming and prepares for it."</p>
             <cite>On the Morrígan, Irish mythology</cite>
           </blockquote>
+          <blockquote class="pull-quote pull-quote--secondary">
+            <p>"The dead don't disappear. They become the things we can no longer ask."</p>
+            <cite>On grief &amp; the digital self</cite>
+          </blockquote>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Section divider -->
+  <div class="section-divider" aria-hidden="true"><svg width="100%" height="2" preserveAspectRatio="none"><use href="#knotwork-1"/><rect width="100%" height="2" fill="url(#knotwork-1)"/></svg></div>
 
 
   <!-- ═══════════════════════════════════════
@@ -184,8 +236,8 @@
             </svg>
           </div>
           <h3>Client-Side Encryption</h3>
-          <p>Your data is encrypted on <em>your device</em> before it ever touches a network. We evaluate AES-256-GCM and XChaCha20-Poly1305 via libsodium — industry-standard, cryptographically audited.</p>
-          <div class="stack-card-tag">AES-256-GCM · XChaCha20</div>
+          <p>Your data is encrypted on <em>your device</em> before it ever touches a network. XChaCha20-Poly1305 via libsodium — constant-time, authenticated, resistant to timing attacks.</p>
+          <div class="stack-card-tag">XChaCha20-Poly1305 · libsodium</div>
         </div>
 
         <div class="stack-card">
@@ -239,6 +291,197 @@
 
     </div>
   </section>
+
+  <!-- Section divider -->
+  <div class="section-divider" aria-hidden="true"><svg width="100%" height="2" preserveAspectRatio="none"><rect width="100%" height="2" fill="url(#knotwork-1)"/></svg></div>
+
+
+  <!-- ═══════════════════════════════════════
+       ENCRYPTION — THE CRYPTOGRAPHY
+  ═══════════════════════════════════════ -->
+  <section class="section section-encryption" id="encryption">
+    <div class="container">
+      <div class="section-label fade-in">Under the Hood</div>
+      <h2 class="section-heading fade-in">Cryptography worthy of what you're protecting.</h2>
+      <p class="section-subtext fade-in">
+        Marketing words like "military-grade" are meaningless. Cryptographic choices are engineering decisions — they have consequences, tradeoffs, and histories. Morrigan doesn't hide behind abstractions. Here is exactly what we use, and why we chose it.
+      </p>
+
+      <div class="crypto-cards fade-in">
+
+        <!-- 1. XChaCha20-Poly1305 -->
+        <div class="crypto-card">
+          <div class="crypto-card-top">
+            <div class="crypto-card-icon" aria-hidden="true">
+              <!-- Stream cipher / waveform icon -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                <path d="M2 12 Q4 6 6 12 Q8 18 10 12 Q12 6 14 12 Q16 18 18 12 Q20 6 22 12"/>
+              </svg>
+            </div>
+            <div class="crypto-card-badge" data-count="256">256-bit</div>
+          </div>
+          <h3 class="crypto-card-name">XChaCha20-Poly1305</h3>
+          <p class="crypto-card-desc">Primary cipher. 256-bit key, 192-bit nonce — safe for random generation with negligible collision probability. Poly1305 MAC provides authenticated encryption: integrity and confidentiality in one pass. Constant-time on all hardware by design — no AES hardware dependency required.</p>
+          <div class="crypto-card-footer">
+            <code class="crypto-lib-tag">libsodium</code>
+            <code class="crypto-lib-tag">crypto_secretstream</code>
+          </div>
+        </div>
+
+        <!-- 2. Curve25519 / X25519 -->
+        <div class="crypto-card">
+          <div class="crypto-card-top">
+            <div class="crypto-card-icon" aria-hidden="true">
+              <!-- Elliptic curve icon -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                <ellipse cx="12" cy="12" rx="10" ry="6" transform="rotate(-30 12 12)"/>
+                <circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.6"/>
+              </svg>
+            </div>
+            <div class="crypto-card-badge" data-count="128">128-bit equiv.</div>
+          </div>
+          <h3 class="crypto-card-name">Curve25519 / X25519</h3>
+          <p class="crypto-card-desc">Elliptic-curve Diffie–Hellman for key exchange. 128-bit security level at a fraction of RSA's cost — approximately 3,000× faster than RSA-2048. Used to encrypt key shards to each beneficiary's public key. Built on the Montgomery curve y² = x³ + 486662x² + x. The de facto standard for modern key exchange.</p>
+          <div class="crypto-card-footer">
+            <code class="crypto-lib-tag">libsodium</code>
+            <code class="crypto-lib-tag">crypto_box</code>
+          </div>
+        </div>
+
+        <!-- 3. Ed25519 -->
+        <div class="crypto-card">
+          <div class="crypto-card-top">
+            <div class="crypto-card-icon" aria-hidden="true">
+              <!-- Signature / pen icon -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+                <path d="m15 5 4 4"/>
+              </svg>
+            </div>
+            <div class="crypto-card-badge" data-count="128">128-bit equiv.</div>
+          </div>
+          <h3 class="crypto-card-name">Ed25519</h3>
+          <p class="crypto-card-desc">Digital signatures. 64-byte signatures, deterministic — no random nonce means no fault-attack surface, unlike ECDSA. Used to sign vault manifests and cryptographically prove authorship of your instructions. Based on the twisted Edwards curve −x² + y² = 1 − (121665/121666)x²y². Immune to the class of vulnerabilities that compromised Sony's PS3 signing.</p>
+          <div class="crypto-card-footer">
+            <code class="crypto-lib-tag">libsodium</code>
+            <code class="crypto-lib-tag">crypto_sign</code>
+          </div>
+        </div>
+
+        <!-- 4. Argon2id -->
+        <div class="crypto-card">
+          <div class="crypto-card-top">
+            <div class="crypto-card-icon" aria-hidden="true">
+              <!-- Memory/RAM icon -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                <rect x="2" y="6" width="20" height="12" rx="2"/>
+                <path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h.01M10 14h.01M14 14h.01M18 14h.01"/>
+              </svg>
+            </div>
+            <div class="crypto-card-badge" data-count="64">64 MB memory</div>
+          </div>
+          <h3 class="crypto-card-name">Argon2id</h3>
+          <p class="crypto-card-desc">Key derivation. Winner of the Password Hashing Competition. Memory-hard — resistant to GPU and ASIC attacks. Combines Argon2i (side-channel resistance) with Argon2d (GPU resistance). Parameters: time=3, memory=64MB, parallelism=4. No master password is ever stored — only its derived key. Even if our servers were seized, your passphrase cannot be recovered.</p>
+          <div class="crypto-card-footer">
+            <code class="crypto-lib-tag">argon2-browser</code>
+            <code class="crypto-lib-tag">PHC winner</code>
+          </div>
+        </div>
+
+        <!-- 5. Shamir's Secret Sharing -->
+        <div class="crypto-card">
+          <div class="crypto-card-top">
+            <div class="crypto-card-icon" aria-hidden="true">
+              <!-- Polynomial / graph icon -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                <path d="M3 20 Q8 4 12 12 Q16 20 21 4"/>
+                <circle cx="3" cy="20" r="1.5" fill="currentColor"/>
+                <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+                <circle cx="21" cy="4" r="1.5" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="crypto-card-badge" data-count="256">256-bit secret</div>
+          </div>
+          <h3 class="crypto-card-name">Shamir's Secret Sharing</h3>
+          <p class="crypto-card-desc">Built on Lagrange interpolation over GF(2⁸) — Galois field arithmetic. A 256-bit secret is split into N shares; any K reconstruct it via polynomial evaluation: f(x) = s + a₁x + a₂x² + … + aₖ₋₁xᵏ⁻¹ where s is the secret. K−1 shares reveal nothing at all. Implementation via secrets.js-grempe (independently audited).</p>
+          <div class="crypto-card-footer">
+            <code class="crypto-lib-tag">secrets.js-grempe</code>
+            <code class="crypto-lib-tag">GF(2⁸)</code>
+          </div>
+        </div>
+
+        <!-- 6. libsodium / TweetNaCl -->
+        <div class="crypto-card">
+          <div class="crypto-card-top">
+            <div class="crypto-card-icon" aria-hidden="true">
+              <!-- Library / book stack icon -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                <line x1="9" y1="7" x2="15" y2="7"/>
+                <line x1="9" y1="11" x2="13" y2="11"/>
+              </svg>
+            </div>
+            <div class="crypto-card-badge" data-count="10">10 yrs audited</div>
+          </div>
+          <h3 class="crypto-card-name">libsodium &amp; TweetNaCl</h3>
+          <p class="crypto-card-desc">The implementation layer. libsodium: a decade of production hardening, ~100 security audits, deployed by Signal, WhatsApp, and Cloudflare. TweetNaCl.js for in-browser use: 100 tweets of code, minimal attack surface, no OpenSSL dependency, no legacy cipher support. Pure implementations with no footguns.</p>
+          <div class="crypto-card-footer">
+            <code class="crypto-lib-tag">libsodium 1.0.x</code>
+            <code class="crypto-lib-tag">TweetNaCl.js</code>
+          </div>
+        </div>
+
+      </div><!-- /.crypto-cards -->
+
+      <!-- Why not X? callout -->
+      <div class="why-not-box fade-in">
+        <h3 class="why-not-heading">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Why not X?
+        </h3>
+        <div class="why-not-grid">
+          <div class="why-not-item">
+            <strong>Why not AES-GCM?</strong>
+            <p>AES-GCM is sound, but requires hardware AES acceleration to run in constant time — on hardware without it, timing side-channels are possible. XChaCha20 is constant-time on every platform by design, with no hardware dependency.</p>
+          </div>
+          <div class="why-not-item">
+            <strong>Why not RSA?</strong>
+            <p>RSA key sizes for equivalent security are prohibitive (3072-bit+ for 128-bit security), it is significantly slower, and provides no forward secrecy. X25519 gives equal security at a fraction of the cost with an immeasurably simpler implementation surface.</p>
+          </div>
+          <div class="why-not-item">
+            <strong>Why not bcrypt or scrypt?</strong>
+            <p>Argon2id strictly dominates both. bcrypt is limited to 72-byte passwords and lacks memory-hardness against modern GPUs. scrypt's memory-hardness is real but it is not resistant to side-channel attacks. Argon2id was designed to win on both axes simultaneously.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Library stack row -->
+      <div class="lib-stack fade-in" aria-label="Library dependencies">
+        <span class="lib-stack-label">Dependency stack:</span>
+        <a href="https://libsodium.gitbook.io/doc/" class="lib-pill" target="_blank" rel="noopener">
+          libsodium 1.0.x
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+        <a href="https://github.com/nicktindall/cyclon.p2p-common/tree/master/src/crypto" class="lib-pill" target="_blank" rel="noopener">
+          secrets.js-grempe 2.x
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+        <a href="https://github.com/nicowillis/argon2-browser" class="lib-pill" target="_blank" rel="noopener">
+          argon2-browser
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+        <a href="https://tweetnacl.js.org/" class="lib-pill" target="_blank" rel="noopener">
+          TweetNaCl.js
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section divider -->
+  <div class="section-divider" aria-hidden="true"><svg width="100%" height="2" preserveAspectRatio="none"><rect width="100%" height="2" fill="url(#knotwork-1)"/></svg></div>
 
 
   <!-- ═══════════════════════════════════════
@@ -351,6 +594,9 @@
     </div>
   </section>
 
+  <!-- Section divider -->
+  <div class="section-divider" aria-hidden="true"><svg width="100%" height="2" preserveAspectRatio="none"><rect width="100%" height="2" fill="url(#knotwork-1)"/></svg></div>
+
 
   <!-- ═══════════════════════════════════════
        LANGUAGES
@@ -449,6 +695,7 @@
           <ul role="list">
             <li><a href="#how">How It Works</a></li>
             <li><a href="#what">The Stack</a></li>
+            <li><a href="#encryption">Encryption</a></li>
             <li><a href="#languages">Languages</a></li>
             <li><a href="#">Documentation</a></li>
             <li><a href="#">GitHub</a></li>
@@ -460,17 +707,17 @@
           <ul role="list">
             <li><a href="#why">Our Story</a></li>
             <li><a href="#donate">Donate</a></li>
-            <li><a href="#">Sponsors</a></li>
-            <li><a href="#">Grants</a></li>
+            <li><a href="donate.html">Sponsors</a></li>
+            <li><a href="donate.html">Grants</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4 class="footer-col-heading">Legal</h4>
           <ul role="list">
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">Security</a></li>
+            <li><a href="security.html">Privacy Policy</a></li>
+            <li><a href="security.html">Terms of Service</a></li>
+            <li><a href="security.html">Security</a></li>
             <li><a href="#">Contact</a></li>
           </ul>
         </div>

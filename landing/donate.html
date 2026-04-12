@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Morrigan — Support the Foundation</title>
+  <meta name="description" content="Morrigan is a non-profit project built on the belief that everyone deserves sovereignty over their digital legacy. Support our mission." />
+  <meta property="og:title" content="Morrigan — Support the Foundation" />
+  <meta property="og:description" content="Morrigan is free forever. If you believe in digital sovereignty, please consider supporting our work." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0d1a1b" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════ -->
+  <header class="site-header" id="site-header">
+    <nav class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Morrigan home">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 2L4 7.5V18.5C4 25.8 10.2 32.3 18 34C25.8 32.3 32 25.8 32 18.5V7.5L18 2Z" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.6"/>
+          <path d="M18 10C16.2 10 15 11.2 15 12.5C15 13 15.2 13.4 15.5 13.8L12 16L13.5 16.5L12.5 18L14.5 17.5L14 19.5L16 18.5C16.5 19.2 17.2 19.8 18 20C19.5 20 21 18.8 21 17C21 15.8 20.3 14.8 19.3 14.3L21.5 12.5C20.8 11 19.6 10 18 10Z" fill="currentColor"/>
+          <path d="M8 9L10 11" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+          <path d="M28 9L26 11" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+        </svg>
+        <span class="nav-wordmark">Morrigan</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html#why" class="nav-link">Our Story</a>
+        <a href="index.html#what" class="nav-link">The Stack</a>
+        <a href="index.html#encryption" class="nav-link">Encryption</a>
+        <a href="index.html#how" class="nav-link">How It Works</a>
+        <a href="donate.html" class="nav-link" aria-current="page" style="color: var(--color-primary);">Donate</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="btn btn-ghost btn-sm" data-theme-toggle aria-label="Switch to light mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="#" class="btn btn-primary btn-sm">Early Access</a>
+      </div>
+
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+      <a href="index.html#why" class="nav-mobile-link">Our Story</a>
+      <a href="index.html#what" class="nav-mobile-link">The Stack</a>
+      <a href="index.html#encryption" class="nav-mobile-link">Encryption</a>
+      <a href="index.html#how" class="nav-mobile-link">How It Works</a>
+      <a href="donate.html" class="nav-mobile-link" style="color: var(--color-primary);">Donate</a>
+      <a href="#" class="btn btn-primary" style="margin-top: var(--space-4);">Early Access</a>
+    </div>
+  </header>
+
+
+  <!-- ═══════════════════════════════════════
+       PAGE HERO
+  ═══════════════════════════════════════ -->
+  <section class="page-hero" aria-label="Page header">
+    <div class="page-hero-inner">
+      <div class="page-hero-eyebrow">Non-Profit Foundation</div>
+      <h1 class="page-hero-heading"><em>Support the Foundation</em></h1>
+      <p class="page-hero-sub">
+        Morrigan is a non-profit project. It will always be free. If you believe everyone deserves sovereignty over their digital legacy, please consider supporting our work.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       MISSION STATEMENT
+  ═══════════════════════════════════════ -->
+  <section class="section" style="background: var(--color-bg); padding-block: clamp(var(--space-12), 8vw, var(--space-24));">
+    <div class="container">
+      <div class="section-label fade-in" style="text-align: center;">Our Commitment</div>
+      <blockquote class="mission-statement fade-in">
+        We are building Morrigan as a public good — open-source, non-profit, and free forever. Every euro donated goes to infrastructure, security audits, and translations. No investor pressure. No paywalls. No compromise.
+      </blockquote>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       HOW FUNDS ARE USED
+  ═══════════════════════════════════════ -->
+  <section class="section" style="background: var(--color-surface); border-block: 1px solid var(--color-border);">
+    <div class="container">
+      <div class="section-label fade-in">Financial Transparency</div>
+      <h2 class="section-heading fade-in">How funds are used</h2>
+      <p class="section-subtext fade-in">Every donation is allocated to the things that directly serve the mission — not offices, not marketing, not growth teams.</p>
+
+      <div class="fund-breakdown fade-in">
+
+        <div class="fund-bar-item">
+          <div class="fund-bar-header">
+            <span class="fund-bar-label">Infrastructure &amp; hosting</span>
+            <span class="fund-bar-pct">40%</span>
+          </div>
+          <div class="fund-bar-track">
+            <div class="fund-bar-fill" style="width: 40%;"></div>
+          </div>
+        </div>
+
+        <div class="fund-bar-item">
+          <div class="fund-bar-header">
+            <span class="fund-bar-label">Security audits &amp; bug bounties</span>
+            <span class="fund-bar-pct">35%</span>
+          </div>
+          <div class="fund-bar-track">
+            <div class="fund-bar-fill" style="width: 35%; animation-delay: 0.45s;"></div>
+          </div>
+        </div>
+
+        <div class="fund-bar-item">
+          <div class="fund-bar-header">
+            <span class="fund-bar-label">Translation &amp; localization</span>
+            <span class="fund-bar-pct">15%</span>
+          </div>
+          <div class="fund-bar-track">
+            <div class="fund-bar-fill" style="width: 15%; animation-delay: 0.6s;"></div>
+          </div>
+        </div>
+
+        <div class="fund-bar-item">
+          <div class="fund-bar-header">
+            <span class="fund-bar-label">Operations &amp; legal</span>
+            <span class="fund-bar-pct">10%</span>
+          </div>
+          <div class="fund-bar-track">
+            <div class="fund-bar-fill" style="width: 10%; animation-delay: 0.75s;"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       DONATION TIERS
+  ═══════════════════════════════════════ -->
+  <section class="section" style="background: var(--color-bg);">
+    <div class="container">
+      <div class="section-label fade-in">Support Tiers</div>
+      <h2 class="section-heading fade-in">Choose your level of support</h2>
+      <p class="section-subtext fade-in">Every contribution matters, regardless of size. Choose what fits your means and your commitment to the mission.</p>
+
+      <div class="donation-tier-cards fade-in">
+
+        <!-- Supporter -->
+        <div class="tier-card">
+          <div>
+            <div class="tier-name">Supporter</div>
+            <div class="tier-price">
+              Any amount
+              <div class="tier-price-note">One-time or monthly</div>
+            </div>
+          </div>
+          <div class="tier-tagline">"You believe in digital sovereignty"</div>
+          <div class="tier-divider"></div>
+          <ul class="tier-perks">
+            <li>Help keep Morrigan independent</li>
+            <li>One-time or recurring — your choice</li>
+            <li>Gratitude from the whole team</li>
+          </ul>
+          <div class="tier-cta">
+            <a href="#" class="btn btn-outline" style="width: 100%; justify-content: center;">Donate freely</a>
+          </div>
+        </div>
+
+        <!-- Friend of Morrigan -->
+        <div class="tier-card">
+          <div>
+            <div class="tier-name">Friend of Morrigan</div>
+            <div class="tier-price">
+              €5
+              <div class="tier-price-note">per month</div>
+            </div>
+          </div>
+          <div class="tier-tagline">"Help keep the servers on"</div>
+          <div class="tier-divider"></div>
+          <ul class="tier-perks">
+            <li>Your name in the project README</li>
+            <li>Early news and development updates</li>
+            <li>Eternal gratitude</li>
+          </ul>
+          <div class="tier-cta">
+            <a href="#" class="btn btn-outline" style="width: 100%; justify-content: center;">Become a Friend</a>
+          </div>
+        </div>
+
+        <!-- Guardian — Featured -->
+        <div class="tier-card tier-card--featured">
+          <div class="tier-popular-badge">Most popular</div>
+          <div>
+            <div class="tier-name">Guardian</div>
+            <div class="tier-price">
+              €20
+              <div class="tier-price-note">per month</div>
+            </div>
+          </div>
+          <div class="tier-tagline">"Serious about the mission"</div>
+          <div class="tier-divider"></div>
+          <ul class="tier-perks">
+            <li>All Friend perks</li>
+            <li>Private Discord channel for Guardians</li>
+            <li>Vote on upcoming roadmap features</li>
+            <li>Named in the annual report</li>
+          </ul>
+          <div class="tier-cta">
+            <a href="#" class="btn btn-primary" style="width: 100%; justify-content: center;">Become a Guardian</a>
+          </div>
+        </div>
+
+        <!-- Patron -->
+        <div class="tier-card">
+          <div>
+            <div class="tier-name">Patron</div>
+            <div class="tier-price">
+              €100
+              <div class="tier-price-note">per month or custom</div>
+            </div>
+          </div>
+          <div class="tier-tagline">"Sustaining the foundation"</div>
+          <div class="tier-divider"></div>
+          <ul class="tier-perks">
+            <li>All Guardian perks</li>
+            <li>Dedicated email support</li>
+            <li>Your logo on the Morrigan website</li>
+            <li>Named in the annual financial report</li>
+          </ul>
+          <div class="tier-cta">
+            <a href="#" class="btn btn-outline" style="width: 100%; justify-content: center;">Become a Patron</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       CRYPTO DONATIONS
+  ═══════════════════════════════════════ -->
+  <section class="section" style="background: var(--color-surface); border-block: 1px solid var(--color-border);">
+    <div class="container">
+      <div class="section-label fade-in">Cryptocurrency</div>
+      <h2 class="section-heading fade-in">We also accept crypto</h2>
+      <p class="section-subtext fade-in">We accept Bitcoin, Ethereum, and Monero. Send any amount — all donations are logged in our annual transparency report.</p>
+
+      <div class="crypto-row fade-in">
+
+        <div class="crypto-item">
+          <div class="crypto-coin-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9 8h4.5a2.5 2.5 0 0 1 0 5H9zm0 5h5a2.5 2.5 0 0 1 0 5H9z"/></svg>
+            Bitcoin (BTC)
+          </div>
+          <div class="crypto-address" title="Bitcoin donation address">
+            <span class="crypto-address-text">bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</span>
+            <svg class="crypto-copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </div>
+        </div>
+
+        <div class="crypto-item">
+          <div class="crypto-coin-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/></svg>
+            Ethereum (ETH)
+          </div>
+          <div class="crypto-address" title="Ethereum donation address">
+            <span class="crypto-address-text">0x71C7656EC7ab88b098defB751B7401B5f6d8976F</span>
+            <svg class="crypto-copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </div>
+        </div>
+
+        <div class="crypto-item">
+          <div class="crypto-coin-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Monero (XMR)
+          </div>
+          <div class="crypto-address" title="Monero donation address">
+            <span class="crypto-address-text">48edfHu7V9Z84YzzMa6fUueoELghf8MTqwx1FAQmGr7t9yxnq56arAbdjnriBg4AgXYjgDAvGcNDKN7xHcyDSed4X3AEXMP</span>
+            <svg class="crypto-copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       TRANSPARENCY PLEDGE
+  ═══════════════════════════════════════ -->
+  <section class="section" style="background: var(--color-bg);">
+    <div class="container">
+      <div class="section-label fade-in">Accountability</div>
+      <h2 class="section-heading fade-in">Our transparency pledge</h2>
+
+      <div class="transparency-callout fade-in">
+        <div class="transparency-callout-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+        </div>
+        <div class="transparency-callout-text">
+          <strong>Full financial disclosure, every year</strong>
+          <p>Every year, Morrigan Foundation publishes a full financial report: income sources, expenses, salaries, infrastructure costs. Capped salaries (3× local median wage). No surprises. No opacity. You have the right to know exactly how your money is used — and we commit to making that easy.</p>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-5); margin-top: var(--space-8);" class="fade-in">
+        <div class="funding-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <strong>Annual report</strong>
+          <span>Published every January, covering the prior fiscal year</span>
+        </div>
+        <div class="funding-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <strong>Capped salaries</strong>
+          <span>No team member earns more than 3× the local median wage</span>
+        </div>
+        <div class="funding-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <strong>Real-time ledger</strong>
+          <span>Major expenditures tracked and published quarterly</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       SPONSORS
+  ═══════════════════════════════════════ -->
+  <section class="section" style="background: var(--color-surface); border-block: 1px solid var(--color-border);">
+    <div class="container">
+      <div class="section-label fade-in">Organizational Support</div>
+      <h2 class="section-heading fade-in">Become a sponsor</h2>
+      <p class="section-subtext fade-in">Companies and organizations that share our values can sponsor Morrigan directly. Sponsors receive logo placement, acknowledgement in our annual report, and the knowledge that they're funding public-good infrastructure.</p>
+
+      <div class="sponsors-grid fade-in" aria-label="Sponsor logo slots — currently accepting applications">
+        <div class="sponsor-slot">Your logo here</div>
+        <div class="sponsor-slot">Your logo here</div>
+        <div class="sponsor-slot">Your logo here</div>
+        <div class="sponsor-slot">Your logo here</div>
+        <div class="sponsor-slot">Your logo here</div>
+        <div class="sponsor-slot">Your logo here</div>
+      </div>
+
+      <div style="text-align: center; margin-top: var(--space-8);" class="fade-in">
+        <p style="font-size: var(--text-sm); color: var(--color-text-muted); max-width: 50ch; margin-inline: auto; margin-bottom: var(--space-6); line-height: 1.7;">Sponsorship slots are reviewed to ensure alignment with Morrigan's values. We do not accept sponsors from surveillance technology, data brokerage, or adtech industries.</p>
+        <a href="mailto:sponsors@morrigan.life" class="btn btn-outline btn-lg">Get in touch about sponsorship</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo footer-logo" aria-label="Morrigan">
+            <svg width="30" height="30" viewBox="0 0 36 36" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 2L4 7.5V18.5C4 25.8 10.2 32.3 18 34C25.8 32.3 32 25.8 32 18.5V7.5L18 2Z" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.6"/>
+              <path d="M18 10C16.2 10 15 11.2 15 12.5C15 13 15.2 13.4 15.5 13.8L12 16L13.5 16.5L12.5 18L14.5 17.5L14 19.5L16 18.5C16.5 19.2 17.2 19.8 18 20C19.5 20 21 18.8 21 17C21 15.8 20.3 14.8 19.3 14.3L21.5 12.5C20.8 11 19.6 10 18 10Z" fill="currentColor"/>
+              <path d="M8 9L10 11" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+              <path d="M28 9L26 11" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+            </svg>
+            <span>Morrigan</span>
+          </a>
+          <p class="footer-tagline">Prepare for the inevitable — with dignity and sovereignty.</p>
+          <div class="footer-badges">
+            <a href="#" class="footer-badge" aria-label="View source on GitHub">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              Open Source
+            </a>
+            <span class="footer-badge footer-badge--status">
+              <span class="status-dot"></span>
+              In development
+            </span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-heading">Product</h4>
+          <ul role="list">
+            <li><a href="index.html#how">How It Works</a></li>
+            <li><a href="index.html#what">The Stack</a></li>
+            <li><a href="index.html#languages">Languages</a></li>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">GitHub</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-heading">Foundation</h4>
+          <ul role="list">
+            <li><a href="index.html#why">Our Story</a></li>
+            <li><a href="donate.html" style="color: var(--color-primary);">Donate</a></li>
+            <li><a href="#">Sponsors</a></li>
+            <li><a href="#">Grants</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-heading">Legal</h4>
+          <ul role="list">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="security.html">Security</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 Morrigan Foundation. All rights reserved.</p>
+        <p class="footer-copy footer-domains">
+          <a href="https://morrigan.life">morrigan.life</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://morrigan.one">morrigan.one</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
