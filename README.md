@@ -6,10 +6,10 @@
 
 **Digital will. Encrypted legacy. Open-source.**
 
-[![Version](https://img.shields.io/badge/version-v1.1.0-rgb(207%2C254%2C37)?style=flat-square&labelColor=rgb(13%2C13%2C16))](CHANGELOG.md)
-[![License](https://img.shields.io/badge/license-AGPLv3-blue?style=flat-square)](LICENSE)
-[![Status](https://img.shields.io/badge/status-active%20development-green?style=flat-square)](ROADMAP.md)
-[![Built with ❤️ + AI](https://img.shields.io/badge/built_with-%E2%9D%A4%EF%B8%8F_%2B_AI-rgb(207%2C254%2C37)?style=flat-square&labelColor=rgb(13%2C13%2C16))](https://morrigan.life)
+[![Version](https://img.shields.io/badge/version-v1.3.0-rgb(65%2C105%2C225)?style=flat-square&labelColor=rgb(13%2C13%2C16))](CHANGELOG.md)
+[![License](https://img.shields.io/badge/license-AGPLv3-rgb(65%2C105%2C225)?style=flat-square&labelColor=rgb(13%2C13%2C16))](LICENSE)
+[![Status](https://img.shields.io/badge/status-active%20development-rgb(65%2C105%2C225)?style=flat-square&labelColor=rgb(13%2C13%2C16))](ROADMAP.md)
+[![Built with ❤️ + AI](https://img.shields.io/badge/built_with-%E2%9D%A4%EF%B8%8F_%2B_AI-rgb(65%2C105%2C225)?style=flat-square&labelColor=rgb(13%2C13%2C16))](https://morrigan.life)
 
 [morrigan.life](https://morrigan.life) · [morrigan.one](https://morrigan.one) · [Donate](https://morrigan.life/donate) · [Security](SECURITY.md) · [Changelog](CHANGELOG.md)
 

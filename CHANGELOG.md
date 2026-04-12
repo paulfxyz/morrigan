@@ -7,6 +7,21 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [v1.3.0] — 2026-04-12 — Royal Blue Design System + Full 22-Page Clone
+
+### Changed
+- **Brand color:** Setrex lime green (`#cffe25`) → royal blue (`#4169E1`) across all CSS variables and hardcoded values
+- **Footer:** Replaced "Developed by Arini Studio" / "Powered by Webflow" → "Built with ❤️ + AI" / "Morrigan.life"
+- **README badges:** Updated to royal blue, bumped version to v1.3.0
+
+### Added
+- 8 new pages: `404.html`, `401.html`, `career-detail.html`, `integration-detail-1.html`, `integration-detail-2.html`, `integration-frameflow.html`, `integration-dataflow.html`, `integration-blazelo.html`
+- All CDN2 blog/integration assets self-hosted with proper srcset variants
+- `.htaccess` clean URL rewrites + `ErrorDocument 404/401`
+- Webflow badge hidden via CSS + JS injection
+
+---
+
 ## [v1.1.0] — 2026-04-12 — 3-Channel Identity + Documentation Overhaul
 
 ### Added
