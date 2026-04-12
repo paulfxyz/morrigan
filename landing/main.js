@@ -1,444 +1,465 @@
 /**
- * Morrigan — main.js
- * Ink & Linen design system — v0.3.0
- *
- * Sections:
- *   1. Scrolled header detection
- *   2. Mobile hamburger toggle
- *   3. Smooth scroll for hash links
- *   4. SVG .draw-path stroke animation (IntersectionObserver)
- *   5. .fade-in → .visible (IntersectionObserver)
- *   6. .stagger children stagger
- *   7. Hero canvas: floating particles (warm ink/terra dots)
- *   8. Crypto badge counter animation (data-count)
+ * main.js — Morrigan Website
+ * Powers all pages. Elements are accessed with optional chaining so
+ * missing DOM nodes on any given page cause no errors.
  */
 
-'use strict';
+document.addEventListener('DOMContentLoaded', () => {
 
-/* ══════════════════════════════════════
-   1. SCROLLED HEADER
-══════════════════════════════════════ */
-(function initHeader() {
-  const header = document.getElementById('site-header');
-  if (!header) return;
+  /* ================================================================
+     1. CANVAS STARFIELD
+     Target: <canvas id="stars"> inside the hero section
+  ================================================================ */
+  (function initStarfield() {
+    const canvas = document.getElementById('stars');
+    if (!canvas) return;
 
-  let ticking = false;
-  function onScroll() {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        header.classList.toggle('scrolled', window.scrollY > 24);
-        ticking = false;
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+    let animFrame;
+
+    function randomBetween(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function createStar(w, h) {
+      return {
+        x:       Math.random() * w,
+        y:       Math.random() * h,
+        radius:  randomBetween(0.5, 1.5),
+        opacity: randomBetween(0.3, 0.9),
+        dx:      randomBetween(-0.05, 0.05),
+        dy:      randomBetween(-0.05, 0.05),
+      };
+    }
+
+    function resize() {
+      const parent = canvas.parentElement;
+      canvas.width  = parent ? parent.offsetWidth  : window.innerWidth;
+      canvas.height = parent ? parent.offsetHeight : window.innerHeight;
+      stars = Array.from({ length: 180 }, () => createStar(canvas.width, canvas.height));
+    }
+
+    function draw() {
+      const { width, height } = canvas;
+      ctx.clearRect(0, 0, width, height);
+
+      for (const star of stars) {
+        // Move
+        star.x += star.dx;
+        star.y += star.dy;
+
+        // Wrap-around
+        if (star.x < 0)       star.x = width;
+        if (star.x > width)   star.x = 0;
+        if (star.y < 0)       star.y = height;
+        if (star.y > height)  star.y = 0;
+
+        // Draw
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+        ctx.fill();
+      }
+
+      animFrame = requestAnimationFrame(draw);
+    }
+
+    resize();
+    draw();
+
+    window.addEventListener('resize', () => {
+      cancelAnimationFrame(animFrame);
+      resize();
+      draw();
+    });
+  })();
+
+
+  /* ================================================================
+     2. SCROLL-AWARE HEADER
+     Adds "scrolled" class after 20px of scroll
+  ================================================================ */
+  (function initScrollHeader() {
+    const header = document.querySelector('.site-header');
+    if (!header) return;
+
+    function onScroll() {
+      header.classList.toggle('scrolled', window.scrollY > 20);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); // run once in case page loads already scrolled
+  })();
+
+
+  /* ================================================================
+     3. HAMBURGER MENU
+     Targets: .hamburger, .nav-mobile
+     Also handles body scroll lock (feature 13)
+  ================================================================ */
+  (function initHamburger() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMobile = document.querySelector('.nav-mobile');
+    if (!hamburger || !navMobile) return;
+
+    function openMenu() {
+      hamburger.classList.add('open');
+      navMobile.classList.add('open');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden'; // feature 13
+    }
+
+    function closeMenu() {
+      hamburger.classList.remove('open');
+      navMobile.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.contains('open');
+      isOpen ? closeMenu() : openMenu();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (
+        navMobile.classList.contains('open') &&
+        !navMobile.contains(e.target) &&
+        !hamburger.contains(e.target)
+      ) {
+        closeMenu();
+      }
+    });
+
+    // Close when a nav link inside mobile menu is clicked
+    navMobile.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+  })();
+
+
+  /* ================================================================
+     4. COUNT-UP ANIMATION
+     Targets: [data-count] elements
+  ================================================================ */
+  (function initCountUp() {
+    const DURATION = 1200; // ms
+
+    function easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    function animateCount(el) {
+      const raw    = el.getAttribute('data-count');
+      // Extract numeric part (e.g. "100%" → 100, suffix "%")
+      const match  = raw.match(/^(\d+\.?\d*)(.*)$/);
+      if (!match) return;
+
+      const target = parseFloat(match[1]);
+      const suffix = match[2] || '';
+      const start  = performance.now();
+
+      function step(now) {
+        const elapsed  = now - start;
+        const progress = Math.min(elapsed / DURATION, 1);
+        const value    = Math.round(easeOutCubic(progress) * target);
+        el.textContent = value + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    const targets = document.querySelectorAll('[data-count]');
+    if (!targets.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          observer.unobserve(entry.target); // run only once
+        }
       });
-      ticking = true;
-    }
-  }
+    }, { threshold: 0.5 });
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll(); // apply on load
-})();
+    targets.forEach((el) => observer.observe(el));
+  })();
 
 
-/* ══════════════════════════════════════
-   2. MOBILE HAMBURGER TOGGLE
-══════════════════════════════════════ */
-(function initHamburger() {
-  const btn   = document.getElementById('nav-hamburger');
-  const menu  = document.getElementById('nav-mobile');
-  if (!btn || !menu) return;
+  /* ================================================================
+     5. TAB SWITCHER
+     Targets: .tabs-container > .tabs-nav [data-tab] + .tab-panel [data-panel]
+     Multiple independent groups supported
+  ================================================================ */
+  (function initTabs() {
+    const tabGroups = document.querySelectorAll('.tabs-container');
+    if (!tabGroups.length) return;
 
-  function close() {
-    btn.setAttribute('aria-expanded', 'false');
-    menu.setAttribute('aria-hidden', 'true');
-    menu.classList.remove('open');
-    document.body.style.overflow = '';
-  }
+    tabGroups.forEach((container) => {
+      const buttons = container.querySelectorAll('.tabs-nav [data-tab]');
+      const panels  = container.querySelectorAll('.tab-panel[data-panel]');
 
-  btn.addEventListener('click', () => {
-    const isOpen = btn.getAttribute('aria-expanded') === 'true';
-    if (isOpen) {
-      close();
-    } else {
-      btn.setAttribute('aria-expanded', 'true');
-      menu.setAttribute('aria-hidden', 'false');
-      menu.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-  });
-
-  // Close on any mobile link click
-  menu.querySelectorAll('.nav-mobile-link, .btn').forEach(link => {
-    link.addEventListener('click', close);
-  });
-
-  // Close on Escape
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') close();
-  });
-})();
-
-
-/* ══════════════════════════════════════
-   3. SMOOTH SCROLL
-══════════════════════════════════════ */
-(function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const hash = this.getAttribute('href');
-      if (hash === '#') return;
-      const target = document.querySelector(hash);
-      if (!target) return;
-      e.preventDefault();
-      const headerH = document.getElementById('site-header')?.offsetHeight ?? 72;
-      const top = target.getBoundingClientRect().top + window.scrollY - headerH - 16;
-      window.scrollTo({ top, behavior: 'smooth' });
-      // Update URL without jump
-      history.pushState(null, '', hash);
-    });
-  });
-})();
-
-
-/* ══════════════════════════════════════
-   4. SVG STROKE DRAW ANIMATION
-   Targets elements with class .draw-path
-   Animates stroke-dashoffset from total
-   path length → 0 over ~1.4s ease-out
-══════════════════════════════════════ */
-(function initDrawPaths() {
-  const DURATION = 1400; // ms
-  const EASING   = t => 1 - Math.pow(1 - t, 3); // ease-out-cubic
-
-  function animatePath(path, delay = 0) {
-    const length = path.getTotalLength?.() ?? 1000;
-    path.style.strokeDasharray  = length;
-    path.style.strokeDashoffset = length;
-    path.style.transition       = 'none';
-    path.style.willChange       = 'stroke-dashoffset';
-
-    let start = null;
-    function step(timestamp) {
-      if (!start) start = timestamp + delay;
-      if (timestamp < start) { requestAnimationFrame(step); return; }
-      const elapsed  = timestamp - start;
-      const progress = Math.min(elapsed / DURATION, 1);
-      const eased    = EASING(progress);
-      path.style.strokeDashoffset = length * (1 - eased);
-      if (progress < 1) requestAnimationFrame(step);
-      else path.style.strokeDashoffset = 0;
-    }
-    requestAnimationFrame(step);
-  }
-
-  // Group paths by parent SVG element
-  const drawEls = document.querySelectorAll('.draw-path');
-  if (!drawEls.length) return;
-
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const paths = entry.target.querySelectorAll('.draw-path');
-      paths.forEach((p, i) => animatePath(p, i * 120));
-      obs.unobserve(entry.target);
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
-  // Observe the nearest SVG or section parent that wraps the paths
-  const observed = new Set();
-  drawEls.forEach(p => {
-    const svg = p.closest('svg') ?? p.closest('.hero-illo') ?? p.parentElement;
-    if (svg && !observed.has(svg)) {
-      observed.add(svg);
-      obs.observe(svg);
-    }
-  });
-})();
-
-
-/* ══════════════════════════════════════
-   5. FADE-IN REVEAL
-   .fade-in gets .visible when it enters
-   the viewport (threshold 0.12)
-══════════════════════════════════════ */
-(function initFadeIn() {
-  const fadeEls = document.querySelectorAll('.fade-in');
-  if (!fadeEls.length) return;
-
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        obs.unobserve(entry.target);
+      function activateTab(tabId) {
+        buttons.forEach((btn) => {
+          btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId);
+        });
+        panels.forEach((panel) => {
+          panel.classList.toggle('active', panel.getAttribute('data-panel') === tabId);
+        });
       }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
 
-  fadeEls.forEach(el => obs.observe(el));
-})();
-
-
-/* ══════════════════════════════════════
-   6. STAGGER CHILDREN REVEAL
-   Parent with .stagger: children receive
-   .visible with nth-child-based delays
-══════════════════════════════════════ */
-(function initStagger() {
-  const staggerEls = document.querySelectorAll('.stagger');
-  if (!staggerEls.length) return;
-
-  const BASE_DELAY = 80; // ms between children
-
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const children = Array.from(entry.target.children);
-      children.forEach((child, i) => {
-        setTimeout(() => {
-          child.classList.add('visible');
-        }, i * BASE_DELAY);
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          activateTab(btn.getAttribute('data-tab'));
+        });
       });
-      obs.unobserve(entry.target);
+
+      // Activate first tab by default if none is active
+      const firstActive = container.querySelector('.tabs-nav [data-tab].active');
+      if (!firstActive && buttons.length) {
+        activateTab(buttons[0].getAttribute('data-tab'));
+      }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -24px 0px' });
-
-  staggerEls.forEach(el => obs.observe(el));
-})();
+  })();
 
 
-/* ══════════════════════════════════════
-   7. HERO CANVAS — FLOATING PARTICLES
-   Warm ink + terracotta micro-dots that
-   drift slowly across the linen hero bg.
-   Very subtle — opacity 0.12–0.22.
-══════════════════════════════════════ */
-(function initHeroCanvas() {
-  const canvas = document.getElementById('hero-canvas');
-  if (!canvas) return;
+  /* ================================================================
+     6. ACCORDION
+     Targets: .accordion > .accordion-item > .accordion-trigger + .accordion-body
+     Only one open per .accordion group; skip if using native <details>
+  ================================================================ */
+  (function initAccordion() {
+    const accordions = document.querySelectorAll('.accordion');
+    if (!accordions.length) return;
 
-  const ctx    = canvas.getContext('2d');
-  let W, H, particles = [], raf;
+    accordions.forEach((group) => {
+      const items = group.querySelectorAll('.accordion-item');
 
-  const COLORS = ['#C4785A', '#1A1714', '#A8A09A'];
-  const COUNT  = 42;
+      items.forEach((item) => {
+        const trigger = item.querySelector('.accordion-trigger');
+        if (!trigger) return;
 
-  function resize() {
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
-    // Re-position particles proportionally
-    particles.forEach(p => {
-      p.x = p.xRatio * W;
-      p.y = p.yRatio * H;
+        trigger.addEventListener('click', () => {
+          const isOpen = item.classList.contains('open');
+
+          // Close all items in this group
+          items.forEach((i) => i.classList.remove('open'));
+
+          // Toggle clicked item
+          if (!isOpen) item.classList.add('open');
+        });
+      });
     });
-  }
+  })();
 
-  function createParticle() {
-    const xRatio = Math.random();
-    const yRatio = Math.random();
-    return {
-      xRatio,
-      yRatio,
-      x     : xRatio * W,
-      y     : yRatio * H,
-      r     : 1.2 + Math.random() * 2.8,
-      color : COLORS[Math.floor(Math.random() * COLORS.length)],
-      alpha : 0.06 + Math.random() * 0.14,
-      vx    : (Math.random() - 0.5) * 0.18,
-      vy    : (Math.random() - 0.5) * 0.14,
-      // Gentle sinusoidal drift
-      phase : Math.random() * Math.PI * 2,
-      speed : 0.003 + Math.random() * 0.004,
-    };
-  }
 
-  function init() {
-    particles = Array.from({ length: COUNT }, createParticle);
-  }
+  /* ================================================================
+     7. SCROLL REVEAL
+     Targets: .reveal elements
+     Staggered delay for siblings inside same parent
+  ================================================================ */
+  (function initScrollReveal() {
+    const revealEls = document.querySelectorAll('.reveal');
+    if (!revealEls.length) return;
 
-  function tick() {
-    ctx.clearRect(0, 0, W, H);
-    const now = performance.now() * 0.001;
+    // Pre-compute stagger delays based on sibling index within same parent
+    const parentIndexMap = new Map();
 
-    particles.forEach(p => {
-      // Sinusoidal drift on top of base velocity
-      p.x += p.vx + Math.sin(now * p.speed * 5 + p.phase) * 0.12;
-      p.y += p.vy + Math.cos(now * p.speed * 4 + p.phase) * 0.08;
-
-      // Update ratios for resize
-      p.xRatio = p.x / W;
-      p.yRatio = p.y / H;
-
-      // Wrap edges
-      if (p.x < -10) p.x = W + 10;
-      if (p.x > W + 10) p.x = -10;
-      if (p.y < -10) p.y = H + 10;
-      if (p.y > H + 10) p.y = -10;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.globalAlpha = p.alpha;
-      ctx.fillStyle   = p.color;
-      ctx.fill();
+    revealEls.forEach((el) => {
+      const parent = el.parentElement;
+      if (!parentIndexMap.has(parent)) {
+        parentIndexMap.set(parent, []);
+      }
+      parentIndexMap.get(parent).push(el);
     });
 
-    ctx.globalAlpha = 1;
-    raf = requestAnimationFrame(tick);
-  }
+    parentIndexMap.forEach((siblings) => {
+      siblings.forEach((el, i) => {
+        el.dataset.revealDelay = i * 80; // 80ms stagger
+      });
+    });
 
-  // Visibility API — pause when tab is hidden
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) { cancelAnimationFrame(raf); }
-    else                 { raf = requestAnimationFrame(tick); }
-  });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el    = entry.target;
+          const delay = parseInt(el.dataset.revealDelay || '0', 10);
+          setTimeout(() => el.classList.add('revealed'), delay);
+          observer.unobserve(el); // only once
+        }
+      });
+    }, { threshold: 0.15 });
 
-  // Reduced-motion: skip if user prefers
-  const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-  if (mediaQuery.matches) return;
-
-  resize();
-  init();
-  tick();
-
-  const resizeObs = new ResizeObserver(() => resize());
-  resizeObs.observe(canvas);
-})();
+    revealEls.forEach((el) => observer.observe(el));
+  })();
 
 
-/* ══════════════════════════════════════
-   8. CRYPTO BADGE COUNTER ANIMATION
-   Elements with data-count="N" animate
-   from 0 → N when entering viewport.
-══════════════════════════════════════ */
-(function initCounters() {
-  const DURATION = 1600;
+  /* ================================================================
+     8. INFINITE MARQUEE
+     Targets: .marquee-track
+     CSS animation drives movement; JS only handles pause-on-hover
+  ================================================================ */
+  (function initMarquee() {
+    const tracks = document.querySelectorAll('.marquee-track');
+    if (!tracks.length) return;
 
-  function easeOutExpo(t) {
-    return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
-  }
+    tracks.forEach((track) => {
+      track.addEventListener('mouseenter', () => track.classList.add('paused'));
+      track.addEventListener('mouseleave', () => track.classList.remove('paused'));
+    });
+  })();
 
-  function animateCounter(el) {
-    const target = parseInt(el.getAttribute('data-count'), 10);
-    if (isNaN(target)) return;
-    const suffix = el.getAttribute('data-suffix') ?? '';
-    let start = null;
 
-    function step(ts) {
-      if (!start) start = ts;
-      const elapsed  = ts - start;
-      const progress = Math.min(elapsed / DURATION, 1);
-      const eased    = easeOutExpo(progress);
-      el.textContent = Math.round(eased * target) + suffix;
-      if (progress < 1) requestAnimationFrame(step);
+  /* ================================================================
+     9. PASSWORD STRENGTH METER
+     Target: input[type="password"]#passphrase (signup page)
+  ================================================================ */
+  (function initPasswordStrength() {
+    const input    = document.querySelector('input[type="password"]#passphrase');
+    const segments = document.querySelectorAll('.strength-segment');
+    const label    = document.querySelector('.strength-label');
+    if (!input || !segments.length) return;
+
+    const LEVELS = [
+      { color: '#e05252', text: 'Too short' },  // 1 segment
+      { color: '#f5a623', text: 'Weak'      },  // 2 segments
+      { color: '#f5d623', text: 'Good'      },  // 3 segments
+      { color: '#c8f74f', text: 'Strong'    },  // 4 segments
+    ];
+
+    function getStrength(value) {
+      const len        = value.length;
+      const hasUpper   = /[A-Z]/.test(value);
+      const hasLower   = /[a-z]/.test(value);
+      const hasNum     = /[0-9]/.test(value);
+      const hasSymbol  = /[^A-Za-z0-9]/.test(value);
+      const mixedCase  = hasUpper && hasLower;
+
+      if (len < 8)  return 1;
+      if (len < 12) return 2;
+      if (len < 16 && (mixedCase || hasNum)) return 3;
+      if (len >= 16 && mixedCase && hasNum && hasSymbol) return 4;
+      if (len >= 12 && (mixedCase || hasNum)) return 3;
+      return 2;
     }
 
-    requestAnimationFrame(step);
-  }
+    input.addEventListener('input', () => {
+      const strength = input.value.length === 0 ? 0 : getStrength(input.value);
+      const levelCfg = LEVELS[strength - 1];
 
-  const counterEls = document.querySelectorAll('[data-count]');
-  if (!counterEls.length) return;
+      segments.forEach((seg, i) => {
+        if (i < strength) {
+          seg.classList.add('active');
+          seg.style.background = levelCfg.color;
+        } else {
+          seg.classList.remove('active');
+          seg.style.background = '';
+        }
+      });
 
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        obs.unobserve(entry.target);
+      if (label) {
+        label.textContent = strength > 0 ? levelCfg.text : '';
       }
     });
-  }, { threshold: 0.5 });
-
-  counterEls.forEach(el => obs.observe(el));
-})();
+  })();
 
 
-/* ══════════════════════════════════════
-   9. YEAR MARKER ENTRANCE
-   .year-marker elements slide in with
-   a slight translateY on scroll reveal.
-   (Handled by CSS .fade-in + .visible;
-   this adds a small extra nudge delay
-   per year-marker for narrative feel.)
-══════════════════════════════════════ */
-(function initYearMarkers() {
-  const markers = document.querySelectorAll('.year-marker');
-  if (!markers.length) return;
+  /* ================================================================
+     10. PASSWORD TOGGLE (show/hide)
+     Targets: .password-toggle buttons
+  ================================================================ */
+  (function initPasswordToggle() {
+    const toggleBtns = document.querySelectorAll('.password-toggle');
+    if (!toggleBtns.length) return;
 
-  markers.forEach((marker, i) => {
-    marker.style.transitionDelay = `${i * 60}ms`;
-  });
-})();
+    // Unicode eye icons (fallback if no SVG swap is used)
+    const EYE_OPEN   = '👁';
+    const EYE_CLOSED = '🙈';
+
+    toggleBtns.forEach((btn) => {
+      // Find the associated password input (sibling or in same wrapper)
+      const wrapper = btn.closest('.password-wrapper, .input-wrapper, .field');
+      const input   = wrapper
+        ? wrapper.querySelector('input[type="password"], input[type="text"]')
+        : btn.previousElementSibling;
+
+      if (!input) return;
+
+      btn.addEventListener('click', () => {
+        const isPassword = input.type === 'password';
+        input.type       = isPassword ? 'text' : 'password';
+
+        // Swap icon — prefer swapping SVG class/content if present
+        const svgUse = btn.querySelector('use');
+        if (svgUse) {
+          const current = svgUse.getAttribute('href') || svgUse.getAttribute('xlink:href') || '';
+          // Expect icon IDs like "#icon-eye" and "#icon-eye-off"
+          const next = current.includes('eye-off') ? current.replace('eye-off', 'eye')
+                                                    : current.replace('eye', 'eye-off');
+          svgUse.setAttribute('href', next);
+          if (svgUse.hasAttribute('xlink:href')) svgUse.setAttribute('xlink:href', next);
+        } else {
+          btn.textContent = isPassword ? EYE_CLOSED : EYE_OPEN;
+        }
+
+        btn.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
+      });
+    });
+  })();
 
 
-/* ══════════════════════════════════════
-   10. ACCORDION — security.html
-   Handles <details> open/close with
-   smooth height animation.
-══════════════════════════════════════ */
-(function initAccordion() {
-  const details = document.querySelectorAll('details.accordion-item');
-  if (!details.length) return;
+  /* ================================================================
+     11. SMOOTH SCROLL
+     All anchor links with href="#..." — offset for sticky header
+  ================================================================ */
+  (function initSmoothScroll() {
+    const HEADER_OFFSET = 64;
 
-  details.forEach(detail => {
-    const summary = detail.querySelector('summary');
-    const body    = detail.querySelector('.accordion-body');
-    if (!summary || !body) return;
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (e) => {
+        const id     = anchor.getAttribute('href').slice(1);
+        if (!id) return;
+        const target = document.getElementById(id);
+        if (!target) return;
 
-    // Allow CSS transitions by animating max-height
-    body.style.overflow = 'hidden';
-    body.style.maxHeight = detail.open ? body.scrollHeight + 'px' : '0';
+        e.preventDefault();
 
-    summary.addEventListener('click', e => {
-      e.preventDefault();
-      if (detail.open) {
-        body.style.maxHeight = body.scrollHeight + 'px';
-        requestAnimationFrame(() => {
-          body.style.transition = 'max-height 0.3s ease';
-          body.style.maxHeight  = '0';
-          setTimeout(() => { detail.open = false; }, 310);
-        });
-      } else {
-        detail.open = true;
-        body.style.maxHeight = '0';
-        requestAnimationFrame(() => {
-          body.style.transition = 'max-height 0.35s ease';
-          body.style.maxHeight  = body.scrollHeight + 'px';
-        });
-        // Close other open details (accordion behaviour)
-        details.forEach(other => {
-          if (other !== detail && other.open) {
-            const ob = other.querySelector('.accordion-body');
-            if (ob) {
-              ob.style.transition = 'max-height 0.3s ease';
-              ob.style.maxHeight  = '0';
-              setTimeout(() => { other.open = false; }, 310);
-            }
-          }
-        });
+        const top = target.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    });
+  })();
+
+
+  /* ================================================================
+     12. ACTIVE NAV LINK
+     Highlights the current page's nav link based on pathname
+  ================================================================ */
+  (function initActiveNav() {
+    const path     = window.location.pathname;
+    const filename = path.split('/').pop() || 'index.html';
+
+    document.querySelectorAll('.site-nav a, .nav-mobile a').forEach((link) => {
+      const href = link.getAttribute('href') || '';
+      // Match if the href filename appears in current path
+      const linkFile = href.split('/').pop();
+      if (!linkFile) return;
+
+      if (
+        filename === linkFile ||
+        (filename === '' && linkFile === 'index.html') ||
+        (linkFile !== 'index.html' && filename.includes(linkFile.replace('.html', '')))
+      ) {
+        link.classList.add('active');
       }
     });
-  });
-})();
+  })();
 
-
-/* ══════════════════════════════════════
-   11. BLOCKCHAIN ANCHOR — SECTION
-   Animate the chain-link SVG when the
-   blockchain anchoring section enters
-   the viewport (ink section).
-══════════════════════════════════════ */
-(function initChainSection() {
-  const section = document.getElementById('blockchain');
-  if (!section) return;
-
-  const chainPaths = section.querySelectorAll('.chain-link-path');
-
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        chainPaths.forEach((p, i) => {
-          setTimeout(() => p.classList.add('chain-drawn'), i * 200);
-        });
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2 });
-
-  obs.observe(section);
-})();
+}); // end DOMContentLoaded

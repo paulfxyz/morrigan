@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Your Vault — Morrigan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --card: #111111;
+      --card-alt: #161616;
+      --accent: #c8f74f;
+      --accent-dim: rgba(200, 247, 79, 0.15);
+      --text: #ffffff;
+      --muted: #999999;
+      --border: rgba(255,255,255,0.07);
+      --input-border: rgba(255,255,255,0.12);
+      --error: #ff4d4f;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ── */
+    .auth-shell {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100vh;
+    }
+
+    /* ── LEFT PANEL ── */
+    .auth-left {
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 32px 48px 32px;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    /* Custom scrollbar */
+    .auth-left::-webkit-scrollbar { width: 4px; }
+    .auth-left::-webkit-scrollbar-track { background: transparent; }
+    .auth-left::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+    .auth-left-inner {
+      width: 100%;
+      max-width: 440px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      padding-bottom: 32px;
+    }
+
+    /* Logo */
+    .logo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .logo-link span {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    /* Card */
+    .auth-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 40px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .auth-card-header {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .auth-card-header h2 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 32px;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--text);
+    }
+
+    .auth-card-header p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Form */
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field-label {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .field-wrap {
+      position: relative;
+    }
+
+    .field-input {
+      width: 100%;
+      background: var(--card-alt);
+      border: 1px solid var(--input-border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .field-input::placeholder { color: #555; }
+
+    .field-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(200, 247, 79, 0.12);
+    }
+
+    .field-input.has-toggle { padding-right: 44px; }
+
+    .field-input.error {
+      border-color: var(--error);
+      box-shadow: 0 0 0 3px rgba(255, 77, 79, 0.1);
+    }
+
+    .field-error {
+      font-size: 12px;
+      color: var(--error);
+      margin-top: 2px;
+      display: none;
+    }
+    .field-error.visible { display: block; }
+
+    .field-note {
+      font-size: 12px;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    .pw-toggle {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      padding: 4px;
+      border-radius: 4px;
+      transition: color 0.2s;
+    }
+    .pw-toggle:hover { color: var(--text); }
+
+    /* Strength bar */
+    .strength-bar {
+      display: flex;
+      gap: 4px;
+      margin-top: 6px;
+    }
+
+    .strength-segment {
+      flex: 1;
+      height: 3px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.08);
+      transition: background 0.25s;
+    }
+
+    .strength-segment.active.s1 { background: #ff4d4f; }
+    .strength-segment.active.s2 { background: #ff7d00; }
+    .strength-segment.active.s3 { background: #fadb14; }
+    .strength-segment.active.s4 { background: var(--accent); }
+
+    .strength-label {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* Checkboxes */
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--muted);
+      cursor: pointer;
+      user-select: none;
+      line-height: 1.5;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      border: 1px solid var(--input-border);
+      border-radius: 4px;
+      background: var(--card-alt);
+      cursor: pointer;
+      position: relative;
+      margin-top: 1px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .checkbox-label input[type="checkbox"]:checked {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .checkbox-label input[type="checkbox"]:checked::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 1px;
+      width: 5px;
+      height: 9px;
+      border: 2px solid #0a0a0a;
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg);
+    }
+
+    .checkbox-label a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .checkbox-label a:hover { text-decoration: underline; }
+
+    /* Buttons */
+    .btn-primary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 14px 24px;
+      background: var(--accent);
+      color: #0a0a0a;
+      border: none;
+      border-radius: 999px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      letter-spacing: -0.01em;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); }
+
+    /* Bottom link */
+    .auth-foot-link {
+      text-align: center;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .auth-foot-link a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .auth-foot-link a:hover { text-decoration: underline; }
+
+    /* Small print */
+    .auth-small-print {
+      text-align: center;
+      font-size: 12px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    /* ── RIGHT PANEL ── */
+    .auth-right {
+      background: var(--card);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #starCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .right-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 36px;
+      padding: 48px;
+      text-align: center;
+    }
+
+    .right-headline {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(44px, 5.5vw, 72px);
+      line-height: 1.0;
+      letter-spacing: -0.04em;
+      color: var(--accent);
+    }
+
+    .trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text);
+      backdrop-filter: blur(8px);
+    }
+
+    .right-quote {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: #555;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      html, body { overflow: auto; }
+      .auth-shell {
+        grid-template-columns: 1fr;
+        height: auto;
+        min-height: 100vh;
+      }
+      .auth-right { display: none; }
+      .auth-left {
+        padding: 32px 24px;
+        overflow-y: visible;
+      }
+      .auth-card { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="auth-shell">
+
+  <!-- LEFT PANEL -->
+  <div class="auth-left">
+    <div class="auth-left-inner">
+
+      <!-- Logo -->
+      <a href="index.html" class="logo-link" aria-label="Morrigan home">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M14 2C8.477 2 4 6.477 4 12c0 3.5 1.8 6.6 4.5 8.5L6 26h16l-2.5-5.5C22.2 18.6 24 15.5 24 12c0-5.523-4.477-10-10-10z" fill="#c8f74f" opacity="0.9"/>
+          <circle cx="10.5" cy="11" r="1.5" fill="#0a0a0a"/>
+          <path d="M14 2 C11 5 9 8 10 12" stroke="#0a0a0a" stroke-width="1" opacity="0.5"/>
+        </svg>
+        <span>Morrigan</span>
+      </a>
+
+      <!-- Card -->
+      <div class="auth-card">
+        <div class="auth-card-header">
+          <h2>Create your vault.</h2>
+          <p>Set up your encrypted digital legacy in minutes.</p>
+        </div>
+
+        <form class="auth-form" id="signupForm" novalidate>
+
+          <!-- Full Name -->
+          <div class="field-group">
+            <label class="field-label" for="signupName">Full name</label>
+            <div class="field-wrap">
+              <input
+                class="field-input"
+                type="text"
+                id="signupName"
+                name="name"
+                placeholder="Paul Fleury"
+                autocomplete="name"
+              />
+            </div>
+            <span class="field-error" id="signupNameErr">Full name is required.</span>
+          </div>
+
+          <!-- Email -->
+          <div class="field-group">
+            <label class="field-label" for="signupEmail">Email address</label>
+            <div class="field-wrap">
+              <input
+                class="field-input"
+                type="email"
+                id="signupEmail"
+                name="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+              />
+            </div>
+            <span class="field-error" id="signupEmailErr">Please enter a valid email address.</span>
+          </div>
+
+          <!-- Phone -->
+          <div class="field-group">
+            <label class="field-label" for="signupPhone">Phone number</label>
+            <div class="field-wrap">
+              <input
+                class="field-input"
+                type="tel"
+                id="signupPhone"
+                name="phone"
+                placeholder="+1 (555) 000-0000"
+                autocomplete="tel"
+              />
+            </div>
+            <span class="field-note">Required for dual-channel verification</span>
+            <span class="field-error" id="signupPhoneErr">A valid phone number is required.</span>
+          </div>
+
+          <!-- Passphrase -->
+          <div class="field-group">
+            <label class="field-label" for="signupPassword">Passphrase</label>
+            <div class="field-wrap">
+              <input
+                class="field-input has-toggle"
+                type="password"
+                id="signupPassword"
+                name="password"
+                placeholder="Choose a strong passphrase"
+                autocomplete="new-password"
+              />
+              <button type="button" class="pw-toggle" id="signupPwToggle" aria-label="Toggle passphrase visibility">
+                <svg id="eyeIconSignup" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
+            </div>
+            <!-- Strength indicator -->
+            <div class="strength-bar" id="strengthBar" aria-hidden="true">
+              <div class="strength-segment" id="seg1"></div>
+              <div class="strength-segment" id="seg2"></div>
+              <div class="strength-segment" id="seg3"></div>
+              <div class="strength-segment" id="seg4"></div>
+            </div>
+            <span class="strength-label" id="strengthLabel"></span>
+            <span class="field-error" id="signupPasswordErr">Please choose a passphrase of at least 8 characters.</span>
+          </div>
+
+          <!-- Confirm Passphrase -->
+          <div class="field-group">
+            <label class="field-label" for="signupConfirm">Confirm passphrase</label>
+            <div class="field-wrap">
+              <input
+                class="field-input"
+                type="password"
+                id="signupConfirm"
+                name="confirm"
+                placeholder="••••••••"
+                autocomplete="new-password"
+              />
+            </div>
+            <span class="field-error" id="signupConfirmErr">Passphrases do not match.</span>
+          </div>
+
+          <!-- Checkboxes -->
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="cbUnderstand" name="understand" required />
+              I understand that my passphrase cannot be recovered if lost.
+            </label>
+            <span class="field-error" id="cbUnderstandErr">You must acknowledge this before continuing.</span>
+
+            <label class="checkbox-label">
+              <input type="checkbox" id="cbTerms" name="terms" required />
+              I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+            </label>
+            <span class="field-error" id="cbTermsErr">You must agree to continue.</span>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn-primary">
+            Create My Vault →
+          </button>
+
+        </form>
+
+        <!-- Bottom link -->
+        <div class="auth-foot-link">
+          Already have a vault? <a href="login.html">Sign in →</a>
+        </div>
+      </div>
+
+      <!-- Small print -->
+      <p class="auth-small-print">Encrypted client-side with XChaCha20-Poly1305. Your passphrase never leaves your device.</p>
+
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="auth-right">
+    <canvas id="starCanvas" aria-hidden="true"></canvas>
+    <div class="right-content">
+      <div class="right-headline">Your legacy,<br>sealed in light.</div>
+      <div class="trust-badges">
+        <div class="trust-badge">🔐 Zero-knowledge</div>
+        <div class="trust-badge">⛓ Blockchain anchored</div>
+        <div class="trust-badge">🔮 Post-quantum ready</div>
+      </div>
+      <p class="right-quote">— Paul Fleury, Founder</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  /* ── Starfield ── */
+  (function () {
+    const canvas = document.getElementById('starCanvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, stars = [];
+    const NUM = 140;
+
+    function resize() {
+      W = canvas.width = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+    }
+
+    function mkStar() {
+      return {
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 1.4 + 0.3,
+        alpha: Math.random() * 0.6 + 0.1,
+        speed: Math.random() * 0.15 + 0.04,
+        drift: (Math.random() - 0.5) * 0.08,
+        twinkle: Math.random() * Math.PI * 2
+      };
+    }
+
+    function init() {
+      resize();
+      stars = Array.from({ length: NUM }, mkStar);
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      stars.forEach(s => {
+        s.y -= s.speed;
+        s.x += s.drift;
+        s.twinkle += 0.02;
+        if (s.y < -2) { s.y = H + 2; s.x = Math.random() * W; }
+        if (s.x < -2 || s.x > W + 2) s.x = Math.random() * W;
+        const a = s.alpha * (0.7 + 0.3 * Math.sin(s.twinkle));
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(200,247,79,${a})`;
+        ctx.fill();
+      });
+      requestAnimationFrame(draw);
+    }
+
+    init();
+    window.addEventListener('resize', resize);
+    requestAnimationFrame(draw);
+  })();
+
+  /* ── Password toggle ── */
+  (function () {
+    const btn = document.getElementById('signupPwToggle');
+    const input = document.getElementById('signupPassword');
+    const icon = document.getElementById('eyeIconSignup');
+    let shown = false;
+    btn.addEventListener('click', () => {
+      shown = !shown;
+      input.type = shown ? 'text' : 'password';
+      icon.innerHTML = shown
+        ? `<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>`
+        : `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>`;
+    });
+  })();
+
+  /* ── Strength meter ── */
+  (function () {
+    const input = document.getElementById('signupPassword');
+    const segs = [
+      document.getElementById('seg1'),
+      document.getElementById('seg2'),
+      document.getElementById('seg3'),
+      document.getElementById('seg4')
+    ];
+    const label = document.getElementById('strengthLabel');
+    const levels = [
+      { label: 'Too short',  color: 's1', count: 1 },
+      { label: 'Weak',       color: 's2', count: 2 },
+      { label: 'Fair',       color: 's3', count: 3 },
+      { label: 'Strong',     color: 's4', count: 4 }
+    ];
+
+    function score(pw) {
+      if (pw.length < 6) return 0;
+      if (pw.length < 10) return 1;
+      let s = 1;
+      if (/[A-Z]/.test(pw)) s++;
+      if (/[0-9]/.test(pw)) s++;
+      if (/[^A-Za-z0-9]/.test(pw)) s++;
+      return Math.min(s, 4);
+    }
+
+    input.addEventListener('input', () => {
+      const pw = input.value;
+      if (!pw) {
+        segs.forEach(s => { s.classList.remove('active', 's1','s2','s3','s4'); });
+        label.textContent = '';
+        return;
+      }
+      const s = score(pw);
+      const lvl = levels[s - 1] || levels[0];
+      segs.forEach((seg, i) => {
+        seg.classList.remove('active', 's1','s2','s3','s4');
+        if (i < lvl.count) {
+          seg.classList.add('active', lvl.color);
+        }
+      });
+      label.textContent = lvl.label;
+    });
+  })();
+
+  /* ── Form validation ── */
+  (function () {
+    const form = document.getElementById('signupForm');
+
+    function setError(inputId, errId, show) {
+      const el = document.getElementById(inputId);
+      const err = document.getElementById(errId);
+      if (!el || !err) return;
+      if (show) {
+        el.classList.add('error');
+        err.classList.add('visible');
+      } else {
+        el.classList.remove('error');
+        err.classList.remove('visible');
+      }
+    }
+
+    function setCbError(cbId, errId, show) {
+      const err = document.getElementById(errId);
+      if (!err) return;
+      if (show) err.classList.add('visible');
+      else err.classList.remove('visible');
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let valid = true;
+
+      const name = document.getElementById('signupName');
+      setError('signupName', 'signupNameErr', !name.value.trim());
+      if (!name.value.trim()) valid = false;
+
+      const email = document.getElementById('signupEmail');
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+      setError('signupEmail', 'signupEmailErr', !emailOk);
+      if (!emailOk) valid = false;
+
+      const phone = document.getElementById('signupPhone');
+      const phoneOk = phone.value.trim().length >= 7;
+      setError('signupPhone', 'signupPhoneErr', !phoneOk);
+      if (!phoneOk) valid = false;
+
+      const pw = document.getElementById('signupPassword');
+      const pwOk = pw.value.length >= 8;
+      setError('signupPassword', 'signupPasswordErr', !pwOk);
+      if (!pwOk) valid = false;
+
+      const conf = document.getElementById('signupConfirm');
+      const confOk = conf.value === pw.value && conf.value.length > 0;
+      setError('signupConfirm', 'signupConfirmErr', !confOk);
+      if (!confOk) valid = false;
+
+      const cbUnderstand = document.getElementById('cbUnderstand');
+      setCbError('cbUnderstand', 'cbUnderstandErr', !cbUnderstand.checked);
+      if (!cbUnderstand.checked) valid = false;
+
+      const cbTerms = document.getElementById('cbTerms');
+      setCbError('cbTerms', 'cbTermsErr', !cbTerms.checked);
+      if (!cbTerms.checked) valid = false;
+
+      if (valid) {
+        /* TODO: submit to backend */
+        console.log('Signup submitted');
+      }
+    });
+
+    /* Clear errors on input */
+    ['signupName','signupEmail','signupPhone','signupPassword','signupConfirm'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', () => {
+        const errId = id + 'Err';
+        setError(id, errId, false);
+      });
+    });
+    document.getElementById('cbUnderstand').addEventListener('change', () => {
+      setCbError('cbUnderstand','cbUnderstandErr', false);
+    });
+    document.getElementById('cbTerms').addEventListener('change', () => {
+      setCbError('cbTerms','cbTermsErr', false);
+    });
+  })();
+</script>
+
+</body>
+</html>

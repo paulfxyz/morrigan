@@ -6,12 +6,12 @@
 
 *Store files, messages, passwords, and final words. Encrypt them beyond recovery. Share access only with the people you trust, only when the time comes.*
 
-[![Version](https://img.shields.io/badge/version-0.3.0-0d1518?style=flat-square&logo=github&logoColor=3a9faa)](https://github.com/paulfxyz/morrigan/releases/tag/v0.1.0)
+[![Version](https://img.shields.io/badge/version-1.0.0-0d1518?style=flat-square&logo=github&logoColor=3a9faa)](https://github.com/paulfxyz/morrigan/releases/tag/v1.0.0)
 [![License: AGPLv3](https://img.shields.io/badge/license-AGPLv3-3a9faa?style=flat-square)](LICENSE)
 [![Non-Profit](https://img.shields.io/badge/non--profit-foundation-c9a64a?style=flat-square)](https://morrigan.life/foundation)
 [![Zero Knowledge](https://img.shields.io/badge/zero--knowledge-architecture-1a3a3f?style=flat-square)](docs/architecture/encryption.md)
 [![Open Source](https://img.shields.io/badge/open_source-forever-3a9faa?style=flat-square)](https://github.com/paulfxyz/morrigan)
-[![Status](https://img.shields.io/badge/status-early_development-c9a64a?style=flat-square)]()
+[![Status](https://img.shields.io/badge/status-stable-c8f74f?style=flat-square)]()
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-3a9faa?style=flat-square)](CONTRIBUTING.md)
 [![Vibe Coded](https://img.shields.io/badge/vibe_coded-100%25-c96a2a?style=flat-square)](https://github.com/paulfxyz/morrigan)
 
@@ -584,7 +584,7 @@ The `landing/` directory in this repository contains the full source of [morriga
 - [x] "Post-quantum ready" trust signal in hero
 - [x] README: Transformation narrative and PQC migration roadmap
 
-### v0.3.0 — Ledger & Dual-Factor Identity *(this release)*
+### v1.0.0 — Ledger & Dual-Factor Identity *(this release)*
 - [x] Blockchain anchoring architecture documented (OpenTimestamps default, Chainpoint supported)
 - [x] Blockchain anchoring section on security page — 4-step flow, event table, protocol comparison
 - [x] Dual-channel identity system: email + phone required for all sensitive actions
@@ -677,7 +677,7 @@ open index.html
 
 ## 📋 Changelog
 
-### v0.3.0 — Ledger & Dual-Factor Identity *(2026-04-12)*
+### v1.0.0 — "Setrex Direction" Full Site Launch *(2026-04-12)*
 - Blockchain anchoring: OpenTimestamps (Bitcoin) as default, Chainpoint v3 supported, OriginStamp + custom EVM on roadmap
 - Security page: full blockchain anchoring section (4-step flow, event table, privacy model, protocol comparison)
 - Dual-channel identity: email + phone required simultaneously for all sensitive actions
@@ -697,7 +697,7 @@ open index.html
 ### v0.1.0 — Landing *(initial release)*
 See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
-**Latest:** [v0.3.0](CHANGELOG.md#v030--2026-04-12) — Blockchain anchoring + dual-factor identity.
+**Latest:** [v1.0.0](CHANGELOG.md#v100--2026-04-12) — Full multi-page dark cosmic site launch.
 
 ---
 

@@ -3,20 +3,410 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Morrigan — Support the Foundation</title>
-  <meta name="description" content="Morrigan is a non-profit project built on the belief that everyone deserves sovereignty over their digital legacy. Support our mission." />
-  <meta property="og:title" content="Morrigan — Support the Foundation" />
-  <meta property="og:description" content="Morrigan is free forever. If you believe in digital sovereignty, please consider supporting our work." />
+  <title>Support Morrigan — Donate</title>
+  <meta name="description" content="Morrigan is free, non-profit, and open-source. Support the foundation that keeps your digital will encrypted, maintained, and audited." />
+  <meta property="og:title" content="Support Morrigan — Donate" />
+  <meta property="og:description" content="Keep the vault open. Morrigan is free today because someone believed it should be." />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#F7F3EA" />
+  <meta name="theme-color" content="#0a0a0a" />
 
-  <!-- Fonts: Cormorant Garamond (display) + DM Sans (body) -->
+  <!-- Fonts: Syne (display) + DM Sans (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+  <style>
+    /* ── Page-local styles for donate.html ── */
+
+    /* Section intro block */
+    .sec-intro {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--s5);
+    }
+
+    /* Mission cards */
+    .mission-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s5);
+      margin-top: var(--s10);
+    }
+
+    .mission-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--s8);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s4);
+      transition: border-color 0.25s, transform 0.25s;
+    }
+
+    .mission-card:hover {
+      border-color: var(--border-lime);
+      transform: translateY(-2px);
+    }
+
+    .mission-card h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .mission-card p {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .mission-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--r-md);
+      background: rgba(200,247,79,0.08);
+      border: 1px solid var(--lime-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--lime);
+      flex-shrink: 0;
+    }
+
+    /* Tier pricing cards */
+    .tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s5);
+      margin-top: var(--s10);
+      align-items: start;
+    }
+
+    .tier-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: var(--s8);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s5);
+      transition: border-color 0.25s, transform 0.25s;
+      position: relative;
+    }
+
+    .tier-card:hover {
+      border-color: var(--border-lime);
+      transform: translateY(-2px);
+    }
+
+    .tier-card.featured {
+      border-color: var(--lime-border);
+      background: var(--bg-card-alt);
+    }
+
+    .tier-card.featured:hover {
+      border-color: var(--lime);
+    }
+
+    .tier-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--lime);
+      color: var(--bg);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.85rem;
+      border-radius: var(--r-pill);
+      white-space: nowrap;
+    }
+
+    .tier-label {
+      font-size: var(--text-xs);
+      color: var(--text-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+    }
+
+    .tier-name {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .tier-price {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--lime);
+    }
+
+    .tier-card.featured .tier-price {
+      color: var(--lime);
+    }
+
+    .tier-price-note {
+      font-size: var(--text-xs);
+      color: var(--text-faint);
+      margin-top: var(--s1);
+    }
+
+    .tier-desc {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .tier-features {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s2);
+      flex: 1;
+    }
+
+    .tier-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--s3);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+    }
+
+    .tier-feature-check {
+      color: var(--lime);
+      font-weight: 700;
+      flex-shrink: 0;
+      line-height: 1.4;
+    }
+
+    /* Allocation cards */
+    .allocation-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--s5);
+      margin-top: var(--s10);
+    }
+
+    .allocation-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--s7);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s3);
+      transition: border-color 0.25s, transform 0.25s;
+    }
+
+    .allocation-card:hover {
+      border-color: var(--border-lime);
+      transform: translateY(-2px);
+    }
+
+    .allocation-pct {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--lime);
+    }
+
+    .allocation-label {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .allocation-desc {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* Founder quote */
+    .founder-quote {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--lime);
+      border-radius: var(--r-xl);
+      padding: var(--s12) var(--s10);
+      margin-top: var(--s10);
+    }
+
+    .founder-quote blockquote {
+      font-size: var(--text-base);
+      color: var(--text-muted);
+      line-height: 1.85;
+      max-width: 72ch;
+      white-space: pre-line;
+    }
+
+    .founder-quote cite {
+      display: block;
+      margin-top: var(--s8);
+      font-size: var(--text-sm);
+      color: var(--text-faint);
+      font-style: normal;
+    }
+
+    /* Empty state / donors */
+    .donors-empty {
+      margin-top: var(--s8);
+      background: var(--bg-card);
+      border: 1px dashed var(--lime-border);
+      border-radius: var(--r-xl);
+      padding: var(--s16) var(--s8);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--s4);
+    }
+
+    .donors-empty p {
+      font-size: var(--text-base);
+      color: var(--text-faint);
+    }
+
+    .donors-note {
+      margin-top: var(--s6);
+      font-size: var(--text-sm);
+      color: var(--text-faint);
+      text-align: center;
+    }
+
+    /* How to donate cards */
+    .methods-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s5);
+      margin-top: var(--s10);
+    }
+
+    .method-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--s8);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s4);
+      transition: border-color 0.25s, transform 0.25s;
+    }
+
+    .method-card:hover {
+      border-color: var(--border-lime);
+      transform: translateY(-2px);
+    }
+
+    .method-card.disabled {
+      opacity: 0.5;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .method-card h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .method-link {
+      font-family: 'Courier New', monospace;
+      font-size: var(--text-sm);
+      color: var(--lime);
+    }
+
+    .method-card p {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .method-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--r-md);
+      background: rgba(200,247,79,0.08);
+      border: 1px solid var(--lime-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--lime);
+      flex-shrink: 0;
+    }
+
+    /* CTA Banner */
+    .cta-banner {
+      background: var(--bg-card-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: var(--s16) var(--s8);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--s6);
+    }
+
+    .cta-banner h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.03em;
+    }
+
+    .cta-banner p {
+      font-size: var(--text-lg);
+      color: var(--text-muted);
+      max-width: 50ch;
+    }
+
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--s4);
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: var(--s2);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .tiers-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+      .allocation-row { grid-template-columns: 1fr 1fr; }
+      .mission-grid { grid-template-columns: 1fr 1fr; }
+      .methods-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+    }
+
+    @media (max-width: 768px) {
+      .mission-grid { grid-template-columns: 1fr; }
+      .allocation-row { grid-template-columns: 1fr; }
+      .founder-quote { padding: var(--s8) var(--s6); }
+      .cta-banner h2 { font-size: var(--text-2xl); }
+    }
+  </style>
 </head>
 <body>
 
@@ -26,133 +416,385 @@
   <header class="site-header" id="site-header">
     <nav class="nav-inner">
       <a href="index.html" class="nav-logo" aria-label="Morrigan home">
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-          <path d="M18 2L4 7.5V18.5C4 25.8 10.2 32.3 18 34C25.8 32.3 32 25.8 32 18.5V7.5L18 2Z" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.6"/>
-          <path d="M18 10C16.2 10 15 11.2 15 12.5C15 13 15.2 13.4 15.5 13.8L12 16L13.5 16.5L12.5 18L14.5 17.5L14 19.5L16 18.5C16.5 19.2 17.2 19.8 18 20C19.5 20 21 18.8 21 17C21 15.8 20.3 14.8 19.3 14.3L21.5 12.5C20.8 11 19.6 10 18 10Z" fill="currentColor"/>
-          <path d="M8 9L10 11" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-          <path d="M28 9L26 11" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 3C13 3 11 5 11 7.5C11 8.2 11.2 8.8 11.5 9.3L8 12L9.5 12.6L8.5 14.5L10.5 13.8L10 16L12.5 14.8C13 15.6 13.9 16.3 16 16.3C18.5 16.3 20.5 14.5 20.5 12C20.5 10.5 19.7 9.2 18.5 8.5L21 6.5C20 4.5 18.2 3 16 3Z" fill="currentColor"/>
+          <path d="M7 8L9 10M25 8L23 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/>
+          <path d="M16 16.3L13 22L16 20.5L19 22L16 16.3Z" fill="currentColor" opacity="0.3"/>
         </svg>
-        <span class="nav-wordmark">Morrigan</span>
+        <span>Morrigan</span>
       </a>
 
       <div class="nav-links">
-        <a href="index.html#why" class="nav-link">Our Story</a>
-        <a href="index.html#what" class="nav-link">The Stack</a>
-        <a href="index.html#encryption" class="nav-link">Encryption</a>
-        <a href="index.html#how" class="nav-link">How It Works</a>
-        <a href="donate.html" class="nav-link" aria-current="page">Donate</a>
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="features.html" class="nav-link">Features</a>
         <a href="security.html" class="nav-link">Security</a>
+        <a href="index.html#why" class="nav-link">About</a>
+        <a href="donate.html" class="nav-link" aria-current="page">Donate</a>
       </div>
 
       <div class="nav-actions">
-        <a href="#" class="btn btn-primary btn-sm">Early Access</a>
+        <a href="login.html" class="btn btn-outline btn-sm">Sign In</a>
+        <a href="signup.html" class="btn btn-primary btn-sm">Get Started</a>
       </div>
 
       <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </nav>
-
     <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
-      <a href="index.html#why" class="nav-mobile-link">Our Story</a>
-      <a href="index.html#what" class="nav-mobile-link">The Stack</a>
-      <a href="index.html#encryption" class="nav-mobile-link">Encryption</a>
-      <a href="index.html#how" class="nav-mobile-link">How It Works</a>
-      <a href="donate.html" class="nav-mobile-link" aria-current="page">Donate</a>
+      <a href="index.html" class="nav-mobile-link">Home</a>
+      <a href="features.html" class="nav-mobile-link">Features</a>
       <a href="security.html" class="nav-mobile-link">Security</a>
-      <a href="#" class="btn btn-primary" style="margin-top: var(--space-4);">Early Access</a>
+      <a href="index.html#why" class="nav-mobile-link">About</a>
+      <a href="donate.html" class="nav-mobile-link">Donate</a>
+      <div style="display:flex;gap:var(--s3);margin-top:var(--s4);">
+        <a href="login.html" class="btn btn-outline">Sign In</a>
+        <a href="signup.html" class="btn btn-primary">Get Started</a>
+      </div>
     </div>
   </header>
 
 
   <!-- ═══════════════════════════════════════
-       PAGE HERO
+       1. HERO
   ═══════════════════════════════════════ -->
-  <section class="page-hero" aria-label="Page header">
-    <div class="page-hero-inner">
-      <span class="page-hero-eyebrow">Non-Profit Foundation</span>
-      <h1 class="page-hero-heading"><em>Support the Foundation</em></h1>
-      <p class="page-hero-sub">
-        Morrigan is a non-profit project. It will always be free. If you believe everyone deserves sovereignty over their digital legacy, please consider supporting our work.
+  <section class="hero" id="hero">
+    <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+
+    <div class="hero-inner">
+      <span class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        Support the Foundation
+      </span>
+
+      <h1 class="hero-heading">Keep the vault open.</h1>
+
+      <p class="hero-sub">
+        Morrigan is free, non-profit, and open-source. It costs real money to run infrastructure, commission security audits, and maintain the codebase. Your support makes this possible.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#tiers" class="btn btn-primary btn-lg">Support the Foundation</a>
+        <a href="https://github.com/sponsors/paulfxyz" target="_blank" rel="noopener" class="btn btn-outline btn-lg">GitHub Sponsors</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       2. MISSION STATEMENT
+  ═══════════════════════════════════════ -->
+  <section class="section" id="mission">
+    <div class="container">
+      <div class="sec-intro fade-in">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          Our Mission
+        </span>
+        <h2 class="section-heading text-center">Why non-profit matters.</h2>
+      </div>
+
+      <div class="mission-grid stagger">
+        <div class="mission-card reveal">
+          <div class="mission-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+          </div>
+          <h3>No Monetization</h3>
+          <p>We will never sell your data, add ads, or create a freemium model that locks critical features. The vault is free. Period.</p>
+        </div>
+
+        <div class="mission-card reveal">
+          <div class="mission-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+          </div>
+          <h3>Audit-First</h3>
+          <p>Every donation above operational costs goes toward independent security audits. Because trust must be earned, not assumed.</p>
+        </div>
+
+        <div class="mission-card reveal">
+          <div class="mission-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+          </div>
+          <h3>Post-Quantum Commitment</h3>
+          <p>Our foundation charter requires us to always adopt the strongest available encryption. Donations fund this migration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       3. DONATION TIERS
+  ═══════════════════════════════════════ -->
+  <section class="section" id="tiers" style="padding-top: 0;">
+    <div class="container">
+      <div class="sec-intro fade-in">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          Support Tiers
+        </span>
+        <h2 class="section-heading text-center">Choose your contribution.</h2>
+      </div>
+
+      <div class="tiers-grid stagger">
+
+        <!-- Tier 1: Supporter -->
+        <div class="tier-card reveal">
+          <div>
+            <div class="tier-label">One-time or recurring</div>
+            <div class="tier-name">Supporter</div>
+          </div>
+          <div>
+            <div class="tier-price">Your<br>choice</div>
+            <div class="tier-price-note">Any amount welcomed</div>
+          </div>
+          <p class="tier-desc">Every contribution, however small, keeps the project alive.</p>
+          <ul class="tier-features">
+            <li class="tier-feature">
+              <span class="tier-feature-check">✓</span>
+              <span>Name in CONTRIBUTORS.md</span>
+            </li>
+            <li class="tier-feature">
+              <span class="tier-feature-check">✓</span>
+              <span>Our eternal gratitude</span>
+            </li>
+          </ul>
+          <a href="https://github.com/sponsors/paulfxyz" target="_blank" rel="noopener" class="btn btn-outline btn-lg" style="text-align:center;justify-content:center;">
+            Donate via GitHub →
+          </a>
+        </div>
+
+        <!-- Tier 2: Patron (featured) -->
+        <div class="tier-card featured reveal" style="padding-top: var(--s10);">
+          <div class="tier-badge">Recommended</div>
+          <div>
+            <div class="tier-label">Monthly pledge</div>
+            <div class="tier-name">Patron</div>
+          </div>
+          <div>
+            <div class="tier-price">€10</div>
+            <div class="tier-price-note">per month</div>
+          </div>
+          <p class="tier-desc">Core patron. Covers server costs for one month per year.</p>
+          <ul class="tier-features">
+            <li class="tier-feature">
+              <span class="tier-feature-check">✓</span>
+              <span>All Supporter perks</span>
+            </li>
+            <li class="tier-feature">
+              <span class="tier-feature-check">✓</span>
+              <span>Early access to releases</span>
+            </li>
+            <li class="tier-feature">
+              <span class="tier-feature-check">✓</span>
+              <span>Private Discord channel</span>
+            </li>
+          </ul>
+          <a href="https://github.com/sponsors/paulfxyz" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="text-align:center;justify-content:center;">
+            Become a Patron →
+          </a>
+        </div>
+
+        <!-- Tier 3: Foundation Sponsor -->
+        <div class="tier-card reveal">
+          <div>
+            <div class="tier-label">For organizations</div>
+            <div class="tier-name">Foundation Sponsor</div>
+          </div>
+          <div>
+            <div class="tier-price">Custom</div>
+            <div class="tier-price-note">Tailored to your organization</div>
+          </div>
+          <p class="tier-desc">Corporate sponsors receive logo placement and audit credits.</p>
+          <ul class="tier-features">
+            <li class="tier-feature">
+              <span class="tier-feature-check">✓</span>
+              <span>All Patron perks</span>
+            </li>
+            <li class="tier-feature">
+              <span class="tier-feature-check">✓</span>
+              <span>Logo on README</span>
+            </li>
+            <li class="tier-feature">
+              <span class="tier-feature-check">✓</span>
+              <span>Audit acknowledgment</span>
+            </li>
+            <li class="tier-feature">
+              <span class="tier-feature-check">✓</span>
+              <span>Dedicated contact</span>
+            </li>
+          </ul>
+          <a href="mailto:hello@morrigan.life" class="btn btn-outline btn-lg" style="text-align:center;justify-content:center;">
+            Get in Touch →
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       4. FUND ALLOCATION
+  ═══════════════════════════════════════ -->
+  <section class="section" id="allocation" style="padding-top: 0;">
+    <div class="container">
+      <div class="sec-intro fade-in">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          Fund Allocation
+        </span>
+        <h2 class="section-heading text-center">Where your money goes.</h2>
+      </div>
+
+      <div class="allocation-row stagger">
+        <div class="allocation-card reveal">
+          <div class="allocation-pct" data-count="50" data-suffix="%">50%</div>
+          <div class="allocation-label">Infrastructure</div>
+          <p class="allocation-desc">Servers, CDN, database hosting, domain renewals, email infrastructure.</p>
+        </div>
+
+        <div class="allocation-card reveal">
+          <div class="allocation-pct" data-count="30" data-suffix="%">30%</div>
+          <div class="allocation-label">Security Audits</div>
+          <p class="allocation-desc">Independent cryptographic audits. Our #1 long-term priority.</p>
+        </div>
+
+        <div class="allocation-card reveal">
+          <div class="allocation-pct" data-count="15" data-suffix="%">15%</div>
+          <div class="allocation-label">Development</div>
+          <p class="allocation-desc">Developer tools, CI/CD, dependency maintenance, bug bounties.</p>
+        </div>
+
+        <div class="allocation-card reveal">
+          <div class="allocation-pct" data-count="5" data-suffix="%">5%</div>
+          <div class="allocation-label">Legal &amp; Admin</div>
+          <p class="allocation-desc">Foundation registration, legal counsel, accounting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       5. PAUL'S MESSAGE
+  ═══════════════════════════════════════ -->
+  <section class="section" id="founders-note" style="padding-top: 0;">
+    <div class="container">
+      <div class="sec-intro fade-in">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          Founder's Note
+        </span>
+        <h2 class="section-heading text-center">A personal note.</h2>
+      </div>
+
+      <div class="founder-quote fade-in">
+        <blockquote>
+          I built Morrigan after losing the people I loved most. In 2019, my mentor was killed in Damascus. On Christmas of that year, my father died. I started asking a question I couldn't stop: what happens to the things we meant to say?
+
+          Morrigan is my answer. It is not a startup. It is not a product. It is a foundation — with all the obligations that word implies. Every donation is a vote that this should exist in the world.
+
+          Thank you for being part of it.
+        </blockquote>
+        <cite>— Paul Fleury, Founder &amp; Lead Developer</cite>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       6. DONORS & ACKNOWLEDGMENTS
+  ═══════════════════════════════════════ -->
+  <section class="section" id="sponsors" style="padding-top: 0;">
+    <div class="container">
+      <div class="sec-intro fade-in">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          Community
+        </span>
+        <h2 class="section-heading text-center">Thank you to our contributors.</h2>
+        <p class="section-sub">Morrigan is supported by individuals who believe in digital dignity.</p>
+      </div>
+
+      <div class="donors-empty fade-in">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style="color:var(--text-faint);">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+        <p>Become the first patron. Your name will appear here.</p>
+        <a href="https://github.com/sponsors/paulfxyz" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top:var(--s2);">Support on GitHub Sponsors</a>
+      </div>
+
+      <p class="donors-note fade-in">
+        All contributors listed in <code style="font-family:monospace;color:var(--lime);">CONTRIBUTORS.md</code> on GitHub with their permission.
       </p>
     </div>
   </section>
 
 
   <!-- ═══════════════════════════════════════
-       MISSION STATEMENT
+       7. HOW TO DONATE
   ═══════════════════════════════════════ -->
-  <section class="section" style="background: var(--color-bg); padding-block: var(--section-pad);">
+  <section class="section" id="ways-to-give" style="padding-top: 0;">
     <div class="container">
-      <div class="section-label fade-in" style="text-align: center;">Our Commitment</div>
-      <blockquote class="mission-statement fade-in">
-        We are building Morrigan as a public good — open-source, non-profit, and free forever. Every euro donated goes to infrastructure, security audits, and translations. No investor pressure. No paywalls. No compromise.
-      </blockquote>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════
-       WHY WE'RE A FOUNDATION
-  ═══════════════════════════════════════ -->
-  <section class="section" style="background: var(--color-dark); padding-block: var(--section-pad);">
-    <div class="container">
-      <div class="why-foundation-callout fade-in">
-        <p>"We deliberately chose non-profit status. A startup must eventually extract value from users. A foundation must serve them. That alignment is not incidental — it is the structure."</p>
+      <div class="sec-intro fade-in">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          Ways to Give
+        </span>
+        <h2 class="section-heading text-center">How to donate.</h2>
       </div>
-    </div>
-  </section>
 
+      <div class="methods-grid stagger">
 
-  <!-- ═══════════════════════════════════════
-       HOW FUNDS ARE USED
-  ═══════════════════════════════════════ -->
-  <section class="section fade-in" style="background: var(--color-bg-alt);">
-    <div class="container">
-      <div class="section-label fade-in">Financial Transparency</div>
-      <h2 class="section-heading fade-in">How funds are used</h2>
-      <p class="section-subtext fade-in">Every donation is allocated to the things that directly serve the mission — not offices, not marketing, not growth teams.</p>
-
-      <div class="fund-breakdown fade-in">
-
-        <div class="fund-bar-item">
-          <div class="fund-bar-header">
-            <span class="fund-bar-label">Infrastructure &amp; hosting</span>
-            <span class="fund-bar-pct">40%</span>
+        <!-- GitHub Sponsors -->
+        <div class="method-card reveal">
+          <div class="method-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
           </div>
-          <div class="fund-bar-track">
-            <div class="fund-bar-fill" style="--target-w: 40%;"></div>
-          </div>
+          <h3>GitHub Sponsors</h3>
+          <div class="method-link">github.com/sponsors/paulfxyz</div>
+          <p>The most direct route. GitHub waives all fees for open-source sponsors. Your contribution goes entirely to the foundation.</p>
+          <a href="https://github.com/sponsors/paulfxyz" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="margin-top:auto;width:fit-content;">Sponsor on GitHub</a>
         </div>
 
-        <div class="fund-bar-item">
-          <div class="fund-bar-header">
-            <span class="fund-bar-label">Security audits &amp; bug bounties</span>
-            <span class="fund-bar-pct">35%</span>
+        <!-- Open Collective -->
+        <div class="method-card disabled reveal">
+          <div class="method-icon" style="opacity:0.4;" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M8 12h8M12 8v8"/>
+            </svg>
           </div>
-          <div class="fund-bar-track">
-            <div class="fund-bar-fill" style="--target-w: 35%; animation-delay: 0.15s;"></div>
-          </div>
+          <h3>Open Collective</h3>
+          <div class="method-link" style="color:var(--text-faint);">Coming soon</div>
+          <p>Transparent collective funding with public ledger. Available after foundation registration.</p>
+          <button class="btn btn-outline btn-sm" disabled style="margin-top:auto;width:fit-content;opacity:0.4;cursor:not-allowed;">Coming Soon</button>
         </div>
 
-        <div class="fund-bar-item">
-          <div class="fund-bar-header">
-            <span class="fund-bar-label">Translation &amp; localization</span>
-            <span class="fund-bar-pct">15%</span>
+        <!-- Crypto -->
+        <div class="method-card disabled reveal">
+          <div class="method-icon" style="opacity:0.4;" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <line x1="12" y1="1" x2="12" y2="23"/>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
           </div>
-          <div class="fund-bar-track">
-            <div class="fund-bar-fill" style="--target-w: 15%; animation-delay: 0.3s;"></div>
-          </div>
-        </div>
-
-        <div class="fund-bar-item">
-          <div class="fund-bar-header">
-            <span class="fund-bar-label">Operations &amp; legal</span>
-            <span class="fund-bar-pct">10%</span>
-          </div>
-          <div class="fund-bar-track">
-            <div class="fund-bar-fill" style="--target-w: 10%; animation-delay: 0.45s;"></div>
-          </div>
+          <h3>Crypto</h3>
+          <div class="method-link" style="color:var(--text-faint);">Coming soon</div>
+          <p>BTC and ETH addresses will be published after foundation registration is complete.</p>
+          <button class="btn btn-outline btn-sm" disabled style="margin-top:auto;width:fit-content;opacity:0.4;cursor:not-allowed;">Coming Soon</button>
         </div>
 
       </div>
@@ -161,199 +803,16 @@
 
 
   <!-- ═══════════════════════════════════════
-       DONATION TIERS
+       8. CTA BANNER
   ═══════════════════════════════════════ -->
-  <section class="section" style="background: var(--color-bg);">
+  <section class="section" style="padding-top: 0;">
     <div class="container">
-      <div class="section-label fade-in">Support Tiers</div>
-      <h2 class="section-heading fade-in">Choose your level of support</h2>
-      <p class="section-subtext fade-in">Every contribution matters, regardless of size. Choose what fits your means and your commitment to the mission.</p>
-
-      <!-- Personal note from Paul -->
-      <div class="personal-note fade-in">
-        <p>"I have been asked what drives me to build this for free. The answer is in the story section. If you have also felt the weight of things left unsaid, you understand why this matters."</p>
-        <cite>— Paul Fleury, founder</cite>
-      </div>
-
-      <div class="donation-tier-cards fade-in">
-
-        <!-- Supporter -->
-        <div class="tier-card">
-          <div>
-            <div class="tier-name">Supporter</div>
-            <div class="tier-price">
-              Any amount
-              <div class="tier-price-note">One-time or monthly</div>
-            </div>
-          </div>
-          <div class="tier-tagline">"You believe in digital sovereignty"</div>
-          <div class="tier-divider"></div>
-          <ul class="tier-perks">
-            <li>Help keep Morrigan independent</li>
-            <li>One-time or recurring — your choice</li>
-            <li>Gratitude from the whole team</li>
-          </ul>
-          <div class="tier-cta">
-            <a href="#" class="btn btn-outline">Donate freely</a>
-          </div>
-        </div>
-
-        <!-- Friend of Morrigan -->
-        <div class="tier-card">
-          <div>
-            <div class="tier-name">Friend of Morrigan</div>
-            <div class="tier-price">
-              €5
-              <div class="tier-price-note">per month</div>
-            </div>
-          </div>
-          <div class="tier-tagline">"Help keep the servers on"</div>
-          <div class="tier-divider"></div>
-          <ul class="tier-perks">
-            <li>Your name in the project README</li>
-            <li>Early news and development updates</li>
-            <li>Eternal gratitude</li>
-          </ul>
-          <div class="tier-cta">
-            <a href="#" class="btn btn-outline">Become a Friend</a>
-          </div>
-        </div>
-
-        <!-- Guardian — Featured -->
-        <div class="tier-card tier-card--featured">
-          <div class="tier-popular-badge">Most popular</div>
-          <div>
-            <div class="tier-name">Guardian</div>
-            <div class="tier-price">
-              €20
-              <div class="tier-price-note">per month</div>
-            </div>
-          </div>
-          <div class="tier-tagline">"Serious about the mission"</div>
-          <div class="tier-divider"></div>
-          <ul class="tier-perks">
-            <li>All Friend perks</li>
-            <li>Private Discord channel for Guardians</li>
-            <li>Vote on upcoming roadmap features</li>
-            <li>Named in the annual report</li>
-          </ul>
-          <div class="tier-cta">
-            <a href="#" class="btn btn-primary">Become a Guardian</a>
-          </div>
-        </div>
-
-        <!-- Patron -->
-        <div class="tier-card">
-          <div>
-            <div class="tier-name">Patron</div>
-            <div class="tier-price">
-              €100
-              <div class="tier-price-note">per month or custom</div>
-            </div>
-          </div>
-          <div class="tier-tagline">"Sustaining the foundation"</div>
-          <div class="tier-divider"></div>
-          <ul class="tier-perks">
-            <li>All Guardian perks</li>
-            <li>Dedicated email support</li>
-            <li>Your logo on the Morrigan website</li>
-            <li>Named in the annual financial report</li>
-          </ul>
-          <div class="tier-cta">
-            <a href="#" class="btn btn-outline">Become a Patron</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════
-       CRYPTO DONATIONS
-  ═══════════════════════════════════════ -->
-  <section class="section" style="background: var(--color-bg-alt);">
-    <div class="container">
-      <div class="section-label fade-in">Cryptocurrency</div>
-      <h2 class="section-heading fade-in">We also accept crypto</h2>
-      <p class="section-subtext fade-in">We accept Bitcoin, Ethereum, and Monero. Send any amount — all donations are logged in our annual transparency report.</p>
-
-      <div class="crypto-row fade-in">
-
-        <div class="crypto-item">
-          <div class="crypto-coin-label">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9 8h4.5a2.5 2.5 0 0 1 0 5H9zm0 5h5a2.5 2.5 0 0 1 0 5H9z"/></svg>
-            Bitcoin (BTC)
-          </div>
-          <div class="crypto-address" title="Bitcoin donation address — placeholder, not a real address">
-            <span class="crypto-address-text is-placeholder">[Your BTC address here]</span>
-            <svg class="crypto-copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          </div>
-        </div>
-
-        <div class="crypto-item">
-          <div class="crypto-coin-label">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/></svg>
-            Ethereum (ETH)
-          </div>
-          <div class="crypto-address" title="Ethereum donation address — placeholder, not a real address">
-            <span class="crypto-address-text is-placeholder">[Your ETH address here]</span>
-            <svg class="crypto-copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          </div>
-        </div>
-
-        <div class="crypto-item">
-          <div class="crypto-coin-label">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            Monero (XMR)
-          </div>
-          <div class="crypto-address" title="Monero donation address — placeholder, not a real address">
-            <span class="crypto-address-text is-placeholder">[Your XMR address here]</span>
-            <svg class="crypto-copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════
-       TRANSPARENCY PLEDGE
-  ═══════════════════════════════════════ -->
-  <section class="section fade-in" style="background: var(--color-bg);">
-    <div class="container">
-      <div class="section-label fade-in">Accountability</div>
-      <h2 class="section-heading fade-in">Our transparency pledge</h2>
-
-      <div class="transparency-callout fade-in">
-        <div class="transparency-callout-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            <polyline points="9 12 11 14 15 10"/>
-          </svg>
-        </div>
-        <div class="transparency-callout-text">
-          <strong>Full financial disclosure, every year</strong>
-          <p>Every year, Morrigan Foundation publishes a full financial report: income sources, expenses, salaries, infrastructure costs. Capped salaries (3× local median wage). No surprises. No opacity. You have the right to know exactly how your money is used — and we commit to making that easy.</p>
-        </div>
-      </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-5); margin-top: var(--space-8);" class="fade-in">
-        <div class="funding-item" style="background: var(--color-bg-alt); border: 1px solid var(--color-border);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-teal);" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          <strong style="color: var(--color-text);">Annual report</strong>
-          <span>Published every January, covering the prior fiscal year</span>
-        </div>
-        <div class="funding-item" style="background: var(--color-bg-alt); border: 1px solid var(--color-border);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-teal);" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          <strong style="color: var(--color-text);">Capped salaries</strong>
-          <span>No team member earns more than 3× the local median wage</span>
-        </div>
-        <div class="funding-item" style="background: var(--color-bg-alt); border: 1px solid var(--color-border);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-teal);" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <strong style="color: var(--color-text);">Real-time ledger</strong>
-          <span>Major expenditures tracked and published quarterly</span>
+      <div class="cta-banner fade-in">
+        <h2>Mathematics protects us.<br>People sustain us.</h2>
+        <p>Morrigan is free today because someone believed it should be.</p>
+        <div class="cta-actions">
+          <a href="https://github.com/sponsors/paulfxyz" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Donate Now</a>
+          <a href="https://github.com/paulfxyz/morrigan" target="_blank" rel="noopener" class="btn btn-outline btn-lg">View on GitHub</a>
         </div>
       </div>
     </div>
@@ -361,54 +820,26 @@
 
 
   <!-- ═══════════════════════════════════════
-       SPONSORS
-  ═══════════════════════════════════════ -->
-  <section class="section fade-in" id="sponsors" style="background: var(--color-bg-alt);">
-    <div class="container">
-      <div class="section-label fade-in">Organizational Support</div>
-      <h2 class="section-heading fade-in">Become a sponsor</h2>
-      <p class="section-subtext fade-in">Companies and organizations that share our values can sponsor Morrigan directly. Sponsors receive logo placement, acknowledgement in our annual report, and the knowledge that they're funding public-good infrastructure.</p>
-
-      <div class="sponsors-grid fade-in" aria-label="Sponsor logo slots — currently accepting applications">
-        <div class="sponsor-slot">Your logo here</div>
-        <div class="sponsor-slot">Your logo here</div>
-        <div class="sponsor-slot">Your logo here</div>
-        <div class="sponsor-slot">Your logo here</div>
-        <div class="sponsor-slot">Your logo here</div>
-        <div class="sponsor-slot">Your logo here</div>
-      </div>
-
-      <div style="text-align: center; margin-top: var(--space-8);" class="fade-in">
-        <p style="font-family: var(--font-body); font-size: var(--text-sm); color: var(--color-text-muted); max-width: 50ch; margin-inline: auto; margin-bottom: var(--space-6); line-height: 1.7;">Sponsorship slots are reviewed to ensure alignment with Morrigan's values. We do not accept sponsors from surveillance technology, data brokerage, or adtech industries.</p>
-        <a href="mailto:sponsors@morrigan.life" class="btn btn-outline btn-lg">Get in touch about sponsorship</a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════
-       FOOTER
+       9. FOOTER
   ═══════════════════════════════════════ -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="nav-logo footer-logo" aria-label="Morrigan">
-            <svg width="30" height="30" viewBox="0 0 36 36" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-              <path d="M18 2L4 7.5V18.5C4 25.8 10.2 32.3 18 34C25.8 32.3 32 25.8 32 18.5V7.5L18 2Z" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.6"/>
-              <path d="M18 10C16.2 10 15 11.2 15 12.5C15 13 15.2 13.4 15.5 13.8L12 16L13.5 16.5L12.5 18L14.5 17.5L14 19.5L16 18.5C16.5 19.2 17.2 19.8 18 20C19.5 20 21 18.8 21 17C21 15.8 20.3 14.8 19.3 14.3L21.5 12.5C20.8 11 19.6 10 18 10Z" fill="currentColor"/>
-              <path d="M8 9L10 11" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-              <path d="M28 9L26 11" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+        <div>
+          <div class="footer-brand-logo">
+            <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <path d="M16 3C13 3 11 5 11 7.5C11 8.2 11.2 8.8 11.5 9.3L8 12L9.5 12.6L8.5 14.5L10.5 13.8L10 16L12.5 14.8C13 15.6 13.9 16.3 16 16.3C18.5 16.3 20.5 14.5 20.5 12C20.5 10.5 19.7 9.2 18.5 8.5L21 6.5C20 4.5 18.2 3 16 3Z" fill="currentColor"/>
+              <path d="M16 16.3L13 22L16 20.5L19 22L16 16.3Z" fill="currentColor" opacity="0.3"/>
             </svg>
             <span>Morrigan</span>
-          </a>
+          </div>
           <p class="footer-tagline">Prepare for the inevitable — with dignity and sovereignty.</p>
-          <div class="footer-badges">
-            <a href="https://github.com/paulfxyz/morrigan" class="footer-badge" target="_blank" rel="noopener" aria-label="View source on GitHub">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          <div class="footer-badge-row">
+            <a href="https://github.com/paulfxyz/morrigan" class="footer-badge" target="_blank" rel="noopener">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
               Open Source
             </a>
-            <span class="footer-badge footer-badge--status">
+            <span class="footer-badge">
               <span class="status-dot"></span>
               In development
             </span>
@@ -416,43 +847,40 @@
         </div>
 
         <div class="footer-col">
-          <h4 class="footer-col-heading">Product</h4>
+          <h4>Product</h4>
           <ul role="list">
-            <li><a href="index.html#how">How It Works</a></li>
-            <li><a href="index.html#what">The Stack</a></li>
-            <li><a href="index.html#encryption">Encryption</a></li>
-            <li><a href="index.html#languages">Languages</a></li>
-            <li><a href="https://github.com/paulfxyz/morrigan" target="_blank" rel="noopener">Documentation</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="security.html">Security</a></li>
             <li><a href="https://github.com/paulfxyz/morrigan" target="_blank" rel="noopener">GitHub</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4 class="footer-col-heading">Foundation</h4>
+          <h4>Foundation</h4>
           <ul role="list">
             <li><a href="index.html#why">Our Story</a></li>
-            <li><a href="donate.html" style="color: var(--color-teal);">Donate</a></li>
+            <li><a href="donate.html">Donate</a></li>
             <li><a href="donate.html#sponsors">Sponsors</a></li>
-            <li><a href="donate.html">Grants</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4 class="footer-col-heading">Legal</h4>
+          <h4>Legal</h4>
           <ul role="list">
             <li><a href="security.html">Privacy Policy</a></li>
-            <li><a href="security.html">Terms of Service</a></li>
             <li><a href="security.html">Security</a></li>
+            <li><a href="security.html">Terms</a></li>
             <li><a href="mailto:hello@morrigan.life">Contact</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p class="footer-copy">© 2025 Morrigan Foundation. All rights reserved.</p>
-        <p class="footer-copy footer-domains">
+        <p class="footer-copy">© 2026 Morrigan Foundation. All rights reserved.</p>
+        <p class="footer-copy">
           <a href="https://morrigan.life">morrigan.life</a>
-          <span aria-hidden="true">·</span>
+          &nbsp;·&nbsp;
           <a href="https://morrigan.one">morrigan.one</a>
         </p>
       </div>
@@ -460,5 +888,61 @@
   </footer>
 
   <script src="main.js" defer></script>
+
+  <script>
+    /* Stars canvas — dark starfield for donate page hero */
+    (function initStars() {
+      const canvas = document.getElementById('hero-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      let W, H, stars = [], raf;
+      const COUNT = 120;
+
+      function resize() {
+        W = canvas.width  = canvas.offsetWidth;
+        H = canvas.height = canvas.offsetHeight;
+      }
+
+      function mkStar() {
+        return {
+          x: Math.random() * (W || 1200),
+          y: Math.random() * (H || 800),
+          r: 0.4 + Math.random() * 1.4,
+          alpha: 0.15 + Math.random() * 0.55,
+          speed: 0.01 + Math.random() * 0.03,
+          twinklePhase: Math.random() * Math.PI * 2,
+        };
+      }
+
+      function init() { stars = Array.from({ length: COUNT }, mkStar); }
+
+      function tick() {
+        ctx.clearRect(0, 0, W, H);
+        const now = performance.now() * 0.001;
+        stars.forEach(s => {
+          const a = s.alpha * (0.6 + 0.4 * Math.sin(now * s.speed * 10 + s.twinklePhase));
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          ctx.globalAlpha = a;
+          ctx.fillStyle = '#ffffff';
+          ctx.fill();
+        });
+        ctx.globalAlpha = 1;
+        raf = requestAnimationFrame(tick);
+      }
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) cancelAnimationFrame(raf);
+        else raf = requestAnimationFrame(tick);
+      });
+
+      resize();
+      init();
+      tick();
+      new ResizeObserver(resize).observe(canvas);
+    })();
+  </script>
 </body>
 </html>

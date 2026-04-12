@@ -7,6 +7,33 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [v1.0.0] — 2026-04-12 "Setrex Direction" — Full Multi-Page Site Launch
+
+### Added
+**Complete website redesign — Dark Cosmic system:**
+- Full multi-page public site: index.html, features.html, security.html, donate.html
+- Auth pages: login.html, signup.html (2-column split layout, vault unlock flow)
+- Design system: near-black (#0a0a0a), electric lime (#c8f74f), Syne + DM Sans
+- Canvas starfield particle animation across all hero sections
+- Interactive tab switchers (features/homepage), accordion FAQ, scroll reveals
+- Infinite CSS marquee (encryption standards strip)
+- Count-up stat animations via IntersectionObserver
+- Password strength meter on signup (4-level, lime at max strength)
+- Scroll-aware sticky header with backdrop blur
+- Mobile hamburger nav with body scroll lock
+
+**Content additions:**
+- Features page: comparison table, roadmap timeline, post-quantum section
+- Security page: full cryptographic stack deep-dive, dual-channel identity table, blockchain anchoring 4-step flow
+- Donate page: tier cards, fund allocation, founder note (Damascus/father story)
+- Login/signup: dual-channel identity enforced in UI copy
+
+**GitHub:**
+- Version badge updated to v1.0.0
+- Status badge updated to stable
+
+---
+
 ## [Unreleased]
 
 ### Planned for v0.2.0
