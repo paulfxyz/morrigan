@@ -181,3 +181,16 @@ Until v1.0.0, the API is unstable and minor versions may include breaking change
 [v1.1.0]: https://github.com/paulfxyz/morrigan/compare/v1.0.0...v1.1.0
 [v1.0.0]: https://github.com/paulfxyz/morrigan/compare/v0.1.0...v1.0.0
 [v0.1.0]: https://github.com/paulfxyz/morrigan/releases/tag/v0.1.0
+
+## v1.6.0 — April 2026
+
+### Added
+- Built three utility pages from scratch: `/utility-pages/style-guide`, `/utility-pages/changelog`, `/utility-pages/license`
+- All pages are fully branded with Morrígan logo, nav, royal blue accents, and footer
+
+### Fixed
+- Added all missing `.htaccess` rewrite rules:
+  - `/blog/creating-workflows-*`, `/blog/designing-systems-*`, `/blog/how-to-leverage-data-*`, `/blog/implementing-strategies-*`, `/blog/optimizing-operations-*` → mapped to blog post templates
+  - `/career/project-manager`, `/career/ux-ui-designer` → `career-detail.html`
+  - (Previously added in v1.5.0: `/integration/bightly`, `/integration/clodey`)
+- Resolved all internal 404s — every link in all 22 pages now returns 200

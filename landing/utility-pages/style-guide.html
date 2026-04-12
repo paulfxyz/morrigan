@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Style Guide — Morrígan</title>
+<meta content="Morrígan brand guidelines: logo, colours, typography, voice & tone." name="description">
+<meta content="Style Guide — Morrígan" property="og:title">
+<meta content="Morrígan brand guidelines: logo, colours, typography, voice & tone." property="og:description">
+<meta property="og:type" content="website">
+<meta content="summary_large_image" name="twitter:card">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<link href="../css/webflow.css" rel="stylesheet" type="text/css">
+<link href="../assets/morrigan_favicon.png" rel="shortcut icon" type="image/png">
+<link href="../assets/morrigan_apple_touch.png" rel="apple-touch-icon">
+<style>
+  .utility-hero {
+    background: #000;
+    padding: 80px 40px 60px;
+    text-align: center;
+  }
+  .utility-hero h1 {
+    color: #fff;
+    font-size: 48px;
+    font-weight: 700;
+    margin: 0 0 16px;
+    letter-spacing: -1px;
+  }
+  .utility-hero p {
+    color: rgba(255,255,255,0.6);
+    font-size: 18px;
+    margin: 0;
+  }
+  .utility-content {
+    max-width: 800px;
+    margin: 60px auto 80px;
+    padding: 0 40px;
+    color: #1a1a1a;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  .utility-content h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 40px 0 12px;
+    color: #000;
+  }
+  .utility-content h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 28px 0 8px;
+    color: #111;
+  }
+  .utility-content p {
+    margin: 0 0 16px;
+    color: #444;
+  }
+  .utility-content ul {
+    padding-left: 24px;
+    margin: 0 0 16px;
+    color: #444;
+  }
+  .utility-content li {
+    margin-bottom: 8px;
+  }
+  .utility-content .badge {
+    display: inline-block;
+    background: #4169E1;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .utility-content .version-block {
+    border-left: 3px solid #4169E1;
+    padding-left: 20px;
+    margin: 32px 0;
+  }
+  .utility-content .date {
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 4px;
+  }
+  .color-swatch {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    margin-right: 12px;
+    vertical-align: middle;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  .swatch-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 12px 0;
+    flex-wrap: wrap;
+  }
+  .swatch-label {
+    font-size: 13px;
+    color: #555;
+    font-family: monospace;
+  }
+  .w-webflow-badge { display: none !important; }
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+
+<!-- Navbar (simplified branded version) -->
+<section class="navbar" style="background:#000;padding:0 40px;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;height:64px;justify-content:space-between;">
+    <a href="../" style="text-decoration:none;display:flex;align-items:center;gap:0;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 44" fill="none" aria-label="Morrígan logo mark" role="img" style="height:36px;width:36px;display:inline-block;vertical-align:middle;flex-shrink:0;"><rect x="0" y="2" width="40" height="40" rx="4" fill="black"/><path d="M20 22 C17 22 13 20 13 16 C13 11 17 8 20 11 C23 8 27 11 27 16 C27 20 23 22 20 22Z" fill="white"/><path d="M20 22 C17 22 13 24 13 28 C13 33 17 36 20 33 C23 36 27 33 27 28 C27 24 23 22 20 22Z" fill="white"/><path d="M20 22 C20 19 18 15 14 15 C9 15 6 19 9 22 C6 25 9 29 14 29 C18 29 20 25 20 22Z" fill="white"/><path d="M20 22 C20 19 22 15 26 15 C31 15 34 19 31 22 C34 25 31 29 26 29 C22 29 20 25 20 22Z" fill="white"/><circle cx="20" cy="22" r="1.5" fill="white"/></svg><span style="font-family:'Inter','SF Pro Display',-apple-system,sans-serif;font-size:17px;font-weight:600;letter-spacing:-0.3px;color:white;display:inline-block;vertical-align:middle;margin-left:10px;line-height:1;">Morrígan</span>
+    </a>
+    <nav style="display:flex;gap:24px;align-items:center;">
+      <a href="../features" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:14px;">Features</a>
+      <a href="../pricing" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:14px;">Pricing</a>
+      <a href="../blog" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:14px;">Blog</a>
+      <a href="../contact" style="background:#4169E1;color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:8px 20px;border-radius:6px;">Get Started</a>
+    </nav>
+  </div>
+</section>
+
+<!-- Hero -->
+<div class="utility-hero">
+  <h1>Style Guide</h1>
+  <p>Brand guidelines, design tokens, and visual standards for Morrígan.</p>
+</div>
+
+<!-- Content -->
+<div class="utility-content">
+
+<h2>Brand Overview</h2>
+<p>Morrígan is an open-source, non-profit digital legacy platform. Our brand is minimal, trustworthy, and grounded in clarity. Every design decision prioritises legibility, privacy, and permanence.</p>
+
+<h2>Logo</h2>
+<p>The Morrígan mark is a four-leaf clover (trèfle à quatre feuilles) — white on black — representing life, legacy, and the four cardinal directions. It is always presented as a white icon on a black rounded square.</p>
+<ul>
+  <li>Never alter the clover shape or proportions</li>
+  <li>Never place the logo on a coloured background (use white or black)</li>
+  <li>Minimum size: 24px height</li>
+  <li>Always pair with the wordmark <em>Morrígan</em> (with fada accent on the í)</li>
+</ul>
+
+<h2>Colour Palette</h2>
+<div class="swatch-row">
+  <span class="color-swatch" style="background:#4169E1;"></span>
+  <div><strong>Royal Blue</strong><br><span class="swatch-label">#4169E1 · rgb(65, 105, 225)</span></div>
+</div>
+<p>Primary accent. Used for CTAs, links, highlights, and interactive states.</p>
+
+<div class="swatch-row">
+  <span class="color-swatch" style="background:#000;"></span>
+  <div><strong>Black</strong><br><span class="swatch-label">#000000</span></div>
+</div>
+<p>Primary background for navbar and hero sections.</p>
+
+<div class="swatch-row">
+  <span class="color-swatch" style="background:#dce8ff;"></span>
+  <div><strong>Light Blue</strong><br><span class="swatch-label">#dce8ff · --colors--light-yellow</span></div>
+</div>
+<p>Soft tinted backgrounds and highlight areas.</p>
+
+<div class="swatch-row">
+  <span class="color-swatch" style="background:#d4e4ff;"></span>
+  <div><strong>Pale Blue</strong><br><span class="swatch-label">#d4e4ff · --colors--light-green</span></div>
+</div>
+
+<div class="swatch-row">
+  <span class="color-swatch" style="background:#e4eaf5;"></span>
+  <div><strong>Blue Grey</strong><br><span class="swatch-label">#e4eaf5 · --colors--green-grey</span></div>
+</div>
+
+<h2>Typography</h2>
+<p>Morrígan uses the system font stack for maximum legibility and performance:</p>
+<ul>
+  <li><strong>Primary:</strong> Inter, SF Pro Display, -apple-system, sans-serif</li>
+  <li><strong>Headings:</strong> 700 weight, tight letter-spacing (−1px to −0.3px)</li>
+  <li><strong>Body:</strong> 400–500 weight, 1.6–1.8 line-height</li>
+  <li><strong>Monospace:</strong> Used sparingly for code or technical references</li>
+</ul>
+
+<h2>Voice & Tone</h2>
+<ul>
+  <li><strong>Clear over clever</strong> — plain language, no jargon</li>
+  <li><strong>Trustworthy</strong> — we handle sensitive information; every word reflects that responsibility</li>
+  <li><strong>Understated</strong> — no exclamation points, no hype</li>
+  <li><strong>Human</strong> — warmth and care for the person behind every legacy</li>
+</ul>
+
+<h2>Brand Name</h2>
+<p>Always write <strong>Morrígan</strong> with the fada accent on the í (Unicode U+00ED). Never write "Morrigan" without the accent in user-facing contexts. The name derives from Irish mythology — Morrígan, the goddess of fate and sovereignty.</p>
+
+<h2>Icons & Illustration</h2>
+<p>Use minimal, line-based icons at 24px or 20px. Icon colour should follow the accent system. Avoid decorative illustration; prefer functional, purposeful visuals.</p>
+
+</div>
+
+<!-- Footer -->
+<footer style="background:#000;color:rgba(255,255,255,0.5);text-align:center;padding:32px 40px;font-size:14px;">
+  <div style="margin-bottom:12px;">
+    <a href="../privacy-policy" style="color:rgba(255,255,255,0.5);margin:0 12px;text-decoration:none;">Privacy Policy</a>
+    <a href="../terms-condition" style="color:rgba(255,255,255,0.5);margin:0 12px;text-decoration:none;">Terms</a>
+    <a href="./changelog" style="color:rgba(255,255,255,0.5);margin:0 12px;text-decoration:none;">Changelog</a>
+    <a href="./license" style="color:rgba(255,255,255,0.5);margin:0 12px;text-decoration:none;">License</a>
+  </div>
+  <div>© 2025 Morrígan · Built with ❤️ + AI</div>
+</footer>
+
+</div>
+</body>
+</html>

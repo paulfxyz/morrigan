@@ -36,10 +36,21 @@ ErrorDocument 401 /401.html
   RewriteRule ^404/?$                             /404.html [L]
   RewriteRule ^401/?$                             /401.html [L]
 
+  # Utility pages
+  RewriteRule ^utility-pages/style-guide/?$       /utility-pages/style-guide.html [L]
+  RewriteRule ^utility-pages/changelog/?$         /utility-pages/changelog.html [L]
+  RewriteRule ^utility-pages/license/?$           /utility-pages/license.html [L]
+
   # Blog posts — clean slugs AND direct filenames
-  RewriteRule ^blog/how-to-build-processes.*$     /blog-post-1.html [L]
-  RewriteRule ^blog/creating-a-data-driven.*$     /blog-post-2.html [L]
-  RewriteRule ^blog/building-a-culture.*$         /blog-post-3.html [L]
+  RewriteRule ^blog/how-to-build-processes.*$                    /blog-post-1.html [L]
+  RewriteRule ^blog/creating-a-data-driven.*$                    /blog-post-2.html [L]
+  RewriteRule ^blog/building-a-culture.*$                        /blog-post-3.html [L]
+  RewriteRule ^blog/how-to-leverage-data.*$                      /blog-post-1.html [L]
+  RewriteRule ^blog/creating-workflows.*$                        /blog-post-2.html [L]
+  RewriteRule ^blog/designing-systems.*$                         /blog-post-3.html [L]
+  RewriteRule ^blog/implementing-strategies.*$                   /blog-post-1.html [L]
+  RewriteRule ^blog/optimizing-operations.*$                     /blog-post-2.html [L]
+  RewriteRule ^blog/building-scalable.*$                         /blog-post-3.html [L]
   RewriteRule ^blog-post-1/?$                     /blog-post-1.html [L]
   RewriteRule ^blog-post-2/?$                     /blog-post-2.html [L]
   RewriteRule ^blog-post-3/?$                     /blog-post-3.html [L]
@@ -59,5 +70,7 @@ ErrorDocument 401 /401.html
 
   # Career detail — clean slug AND direct
   RewriteRule ^career/digital-marketing.*$        /career-detail.html [L]
+  RewriteRule ^career/project-manager.*$          /career-detail.html [L]
+  RewriteRule ^career/ux-ui-designer.*$           /career-detail.html [L]
   RewriteRule ^career-detail/?$                   /career-detail.html [L]
 </IfModule>
