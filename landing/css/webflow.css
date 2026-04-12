@@ -266,7 +266,7 @@ html.w-mod-touch * {
   color: #fff;
   line-height: inherit;
   cursor: pointer;
-  background-color: #3898ec;
+  background-color: #888888;
   border: 0;
   border-radius: 0;
   padding: 9px 15px;
@@ -499,7 +499,7 @@ button, [type="button"], [type="reset"] {
 }
 
 .w-form-fail {
-  background-color: #ffdede;
+  background-color: #EEEEEE;
   margin-top: 10px;
   padding: 10px;
   display: none;
@@ -530,7 +530,7 @@ label {
 }
 
 .w-input:focus, .w-select:focus {
-  border-color: #3898ec;
+  border-color: #888888;
   outline: 0;
 }
 
@@ -654,7 +654,7 @@ textarea.w-input, textarea.w-select {
 }
 
 .w-file-upload-error-msg {
-  color: #ea384c;
+  color: #555555;
   padding: 2px 0;
   display: inline-block;
 }
@@ -1394,7 +1394,7 @@ textarea.w-input, textarea.w-select {
 }
 
 .w-dropdown-link.w--current {
-  color: #0082f3;
+  color: #888888;
 }
 
 .w-dropdown-link:focus {
@@ -1833,7 +1833,7 @@ textarea.w-input, textarea.w-select {
 }
 
 .w-nav-link.w--current {
-  color: #0082f3;
+  color: #888888;
 }
 
 .w-nav-menu {
@@ -2094,7 +2094,7 @@ textarea.w-input, textarea.w-select {
   --_typography---h6--line-height: 30px;
   --letter-spacing--letter-spacing-2: -.02em;
   --colors--grey-color: #d2d2d2cc;
-  --colors--yellow: #4169E1;
+  --colors--yellow: #FFFFFF;
   --colors--stroke-white: #ffffff1a;
   --colors--white-70: #ffffffb3;
   --colors--black-70: #010104b3;
@@ -2116,9 +2116,9 @@ textarea.w-input, textarea.w-select {
   --_responsive---border-radius--border-radius-100px: 100px;
   --_responsive---border-radius--border-radius-7px: 7px;
   --_responsive---border-radius--border-radius-12px: 12px;
-  --colors--light-yellow: #dce8ff;
+  --colors--light-yellow: #E8E8E8;
   --colors--bg-color: #0c0c0f;
-  --colors--light-green: #d4e4ff;
+  --colors--light-green: #DEDEDE;
   --_responsive---margins--margin-160px: 160px;
   --_responsive---paddings--padding-100px: 100px;
   --_responsive---paddings--padding-60px: 60px;
@@ -2132,7 +2132,7 @@ textarea.w-input, textarea.w-select {
   --_responsive---border-radius--border-radius-20px: 20px;
   --_responsive---paddings--padding-80px: 80px;
   --_responsive---margins--margin-32px: 32px;
-  --colors--green-grey: #e4eaf5;
+  --colors--green-grey: #EBEBEB;
   --_responsive---margins--margin-40px: 40px;
   --colors--cultured-5: #f8f8f80d;
   --colors--stroke-black: #010104;
@@ -5583,7 +5583,7 @@ blockquote {
 .interface-logo-blur {
   border-radius: var(--_responsive---paddings--padding-100px);
   filter: blur(40px);
-  background-color: #4169e199;
+  background-color: #FFFFFF99;
   width: 50%;
   height: 20%;
   position: absolute;

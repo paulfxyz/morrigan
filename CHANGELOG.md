@@ -194,3 +194,13 @@ Until v1.0.0, the API is unstable and minor versions may include breaking change
   - `/career/project-manager`, `/career/ux-ui-designer` → `career-detail.html`
   - (Previously added in v1.5.0: `/integration/bightly`, `/integration/clodey`)
 - Resolved all internal 404s — every link in all 22 pages now returns 200
+
+## v1.7.0 — April 2026
+
+### Changed
+- Full black & white / greyscale conversion across the entire site
+- CSS: `--colors--yellow` (accent) → `#FFFFFF` (white), all blue tints → neutral greys
+- 91 SVG assets: all `#4169E1` blue fills/strokes replaced with white/grey
+- Lottie JSON animation: all colour arrays desaturated to luminance-equivalent grey
+- 53 AVIF images + 56 WebP images: fully desaturated via ffmpeg `hue=s=0`
+- Utility pages: badges, borders, links all converted to greyscale palette
