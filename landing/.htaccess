@@ -36,6 +36,7 @@ ErrorDocument 401 /401.html
 
   # ── New Morrígan pages ─────────────────────────────────
   RewriteRule ^security/?$                        /security.html [L]
+  RewriteRule ^membership/?$                     /donate.html [L]
   RewriteRule ^donate/?$                          /donate.html [L]
   RewriteRule ^login/?$                           /login.html [L]
   RewriteRule ^signup/?$                          /signup.html [L]
