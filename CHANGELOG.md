@@ -7,6 +7,26 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [v1.4.0] — 2026-04-12 — Full Blue Rebrand: Logo, Favicon + All Assets
+
+### Changed
+- **Morrigan logo:** New inline SVG mark (raven wings + crown dot) replaces Setrex logo in all 22 pages nav + footer
+- **Favicon + apple-touch-icon:** AI-generated Morrigan brand mark (royal blue + white wings), replaces green Setrex favicon
+- **Lottie animations:** `lottie1.json` green (#cffe25) → royal blue (#4169E1) in all color arrays
+- **SVG assets (48 files):** All icon, logo, cursor, shape SVGs: #CFFE25/#F1FF99/#D8F7D6 → #4169E1/#A8BFFF/#DCE8FF
+- **Browser mockup images (8 files):** macOS window green dot pixel-replaced with royal blue in AVIF/WebP
+- **Meta tags:** All Setrex-branded meta descriptions/og:description replaced with Morrigan copy
+- **data-wf-domain:** Changed from `setrex-saas-template.webflow.io` → `morrigan.life`
+
+---
+
+## [v1.3.1] — 2026-04-12 — Royal Blue CSS Hotfix
+
+### Changed
+- Deployed CSS with #4169E1 to FTP (verified via curl)
+
+---
+
 ## [v1.3.0] — 2026-04-12 — Royal Blue Design System + Full 22-Page Clone
 
 ### Changed
