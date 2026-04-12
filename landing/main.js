@@ -411,9 +411,18 @@ document.addEventListener('DOMContentLoaded', () => {
           observer.unobserve(el); // trigger only once per page load
         }
       });
-    }, { threshold: 0.15 }); // trigger when 15% of element is visible
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' }); // trigger when 5% visible
 
     revealEls.forEach((el) => observer.observe(el));
+
+    // Fallback: reveal any still-hidden elements after 1.2s
+    // (catches above-fold elements in environments where IntersectionObserver
+    // fires asynchronously or with a delay on first page load)
+    setTimeout(() => {
+      document.querySelectorAll('.reveal:not(.revealed)').forEach((el) => {
+        el.classList.add('revealed');
+      });
+    }, 1200);
   })();
 
 
@@ -463,12 +472,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const label    = document.querySelector('.strength-label');
     if (!input || !segments.length) return;
 
-    // Level configs: color matches design system progression → lime at max
+    // Level configs: color matches design system progression → pale blue at max
     const LEVELS = [
       { color: '#e05252',             text: 'Too short' }, // level 1 — red
       { color: '#f5a623',             text: 'Weak'      }, // level 2 — orange
       { color: '#f5d623',             text: 'Good'      }, // level 3 — yellow
-      { color: 'rgb(207, 254, 37)',   text: 'Strong'    }, // level 4 — Setrex lime
+      { color: '#a8d8f0',             text: 'Strong'    }, // level 4 — Morrigan pale blue
     ];
 
     /**

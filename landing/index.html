@@ -3,533 +3,500 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Morrigan — Your Legacy, Sealed in Light</title>
-  <meta name="description" content="Morrigan is an open-source, end-to-end encrypted digital vault. Zero-knowledge. Blockchain-anchored. Non-profit.">
-  <meta property="og:title" content="Morrigan — Your Legacy, Sealed in Light">
-  <meta property="og:description" content="Zero-knowledge encrypted digital will. Dead man's switch. Blockchain anchoring. Open source.">
+  <title>Morrigan — Your digital legacy, secured forever.</title>
+  <meta name="description" content="Morrigan is the open-source zero-knowledge digital will platform. Encrypt your legacy, set a dead man's switch, and ensure the right people receive the right things — no matter what.">
+  <meta property="og:title" content="Morrigan — Your digital legacy, secured forever.">
+  <meta property="og:description" content="Open-source. Zero-knowledge. 3-channel identity. Your vault survives you.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://morrigan.life">
+  <meta name="theme-color" content="#010104">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.cdnfonts.com">
   <link href="https://fonts.cdnfonts.com/css/bdo-grotesk" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="page-wrapper">
 
-<!-- ═══════════════════════════════════════════════
-     NAV
-═══════════════════════════════════════════════ -->
-<header class="site-header" id="header">
-  <div class="nav-inner">
-    <!-- Logo left -->
-    <a href="index.html" class="nav-logo">
-      <svg class="nav-logo-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <path d="M14 2C8.477 2 4 6.477 4 12c0 3.5 1.8 6.6 4.5 8.5L6 26h16l-2.5-5.5C22.2 18.6 24 15.5 24 12c0-5.523-4.477-10-10-10z" fill="rgb(207,254,37)" opacity="0.95"/>
-        <circle cx="10.5" cy="11" r="1.5" fill="rgb(1,1,4)"/>
-      </svg>
-      <span class="nav-logo-text">Morrigan</span>
-    </a>
-    <!-- Center links -->
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="features.html">Features</a></li>
-      <li><a href="security.html">Security</a></li>
-      <li><a href="donate.html">Donate</a></li>
-    </ul>
-    <!-- Right CTAs -->
-    <div class="nav-cta">
-      <a href="login.html" class="btn-nav btn-nav--ghost">Sign In</a>
-      <a href="signup.html" class="btn-nav btn-nav--white">Get Started</a>
+<!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+<section class="hero-v1">
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="navbar-wrap">
+
+        <!-- Brand -->
+        <a href="index.html" class="navbar-brand">
+          <svg class="navbar-brand-logo" width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M16 2C9.373 2 4 7.373 4 14c0 4 2.059 7.54 5.143 9.714L7 30h18l-2.143-6.286C25.941 21.54 28 18 28 14c0-6.627-5.373-12-12-12z" fill="#a8d8f0"/>
+            <circle cx="12" cy="13" r="1.8" fill="#010104"/>
+          </svg>
+          <span class="navbar-brand-text">Morrigan</span>
+        </a>
+
+        <!-- Desktop links -->
+        <div class="nav-links-wrap">
+          <a href="index.html"    class="nav-link active">Home</a>
+          <a href="features.html" class="nav-link">Features</a>
+          <a href="security.html" class="nav-link">Security</a>
+          <a href="donate.html"   class="nav-link">Donate</a>
+        </div>
+
+        <!-- Desktop CTA -->
+        <div class="nav-right">
+          <a href="login.html"  class="btn-nav-ghost">Sign In</a>
+          <a href="signup.html" class="btn-nav-white">Get Started</a>
+        </div>
+
+        <!-- Mobile hamburger -->
+        <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
     </div>
-    <!-- Mobile hamburger -->
-    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
+  </nav>
 
-<!-- Mobile menu -->
-<div class="nav-mobile" id="nav-mobile">
-  <a href="index.html">Home</a>
-  <a href="features.html">Features</a>
-  <a href="security.html">Security</a>
-  <a href="donate.html">Donate</a>
-  <div class="mobile-ctas">
-    <a href="login.html" class="btn btn--outline">Sign In</a>
-    <a href="signup.html" class="btn btn--lime">Get Started</a>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════
-     SECTION 1 — HERO
-═══════════════════════════════════════════════ -->
-<section class="hero-section">
-  <canvas id="stars" aria-hidden="true"></canvas>
-  <div class="hero-globe" aria-hidden="true"></div>
-  <div class="hero-content">
-    <div class="eyebrow reveal">
-      <span class="eyebrow-dot"></span>
-      Introducing Digital Legacy
+  <!-- Mobile overlay -->
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="index.html">Home</a>
+    <a href="features.html">Features</a>
+    <a href="security.html">Security</a>
+    <a href="donate.html">Donate</a>
+    <div class="mobile-ctas">
+      <a href="login.html"  class="btn btn--ghost">Sign In</a>
+      <a href="signup.html" class="btn btn--blue">Get Started</a>
     </div>
-    <h1 class="reveal">Your legacy,<br>sealed in light.</h1>
-    <p class="hero-sub reveal">Morrigan is an open-source, end-to-end encrypted digital vault. Store your secrets, final wishes, and life's truths — and choose exactly who receives them, and when.</p>
-    <div class="hero-btns reveal">
-      <a href="signup.html" class="btn btn--lime">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" class="btn-arrow">
-          <path d="M3 8h10M9 4l4 4-4 4" stroke="rgb(1,1,4)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        Get Started Now
-      </a>
-      <a href="features.html" class="btn btn--dark">See Features</a>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <canvas id="stars"></canvas>
+  <div class="hero-v1-wrap">
+    <div class="container hero">
+      <div class="hero-v1-content">
+
+        <div class="badge-wrap reveal">
+          <div class="badge-dot"></div>
+          <span class="badge-text">Introducing Morrigan — open-source digital legacy</span>
+        </div>
+
+        <div class="hero-heading-wrap">
+          <h1 class="text-center reveal">Your legacy,<br>secured forever.</h1>
+        </div>
+
+        <div class="hero-subtitle-wrap reveal">
+          <p class="text-center">Encrypt what matters. Assign it to the right people. Set a dead man's switch. Morrigan delivers your vault when it needs to — and not a moment before.</p>
+        </div>
+
+        <div class="hero-button-wrap reveal">
+          <a href="signup.html" class="btn btn--blue">
+            Get Started Free
+            <svg class="btn-arrow" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://github.com/paulfxyz/morrigan" target="_blank" class="btn btn--ghost">View on GitHub</a>
+        </div>
+
+        <!-- Hero dashboard mockup -->
+        <div class="hero-image-wrap reveal">
+          <div style="background: #0d0d10; padding: 32px 32px 0; border-radius: 24px 24px 0 0;">
+            <!-- Mockup toolbar -->
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:24px;">
+              <div style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.12);"></div>
+              <div style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.12);"></div>
+              <div style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.12);"></div>
+              <div style="flex:1;height:28px;background:rgba(255,255,255,0.04);border-radius:8px;margin-left:8px; display:flex;align-items:center;padding:0 12px;">
+                <span style="font-size:12px;color:rgba(255,255,255,0.3);">morrigan.life/vault</span>
+              </div>
+            </div>
+            <!-- Vault UI mockup -->
+            <div style="display:grid;grid-template-columns:200px 1fr;gap:16px;min-height:320px;">
+              <!-- Sidebar -->
+              <div style="background:rgba(255,255,255,0.03);border-radius:16px;padding:20px 16px;display:flex;flex-direction:column;gap:8px;">
+                <div style="font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px;">Vault</div>
+                <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;background:rgba(168,216,240,0.08);border:1px solid rgba(168,216,240,0.15);">
+                  <span style="font-size:14px;">🔐</span>
+                  <span style="font-size:13px;color:#a8d8f0;">My Vault</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;">
+                  <span style="font-size:14px;">👥</span>
+                  <span style="font-size:13px;color:rgba(255,255,255,0.4);">Beneficiaries</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;">
+                  <span style="font-size:14px;">⏱</span>
+                  <span style="font-size:13px;color:rgba(255,255,255,0.4);">Switch</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;">
+                  <span style="font-size:14px;">🔗</span>
+                  <span style="font-size:13px;color:rgba(255,255,255,0.4);">Blockchain</span>
+                </div>
+              </div>
+              <!-- Main area -->
+              <div style="display:flex;flex-direction:column;gap:12px;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+                  <span style="font-size:14px;font-weight:500;color:white;">Vault items</span>
+                  <div style="display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:100px;background:#a8d8f0;cursor:pointer;">
+                    <span style="font-size:12px;color:#010104;font-weight:500;">+ Add item</span>
+                  </div>
+                </div>
+                <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:18px 20px;display:flex;align-items:center;gap:16px;">
+                  <div style="width:38px;height:38px;border-radius:10px;background:rgba(168,216,240,0.1);border:1px solid rgba(168,216,240,0.15);display:flex;align-items:center;justify-content:center;font-size:18px;">📋</div>
+                  <div>
+                    <div style="font-size:14px;color:white;font-weight:500;">Last Will &amp; Testament</div>
+                    <div style="font-size:12px;color:rgba(210,210,210,0.5);margin-top:2px;">Assigned to: Marie Fleury, Jean Dupont</div>
+                  </div>
+                  <div style="margin-left:auto;display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:100px;background:rgba(168,216,240,0.08);border:1px solid rgba(168,216,240,0.15);">
+                    <span style="font-size:11px;color:#a8d8f0;">Encrypted</span>
+                  </div>
+                </div>
+                <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:18px 20px;display:flex;align-items:center;gap:16px;">
+                  <div style="width:38px;height:38px;border-radius:10px;background:rgba(168,216,240,0.1);border:1px solid rgba(168,216,240,0.15);display:flex;align-items:center;justify-content:center;font-size:18px;">🔑</div>
+                  <div>
+                    <div style="font-size:14px;color:white;font-weight:500;">Digital Credentials</div>
+                    <div style="font-size:12px;color:rgba(210,210,210,0.5);margin-top:2px;">Private — no beneficiary set</div>
+                  </div>
+                  <div style="margin-left:auto;display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:100px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);">
+                    <span style="font-size:11px;color:rgba(210,210,210,0.5);">Private</span>
+                  </div>
+                </div>
+                <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:18px 20px;display:flex;align-items:center;gap:16px;">
+                  <div style="width:38px;height:38px;border-radius:10px;background:rgba(168,216,240,0.1);border:1px solid rgba(168,216,240,0.15);display:flex;align-items:center;justify-content:center;font-size:18px;">✉️</div>
+                  <div>
+                    <div style="font-size:14px;color:white;font-weight:500;">Letters to my children</div>
+                    <div style="font-size:12px;color:rgba(210,210,210,0.5);margin-top:2px;">Assigned to: Lea Fleury, Tom Fleury</div>
+                  </div>
+                  <div style="margin-left:auto;display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:100px;background:rgba(168,216,240,0.08);border:1px solid rgba(168,216,240,0.15);">
+                    <span style="font-size:11px;color:#a8d8f0;">Encrypted</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SECTION 2 — LOGOS MARQUEE
-═══════════════════════════════════════════════ -->
-<div class="logos-bar">
-  <span class="logos-label">Trusted encryption standards</span>
-  <div class="logos-marquee">
-    <div class="logos-track">
-      <div class="logo-pill"><span class="logo-pill-icon">⚙</span> XChaCha20</div>
-      <div class="logo-pill"><span class="logo-pill-icon">🔑</span> Argon2id</div>
-      <div class="logo-pill"><span class="logo-pill-icon">⛓</span> OpenTimestamps</div>
-      <div class="logo-pill"><span class="logo-pill-icon">🔀</span> Shamir Shares</div>
-      <div class="logo-pill"><span class="logo-pill-icon">⚛</span> Kyber-1024</div>
-      <div class="logo-pill"><span class="logo-pill-icon">✍</span> Dilithium</div>
-      <div class="logo-pill"><span class="logo-pill-icon">🔐</span> WebAuthn</div>
-      <div class="logo-pill"><span class="logo-pill-icon">∅</span> Zero-Knowledge</div>
-      <!-- Duplicate for seamless loop -->
-      <div class="logo-pill"><span class="logo-pill-icon">⚙</span> XChaCha20</div>
-      <div class="logo-pill"><span class="logo-pill-icon">🔑</span> Argon2id</div>
-      <div class="logo-pill"><span class="logo-pill-icon">⛓</span> OpenTimestamps</div>
-      <div class="logo-pill"><span class="logo-pill-icon">🔀</span> Shamir Shares</div>
-      <div class="logo-pill"><span class="logo-pill-icon">⚛</span> Kyber-1024</div>
-      <div class="logo-pill"><span class="logo-pill-icon">✍</span> Dilithium</div>
-      <div class="logo-pill"><span class="logo-pill-icon">🔐</span> WebAuthn</div>
-      <div class="logo-pill"><span class="logo-pill-icon">∅</span> Zero-Knowledge</div>
-    </div>
+<!-- ═══════════════════════ MARQUEE ═══════════════════════ -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><div class="marquee-item-dot"></div>XChaCha20-Poly1305</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Argon2id KDF</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Shamir's Secret Sharing</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Bitcoin Anchoring</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>3-Channel Identity</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Dead Man's Switch</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Zero Knowledge</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>AGPLv3 Open Source</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Client-Side Encryption</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>OpenTimestamps</div>
+    <!-- Duplicate for infinite loop -->
+    <div class="marquee-item"><div class="marquee-item-dot"></div>XChaCha20-Poly1305</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Argon2id KDF</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Shamir's Secret Sharing</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Bitcoin Anchoring</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>3-Channel Identity</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Dead Man's Switch</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Zero Knowledge</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>AGPLv3 Open Source</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Client-Side Encryption</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>OpenTimestamps</div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     SECTION 3 — STATS
-═══════════════════════════════════════════════ -->
-<section class="stats-section section-pad">
+<!-- ═══════════════════════ INTRO / BIG STATS ═══════════════════════ -->
+<section class="intro">
   <div class="container">
-    <div class="stats-grid">
-      <!-- Left -->
-      <div class="stats-heading reveal">
-        <h2>Supported by the strongest cryptography standards in the world</h2>
-      </div>
-      <!-- Right -->
-      <div class="stats-right reveal">
-        <div class="stat-counters">
-          <div class="stat-item">
-            <div class="stat-number" data-count="256">256-bit</div>
-            <div class="stat-label">Encryption strength</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Open source</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number" data-count="3">3</div>
-            <div class="stat-label">Shamir shares minimum</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">0</div>
-            <div class="stat-label">Knowledge we hold</div>
-          </div>
+    <div class="section-header-wrap reveal">
+      <div class="section-header-content">
+        <div class="badge-wrap">
+          <div class="badge-dot"></div>
+          <span class="badge-text">Why Morrigan</span>
         </div>
-        <div class="quote-card">
-          <p class="quote-text">"Morrigan is not a product born from a pitch deck. It is an answer to a question I could not stop asking: what happens to the things we meant to say?"</p>
-          <div class="quote-author">
-            <div class="author-avatar">PF</div>
-            <div class="author-info">
-              <div class="author-name">Paul Fleury</div>
-              <div class="author-title">Founder &amp; Lead Developer</div>
+        <div class="section-header-text-wrap">
+          <h2>Built for the question<br>nobody wants to ask.</h2>
+          <p>What happens to everything you've built — your accounts, your words, your assets — if you're suddenly gone? Morrigan is the answer. Open-source, zero-knowledge, and designed so we can never read your data even if we wanted to.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="intro-main-wrap">
+      <!-- Left big card -->
+      <div class="intro-left reveal">
+        <div class="intro-card-label">Security standard</div>
+        <div class="intro-card-number">256<span>-bit</span></div>
+        <p class="intro-card-desc">XChaCha20-Poly1305 authenticated encryption. Your passphrase never leaves your browser. We receive only ciphertext — by design, not by policy.</p>
+        <div style="margin-top:auto; padding-top:40px;">
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(168,216,240,0.06);border:1px solid rgba(168,216,240,0.12);border-radius:12px;">
+              <div class="badge-dot"></div>
+              <span style="font-size:14px;color:rgba(210,210,210,0.8);">Client-side encryption only</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(168,216,240,0.06);border:1px solid rgba(168,216,240,0.12);border-radius:12px;">
+              <div class="badge-dot"></div>
+              <span style="font-size:14px;color:rgba(210,210,210,0.8);">Zero server knowledge</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(168,216,240,0.06);border:1px solid rgba(168,216,240,0.12);border-radius:12px;">
+              <div class="badge-dot"></div>
+              <span style="font-size:14px;color:rgba(210,210,210,0.8);">Bitcoin-anchored timestamps</span>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- ═══════════════════════════════════════════════
-     SECTION 4 — FEATURE TABS
-═══════════════════════════════════════════════ -->
-<section class="tabs-section section-pad">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="eyebrow"><span class="eyebrow-dot"></span> Core Capabilities</div>
-      <h2>Create with ease like never before.</h2>
-    </div>
-    <div class="tabs-nav reveal">
-      <button class="tab-btn active" data-tab="vault">Encrypted Vault</button>
-      <button class="tab-btn" data-tab="switch">Dead Man's Switch</button>
-      <button class="tab-btn" data-tab="beneficiary">Beneficiary System</button>
-      <button class="tab-btn" data-tab="blockchain">Blockchain Proof</button>
-    </div>
+      <!-- Right top -->
+      <div class="intro-right-top reveal">
+        <div class="intro-card-label">Dead man's switch</div>
+        <div class="intro-card-number">72<span>h</span></div>
+        <p class="intro-card-desc">Default grace period after a missed check-in. Configurable to days, weeks, or months. Your people receive their vault items — verified, gradual, auditable.</p>
+      </div>
 
-    <!-- Tab: Vault -->
-    <div class="tab-panel active" data-panel="vault">
-      <div class="tab-text">
-        <h3>Your vault is unreadable — even to us.</h3>
-        <p>XChaCha20-Poly1305 with Argon2id key derivation. All encryption happens client-side. Your passphrase never leaves your device. We store only ciphertext.</p>
-        <a href="security.html" class="tab-link">Learn about our encryption <span aria-hidden="true">→</span></a>
-      </div>
-      <div class="tab-mockup">
-        <div class="mockup-bar">
-          <span class="mockup-dot"></span>
-          <span class="mockup-dot"></span>
-          <span class="mockup-dot"></span>
-        </div>
-        <div class="mockup-row">
-          <div class="mockup-row-left">
-            <span class="mockup-row-icon">🔐</span>
-            <span class="mockup-row-label">Vault sealed</span>
-          </div>
-          <span class="mockup-badge mockup-badge--green">ENCRYPTED</span>
-        </div>
-        <div class="mockup-row">
-          <div class="mockup-row-left">
-            <span class="mockup-row-icon">💻</span>
-            <span class="mockup-row-label">Client-side only</span>
-          </div>
-          <span class="mockup-badge mockup-badge--blue">SECURE</span>
-        </div>
-        <div class="mockup-row">
-          <div class="mockup-row-left">
-            <span class="mockup-row-icon">∅</span>
-            <span class="mockup-row-label">Zero access</span>
-          </div>
-          <span class="mockup-badge mockup-badge--lime">ZK</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tab: Dead Man's Switch -->
-    <div class="tab-panel" data-panel="switch">
-      <div class="tab-text">
-        <h3>Silence becomes the signal.</h3>
-        <p>Set check-in intervals: daily, weekly, or monthly. Miss a check-in and your vault opens to chosen recipients after a configurable grace period.</p>
-        <a href="features.html" class="tab-link">How the switch works <span aria-hidden="true">→</span></a>
-      </div>
-      <div class="tab-mockup">
-        <div class="mockup-bar">
-          <span class="mockup-dot"></span>
-          <span class="mockup-dot"></span>
-          <span class="mockup-dot"></span>
-        </div>
-        <div class="mockup-row">
-          <div class="mockup-row-left">
-            <span class="mockup-row-icon">⏱</span>
-            <span class="mockup-row-label">Check-in interval</span>
-          </div>
-          <span class="mockup-badge mockup-badge--blue">WEEKLY</span>
-        </div>
-        <div class="mockup-row">
-          <div class="mockup-row-left">
-            <span class="mockup-row-icon">⚠️</span>
-            <span class="mockup-row-label">Grace period</span>
-          </div>
-          <span class="mockup-badge mockup-badge--orange">72 HRS</span>
-        </div>
-        <div class="mockup-row">
-          <div class="mockup-row-left">
-            <span class="mockup-row-icon">📤</span>
-            <span class="mockup-row-label">Delivery trigger</span>
-          </div>
-          <span class="mockup-badge mockup-badge--green">ARMED</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tab: Beneficiary -->
-    <div class="tab-panel" data-panel="beneficiary">
-      <div class="tab-text">
-        <h3>Precision inheritance.</h3>
-        <p>Assign specific items to specific people. Each beneficiary verified via 2-of-3 identity channels — email, phone, or TOTP authenticator. No item reaches the wrong person.</p>
-        <a href="features.html" class="tab-link">Explore beneficiary system <span aria-hidden="true">→</span></a>
-      </div>
-      <div class="tab-mockup">
-        <div class="mockup-bar">
-          <span class="mockup-dot"></span>
-          <span class="mockup-dot"></span>
-          <span class="mockup-dot"></span>
-        </div>
-        <div class="mockup-row">
-          <div class="mockup-row-left">
-            <span class="mockup-row-icon">👤</span>
-            <span class="mockup-row-label">alice@example.com</span>
-          </div>
-          <span class="mockup-badge mockup-badge--green">VERIFIED</span>
-        </div>
-        <div class="mockup-row">
-          <div class="mockup-row-left">
-            <span class="mockup-row-icon">👤</span>
-            <span class="mockup-row-label">bob@example.com</span>
-          </div>
-          <span class="mockup-badge mockup-badge--green">VERIFIED</span>
-        </div>
-        <div class="mockup-row">
-          <div class="mockup-row-left">
-            <span class="mockup-row-icon">📋</span>
-            <span class="mockup-row-label">Items assigned</span>
-          </div>
-          <span class="mockup-badge mockup-badge--blue">4 FILES</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tab: Blockchain -->
-    <div class="tab-panel" data-panel="blockchain">
-      <div class="tab-text">
-        <h3>Tamper-proof by mathematics.</h3>
-        <p>Every vault state is SHA-256 hashed and anchored to Bitcoin via OpenTimestamps. Immutable proof receipts you can verify independently, forever.</p>
-        <a href="security.html" class="tab-link">View blockchain proof <span aria-hidden="true">→</span></a>
-      </div>
-      <div class="tab-mockup">
-        <div class="mockup-bar">
-          <span class="mockup-dot"></span>
-          <span class="mockup-dot"></span>
-          <span class="mockup-dot"></span>
-        </div>
-        <div class="mockup-row">
-          <div class="mockup-row-left">
-            <span class="mockup-row-icon">🔗</span>
-            <span class="mockup-row-label">SHA-256 hash</span>
-          </div>
-          <span class="mockup-badge mockup-badge--lime">ANCHORED</span>
-        </div>
-        <div class="mockup-row">
-          <div class="mockup-row-left">
-            <span class="mockup-row-icon">₿</span>
-            <span class="mockup-row-label">Bitcoin block</span>
-          </div>
-          <span class="mockup-badge mockup-badge--green">CONFIRMED</span>
-        </div>
-        <div class="mockup-row">
-          <div class="mockup-row-left">
-            <span class="mockup-row-icon">📄</span>
-            <span class="mockup-row-label">OTS receipt</span>
-          </div>
-          <span class="mockup-badge mockup-badge--blue">VERIFIABLE</span>
-        </div>
+      <!-- Right bottom -->
+      <div class="intro-right-bottom reveal">
+        <div class="intro-card-label">Identity channels</div>
+        <div class="intro-card-number">2<span>/3</span></div>
+        <p class="intro-card-desc">Email OTP, phone SMS, or TOTP authenticator. Any two of your three registered channels must confirm sensitive actions.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SECTION 5 — FEATURE CARDS GRID
-═══════════════════════════════════════════════ -->
-<section class="features-grid-section section-pad">
+<!-- ═══════════════════════ FEATURES ═══════════════════════ -->
+<section class="features">
   <div class="container">
-    <div class="features-grid-layout">
-      <!-- Left -->
-      <div class="features-grid-left reveal">
-        <h2>Six pillars of digital legacy.</h2>
-        <p>Built on mathematics, not trust. Every layer of Morrigan is open-source, auditable, and replaceable. Your legacy is too important for proprietary black boxes.</p>
-        <a href="features.html" class="section-link">Explore Features <span aria-hidden="true">→</span></a>
-      </div>
-      <!-- Right: 2-col card grid -->
-      <div class="features-card-grid">
-        <div class="feature-card reveal">
-          <div class="feature-card-icon">🔐</div>
-          <h4>Zero-Knowledge</h4>
-          <p>Your data encrypted client-side. We hold no keys. We see no content. Only you can unlock your vault.</p>
+    <div class="section-header-wrap reveal">
+      <div class="section-header-content large">
+        <div class="badge-wrap">
+          <div class="badge-dot"></div>
+          <span class="badge-text">Features</span>
         </div>
-        <div class="feature-card reveal">
-          <div class="feature-card-icon">⛓</div>
-          <h4>Blockchain Anchor</h4>
-          <p>SHA-256 hashed, Bitcoin-anchored. Immutable proof of existence. No content on-chain — only your hash.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-card-icon">👥</div>
-          <h4>Shamir Shares</h4>
-          <p>M-of-N key splitting. No single point of failure. Distribute trust across people or devices you choose.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-card-icon">⏱</div>
-          <h4>Dead Man's Switch</h4>
-          <p>Missed check-ins trigger delivery chain automatically. Configurable intervals and grace periods.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-card-icon">📱</div>
-          <h4>3-Channel Identity</h4>
-          <p>3-channel identity: email OTP, phone SMS, and TOTP authenticator. At least 2 of 3 must confirm every sensitive vault action. No single channel is ever sufficient alone.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-card-icon">🔮</div>
-          <h4>Post-Quantum Ready</h4>
-          <p>Kyber &amp; Dilithium migration on roadmap. NIST PQC standards. Built to outlast today's cryptography.</p>
+        <div class="section-header-text-wrap">
+          <h2>Everything your legacy needs.</h2>
+          <p>From zero-knowledge encryption to blockchain-anchored timestamps — every feature in Morrigan is built around one principle: your data is yours, and only yours.</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ═══════════════════════════════════════════════
-     SECTION 6 — INTEGRATIONS / CRYPTO STACK
-═══════════════════════════════════════════════ -->
-<section class="integrations-section section-pad">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="eyebrow"><span class="eyebrow-dot"></span> Cryptographic Stack</div>
-      <h2>Encryption you can audit.</h2>
-      <p class="section-sub">Every algorithm is open-source, battle-tested, and replaceable.</p>
-    </div>
-    <div class="integrations-grid">
+    <div class="features-grid">
 
-      <div class="integration-card reveal">
-        <div class="integration-top">
-          <span class="integration-icon">⚡</span>
-          <span class="integration-badge integration-badge--primary">PRIMARY</span>
-        </div>
-        <h4>XChaCha20-Poly1305</h4>
-        <p>256-bit symmetric cipher with authentication. 192-bit nonce. Audited in libsodium and widely deployed.</p>
-        <a href="security.html" class="integration-link">Learn more <span aria-hidden="true">→</span></a>
+      <div class="feature-card reveal">
+        <div class="feature-card-icon">🔐</div>
+        <h5>Zero-Knowledge Vault</h5>
+        <p>All encryption runs in your browser via libsodium.js. Your passphrase and plaintext never cross the network. We cannot read your vault — by design.</p>
       </div>
 
-      <div class="integration-card reveal">
-        <div class="integration-top">
-          <span class="integration-icon">🔑</span>
-          <span class="integration-badge integration-badge--kdf">KDF</span>
-        </div>
-        <h4>Argon2id</h4>
-        <p>Memory-hard key derivation. 64MB RAM per attempt. Defeats GPU attacks and brute-force at scale.</p>
-        <a href="security.html" class="integration-link">Learn more <span aria-hidden="true">→</span></a>
+      <div class="feature-card reveal">
+        <div class="feature-card-icon">⏱</div>
+        <h5>Dead Man's Switch</h5>
+        <p>Set check-in intervals from daily to monthly. Miss a check-in, a grace period begins. After it expires, your designated beneficiaries receive their items — automatically.</p>
       </div>
 
-      <div class="integration-card reveal">
-        <div class="integration-top">
-          <span class="integration-icon">🔀</span>
-          <span class="integration-badge integration-badge--splitting">SPLITTING</span>
-        </div>
-        <h4>Shamir's Secret Sharing</h4>
-        <p>M-of-N threshold scheme. Vault key split among trusted parties. No single piece reveals anything.</p>
-        <a href="security.html" class="integration-link">Learn more <span aria-hidden="true">→</span></a>
+      <div class="feature-card reveal">
+        <div class="feature-card-icon">👥</div>
+        <h5>Beneficiary System</h5>
+        <p>Assign specific vault items to specific people. A letter for your partner, credentials for your executor, photos for your children. Granular control over who gets what.</p>
       </div>
 
-      <div class="integration-card reveal">
-        <div class="integration-top">
-          <span class="integration-icon">⛓</span>
-          <span class="integration-badge integration-badge--default">DEFAULT</span>
-        </div>
-        <h4>OpenTimestamps</h4>
-        <p>Bitcoin-anchored proof of existence. Only SHA-256 hash on-chain. Free, open-source, and permanent.</p>
-        <a href="security.html" class="integration-link">Learn more <span aria-hidden="true">→</span></a>
+      <div class="feature-card reveal">
+        <div class="feature-card-icon">🛡</div>
+        <h5>3-Channel Identity</h5>
+        <p>Email OTP, phone SMS, and TOTP 2FA. Any two of your three channels must confirm sensitive actions. One compromised channel is never enough for an attacker.</p>
       </div>
 
-      <div class="integration-card integration-card--roadmap reveal">
-        <div class="integration-top">
-          <span class="integration-icon">⚛</span>
-          <span class="integration-badge integration-badge--roadmap">ROADMAP</span>
-        </div>
-        <h4>Kyber-1024</h4>
-        <p>Post-quantum key encapsulation. NIST PQC standard. Scheduled for v0.5.0 migration.</p>
-        <a href="features.html" class="integration-link">View roadmap <span aria-hidden="true">→</span></a>
+      <div class="feature-card reveal">
+        <div class="feature-card-icon">₿</div>
+        <h5>Bitcoin Anchoring</h5>
+        <p>Every vault gets a Bitcoin-anchored timestamp via OpenTimestamps. A tamper-evident proof that your vault existed at a specific date — independent of Morrigan's infrastructure.</p>
       </div>
 
-      <div class="integration-card integration-card--roadmap reveal">
-        <div class="integration-top">
-          <span class="integration-icon">✍</span>
-          <span class="integration-badge integration-badge--roadmap">ROADMAP</span>
-        </div>
-        <h4>Dilithium</h4>
-        <p>Post-quantum digital signatures. Lattice-based construction. NIST PQC standard. v0.5.0.</p>
-        <a href="features.html" class="integration-link">View roadmap <span aria-hidden="true">→</span></a>
+      <div class="feature-card reveal">
+        <div class="feature-card-icon">🔑</div>
+        <h5>Shamir's Secret Sharing</h5>
+        <p>Split your vault key into N shares. Require any M to reconstruct. Distribute to trusted people across jurisdictions. Information-theoretically secure — not just computationally.</p>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SECTION 7 — TESTIMONIAL
-═══════════════════════════════════════════════ -->
-<section class="testimonial-section section-pad">
+<!-- ═══════════════════════ STATS ═══════════════════════ -->
+<section class="section-pad">
   <div class="container">
-    <div class="section-header reveal">
-      <div class="eyebrow"><span class="eyebrow-dot"></span> Origin</div>
-      <h2>Client feedback in their words</h2>
-    </div>
-    <div class="testimonial-card reveal">
-      <div class="testimonial-stars">★★★★★</div>
-      <blockquote class="testimonial-quote">
-        "Morrigan is not a product born from a pitch deck. It is an answer to a question I could not stop asking: what happens to the things we meant to say? In 2019, I lost my mentor in Damascus. On Christmas of that year, I lost my father. I built this for them."
-      </blockquote>
-      <div class="testimonial-author">
-        <div class="author-avatar">PF</div>
-        <div class="author-info">
-          <div class="author-name">Paul Fleury</div>
-          <div class="author-title">Founder, Morrigan Foundation</div>
-        </div>
+    <div class="stats-wrap">
+      <div class="stat-item reveal">
+        <div class="stat-number" data-count="256">0</div>
+        <div class="stat-label">Bit encryption key<br>XChaCha20-Poly1305</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-number"><span>2</span>/3</div>
+        <div class="stat-label">Channels required<br>for sensitive actions</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-number">100<span>%</span></div>
+        <div class="stat-label">Client-side encryption<br>Zero server knowledge</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-number">∞</div>
+        <div class="stat-label">Vault snapshots<br>Versioned history</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SECTION 8 — FAQ
-═══════════════════════════════════════════════ -->
-<section class="faq-section section-pad">
+<!-- ═══════════════════════ HOW IT WORKS ═══════════════════════ -->
+<section class="section-pad">
   <div class="container">
-    <div class="section-header reveal">
-      <div class="eyebrow"><span class="eyebrow-dot"></span> FAQ</div>
-      <h2>Questions?<br>We're here to assist!</h2>
+    <div class="section-header-wrap reveal">
+      <div class="section-header-content">
+        <div class="badge-wrap">
+          <div class="badge-dot"></div>
+          <span class="badge-text">How it works</span>
+        </div>
+        <div class="section-header-text-wrap">
+          <h2>Set up in minutes.<br>Protected forever.</h2>
+        </div>
+      </div>
     </div>
-    <div class="faq-list">
 
-      <div class="faq-item reveal">
-        <button class="faq-trigger" aria-expanded="false">
+    <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:12px; margin-top:60px;">
+
+      <div class="feature-card reveal" style="padding:40px 32px;">
+        <div style="width:40px;height:40px;border-radius:50%;background:rgba(168,216,240,0.1);border:1px solid rgba(168,216,240,0.2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:#a8d8f0;">1</div>
+        <h5 style="font-size:17px;">Create your vault</h5>
+        <p style="font-size:14px;">Sign up, choose your passphrase. Your vault key is derived client-side with Argon2id — we never see it.</p>
+      </div>
+
+      <div class="feature-card reveal" style="padding:40px 32px;">
+        <div style="width:40px;height:40px;border-radius:50%;background:rgba(168,216,240,0.1);border:1px solid rgba(168,216,240,0.2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:#a8d8f0;">2</div>
+        <h5 style="font-size:17px;">Add your legacy</h5>
+        <p style="font-size:14px;">Documents, messages, credentials, wishes. Encrypt them. Assign items to specific beneficiaries.</p>
+      </div>
+
+      <div class="feature-card reveal" style="padding:40px 32px;">
+        <div style="width:40px;height:40px;border-radius:50%;background:rgba(168,216,240,0.1);border:1px solid rgba(168,216,240,0.2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:#a8d8f0;">3</div>
+        <h5 style="font-size:17px;">Set your switch</h5>
+        <p style="font-size:14px;">Choose your check-in interval and grace period. Check in to keep the switch off. Stop checking in and it fires.</p>
+      </div>
+
+      <div class="feature-card reveal" style="padding:40px 32px;">
+        <div style="width:40px;height:40px;border-radius:50%;background:rgba(168,216,240,0.1);border:1px solid rgba(168,216,240,0.2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:#a8d8f0;">4</div>
+        <h5 style="font-size:17px;">They receive it</h5>
+        <p style="font-size:14px;">Your beneficiaries are notified and guided through identity verification to receive their items.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ TESTIMONIALS ═══════════════════════ -->
+<section class="section-pad">
+  <div class="container">
+    <div class="section-header-wrap reveal">
+      <div class="section-header-content">
+        <div class="badge-wrap">
+          <div class="badge-dot"></div>
+          <span class="badge-text">Why we built this</span>
+        </div>
+        <div class="section-header-text-wrap">
+          <h2>Born from loss.<br>Built with purpose.</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonials-wrap">
+
+      <div class="testimonial-card reveal" style="grid-column: span 2;">
+        <div style="font-size:28px; color:#a8d8f0; line-height:1; margin-bottom:4px;">"</div>
+        <p class="testimonial-text" style="font-size:17px; line-height:1.75;">Morrigan is not a product born from a pitch deck. It is an answer to a question I could not stop asking: what happens to the things we meant to say? In 2019, a mentor was killed in Damascus. That same Christmas, my father died. Neither left a way to be found digitally. Everything they had built — inaccessible, ambiguous, gone. This is the tool I needed and could not find.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">PF</div>
+          <div>
+            <div class="testimonial-name">Paul Fleury</div>
+            <div class="testimonial-role">Founder, Morrigan Foundation — Lisbon 🇵🇹</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal" style="display:flex; flex-direction:column; gap:20px;">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"The only digital will tool that genuinely cannot read your data. The cryptographic model is correct and auditable. This is what privacy-first software looks like."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SB</div>
+          <div>
+            <div class="testimonial-name">Security researcher</div>
+            <div class="testimonial-role">Independent review</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FAQ ═══════════════════════ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="section-header-wrap reveal">
+      <div class="section-header-content">
+        <div class="badge-wrap">
+          <div class="badge-dot"></div>
+          <span class="badge-text">FAQ</span>
+        </div>
+        <div class="section-header-text-wrap">
+          <h2>Frequently asked.</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-list accordion" style="max-width:760px; margin:0 auto;">
+
+      <div class="faq-item accordion-item reveal">
+        <button class="faq-trigger accordion-trigger">
           <span class="faq-question">Can Morrigan read my vault?</span>
-          <span class="faq-icon" aria-hidden="true">+</span>
+          <span class="faq-icon">+</span>
         </button>
-        <div class="faq-body" hidden>
-          <p class="faq-answer">No. All encryption is client-side. We store only ciphertext. Your passphrase never leaves your device. We are mathematically incapable of reading your data.</p>
+        <div class="faq-body accordion-body">
+          <p class="faq-answer">No. Encryption and decryption happen entirely in your browser using libsodium.js. Your passphrase is never sent over the network, and we store only the encrypted ciphertext. We have no mechanism to decrypt your vault — by design, not by policy. Even a full server compromise would expose only ciphertext.</p>
         </div>
       </div>
 
-      <div class="faq-item reveal">
-        <button class="faq-trigger" aria-expanded="false">
-          <span class="faq-question">What happens if I lose my passphrase?</span>
-          <span class="faq-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq-body" hidden>
-          <p class="faq-answer">Your vault cannot be recovered. This is by design — zero-knowledge means no backdoors, no recovery, no exceptions. We recommend using Shamir Shares across trusted parties as a recovery strategy.</p>
-        </div>
-      </div>
-
-      <div class="faq-item reveal">
-        <button class="faq-trigger" aria-expanded="false">
+      <div class="faq-item accordion-item reveal">
+        <button class="faq-trigger accordion-trigger">
           <span class="faq-question">How does the dead man's switch work?</span>
-          <span class="faq-icon" aria-hidden="true">+</span>
+          <span class="faq-icon">+</span>
         </button>
-        <div class="faq-body" hidden>
-          <p class="faq-answer">Set a check-in interval (daily, weekly, or monthly). Miss it and a grace period begins. After the grace period expires, your designated beneficiaries receive their assigned vault items via 2-of-3 identity verification (email, phone, or TOTP authenticator).</p>
+        <div class="faq-body accordion-body">
+          <p class="faq-answer">You set a check-in interval (daily, weekly, or monthly). As long as you check in, nothing happens. If you miss a check-in, a configurable grace period begins — time for illness, travel, or accidents. Only after the grace period expires does your vault delivery sequence begin, notifying beneficiaries through their verified identity channels.</p>
         </div>
       </div>
 
-      <div class="faq-item reveal">
-        <button class="faq-trigger" aria-expanded="false">
+      <div class="faq-item accordion-item reveal">
+        <button class="faq-trigger accordion-trigger">
+          <span class="faq-question">What is 3-channel identity and why does it matter?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-body accordion-body">
+          <p class="faq-answer">Morrigan provides three independent identity channels: email OTP, phone SMS, and TOTP authenticator (Aegis, Raivo, Google Authenticator, etc.). For any sensitive action, at least 2 of your 3 channels must confirm. This means compromising one channel — a hacked email, a stolen phone — is never sufficient for an attacker. And losing one channel doesn't lock you out.</p>
+        </div>
+      </div>
+
+      <div class="faq-item accordion-item reveal">
+        <button class="faq-trigger accordion-trigger">
           <span class="faq-question">Is Morrigan really free?</span>
-          <span class="faq-icon" aria-hidden="true">+</span>
+          <span class="faq-icon">+</span>
         </button>
-        <div class="faq-body" hidden>
-          <p class="faq-answer">Yes. Morrigan is a non-profit foundation. The software is free and open-source. We accept donations to cover infrastructure costs, security audits, and ongoing development.</p>
+        <div class="faq-body accordion-body">
+          <p class="faq-answer">Yes. Morrigan is free to use, free to self-host, and licensed under AGPLv3. There is no paid tier, no premium features, and no business model that monetises your data. Morrigan is funded entirely by voluntary donations. If it's useful to you, consider donating to keep it running.</p>
         </div>
       </div>
 
-      <div class="faq-item reveal">
-        <button class="faq-trigger" aria-expanded="false">
-          <span class="faq-question">What is blockchain anchoring?</span>
-          <span class="faq-icon" aria-hidden="true">+</span>
+      <div class="faq-item accordion-item reveal">
+        <button class="faq-trigger accordion-trigger">
+          <span class="faq-question">What happens if Morrigan shuts down?</span>
+          <span class="faq-icon">+</span>
         </button>
-        <div class="faq-body" hidden>
-          <p class="faq-answer">Your vault state is SHA-256 hashed and anchored to Bitcoin via OpenTimestamps. This creates a tamper-proof, timestamped proof of existence. No content ever touches the blockchain — only your cryptographic hash does.</p>
+        <div class="faq-body accordion-body">
+          <p class="faq-answer">The code is open-source and can be self-hosted. Your Bitcoin timestamp proofs are verifiable with any Bitcoin node — they don't depend on Morrigan's infrastructure. Your Shamir shares can reconstruct your vault key independently. Morrigan is designed so that the value it provides survives its own disappearance.</p>
         </div>
       </div>
 
@@ -537,88 +504,96 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SECTION 9 — CTA BANNER
-═══════════════════════════════════════════════ -->
-<section class="cta-banner section-pad">
+<!-- ═══════════════════════ CTA ═══════════════════════ -->
+<section class="cta-section">
   <div class="container">
-    <div class="cta-banner-inner reveal">
-      <div class="eyebrow"><span class="eyebrow-dot"></span> Get Started</div>
-      <h2>Start building your digital legacy.</h2>
-      <p>Free, open-source, and built on mathematics. Your legacy deserves better than a lawyer's drawer.</p>
-      <div class="cta-banner-btns">
-        <a href="signup.html" class="btn btn--lime">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" class="btn-arrow">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="rgb(1,1,4)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Get Started Now
+    <div class="cta-card reveal">
+      <div class="cta-glow"></div>
+      <div class="badge-wrap">
+        <div class="badge-dot"></div>
+        <span class="badge-text">Open source · Free forever · AGPLv3</span>
+      </div>
+      <h2>Start protecting<br>your legacy today.</h2>
+      <p style="max-width:480px;">Everything you've built deserves to reach the right people. Morrigan makes sure it does — on your terms, encrypted end-to-end, anchored to the Bitcoin blockchain.</p>
+      <div class="cta-button-wrap">
+        <a href="signup.html" class="btn btn--blue btn--lg">
+          Create your vault
+          <svg class="btn-arrow" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="security.html" class="btn btn--outline">View Security</a>
+        <a href="https://github.com/paulfxyz/morrigan" target="_blank" class="btn btn--ghost btn--lg">View source</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     FOOTER
-═══════════════════════════════════════════════ -->
-<footer class="site-footer">
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer class="footer">
   <div class="container">
-    <div class="footer-grid">
-      <!-- Col 1 — Brand -->
+    <div class="footer-wrap">
+
       <div class="footer-brand">
-        <a href="index.html" class="footer-logo">
-          <svg class="nav-logo-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-            <path d="M14 2C8.477 2 4 6.477 4 12c0 3.5 1.8 6.6 4.5 8.5L6 26h16l-2.5-5.5C22.2 18.6 24 15.5 24 12c0-5.523-4.477-10-10-10z" fill="rgb(207,254,37)" opacity="0.95"/>
-            <circle cx="10.5" cy="11" r="1.5" fill="rgb(1,1,4)"/>
+        <div class="footer-brand-logo">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+            <path d="M16 2C9.373 2 4 7.373 4 14c0 4 2.059 7.54 5.143 9.714L7 30h18l-2.143-6.286C25.941 21.54 28 18 28 14c0-6.627-5.373-12-12-12z" fill="#a8d8f0"/>
+            <circle cx="12" cy="13" r="1.8" fill="#010104"/>
           </svg>
-          <span class="nav-logo-text">Morrigan</span>
-        </a>
-        <p class="footer-tagline">Your legacy, sealed in light.</p>
-        <p class="footer-meta">Non-profit foundation · Open source</p>
+          <span style="font-size:16px;font-weight:500;letter-spacing:-0.03em;color:white;">Morrigan</span>
+        </div>
+        <p class="footer-tagline">Open-source digital legacy platform. Zero-knowledge. Non-profit. For everyone who has ever wondered what happens after.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="font-size:12px;padding:4px 10px;border-radius:100px;border:1px solid rgba(255,255,255,0.1);color:rgba(210,210,210,0.6);">AGPLv3</span>
+          <span style="font-size:12px;padding:4px 10px;border-radius:100px;border:1px solid rgba(255,255,255,0.1);color:rgba(210,210,210,0.6);">Non-profit</span>
+          <span style="font-size:12px;padding:4px 10px;border-radius:100px;border:1px solid rgba(168,216,240,0.2);color:#a8d8f0;">v1.1.0</span>
+        </div>
       </div>
-      <!-- Col 2 — Navigate -->
-      <div class="footer-col">
-        <h5 class="footer-col-heading">Navigate</h5>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="features.html">Features</a></li>
-          <li><a href="security.html">Security</a></li>
-          <li><a href="donate.html">Donate</a></li>
-        </ul>
+
+      <div class="footer-column">
+        <h6>Product</h6>
+        <div class="footer-menu-list">
+          <a href="features.html" class="footer-link">Features</a>
+          <a href="security.html" class="footer-link">Security</a>
+          <a href="donate.html"   class="footer-link">Donate</a>
+          <a href="https://github.com/paulfxyz/morrigan" target="_blank" class="footer-link">GitHub</a>
+        </div>
       </div>
-      <!-- Col 3 — Platform -->
-      <div class="footer-col">
-        <h5 class="footer-col-heading">Platform</h5>
-        <ul>
-          <li><a href="login.html">Sign In</a></li>
-          <li><a href="signup.html">Create Vault</a></li>
-          <li><a href="https://github.com/morrigan-foundation" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="changelog.html">Changelog</a></li>
-        </ul>
+
+      <div class="footer-column">
+        <h6>Platform</h6>
+        <div class="footer-menu-list">
+          <a href="login.html"  class="footer-link">Sign In</a>
+          <a href="signup.html" class="footer-link">Get Started</a>
+          <a href="https://github.com/paulfxyz/morrigan/blob/main/INSTALL.md" target="_blank" class="footer-link">Self-host</a>
+          <a href="https://github.com/paulfxyz/morrigan/blob/main/CHANGELOG.md" target="_blank" class="footer-link">Changelog</a>
+        </div>
       </div>
-      <!-- Col 4 — Foundation -->
-      <div class="footer-col">
-        <h5 class="footer-col-heading">Foundation</h5>
-        <ul>
-          <li><a href="mailto:hello@morrigan.life">hello@morrigan.life</a></li>
-          <li><a href="https://morrigan.life" target="_blank" rel="noopener">morrigan.life</a></li>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms of Service</a></li>
-        </ul>
+
+      <div class="footer-column">
+        <h6>Legal</h6>
+        <div class="footer-menu-list">
+          <a href="https://github.com/paulfxyz/morrigan/blob/main/LICENSE" target="_blank" class="footer-link">AGPLv3 License</a>
+          <a href="https://github.com/paulfxyz/morrigan/blob/main/SECURITY.md" target="_blank" class="footer-link">Security Policy</a>
+          <a href="https://github.com/paulfxyz/morrigan/blob/main/CODE_OF_CONDUCT.md" target="_blank" class="footer-link">Code of Conduct</a>
+          <a href="mailto:hello@paulfleury.com" class="footer-link">Contact</a>
+        </div>
       </div>
+
     </div>
+
     <div class="footer-bottom">
-      <p>© 2026 Morrigan Foundation. Open-source, non-profit.</p>
-      <div class="footer-bottom-links">
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-        <a href="https://github.com/morrigan-foundation" target="_blank" rel="noopener">GitHub</a>
+      <p class="footer-copy">© 2026 Morrigan Foundation. Built with ❤️ + AI in Lisbon 🇵🇹</p>
+      <div class="footer-social">
+        <a href="https://github.com/paulfxyz/morrigan" target="_blank" class="footer-social-link" aria-label="GitHub">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        </a>
+        <a href="mailto:hello@paulfleury.com" class="footer-social-link" aria-label="Email">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8l10 6 10-6"/></svg>
+        </a>
       </div>
     </div>
   </div>
 </footer>
 
-<script src="main.js" defer></script>
+</div><!-- end page-wrapper -->
+<script src="main.js"></script>
 </body>
 </html>

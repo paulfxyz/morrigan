@@ -9,24 +9,13 @@
   <meta property="og:description" content="Zero knowledge. Zero compromise. The cryptographic stack that protects your vault.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://morrigan.life/security.html">
-  <meta name="theme-color" content="rgb(1,1,4)">
+  <meta name="theme-color" content="#010104">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.cdnfonts.com">
   <link href="https://fonts.cdnfonts.com/css/bdo-grotesk" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
     /* ── Security page extras ── */
-    .arch-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--s5);
-    }
-    .dual-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--s5);
-      align-items: start;
-    }
     .action-table {
       width: 100%;
       border-collapse: collapse;
@@ -46,688 +35,650 @@
     }
     .action-table tr:last-child td { border-bottom: none; }
     .action-table td:first-child { color: var(--text-muted); }
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--s5);
-    }
-    .step-card {
-      background: var(--bg-card);
-      border-radius: var(--r-xl);
-      border: 1px solid var(--border);
-      padding: 36px 32px;
+    .channel-row {
       display: flex;
-      flex-direction: column;
-      gap: var(--s4);
+      align-items: center;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
     }
-    .step-number {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: rgba(207,254,37,0.1);
-      border: 1px solid var(--border-lime);
+    .channel-row:last-child { border-bottom: none; }
+    .channel-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(168,216,240,0.08);
+      border: 1px solid rgba(168,216,240,0.14);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: var(--text-sm);
-      font-weight: var(--fw-medium);
-      color: var(--lime);
+      font-size: 18px;
       flex-shrink: 0;
     }
-    .provider-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: var(--s6);
+    .channel-info { flex: 1; }
+    .channel-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: white;
+      margin-bottom: 2px;
     }
-    .provider-table th,
-    .provider-table td {
-      padding: 14px 20px;
-      border-bottom: 1px solid var(--border);
-      font-size: var(--text-sm);
-      text-align: left;
-    }
-    .provider-table th {
-      font-size: var(--text-xs);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-      background: var(--bg-card);
-    }
-    .provider-table tr:last-child td { border-bottom: none; }
-    .provider-table td:first-child { color: var(--white); font-weight: var(--fw-medium); }
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+    .channel-desc {
       font-size: 12px;
-      padding: 4px 10px;
-      border-radius: var(--r-pill);
+      color: rgba(210,210,210,0.45);
     }
-    .status-badge--default {
-      background: rgba(207,254,37,0.1);
-      color: var(--lime);
-      border: 1px solid var(--border-lime);
-    }
-    .status-badge--supported {
-      background: rgba(255,255,255,0.06);
-      color: var(--text-muted);
-      border: 1px solid var(--border);
-    }
-    .status-badge--roadmap {
-      background: rgba(255,255,255,0.04);
-      color: var(--text-faint);
-      border: 1px solid var(--border);
-    }
-    .privacy-note {
-      background: rgba(207,254,37,0.04);
-      border: 1px solid var(--border-lime);
-      border-radius: var(--r-lg);
-      padding: 20px 24px;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      margin-top: var(--s6);
-    }
-    .privacy-note-icon {
-      font-size: 20px;
+    .channel-pill {
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-weight: 500;
       flex-shrink: 0;
-      margin-top: 2px;
     }
-    .privacy-note p {
-      font-size: var(--text-sm);
-      color: var(--text-muted);
-      line-height: 1.6;
+    .channel-pill--confirmed {
+      background: rgba(168,216,240,0.1);
+      color: #a8d8f0;
+      border: 1px solid rgba(168,216,240,0.25);
     }
-    .pq-commit-card {
-      background: rgba(207,254,37,0.04);
-      border: 1px solid var(--border-lime);
-      border-radius: var(--r-xl);
-      padding: 40px;
-      margin-top: var(--s6);
-      display: flex;
-      flex-direction: column;
-      gap: var(--s4);
+    .channel-pill--pending {
+      background: rgba(255,255,255,0.05);
+      color: rgba(210,210,210,0.45);
+      border: 1px solid rgba(255,255,255,0.1);
     }
-    .pq-commit-card h3 {
-      font-size: 20px;
-      font-weight: var(--fw-medium);
-      letter-spacing: -0.03em;
-      color: var(--white);
+    .channel-approved-banner {
+      margin-top: 20px;
+      background: rgba(168,216,240,0.07);
+      border: 1px solid rgba(168,216,240,0.2);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: #a8d8f0;
+      text-align: center;
+      font-weight: 500;
     }
-    .pq-commit-card p {
-      font-size: var(--text-sm);
-      color: var(--text-muted);
-      line-height: 1.6;
-      max-width: 680px;
-    }
-    .disclose-grid {
+    .dual-col-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s5);
+      align-items: start;
     }
-    .disclose-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--r-xl);
+    .auth-channel-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      padding: 5px 12px;
+      border-radius: 100px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      color: rgba(210,210,210,0.65);
+      margin: 4px 4px 4px 0;
+    }
+    .auth-channel-badge::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #a8d8f0;
+      flex-shrink: 0;
+    }
+    .table-card {
+      background: #0d0d10;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
       padding: 40px;
-      display: flex;
-      flex-direction: column;
-      gap: var(--s4);
-      transition: border-color var(--t-fast);
-    }
-    .disclose-card:hover { border-color: rgba(255,255,255,0.16); }
-    .disclose-card-icon {
-      font-size: 32px;
-    }
-    .disclose-card h3 {
-      font-size: 20px;
-      font-weight: var(--fw-medium);
-      letter-spacing: -0.03em;
-      color: var(--white);
-    }
-    .disclose-card p {
-      font-size: var(--text-sm);
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-    .disclose-card a {
-      font-size: var(--text-sm);
-      color: var(--lime);
-      font-weight: var(--fw-medium);
-      transition: opacity var(--t-fast);
-    }
-    .disclose-card a:hover { opacity: 0.75; }
-    .timeline-right-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--r-xl);
-      padding: 36px;
-    }
-    .timeline-right-card h4 {
-      font-size: 17px;
-      font-weight: var(--fw-medium);
-      letter-spacing: -0.02em;
-      color: var(--white);
-      margin-bottom: var(--s6);
+      overflow: hidden;
     }
     @media (max-width: 1024px) {
-      .arch-grid { grid-template-columns: repeat(2, 1fr); }
-      .dual-grid { grid-template-columns: 1fr; }
-      .steps-grid { grid-template-columns: 1fr; }
-      .disclose-grid { grid-template-columns: 1fr; }
+      .dual-col-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
-      .arch-grid { grid-template-columns: 1fr; }
+      .table-card { padding: 24px 16px; }
     }
   </style>
 </head>
 <body>
+<div class="page-wrapper">
 
-<!-- ═══════════════════ NAV ═══════════════════ -->
-<header class="site-header" id="header">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">
-      <svg class="nav-logo-icon" width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <path d="M14 2C8.477 2 4 6.477 4 12c0 3.5 1.8 6.6 4.5 8.5L6 26h16l-2.5-5.5C22.2 18.6 24 15.5 24 12c0-5.523-4.477-10-10-10z" fill="rgb(207,254,37)"/>
-        <circle cx="10.5" cy="11" r="1.5" fill="rgb(1,1,4)"/>
-      </svg>
-      <span class="nav-logo-text">Morrigan</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="features.html">Features</a></li>
-      <li><a href="security.html" class="active">Security</a></li>
-      <li><a href="donate.html">Donate</a></li>
-    </ul>
-    <div class="nav-cta">
-      <a href="login.html" class="btn-nav btn-nav--ghost">Sign In</a>
-      <a href="signup.html" class="btn-nav btn-nav--white">Get Started</a>
+<!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+<section class="hero-v1">
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="navbar-wrap">
+
+        <!-- Brand -->
+        <a href="index.html" class="navbar-brand">
+          <svg class="navbar-brand-logo" width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M16 2C9.373 2 4 7.373 4 14c0 4 2.059 7.54 5.143 9.714L7 30h18l-2.143-6.286C25.941 21.54 28 18 28 14c0-6.627-5.373-12-12-12z" fill="#a8d8f0"/>
+            <circle cx="12" cy="13" r="1.8" fill="#010104"/>
+          </svg>
+          <span class="navbar-brand-text">Morrigan</span>
+        </a>
+
+        <!-- Desktop links -->
+        <div class="nav-links-wrap">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="features.html" class="nav-link">Features</a>
+          <a href="security.html" class="nav-link active">Security</a>
+          <a href="donate.html" class="nav-link">Donate</a>
+        </div>
+
+        <!-- Desktop CTA -->
+        <div class="nav-right">
+          <a href="login.html" class="btn-nav-ghost">Sign In</a>
+          <a href="signup.html" class="btn-nav-white">Get Started</a>
+        </div>
+
+        <!-- Mobile hamburger -->
+        <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
     </div>
-    <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="index.html">Home</a>
+    <a href="features.html">Features</a>
+    <a href="security.html">Security</a>
+    <a href="donate.html">Donate</a>
+    <div class="mobile-ctas">
+      <a href="login.html" class="btn btn--ghost">Sign In</a>
+      <a href="signup.html" class="btn btn--blue">Get Started</a>
+    </div>
   </div>
-</header>
-<div class="nav-mobile" id="nav-mobile">
-  <a href="index.html">Home</a>
-  <a href="features.html">Features</a>
-  <a href="security.html">Security</a>
-  <a href="donate.html">Donate</a>
-  <div class="mobile-ctas">
-    <a href="login.html" class="btn btn--outline">Sign In</a>
-    <a href="signup.html" class="btn btn--lime">Get Started</a>
+
+  <!-- ═══ HERO ═══ -->
+  <canvas id="stars"></canvas>
+  <div class="hero-v1-wrap">
+    <div class="container hero">
+      <div class="hero-v1-content">
+
+        <div class="badge-wrap reveal">
+          <div class="badge-dot"></div>
+          <span class="badge-text">Security Model — Zero Knowledge</span>
+        </div>
+
+        <div class="hero-heading-wrap">
+          <h1 class="text-center reveal">We cannot read<br>your vault.</h1>
+        </div>
+
+        <div class="hero-subtitle-wrap reveal">
+          <p class="text-center">That's not a marketing claim — it's a technical constraint. Morrigan's architecture is designed so that even a full server compromise reveals only encrypted ciphertext.</p>
+        </div>
+
+        <div class="hero-button-wrap reveal">
+          <a href="https://github.com/paulfxyz/morrigan" target="_blank" class="btn btn--blue">
+            Audit the source
+            <svg class="btn-arrow" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="signup.html" class="btn btn--ghost">Get Started</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ MARQUEE ═══════════════════════ -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><div class="marquee-item-dot"></div>XChaCha20-Poly1305</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Argon2id KDF</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Shamir's Secret Sharing</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Bitcoin Anchoring</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>3-Channel Identity</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Dead Man's Switch</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Zero Knowledge</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>AGPLv3 Open Source</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Client-Side Encryption</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>OpenTimestamps</div>
+    <!-- Duplicate for infinite loop -->
+    <div class="marquee-item"><div class="marquee-item-dot"></div>XChaCha20-Poly1305</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Argon2id KDF</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Shamir's Secret Sharing</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Bitcoin Anchoring</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>3-Channel Identity</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Dead Man's Switch</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Zero Knowledge</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>AGPLv3 Open Source</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>Client-Side Encryption</div>
+    <div class="marquee-item"><div class="marquee-item-dot"></div>OpenTimestamps</div>
   </div>
 </div>
 
-<!-- ═══════════════════ HERO ═══════════════════ -->
-<section class="hero section-pad" style="padding-top:120px; min-height:70vh;">
-  <canvas id="stars"></canvas>
-  <div class="hero-content">
-    <div class="eyebrow reveal">
-      <span class="eyebrow-dot"></span>
-      Security
-    </div>
-    <h1 class="reveal">
-      Zero-knowledge.<br>Zero compromise.
-    </h1>
-    <p class="hero-sub reveal">
-      Morrigan was designed from the ground up with one principle: we should never be able to read your data, even if we wanted to.
-    </p>
-    <div class="hero-ctas reveal">
-      <a href="https://github.com/paulfxyz/morrigan" target="_blank" class="btn btn--lime">View on GitHub</a>
-      <a href="features.html" class="btn btn--outline">All Features</a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ ARCHITECTURE ═══════════════════ -->
-<section class="section-pad">
+<!-- ═══════════════════════ INTRO / CRYPTO STATS ═══════════════════════ -->
+<section class="intro">
   <div class="container">
-    <div class="section-header reveal">
-      <div class="eyebrow"><span class="eyebrow-dot"></span>Architecture</div>
-      <h2 class="section-heading section-heading--center">How your vault is protected.</h2>
-      <p class="section-body section-body--center">Three principles guide every architectural decision we make.</p>
-    </div>
-    <div class="arch-grid">
-      <div class="feature-card reveal">
-        <div class="feature-card-icon">💻</div>
-        <h3>Client-Side Only</h3>
-        <p>Encryption and decryption occur entirely within your browser using the Web Cryptography API and libsodium.js. Your passphrase and plaintext never cross the network boundary.</p>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-card-icon">🚫</div>
-        <h3>Zero Server Knowledge</h3>
-        <p>Our servers receive only ciphertext and metadata. We cannot read vault contents, cannot reset passphrases, and cannot assist with decryption — by design, not by policy.</p>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-card-icon">🔍</div>
-        <h3>Open for Audit</h3>
-        <p>Every line of code is public on GitHub. Security researchers, cryptographers, and users can inspect, audit, and verify every claim we make about the system's behaviour.</p>
+    <div class="section-header-wrap reveal">
+      <div class="section-header-content">
+        <div class="badge-wrap">
+          <div class="badge-dot"></div>
+          <span class="badge-text">Cryptographic Foundation</span>
+        </div>
+        <div class="section-header-text-wrap">
+          <h2>Built on provable<br>cryptographic primitives.</h2>
+          <p>Every component of Morrigan's security model is based on peer-reviewed, publicly audited algorithms. No proprietary ciphers. No homegrown schemes. Just the gold standard.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ═══════════════════ CRYPTOGRAPHY ACCORDION ═══════════════════ -->
-<section class="faq-section">
-  <div class="container container--narrow">
-    <div class="section-header reveal">
-      <div class="eyebrow"><span class="eyebrow-dot"></span>Cryptography</div>
-      <h2 class="section-heading section-heading--center">The cryptographic stack, explained.</h2>
-      <p class="section-body section-body--center">No marketing language. No hand-waving. Here is exactly what we use and why.</p>
-    </div>
-    <div class="faq-list accordion">
-
-      <div class="faq-item accordion-item reveal">
-        <button class="faq-trigger accordion-trigger">
-          <span class="faq-question">XChaCha20-Poly1305 — authenticated stream encryption</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-body accordion-body">
-          <p class="faq-answer">XChaCha20-Poly1305 is an authenticated encryption with associated data (AEAD) cipher. It combines the XChaCha20 stream cipher with the Poly1305 MAC. The extended nonce variant (192-bit) eliminates random nonce collision risk, making it safe to generate nonces randomly for any practical lifetime of the application. It is audited as part of libsodium, used by WireGuard, and is a TLS 1.3 cipher suite. Unlike AES-GCM, it does not degrade under hardware that lacks AES acceleration and has no known related-nonce attacks.</p>
-        </div>
+    <div class="intro-main-wrap" style="grid-template-columns: repeat(3, 1fr);">
+      <!-- Card 1 -->
+      <div class="intro-left reveal">
+        <div class="intro-card-label">Authenticated encryption</div>
+        <div class="intro-card-number">XChaCha20<span style="font-size:0.45em; vertical-align:middle;">-Poly1305</span></div>
+        <p class="intro-card-desc">Poly1305 AEAD authenticated encryption. Best-in-class stream cipher with 192-bit nonce — eliminates nonce reuse risk vs AES-GCM.</p>
       </div>
 
-      <div class="faq-item accordion-item reveal">
-        <button class="faq-trigger accordion-trigger">
-          <span class="faq-question">Argon2id KDF — memory-hard key derivation</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-body accordion-body">
-          <p class="faq-answer">Argon2id won the Password Hashing Competition in 2015 and is the OWASP-recommended algorithm for password hashing and key derivation. Morrigan uses Argon2id with 64MB memory requirement and 3 iterations. The memory-hard property means that an attacker who wants to brute-force your passphrase must pay 64MB of RAM per guess — making GPU farms and ASICs economically impractical. The "id" variant combines data-dependent and data-independent memory access patterns, resisting both side-channel and time-memory trade-off attacks.</p>
-        </div>
+      <!-- Card 2 -->
+      <div class="intro-right-top reveal">
+        <div class="intro-card-label">Key derivation</div>
+        <div class="intro-card-number">Argon2id</div>
+        <p class="intro-card-desc">Memory-hard key derivation. Your passphrase → vault key. Resistant to GPU and ASIC attacks. The passphrase never crosses the network.</p>
       </div>
 
-      <div class="faq-item accordion-item reveal">
-        <button class="faq-trigger accordion-trigger">
-          <span class="faq-question">Shamir's Secret Sharing — distributed key recovery</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-body accordion-body">
-          <p class="faq-answer">Shamir's Secret Sharing (SSS) is an information-theoretically secure scheme. Your vault key is split into N shares such that any M shares can reconstruct the secret, but M−1 shares reveal absolutely zero information. This is not just computationally secure — it is provably impossible to recover anything with fewer than M shares, regardless of compute power. Morrigan uses this to enable vault recovery without a centralised key escrow. Recommended: 2-of-3 or 3-of-5 configurations distributed to family members, a lawyer, and a trusted friend.</p>
-        </div>
+      <!-- Card 3 -->
+      <div class="intro-right-bottom reveal">
+        <div class="intro-card-label">Key splitting</div>
+        <div class="intro-card-number">Shamir<span style="font-size:0.45em; vertical-align:middle;"> SSS</span></div>
+        <p class="intro-card-desc">Information-theoretically secure secret sharing. Split your key into N shares. Require any M to reconstruct.</p>
       </div>
-
-      <div class="faq-item accordion-item reveal">
-        <button class="faq-trigger accordion-trigger">
-          <span class="faq-question">OpenTimestamps — Bitcoin blockchain anchoring</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-body accordion-body">
-          <p class="faq-answer">OpenTimestamps is an open-source protocol that creates Bitcoin-anchored timestamp proofs. Morrigan computes a SHA-256 hash of your encrypted vault, aggregates it into a Merkle tree with thousands of other hashes, and commits the Merkle root to a Bitcoin block. The resulting .ots proof file allows any observer to independently verify that your specific vault hash existed before a given Bitcoin block timestamp. The proof does not require Morrigan's existence to verify — only a Bitcoin node. This creates a legally meaningful, tamper-evident record entirely independent of our infrastructure.</p>
-        </div>
-      </div>
-
-      <div class="faq-item accordion-item reveal">
-        <button class="faq-trigger accordion-trigger">
-          <span class="faq-question">Argon2id vs bcrypt vs scrypt — why we chose Argon2id</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-body accordion-body">
-          <p class="faq-answer">bcrypt is limited to 72-byte inputs and has a static memory cost (4KB), making it vulnerable to modern GPU attacks. scrypt is more memory-hard but has poor parallelism resistance. Argon2id is specifically designed to defeat three classes of attacker simultaneously: GPU farms (memory-hard), ASICs (memory-hard + time-memory tradeoff resistance), and side-channel attacks (data-independent memory access). It was selected after an international competition with over 20 candidates. For key derivation — not just password storage — Argon2id is the only recommendation from OWASP, NIST SP 800-63B, and the Argon2 team.</p>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════ 3-CHANNEL IDENTITY ═══════════════════ -->
-<section class="section-pad">
+<!-- ═══════════════════════ ENCRYPTION MODEL ═══════════════════════ -->
+<section class="features">
   <div class="container">
-    <div class="section-header reveal">
-      <div class="eyebrow"><span class="eyebrow-dot"></span>Identity</div>
-      <h2 class="section-heading section-heading--center">Three channels. Two required.</h2>
-      <p class="section-body section-body--center">Morrigan provides three independent identity channels — Email OTP, Phone SMS, and TOTP authenticator. At least two must confirm before any sensitive action proceeds. One compromised channel is never enough.</p>
+    <div class="section-header-wrap reveal">
+      <div class="section-header-content large">
+        <div class="badge-wrap">
+          <div class="badge-dot"></div>
+          <span class="badge-text">Encryption Model</span>
+        </div>
+        <div class="section-header-text-wrap">
+          <h2>How your vault is protected.</h2>
+          <p>Four layers of cryptographic protection, each independently verifiable. No single point of failure.</p>
+        </div>
+      </div>
     </div>
 
-    <!-- Channel overview cards -->
-    <div class="arch-grid" style="margin-bottom:var(--s8);">
+    <div class="features-grid">
+
       <div class="feature-card reveal">
-        <div class="feature-card-icon">✉️</div>
-        <h3>Channel 1 — Email OTP</h3>
-        <p>A time-limited one-time code sent to your verified email address. Confirms you control the account's primary identity anchor.</p>
+        <div class="feature-card-icon">🔐</div>
+        <h5>Client-Side Encryption</h5>
+        <p>libsodium.js runs entirely in your browser. Your vault key is derived from your passphrase using Argon2id — locally. The key never leaves your device. Only ciphertext is sent to our servers.</p>
       </div>
-      <div class="feature-card reveal">
-        <div class="feature-card-icon">📱</div>
-        <h3>Channel 2 — Phone SMS</h3>
-        <p>An OTP delivered via SMS to your registered phone number. Physically separate from your email — compromising email alone is not enough.</p>
-      </div>
+
       <div class="feature-card reveal">
         <div class="feature-card-icon">🔑</div>
-        <h3>Channel 3 — TOTP 2FA</h3>
-        <p>Time-based one-time passwords from any open-source authenticator app — Aegis, Raivo, Google Authenticator, Bitwarden, and others. Works offline. Most phishing-resistant of the three channels.</p>
+        <h5>XChaCha20-Poly1305</h5>
+        <p>A 256-bit authenticated symmetric cipher. Each item is encrypted with a unique random nonce (192-bit). The Poly1305 MAC ensures tamper detection — any modification to the ciphertext is detected and rejected.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-card-icon">⛓</div>
+        <h5>Bitcoin Timestamping</h5>
+        <p>Your vault hash is committed to the Bitcoin blockchain via OpenTimestamps. This creates a tamper-evident proof of existence that is verifiable by any Bitcoin node — entirely independent of Morrigan's servers.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-card-icon">🔢</div>
+        <h5>Argon2id KDF</h5>
+        <p>When you create your vault, your passphrase is stretched through Argon2id (memory-hard, time-hard). The resulting key never leaves your browser. If an attacker steals the database, they get only ciphertext — brute-forcing requires enormous compute per guess.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 3-CHANNEL IDENTITY ═══════════════════════ -->
+<section class="section-pad">
+  <div class="container">
+    <div class="section-header-wrap reveal">
+      <div class="section-header-content">
+        <div class="badge-wrap">
+          <div class="badge-dot"></div>
+          <span class="badge-text">3-Channel Identity</span>
+        </div>
+        <div class="section-header-text-wrap">
+          <h2>One compromised channel<br>is never enough.</h2>
+        </div>
       </div>
     </div>
 
-    <div class="dual-grid">
-      <!-- Left: action table -->
-      <div class="card reveal" style="padding:0; overflow:hidden;">
-        <div style="padding:28px 28px 0;">
-          <h3 style="font-size:17px;font-weight:var(--fw-medium);letter-spacing:-0.02em;color:var(--white);margin-bottom:4px;">2-of-3 required confirmations</h3>
-          <p style="font-size:var(--text-sm);color:var(--text-muted);">Any two of the three registered channels must confirm. You choose which two.</p>
+    <div class="dual-col-grid" style="margin-top: var(--s8);">
+      <!-- Left: text -->
+      <div class="reveal" style="display:flex;flex-direction:column;gap:var(--s5);">
+        <p style="font-size:var(--text-base);color:var(--text-muted);line-height:1.7;">Morrigan provides three independent identity channels for every account. For any sensitive action, at least 2 of your 3 registered channels must confirm. This is 2-of-3 multi-factor authentication applied to every critical operation.</p>
+
+        <div>
+          <p style="font-size:var(--text-xs);letter-spacing:0.07em;text-transform:uppercase;color:var(--text-faint);margin-bottom:12px;">Protected actions</p>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;">
+            <span class="auth-channel-badge">Sign in</span>
+            <span class="auth-channel-badge">Export vault</span>
+            <span class="auth-channel-badge">Change beneficiaries</span>
+            <span class="auth-channel-badge">Activate dead man's switch</span>
+            <span class="auth-channel-badge">Change email</span>
+          </div>
         </div>
-        <table class="action-table" style="margin-top:var(--s5);">
-          <thead>
-            <tr>
-              <th>Action</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>2FA</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Sign in</td>
-              <td><span class="check-yes">2/3</span></td>
-              <td><span class="check-yes">2/3</span></td>
-              <td><span class="check-yes">2/3</span></td>
-            </tr>
-            <tr>
-              <td>Export vault</td>
-              <td><span class="check-yes">2/3</span></td>
-              <td><span class="check-yes">2/3</span></td>
-              <td><span class="check-yes">2/3</span></td>
-            </tr>
-            <tr>
-              <td>Change beneficiaries</td>
-              <td><span class="check-yes">2/3</span></td>
-              <td><span class="check-yes">2/3</span></td>
-              <td><span class="check-yes">2/3</span></td>
-            </tr>
-            <tr>
-              <td>Switch override</td>
-              <td><span class="check-yes">2/3</span></td>
-              <td><span class="check-yes">2/3</span></td>
-              <td><span class="check-yes">2/3</span></td>
-            </tr>
-            <tr>
-              <td>Change email address</td>
-              <td><span class="check-yes">2/3</span></td>
-              <td><span class="check-yes">2/3</span></td>
-              <td><span class="check-yes">2/3</span></td>
-            </tr>
-          </tbody>
-        </table>
+
+        <p style="font-size:var(--text-sm);color:var(--text-faint);line-height:1.65;">Supported TOTP apps: Aegis, Raivo, Google Authenticator, Bitwarden, any RFC 6238-compliant app.</p>
       </div>
 
-      <!-- Right: auth roadmap -->
-      <div class="timeline-right-card reveal">
-        <h4>Authentication roadmap</h4>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-dot timeline-dot--active">
-              <div class="timeline-dot-inner"></div>
-            </div>
-            <div class="timeline-content">
-              <div class="timeline-year">v1.0.0</div>
-              <div class="timeline-title">Email + SMS</div>
-              <div class="timeline-desc">Dual-channel authentication. Both required for all sensitive actions.</div>
-            </div>
+      <!-- Right: channel mockup card -->
+      <div class="reveal" style="background:#0d0d10;border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:40px;">
+        <p style="font-size:12px;letter-spacing:0.07em;text-transform:uppercase;color:rgba(210,210,210,0.35);margin-bottom:20px;">Identity confirmation</p>
+
+        <!-- Channel 1 -->
+        <div class="channel-row">
+          <div class="channel-icon">✉️</div>
+          <div class="channel-info">
+            <div class="channel-name">Channel 1 — Email OTP</div>
+            <div class="channel-desc">hello@paulfleury.com</div>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-dot timeline-dot--active">
-              <div class="timeline-dot-inner"></div>
-            </div>
-            <div class="timeline-content">
-              <div class="timeline-year">v1.1.0 — Current</div>
-              <div class="timeline-title">3-Channel Identity (2-of-3)</div>
-              <div class="timeline-desc">TOTP authenticator added as a third channel. Any two of email, phone, or authenticator app must confirm sensitive actions. Open-source apps supported: Aegis, Raivo, Google Authenticator.</div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot">
-              <div class="timeline-dot-inner"></div>
-            </div>
-            <div class="timeline-content">
-              <div class="timeline-year">v1.3.0</div>
-              <div class="timeline-title">WebAuthn / Hardware Keys</div>
-              <div class="timeline-desc">YubiKey, Passkeys, and FIDO2 hardware authenticators. Phishing-resistant by cryptographic design. The gold standard for high-value account protection.</div>
-            </div>
-          </div>
-          <div class="timeline-item" style="padding-bottom:0;">
-            <div class="timeline-dot">
-              <div class="timeline-dot-inner"></div>
-            </div>
-            <div class="timeline-content">
-              <div class="timeline-year">v2.0.0</div>
-              <div class="timeline-title">Independent Security Audit</div>
-              <div class="timeline-desc">Third-party cryptographic audit. Bug bounty programme launch. Foundation registration and governance transition.</div>
-            </div>
-          </div>
+          <span class="channel-pill channel-pill--confirmed">✓ Confirmed</span>
         </div>
+
+        <!-- Channel 2 -->
+        <div class="channel-row">
+          <div class="channel-icon">📱</div>
+          <div class="channel-info">
+            <div class="channel-name">Channel 2 — Phone SMS</div>
+            <div class="channel-desc">+351 9•• ••• •••</div>
+          </div>
+          <span class="channel-pill channel-pill--confirmed">✓ Confirmed</span>
+        </div>
+
+        <!-- Channel 3 -->
+        <div class="channel-row">
+          <div class="channel-icon">🔑</div>
+          <div class="channel-info">
+            <div class="channel-name">Channel 3 — TOTP Authenticator</div>
+            <div class="channel-desc">Aegis / Raivo / Google Auth</div>
+          </div>
+          <span class="channel-pill channel-pill--pending">⟳ Pending</span>
+        </div>
+
+        <div class="channel-approved-banner">2 of 3 confirmed — action approved</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════ BLOCKCHAIN ANCHORING ═══════════════════ -->
+<!-- ═══════════════════════ SENSITIVE ACTIONS TABLE ═══════════════════════ -->
 <section class="section-pad">
   <div class="container">
-    <div class="section-header reveal">
-      <div class="eyebrow"><span class="eyebrow-dot"></span>Blockchain</div>
-      <h2 class="section-heading section-heading--center">Bitcoin as your notary.</h2>
-      <p class="section-body section-body--center">A permanently timestamped, tamper-evident record of your vault's existence — anchored in the most secure public ledger ever created.</p>
-    </div>
-
-    <!-- 4-step grid -->
-    <div class="steps-grid">
-      <div class="step-card reveal">
-        <div class="step-number">1</div>
-        <h3 style="font-size:18px;font-weight:var(--fw-medium);letter-spacing:-0.02em;color:var(--white);">Hash</h3>
-        <p style="font-size:var(--text-sm);color:var(--text-muted);line-height:1.6;">A SHA-256 hash is computed from your encrypted vault ciphertext. The hash is a fingerprint — unique to your exact vault contents — without revealing anything about the underlying data.</p>
-      </div>
-      <div class="step-card reveal">
-        <div class="step-number">2</div>
-        <h3 style="font-size:18px;font-weight:var(--fw-medium);letter-spacing:-0.02em;color:var(--white);">Merkle Tree</h3>
-        <p style="font-size:var(--text-sm);color:var(--text-muted);line-height:1.6;">Your hash is combined with thousands of other hashes into a Merkle tree. The tree root is a single value representing all hashes, allowing efficient proof of inclusion without storing all hashes on-chain.</p>
-      </div>
-      <div class="step-card reveal">
-        <div class="step-number">3</div>
-        <h3 style="font-size:18px;font-weight:var(--fw-medium);letter-spacing:-0.02em;color:var(--white);">Bitcoin Anchor</h3>
-        <p style="font-size:var(--text-sm);color:var(--text-muted);line-height:1.6;">The Merkle root is committed to a Bitcoin block via an OP_RETURN transaction. Bitcoin's proof-of-work consensus means the anchor is immutable and timestamped by the global network.</p>
-      </div>
-      <div class="step-card reveal">
-        <div class="step-number">4</div>
-        <h3 style="font-size:18px;font-weight:var(--fw-medium);letter-spacing:-0.02em;color:var(--white);">Proof Receipt</h3>
-        <p style="font-size:var(--text-sm);color:var(--text-muted);line-height:1.6;">You receive a .ots proof file. Anyone — with only a Bitcoin node — can verify that your vault hash existed before a given block time. The proof does not require Morrigan to exist.</p>
+    <div class="section-header-wrap reveal">
+      <div class="section-header-content">
+        <div class="badge-wrap">
+          <div class="badge-dot"></div>
+          <span class="badge-text">Protected Actions</span>
+        </div>
+        <div class="section-header-text-wrap">
+          <h2>What requires multi-channel confirmation.</h2>
+          <p>Every action that touches your vault's security or delivery requires 2 of your 3 registered channels to confirm.</p>
+        </div>
       </div>
     </div>
 
-    <!-- Provider table -->
-    <div class="card reveal" style="padding:0; overflow:hidden; margin-top:var(--s8);">
-      <div style="padding:28px 28px 0;">
-        <h3 style="font-size:17px;font-weight:var(--fw-medium);letter-spacing:-0.02em;color:var(--white);">Blockchain providers</h3>
-      </div>
-      <table class="provider-table">
+    <div class="table-card reveal" style="margin-top:var(--s8);">
+      <table class="action-table">
         <thead>
           <tr>
-            <th>Provider</th>
-            <th>Chain</th>
-            <th>Status</th>
-            <th>Type</th>
+            <th>Action</th>
+            <th>Email OTP</th>
+            <th>Phone SMS</th>
+            <th>TOTP</th>
+            <th>Min. Required</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>OpenTimestamps</td>
-            <td style="color:var(--text-muted);">Bitcoin</td>
-            <td><span class="status-badge status-badge--default">Default</span></td>
-            <td style="color:var(--text-muted);">Open Source</td>
+            <td>Sign in</td>
+            <td><span class="check-yes">✓</span></td>
+            <td><span class="check-yes">✓</span></td>
+            <td><span class="check-yes">✓</span></td>
+            <td style="color:var(--text-muted);">2 of 3</td>
           </tr>
           <tr>
-            <td>Chainpoint v3</td>
-            <td style="color:var(--text-muted);">Bitcoin</td>
-            <td><span class="status-badge status-badge--supported">Supported</span></td>
-            <td style="color:var(--text-muted);">Open Protocol</td>
+            <td>Export vault</td>
+            <td><span class="check-yes">✓</span></td>
+            <td><span class="check-yes">✓</span></td>
+            <td><span class="check-yes">✓</span></td>
+            <td style="color:var(--text-muted);">2 of 3</td>
           </tr>
           <tr>
-            <td>Custom EVM</td>
-            <td style="color:var(--text-muted);">EVM-compatible</td>
-            <td><span class="status-badge status-badge--roadmap">Roadmap</span></td>
-            <td style="color:var(--text-muted);">Configurable</td>
+            <td>Change beneficiaries</td>
+            <td><span class="check-yes">✓</span></td>
+            <td><span class="check-yes">✓</span></td>
+            <td><span class="check-yes">✓</span></td>
+            <td style="color:var(--text-muted);">2 of 3</td>
+          </tr>
+          <tr>
+            <td>Activate switch</td>
+            <td><span class="check-yes">✓</span></td>
+            <td><span class="check-yes">✓</span></td>
+            <td><span class="check-yes">✓</span></td>
+            <td style="color:var(--text-muted);">2 of 3</td>
+          </tr>
+          <tr>
+            <td>Change email</td>
+            <td><span class="check-yes">✓</span></td>
+            <td><span class="check-yes">✓</span></td>
+            <td><span class="check-yes">✓</span></td>
+            <td style="color:var(--text-muted);">2 of 3</td>
           </tr>
         </tbody>
       </table>
     </div>
+  </div>
+</section>
 
-    <!-- Privacy note -->
-    <div class="privacy-note reveal">
-      <div class="privacy-note-icon">🔒</div>
-      <div>
-        <p><strong style="color:var(--white);font-weight:var(--fw-medium);">Your content never touches the blockchain.</strong> Only a SHA-256 hash of your encrypted ciphertext is committed. The hash is a mathematical fingerprint — it reveals nothing about your vault's contents, size, or structure. Even with unlimited compute, a hash cannot be reversed.</p>
+<!-- ═══════════════════════ OPEN SOURCE COMMITMENT ═══════════════════════ -->
+<section class="features">
+  <div class="container">
+    <div class="section-header-wrap reveal">
+      <div class="section-header-content large">
+        <div class="badge-wrap">
+          <div class="badge-dot"></div>
+          <span class="badge-text">Open Source</span>
+        </div>
+        <div class="section-header-text-wrap">
+          <h2>The code never lies.</h2>
+          <p>Security by obscurity is not security. Every claim we make is verifiable by anyone with a GitHub account and a critical eye.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="features-grid">
+
+      <div class="feature-card reveal">
+        <div class="feature-card-icon">🔍</div>
+        <h5>Fully Auditable</h5>
+        <p>Every line of encryption code is on GitHub. Security researchers can read, fork, and challenge the implementation. No security by obscurity.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-card-icon">📋</div>
+        <h5>AGPLv3 License</h5>
+        <p>The strongest copyleft license. Any derivative work must also be open source. Morrigan cannot be turned into a closed-source product.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-card-icon">🏠</div>
+        <h5>Self-Hostable</h5>
+        <p>Don't trust our servers? Run your own. The full stack is documented in INSTALL.md with Docker and manual instructions.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FAQ ═══════════════════════ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="section-header-wrap reveal">
+      <div class="section-header-content">
+        <div class="badge-wrap">
+          <div class="badge-dot"></div>
+          <span class="badge-text">Security FAQ</span>
+        </div>
+        <div class="section-header-text-wrap">
+          <h2>Security questions answered.</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-list accordion" style="max-width:760px; margin:0 auto;">
+
+      <div class="faq-item accordion-item reveal">
+        <button class="faq-trigger accordion-trigger">
+          <span class="faq-question">Is client-side encryption truly zero-knowledge?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-body accordion-body">
+          <p class="faq-answer">Yes. The encryption and decryption happen in your browser using libsodium.js. Your passphrase and plaintext vault content never leave your device. Our servers receive only the encrypted ciphertext. We have no mechanism to decrypt it — even under legal compulsion or in the event of a breach.</p>
+        </div>
+      </div>
+
+      <div class="faq-item accordion-item reveal">
+        <button class="faq-trigger accordion-trigger">
+          <span class="faq-question">What happens if I forget my passphrase?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-body accordion-body">
+          <p class="faq-answer">We cannot reset or recover your passphrase — by design. If you lose it, access to your vault is permanently lost. This is the unavoidable tradeoff of zero-knowledge encryption. We strongly recommend storing your passphrase using a password manager and distributing Shamir shares to trusted people.</p>
+        </div>
+      </div>
+
+      <div class="faq-item accordion-item reveal">
+        <button class="faq-trigger accordion-trigger">
+          <span class="faq-question">Can the Bitcoin timestamping be verified independently?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-body accordion-body">
+          <p class="faq-answer">Yes. Your vault's OpenTimestamps proof can be verified using any Bitcoin node or the OpenTimestamps.org verifier. The proof is independent of Morrigan's servers and survives their shutdown.</p>
+        </div>
+      </div>
+
+      <div class="faq-item accordion-item reveal">
+        <button class="faq-trigger accordion-trigger">
+          <span class="faq-question">What ciphers does Morrigan use?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-body accordion-body">
+          <p class="faq-answer">XChaCha20-Poly1305 for symmetric encryption (via libsodium.js), Argon2id for key derivation, Shamir's Secret Sharing for key splitting, and SHA-256 for vault integrity hashes. All are implemented through libsodium, the gold standard for cryptographic libraries.</p>
+        </div>
+      </div>
+
+      <div class="faq-item accordion-item reveal">
+        <button class="faq-trigger accordion-trigger">
+          <span class="faq-question">Has Morrigan been audited?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-body accordion-body">
+          <p class="faq-answer">Not yet by a formal third-party audit — that is planned for v2.0.0. The code is fully open-source and we invite security researchers to review it on GitHub. A responsible disclosure policy is available at SECURITY.md.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ CTA ═══════════════════════ -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-card reveal">
+      <div class="cta-glow"></div>
+      <div class="badge-wrap">
+        <div class="badge-dot"></div>
+        <span class="badge-text">Open source · Auditable · AGPLv3</span>
+      </div>
+      <h2>Read the code.<br>Trust the math.</h2>
+      <p style="max-width:480px;">Morrigan's security is not a promise — it's a provable property of its cryptographic architecture. Fork it. Audit it. Self-host it.</p>
+      <div class="cta-button-wrap">
+        <a href="https://github.com/paulfxyz/morrigan" target="_blank" class="btn btn--blue btn--lg">
+          View source on GitHub
+          <svg class="btn-arrow" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="signup.html" class="btn btn--ghost btn--lg">Get Started</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════ POST-QUANTUM ═══════════════════ -->
-<section class="section-pad">
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer class="footer">
   <div class="container">
-    <div class="section-header reveal">
-      <div class="eyebrow"><span class="eyebrow-dot"></span>Post-Quantum</div>
-      <h2 class="section-heading section-heading--center">Quantum-resistant by roadmap.</h2>
-      <p class="section-body section-body--center">Quantum computers will render RSA and ECC obsolete within this decade. Morrigan is already building the migration path.</p>
-    </div>
-    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:var(--s5);">
-      <div class="integration-card reveal">
-        <div class="integration-card-top">
-          <div class="integration-icon">🔷</div>
-          <span class="integration-badge">v0.5.0</span>
-        </div>
-        <h3>Kyber-1024</h3>
-        <p>NIST-selected KEM (CRYSTALS-Kyber). Provides 256-bit post-quantum security for key encapsulation. Replaces ECDH for key exchange with a hybrid classical+PQ scheme.</p>
-      </div>
-      <div class="integration-card reveal">
-        <div class="integration-card-top">
-          <div class="integration-icon">✍️</div>
-          <span class="integration-badge">v0.5.0</span>
-        </div>
-        <h3>Dilithium</h3>
-        <p>NIST-selected digital signature scheme (CRYSTALS-Dilithium). Lattice-based. Replaces ECDSA for vault signing and integrity verification.</p>
-      </div>
-      <div class="integration-card reveal">
-        <div class="integration-card-top">
-          <div class="integration-icon">🌳</div>
-          <span class="integration-badge">v0.6.0</span>
-        </div>
-        <h3>SPHINCS+</h3>
-        <p>Hash-based signature scheme with minimal security assumptions. Stateless and conservative — security relies only on hash function properties, not lattice hardness.</p>
-      </div>
-      <div class="integration-card reveal">
-        <div class="integration-card-top">
-          <div class="integration-icon">🔒</div>
-          <span class="integration-badge">v0.6.0</span>
-        </div>
-        <h3>HQC</h3>
-        <p>Backup KEM based on error-correcting codes. Provides algorithm diversity — independent of lattice hardness assumptions, offering a second post-quantum path.</p>
-      </div>
-    </div>
+    <div class="footer-wrap">
 
-    <!-- Foundation commitment card -->
-    <div class="pq-commit-card reveal">
-      <div class="feature-card-icon" style="font-size:24px;">📋</div>
-      <h3>A non-profit charter commitment</h3>
-      <p>Morrigan is a non-profit foundation. Our charter includes an explicit obligation to upgrade to the strongest available encryption standards as the threat landscape evolves. This is not aspirational — it is a founding obligation. When quantum computers make today's algorithms obsolete, we are legally committed to migrating all vaults to post-quantum alternatives, at no cost to users.</p>
-      <a href="https://github.com/paulfxyz/morrigan" target="_blank" class="btn btn--lime" style="margin-top:var(--s2); align-self:flex-start;">Read the Charter</a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ RESPONSIBLE DISCLOSURE ═══════════════════ -->
-<section class="section-pad">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="eyebrow"><span class="eyebrow-dot"></span>Security Policy</div>
-      <h2 class="section-heading section-heading--center">Found a vulnerability?</h2>
-      <p class="section-body section-body--center">We take security disclosures seriously. Please report responsibly — we commit to a 48-hour acknowledgement and a 90-day fix window for all valid reports.</p>
-    </div>
-    <div class="disclose-grid">
-      <div class="disclose-card reveal">
-        <div class="disclose-card-icon">📧</div>
-        <h3>Email disclosure</h3>
-        <p>Send a detailed report to our security team. PGP encryption available. We respond within 48 hours with an acknowledgement and triage assessment.</p>
-        <a href="mailto:security@morrigan.life">security@morrigan.life</a>
-        <p style="font-size:var(--text-xs);color:var(--text-faint);">Please do not disclose publicly until we have had a chance to address the issue.</p>
-      </div>
-      <div class="disclose-card reveal">
-        <div class="disclose-card-icon">💻</div>
-        <h3>GitHub security advisories</h3>
-        <p>Use GitHub's private vulnerability reporting feature to submit a security advisory directly in the repository. Preferred for code-specific issues.</p>
-        <a href="https://github.com/paulfxyz/morrigan/security/advisories/new" target="_blank">github.com/paulfxyz/morrigan</a>
-        <p style="font-size:var(--text-xs);color:var(--text-faint);">Bug bounty programme launching with v1.0 stable release.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ CTA BANNER ═══════════════════ -->
-<section class="cta-banner">
-  <div class="container">
-    <div class="cta-banner-inner reveal">
-      <h2>Trust begins with transparency.</h2>
-      <p>Read every line of code. Inspect every cryptographic claim. We have nothing to hide — because we cannot hide anything even if we tried.</p>
-      <div class="cta-banner-btns">
-        <a href="https://github.com/paulfxyz/morrigan" target="_blank" class="btn btn--lime">View on GitHub</a>
-        <a href="features.html" class="btn btn--outline">Explore Features</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ FOOTER ═══════════════════ -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
       <div class="footer-brand">
         <div class="footer-brand-logo">
-          <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
-            <path d="M14 2C8.477 2 4 6.477 4 12c0 3.5 1.8 6.6 4.5 8.5L6 26h16l-2.5-5.5C22.2 18.6 24 15.5 24 12c0-5.523-4.477-10-10-10z" fill="rgb(207,254,37)"/>
-            <circle cx="10.5" cy="11" r="1.5" fill="rgb(1,1,4)"/>
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+            <path d="M16 2C9.373 2 4 7.373 4 14c0 4 2.059 7.54 5.143 9.714L7 30h18l-2.143-6.286C25.941 21.54 28 18 28 14c0-6.627-5.373-12-12-12z" fill="#a8d8f0"/>
+            <circle cx="12" cy="13" r="1.8" fill="#010104"/>
           </svg>
-          <span class="footer-brand-logo-text">Morrigan</span>
+          <span style="font-size:16px;font-weight:500;letter-spacing:-0.03em;color:white;">Morrigan</span>
         </div>
-        <p class="footer-tagline">Your legacy, sealed in light.<br>Non-profit foundation · Open source forever.</p>
+        <p class="footer-tagline">Open-source digital legacy platform. Zero-knowledge. Non-profit. For everyone who has ever wondered what happens after.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="font-size:12px;padding:4px 10px;border-radius:100px;border:1px solid rgba(255,255,255,0.1);color:rgba(210,210,210,0.6);">AGPLv3</span>
+          <span style="font-size:12px;padding:4px 10px;border-radius:100px;border:1px solid rgba(255,255,255,0.1);color:rgba(210,210,210,0.6);">Non-profit</span>
+          <span style="font-size:12px;padding:4px 10px;border-radius:100px;border:1px solid rgba(168,216,240,0.2);color:#a8d8f0;">v1.1.0</span>
+        </div>
       </div>
-      <div>
-        <p class="footer-col-heading">Navigate</p>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="features.html">Features</a></li>
-          <li><a href="security.html">Security</a></li>
-          <li><a href="donate.html">Donate</a></li>
-        </ul>
+
+      <div class="footer-column">
+        <h6>Product</h6>
+        <div class="footer-menu-list">
+          <a href="features.html" class="footer-link">Features</a>
+          <a href="security.html" class="footer-link active">Security</a>
+          <a href="donate.html" class="footer-link">Donate</a>
+          <a href="https://github.com/paulfxyz/morrigan" target="_blank" class="footer-link">GitHub</a>
+        </div>
       </div>
-      <div>
-        <p class="footer-col-heading">Platform</p>
-        <ul class="footer-links">
-          <li><a href="login.html">Sign In</a></li>
-          <li><a href="signup.html">Create Vault</a></li>
-          <li><a href="https://github.com/paulfxyz/morrigan" target="_blank">GitHub</a></li>
-          <li><a href="#">Changelog</a></li>
-        </ul>
+
+      <div class="footer-column">
+        <h6>Platform</h6>
+        <div class="footer-menu-list">
+          <a href="login.html" class="footer-link">Sign In</a>
+          <a href="signup.html" class="footer-link">Get Started</a>
+          <a href="https://github.com/paulfxyz/morrigan/blob/main/INSTALL.md" target="_blank" class="footer-link">Self-host</a>
+          <a href="https://github.com/paulfxyz/morrigan/blob/main/CHANGELOG.md" target="_blank" class="footer-link">Changelog</a>
+        </div>
       </div>
-      <div>
-        <p class="footer-col-heading">Foundation</p>
-        <ul class="footer-links">
-          <li><a href="mailto:hello@morrigan.life">hello@morrigan.life</a></li>
-          <li><a href="https://morrigan.life">morrigan.life</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
-        </ul>
+
+      <div class="footer-column">
+        <h6>Legal</h6>
+        <div class="footer-menu-list">
+          <a href="https://github.com/paulfxyz/morrigan/blob/main/LICENSE" target="_blank" class="footer-link">AGPLv3 License</a>
+          <a href="https://github.com/paulfxyz/morrigan/blob/main/SECURITY.md" target="_blank" class="footer-link">Security Policy</a>
+          <a href="https://github.com/paulfxyz/morrigan/blob/main/CODE_OF_CONDUCT.md" target="_blank" class="footer-link">Code of Conduct</a>
+          <a href="mailto:hello@paulfleury.com" class="footer-link">Contact</a>
+        </div>
       </div>
+
     </div>
+
     <div class="footer-bottom">
-      <span class="footer-copyright">© 2026 Morrigan Foundation. Open-source, non-profit.</span>
-      <div class="footer-bottom-links">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="https://github.com/paulfxyz/morrigan">GitHub</a>
+      <p class="footer-copy">© 2026 Morrigan Foundation. Built with ❤️ + AI in Lisbon 🇵🇹</p>
+      <div class="footer-social">
+        <a href="https://github.com/paulfxyz/morrigan" target="_blank" class="footer-social-link" aria-label="GitHub">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        </a>
+        <a href="mailto:hello@paulfleury.com" class="footer-social-link" aria-label="Email">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8l10 6 10-6"/></svg>
+        </a>
       </div>
     </div>
   </div>
 </footer>
 
-<script src="main.js" defer></script>
+</div><!-- end page-wrapper -->
+<script src="main.js"></script>
 </body>
 </html>
