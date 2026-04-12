@@ -1,34 +1,34 @@
 /* ══════════════════════════════════════════════════
    MORRIGAN — LANDING PAGE STYLESHEET
-   Design: Anthropic-inspired editorial · Warm cream · Playfair Display
+   Design: Anthropic-inspired editorial · Warm cream · Zodiak + Satoshi
    Palette: Warm parchment · Near-black · Deep teal
 ══════════════════════════════════════════════════ */
 
 /* ─── DESIGN TOKENS ──────────────────────────── */
 :root {
   /* Palette */
-  --color-bg:              #EDEAE2;
-  --color-bg-alt:          #E4E0D6;
-  --color-dark:            #141210;
-  --color-dark-2:          #1E1C19;
-  --color-text:            #1A1916;
-  --color-text-muted:      #6B6760;
-  --color-text-faint:      #A09C96;
-  --color-text-inv:        #F0EDE6;
-  --color-text-inv-muted:  rgba(240, 237, 230, 0.6);
-  --color-teal:            #1B7A82;
-  --color-teal-light:      #EBF4F5;
-  --color-gold:            #8A6018;
-  --color-border:          #D6D1C8;
-  --color-border-dark:     rgba(255, 255, 255, 0.08);
+  --color-bg:              #EDE8DE;
+  --color-bg-alt:          #E5DFD2;
+  --color-dark:            #100F0C;
+  --color-dark-2:          #1C1A16;
+  --color-text:            #18160F;
+  --color-text-muted:      #6A6458;
+  --color-text-faint:      #A09888;
+  --color-text-inv:        #F2EDE4;
+  --color-text-inv-muted:  rgba(242, 237, 228, 0.58);
+  --color-teal:            #1A7A8A;
+  --color-teal-light:      #E8F4F6;
+  --color-gold:            #8B5E14;
+  --color-border:          #D4CEC4;
+  --color-border-dark:     rgba(255, 255, 255, 0.09);
 
   /* Legacy aliases for components */
   --color-primary:         var(--color-teal);
   --color-surface:         var(--color-bg-alt);
 
   /* Fonts */
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-body:    'Inter', 'Helvetica Neue', sans-serif;
+  --font-display: 'Zodiak', Georgia, serif;
+  --font-body:    'Satoshi', 'Helvetica Neue', sans-serif;
 
   /* Type scale */
   --text-xs:    0.75rem;
@@ -59,7 +59,7 @@
   --space-48: 12rem;
 
   /* Layout */
-  --section-pad:       clamp(6rem, 10vw, 10rem);
+  --section-pad:       clamp(7rem, 11vw, 11rem);
   --container:         1200px;
   --container-narrow:  740px;
   --content-default:   1200px;
@@ -77,6 +77,8 @@
   --transition-fast: 0.15s ease;
   --transition-base: 0.2s ease;
   --transition-slow: 0.35s ease;
+  --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ─── RESET & BASE ───────────────────────────── */
@@ -87,7 +89,7 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: 17px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
@@ -96,7 +98,7 @@ html {
 body {
   font-family: var(--font-body);
   font-size: var(--text-base);
-  line-height: 1.7;
+  line-height: 1.75;
   color: var(--color-text);
   background: var(--color-bg);
 }
@@ -165,11 +167,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .section-heading {
   font-family: var(--font-display);
-  font-size: var(--text-3xl);
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.08;
   color: var(--color-text);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
+  letter-spacing: -0.01em;
 }
 
 .section-label {
@@ -185,10 +188,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .section-subtext {
   font-family: var(--font-body);
-  font-size: var(--text-lg);
-  line-height: 1.7;
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  line-height: 1.72;
   color: var(--color-text-muted);
-  max-width: 64ch;
+  max-width: 60ch;
   margin-bottom: var(--space-12);
 }
 
@@ -2607,3 +2610,195 @@ h1, h2, h3, h4, h5, h6 {
   .mission-statement { font-size: var(--text-xl); }
   .vuln-cta h3 { font-size: var(--text-xl); }
 }
+
+
+/* ═══════════════════════════════════════
+   SCROLL ANIMATIONS — reveal-up, stagger
+═══════════════════════════════════════ */
+
+/* reveal-up: clip-path reveal, no layout shift */
+.reveal-up {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+}
+
+.fade-in.reveal-up {
+  clip-path: inset(0 0 0 0);
+  opacity: 1;
+}
+
+/* When JS hasn't kicked in yet, visible by default */
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.55s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+/* stagger-children: each direct child fades in sequentially */
+.stagger-children > * {
+  opacity: 1;
+}
+
+/* JS applies .visible class */
+.fade-in.visible {
+  opacity: 1;
+}
+
+/* Section divider SVG line */
+.section-divider {
+  width: 100%;
+  height: 40px;
+  overflow: visible;
+  display: block;
+  margin: 0;
+  line-height: 0;
+}
+
+.section-divider svg {
+  width: 100%;
+  height: 40px;
+  display: block;
+}
+
+/* ═══════════════════════════════════════
+   HOVER UPGRADES — cards, stack cards, crypto cards
+═══════════════════════════════════════ */
+
+.stack-card {
+  transition:
+    border-color var(--transition-interactive, 180ms cubic-bezier(0.16,1,0.3,1)),
+    transform var(--transition-interactive, 180ms cubic-bezier(0.16,1,0.3,1));
+  cursor: default;
+}
+
+.stack-card:hover {
+  border-color: var(--color-teal);
+  transform: translateY(-3px);
+}
+
+.crypto-card {
+  transition:
+    border-color var(--transition-interactive, 180ms cubic-bezier(0.16,1,0.3,1)),
+    transform var(--transition-interactive, 180ms cubic-bezier(0.16,1,0.3,1));
+}
+
+.crypto-card:hover {
+  border-color: rgba(26, 122, 138, 0.35);
+  transform: translateY(-2px);
+}
+
+.pqc-card {
+  transition:
+    border-color var(--transition-interactive, 180ms cubic-bezier(0.16,1,0.3,1)),
+    transform var(--transition-interactive, 180ms cubic-bezier(0.16,1,0.3,1));
+}
+
+.pqc-card:hover {
+  border-color: var(--color-teal);
+  transform: translateY(-2px);
+}
+
+.step {
+  transition:
+    opacity var(--transition-interactive, 180ms cubic-bezier(0.16,1,0.3,1));
+}
+
+.step-icon {
+  width: 52px;
+  height: 52px;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-4);
+  color: var(--color-teal);
+  transition: background var(--transition-interactive, 180ms cubic-bezier(0.16,1,0.3,1)),
+              border-color var(--transition-interactive, 180ms cubic-bezier(0.16,1,0.3,1));
+}
+
+.step:hover .step-icon {
+  background: var(--color-teal-light);
+  border-color: var(--color-teal);
+}
+
+/* Stack card icon — larger */
+.stack-card-icon {
+  width: 52px;
+  height: 52px;
+  background: var(--color-teal-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-5);
+  color: var(--color-teal);
+  flex-shrink: 0;
+  transition: background var(--transition-interactive, 180ms cubic-bezier(0.16,1,0.3,1));
+}
+
+.stack-card:hover .stack-card-icon {
+  background: rgba(26, 122, 138, 0.18);
+}
+
+/* ═══════════════════════════════════════
+   HERO HEADING ANIMATION
+═══════════════════════════════════════ */
+
+@keyframes hero-float-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-heading {
+  animation: hero-float-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.1s;
+}
+
+.hero-right .hero-body {
+  animation: hero-float-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.25s;
+}
+
+.hero-actions {
+  animation: hero-float-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.4s;
+}
+
+.hero-trust {
+  animation: hero-float-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.55s;
+}
+
+/* Stagger-children JS hook: when .revealed is added by JS */
+.stagger-children.revealed > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger-children.revealed > *:nth-child(2) { animation-delay: 0.1s; }
+.stagger-children.revealed > *:nth-child(3) { animation-delay: 0.15s; }
+.stagger-children.revealed > *:nth-child(4) { animation-delay: 0.2s; }
+.stagger-children.revealed > *:nth-child(5) { animation-delay: 0.25s; }
+.stagger-children.revealed > *:nth-child(6) { animation-delay: 0.3s; }
+
+@keyframes stagger-item-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.stagger-children.revealed > * {
+  animation: stagger-item-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ═══════════════════════════════════════
+   NAV — refined backdrop blur
+═══════════════════════════════════════ */
+
+.site-header.scrolled {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+}
+

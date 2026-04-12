@@ -322,6 +322,53 @@
   }());
 
 
+
+
+  // ─── STAGGER-CHILDREN REVEAL ──────────────────
+  // When a .stagger-children container enters viewport, adds .revealed
+  // which triggers CSS nth-child stagger animations.
+  (function initStaggerChildren() {
+    const containers = document.querySelectorAll('.stagger-children');
+    if (!containers.length) return;
+    if (!('IntersectionObserver' in window)) {
+      containers.forEach(c => c.classList.add('revealed'));
+      return;
+    }
+
+    const io = new IntersectionObserver((records) => {
+      records.forEach(record => {
+        if (record.isIntersecting) {
+          record.target.classList.add('revealed');
+          io.unobserve(record.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    containers.forEach(c => io.observe(c));
+  }());
+
+
+  // ─── TILT EFFECT ON CRYPTO CARDS ──────────────
+  // Subtle mouse-tracking tilt on crypto cards (desktop only).
+  (function initCardTilt() {
+    if (window.matchMedia('(hover: none)').matches) return;
+    const cards = document.querySelectorAll('.crypto-card, .stack-card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = `translateY(-2px) rotateX(${-y * 4}deg) rotateY(${x * 4}deg)`;
+        card.style.transition = 'transform 0.05s linear';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+        card.style.transition = 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.18s';
+      });
+    });
+  }());
+
+
   // ─── CRYPTO ADDRESS COPY ──────────────────────
   // Click any .crypto-address to copy the address text to clipboard.
   (function initCryptoCopy() {

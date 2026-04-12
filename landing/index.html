@@ -12,9 +12,7 @@
   <meta name="theme-color" content="#EDEAE2" />
 
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700,400i,500i&f[]=satoshi@300,400,500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -108,38 +106,24 @@
   ═══════════════════════════════════════ -->
   <section class="section section-why" id="why">
     <div class="container">
-      <div class="section-label fade-in">Why Morrigan</div>
-      <h2 class="section-heading fade-in">Death entered slowly, then all at once.</h2>
+      <div class="section-label fade-in reveal-up">Why Morrigan</div>
+      <h2 class="section-heading fade-in reveal-up">Death entered slowly, then all at once.</h2>
 
       <div class="story-layout">
         <div class="story-text fade-in">
           <p class="story-lead">
-            In the winter of 2019, I received word that my mentor had been killed in Damascus. He was a man who had shaped how I understood the world — someone who had moved through military intelligence with a rare combination of precision and humanity. ISIS took him without warning. There was no farewell. There rarely is.
+            In the winter of 2019, my mentor was killed in Damascus. He was a man who had shaped how I saw the world — precise, humane, irreplaceable. ISIS took him without warning. That same Christmas, my father died.
           </p>
           <p>
-            That same Christmas, my father died.
+            Two losses in one year broke open something I'd carried without knowing: the comfortable illusion that there would be time. There wouldn't be time.
           </p>
           <p>
-            I say that plainly because there is no other way to say it. Two losses in a single year, one sudden and geopolitical, one quiet and domestic. Together they broke something open — a sense I had carried, as most of us do, that death remained at a comfortable distance. That there would be time. There would not be time.
+            What I found myself asking wasn't philosophical. It was practical: <em>what happens to the things we leave behind?</em> My mentor left a lifetime of knowledge — inaccessible. My father left passwords on slips of paper nobody could find.
           </p>
           <p>
-            Since then, I have watched my mother age. My dog too. The arc bends the same way for everyone, and I have learned to see it now — not with dread, but with a clarity I did not ask for and cannot return.
+            Morrigan is not a product born from a pitch deck. It is an answer to a question I could not stop asking: <em>what happens to the things we meant to say?</em>
           </p>
-          <p>
-            What I found myself asking, in the aftermath of those losses, was not a philosophical question. It was a practical one: <em>what happens to the things we leave behind?</em> My mentor left a life's worth of knowledge, relationships, experience — most of it inaccessible, unorganized, unmapped for anyone who came after. My father left accounts nobody could access, passwords written on slips of paper that no one could find.
-          </p>
-          <p>
-            We prepare for physical death — wills, estates, notaries. We do almost nothing to prepare for our digital selves. And that, I have come to believe, is a failure of love as much as logistics.
-          </p>
-          <p>
-            I did not build Morrigan because I believe in privacy in the abstract. I built it because I lived through what it means when the people you love cannot get to the things you meant to leave them. This is personal. It is supposed to be.
-          </p>
-          <p>
-            Morrigan is not a product born from a pitch deck. It is an answer to a question I could not stop asking: what happens to the things we meant to say?
-          </p>
-          <p class="story-attribution">
-            — Paul Fleury, founder
-          </p>
+          <p class="story-attribution">— Paul Fleury, founder</p>
 
           <!-- Year markers — editorial style -->
           <div class="story-year-markers">
@@ -173,13 +157,22 @@
   </section>
 
 
+  <div class="section-divider" aria-hidden="true">
+    <svg viewBox="0 0 1200 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 20 Q300 0 600 20 Q900 40 1200 20" stroke="var(--color-border)" stroke-width="1" fill="none" opacity="0.6"/>
+      <circle cx="600" cy="20" r="3" fill="var(--color-teal)" opacity="0.4"/>
+      <circle cx="300" cy="10" r="1.5" fill="var(--color-border)" opacity="0.8"/>
+      <circle cx="900" cy="30" r="1.5" fill="var(--color-border)" opacity="0.8"/>
+    </svg>
+  </div>
+
   <!-- ═══════════════════════════════════════
        WHAT — THE STACK
   ═══════════════════════════════════════ -->
   <section class="section section-what" id="what">
     <div class="container">
-      <div class="section-label fade-in">The Stack</div>
-      <h2 class="section-heading fade-in">Built on truth, not trust</h2>
+      <div class="section-label fade-in reveal-up">The Stack</div>
+      <h2 class="section-heading fade-in reveal-up">Built on truth, not trust</h2>
       <p class="section-subtext fade-in">Every component is auditable. No proprietary black boxes. The architecture is designed so that even Morrigan's own servers cannot read your data.</p>
 
       <div class="stack-visual fade-in">
@@ -195,49 +188,56 @@
         </div>
       </div>
 
-      <div class="stack-cards fade-in">
+      <div class="stack-cards stagger-children fade-in">
 
         <div class="stack-card">
           <div class="stack-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+              <path d="M12 2l8 4v6c0 5-3.6 9.7-8 11-4.4-1.3-8-6-8-11V6l8-4z"/>
+              <path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
             </svg>
           </div>
           <h3>Client-Side Encryption</h3>
-          <p>Your data is encrypted on <em>your device</em> before it ever touches a network. XChaCha20-Poly1305 via libsodium — constant-time, authenticated, resistant to timing attacks.</p>
+          <p>Your data is encrypted on your device before it touches any network. The server only ever sees ciphertext.</p>
           <div class="stack-card-tag">XChaCha20-Poly1305 · libsodium</div>
         </div>
 
         <div class="stack-card">
           <div class="stack-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+              <circle cx="12" cy="5" r="2.5"/>
+              <circle cx="5" cy="19" r="2.5"/>
+              <circle cx="19" cy="19" r="2.5"/>
+              <path d="M12 7.5L5 16.5M12 7.5L19 16.5M5 16.5h14" opacity="0.5"/>
             </svg>
           </div>
           <h3>Shamir's Secret Sharing</h3>
-          <p>Your encryption key is mathematically split into N shares. Any K-of-N combination reconstructs it. No single person — not your beneficiaries, not us — can access your data alone.</p>
+          <p>Your key is split into N shares. Any K-of-N reconstructs it. No single person — beneficiary or Morrigan — holds the whole key.</p>
           <div class="stack-card-tag">K-of-N threshold · No single point of failure</div>
         </div>
 
         <div class="stack-card">
           <div class="stack-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+              <rect x="2" y="6" width="20" height="13" rx="2"/>
+              <path d="M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+              <circle cx="12" cy="13" r="2.5"/>
+              <path d="M12 10.5v1M12 15v1M9.6 11.5l.8.5M13.6 14l.8.5M9.6 14.5l.8-.5M13.6 12l.8-.5" opacity="0.5"/>
             </svg>
           </div>
           <h3>Bring Your Own Storage</h3>
-          <p>Store your encrypted vault on our servers, or connect any S3-compatible endpoint, SFTP server, or WebDAV host. Morrigan never stores unencrypted data. Ever.</p>
+          <p>Connect any S3-compatible endpoint, SFTP, or WebDAV. Or use Morrigan-hosted storage. Unencrypted data never leaves your device.</p>
           <div class="stack-card-tag">S3 · SFTP · WebDAV · Self-hosted</div>
         </div>
 
         <div class="stack-card">
           <div class="stack-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
             </svg>
           </div>
           <h3>Free &amp; Open Source</h3>
-          <p>Every line of code is public. Audit it. Fork it. Run your own instance. Morrigan is a non-profit project — the software will always be free, the architecture always transparent.</p>
+          <p>Every line of code is public. Audit it, fork it, run your own instance. Non-profit — free forever.</p>
           <div class="stack-card-tag">AGPLv3 · GitHub · Community-audited</div>
         </div>
 
@@ -252,7 +252,7 @@
           </div>
           <div class="zkp-text">
             <strong>The zero-knowledge promise</strong>
-            <p>If you lose your key, your data is irrecoverable. No reset. No backdoor. No exceptions. That's not a limitation — it's the guarantee.</p>
+            <p>If you lose your key, your data is irrecoverable. No reset. No backdoor. No exceptions. That's not a bug — it's the guarantee.</p>
           </div>
         </div>
       </div>
@@ -261,18 +261,27 @@
   </section>
 
 
+  <div class="section-divider section-divider--inv" aria-hidden="true">
+    <svg viewBox="0 0 1200 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 20 Q300 40 600 20 Q900 0 1200 20" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="none"/>
+      <circle cx="600" cy="20" r="3" fill="rgba(27,122,130,0.4)"/>
+      <circle cx="300" cy="30" r="1.5" fill="rgba(255,255,255,0.12)"/>
+      <circle cx="900" cy="10" r="1.5" fill="rgba(255,255,255,0.12)"/>
+    </svg>
+  </div>
+
   <!-- ═══════════════════════════════════════
        ENCRYPTION — THE CRYPTOGRAPHY
   ═══════════════════════════════════════ -->
   <section class="section section-encryption" id="encryption">
     <div class="container">
-      <div class="section-label fade-in">Under the Hood</div>
-      <h2 class="section-heading fade-in">Cryptography worthy of what you're protecting.</h2>
+      <div class="section-label fade-in reveal-up">Under the Hood</div>
+      <h2 class="section-heading fade-in reveal-up">Cryptography worthy of what you're protecting.</h2>
       <p class="section-subtext fade-in">
         Marketing words like "military-grade" are meaningless. Cryptographic choices are engineering decisions — they have consequences, tradeoffs, and histories. Morrigan doesn't hide behind abstractions. Here is exactly what we use, and why we chose it.
       </p>
 
-      <div class="crypto-cards fade-in">
+      <div class="crypto-cards stagger-children fade-in">
 
         <!-- 1. XChaCha20-Poly1305 -->
         <div class="crypto-card">
@@ -285,7 +294,7 @@
             <div class="crypto-card-badge" data-count="256">256-bit</div>
           </div>
           <h3 class="crypto-card-name">XChaCha20-Poly1305</h3>
-          <p class="crypto-card-desc">Primary cipher. 256-bit key, 192-bit nonce — safe for random generation with negligible collision probability. Poly1305 MAC provides authenticated encryption: integrity and confidentiality in one pass. Constant-time on all hardware by design — no AES hardware dependency required.</p>
+          <p class="crypto-card-desc">256-bit key, 192-bit nonce. Poly1305 MAC delivers authenticated encryption — integrity and confidentiality in one pass. Constant-time on every platform, no hardware dependency required.</p>
           <div class="crypto-card-footer">
             <code class="crypto-lib-tag">libsodium</code>
             <code class="crypto-lib-tag">crypto_secretstream</code>
@@ -304,7 +313,7 @@
             <div class="crypto-card-badge" data-count="128">128-bit equiv.</div>
           </div>
           <h3 class="crypto-card-name">Curve25519 / X25519</h3>
-          <p class="crypto-card-desc">Elliptic-curve Diffie–Hellman for key exchange. 128-bit security level at a fraction of RSA's cost — approximately 3,000× faster than RSA-2048. Used to encrypt key shards to each beneficiary's public key. Built on the Montgomery curve y² = x³ + 486662x² + x. The de facto standard for modern key exchange.</p>
+          <p class="crypto-card-desc">Elliptic-curve key exchange. 128-bit security at 3,000× the speed of RSA-2048. Used to encrypt key shards to each beneficiary's public key. The de facto modern standard.</p>
           <div class="crypto-card-footer">
             <code class="crypto-lib-tag">libsodium</code>
             <code class="crypto-lib-tag">crypto_box</code>
@@ -323,7 +332,7 @@
             <div class="crypto-card-badge" data-count="128">128-bit equiv.</div>
           </div>
           <h3 class="crypto-card-name">Ed25519</h3>
-          <p class="crypto-card-desc">Digital signatures. 64-byte signatures, deterministic — no random nonce means no fault-attack surface, unlike ECDSA. Used to sign vault manifests and cryptographically prove authorship of your instructions. Based on the twisted Edwards curve −x² + y² = 1 − (121665/121666)x²y². Immune to the class of vulnerabilities that compromised Sony's PS3 signing.</p>
+          <p class="crypto-card-desc">Deterministic digital signatures — no random nonce, no fault-attack surface. Used to sign vault manifests and cryptographically prove authorship. Immune to the ECDSA vulnerability class.</p>
           <div class="crypto-card-footer">
             <code class="crypto-lib-tag">libsodium</code>
             <code class="crypto-lib-tag">crypto_sign</code>
@@ -342,7 +351,7 @@
             <div class="crypto-card-badge" data-count="64">64 MB memory</div>
           </div>
           <h3 class="crypto-card-name">Argon2id</h3>
-          <p class="crypto-card-desc">Key derivation. Winner of the Password Hashing Competition. Memory-hard — resistant to GPU and ASIC attacks. Combines Argon2i (side-channel resistance) with Argon2d (GPU resistance). Parameters: time=3, memory=64MB, parallelism=4. No master password is ever stored — only its derived key. Even if our servers were seized, your passphrase cannot be recovered.</p>
+          <p class="crypto-card-desc">Winner of the Password Hashing Competition. Memory-hard against GPU and ASIC attacks. Parameters: time=3, memory=64MB, parallelism=4. Your passphrase is never stored — only its derived key.</p>
           <div class="crypto-card-footer">
             <code class="crypto-lib-tag">argon2-browser</code>
             <code class="crypto-lib-tag">PHC winner</code>
@@ -363,7 +372,7 @@
             <div class="crypto-card-badge" data-count="256">256-bit secret</div>
           </div>
           <h3 class="crypto-card-name">Shamir's Secret Sharing</h3>
-          <p class="crypto-card-desc">Built on Lagrange interpolation over GF(2⁸) — Galois field arithmetic. A 256-bit secret is split into N shares; any K reconstruct it via polynomial evaluation: f(x) = s + a₁x + a₂x² + … + aₖ₋₁xᵏ⁻¹ where s is the secret. K−1 shares reveal nothing at all. Implementation via secrets.js-grempe (independently audited).</p>
+          <p class="crypto-card-desc">A 256-bit secret split into N shares via Lagrange interpolation over GF(2⁸). Any K shares reconstruct it. K−1 shares reveal nothing. Independently audited implementation.</p>
           <div class="crypto-card-footer">
             <code class="crypto-lib-tag">secrets.js-grempe</code>
             <code class="crypto-lib-tag">GF(2⁸)</code>
@@ -384,7 +393,7 @@
             <div class="crypto-card-badge" data-count="10">10 yrs audited</div>
           </div>
           <h3 class="crypto-card-name">libsodium &amp; TweetNaCl</h3>
-          <p class="crypto-card-desc">The implementation layer. libsodium: a decade of production hardening, ~100 security audits, deployed by Signal, WhatsApp, and Cloudflare. TweetNaCl.js for in-browser use: 100 tweets of code, minimal attack surface, no OpenSSL dependency, no legacy cipher support. Pure implementations with no footguns.</p>
+          <p class="crypto-card-desc">The implementation layer. A decade of production hardening, used by Signal, WhatsApp, and Cloudflare. TweetNaCl.js for in-browser: minimal attack surface, no OpenSSL, no legacy ciphers.</p>
           <div class="crypto-card-footer">
             <code class="crypto-lib-tag">libsodium 1.0.x</code>
             <code class="crypto-lib-tag">TweetNaCl.js</code>
@@ -407,13 +416,13 @@
           <div class="transformation-eyebrow">Foundation Commitment</div>
           <h3 class="transformation-heading">The stack transforms. Always.</h3>
           <p>
-            Encryption is not a fixed artefact — it is a living discipline. Algorithms age, computing paradigms shift, threat models evolve. As a non-profit foundation with no commercial pressure to preserve legacy choices, Morrigan commits to an absolute principle: <strong>we will always migrate to the strongest available cryptographic standards, no matter the cost of doing so.</strong>
+            Algorithms age. Paradigms shift. As a non-profit with no commercial pressure, Morrigan is constitutionally committed to one principle: <strong>we will always migrate to the strongest available cryptographic standards.</strong>
           </p>
           <p>
-            This is not a roadmap item. It is a constitutional obligation, written into the foundation's charter from day one.
+            Not a roadmap item. A founding obligation.
           </p>
 
-          <div class="pqc-grid">
+          <div class="pqc-grid stagger-children">
             <div class="pqc-card">
               <div class="pqc-card-top">
                 <span class="pqc-status pqc-status--nist">NIST PQC Final</span>
@@ -449,7 +458,7 @@
           </div>
 
           <p class="transformation-footnote">
-            XChaCha20-Poly1305 is symmetric and already quantum-resistant at 256-bit. The transition path targets asymmetric primitives: key exchange (X25519 → Kyber) and signatures (Ed25519 → Dilithium + SPHINCS+). Timelines follow NIST standardisation and ecosystem readiness — never commercial convenience.
+            XChaCha20-Poly1305 is symmetric and already quantum-resistant. Migration targets are asymmetric primitives only: X25519 → Kyber for key exchange, Ed25519 → Dilithium + SPHINCS+ for signatures.
           </p>
         </div>
       </div>
@@ -463,15 +472,15 @@
         <div class="why-not-grid">
           <div class="why-not-item">
             <strong>Why not AES-GCM?</strong>
-            <p>AES-GCM is sound, but requires hardware AES acceleration to run in constant time — on hardware without it, timing side-channels are possible. XChaCha20 is constant-time on every platform by design, with no hardware dependency.</p>
+            <p>Requires hardware AES acceleration for constant-time operation. XChaCha20 is constant-time on every platform by design — no exceptions.</p>
           </div>
           <div class="why-not-item">
             <strong>Why not RSA?</strong>
-            <p>RSA key sizes for equivalent security are prohibitive (3072-bit+ for 128-bit security), it is significantly slower, and provides no forward secrecy. X25519 gives equal security at a fraction of the cost with an immeasurably simpler implementation surface.</p>
+            <p>3072-bit keys for 128-bit security, significantly slower, no forward secrecy. X25519 matches the security level at a fraction of the cost.</p>
           </div>
           <div class="why-not-item">
             <strong>Why not bcrypt or scrypt?</strong>
-            <p>Argon2id strictly dominates both. bcrypt is limited to 72-byte passwords and lacks memory-hardness against modern GPUs. scrypt's memory-hardness is real but it is not resistant to side-channel attacks. Argon2id was designed to win on both axes simultaneously.</p>
+            <p>Argon2id dominates both. bcrypt maxes at 72-byte passwords. scrypt lacks side-channel resistance. Argon2id wins on both axes simultaneously.</p>
           </div>
         </div>
       </div>
@@ -521,22 +530,24 @@
   ═══════════════════════════════════════ -->
   <section class="section section-how" id="how">
     <div class="container">
-      <div class="section-label fade-in">How It Works</div>
-      <h2 class="section-heading fade-in">Four steps to sovereign peace of mind</h2>
+      <div class="section-label fade-in reveal-up">How It Works</div>
+      <h2 class="section-heading fade-in reveal-up">Four steps to sovereign peace of mind</h2>
       <p class="section-subtext fade-in">Morrigan makes cryptographic security human. The hard parts are handled automatically — you stay in control of the meaning.</p>
 
-      <div class="steps-grid fade-in">
+      <div class="steps-grid stagger-children fade-in">
 
         <div class="step">
           <div class="step-number">01</div>
           <div class="step-content">
             <div class="step-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+                <path d="M12 2C9.24 2 7 4.24 7 7v2H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2v-9a2 2 0 00-2-2h-2V7c0-2.76-2.24-5-5-5z"/>
+                <circle cx="12" cy="16" r="1.5" fill="currentColor"/>
+                <path d="M12 14v1.5" stroke-linecap="round"/>
               </svg>
             </div>
             <h3>Create your vault</h3>
-            <p>Generate a strong passphrase. Morrigan derives an encryption key using Argon2id — memory-hard, GPU-resistant. Your key never leaves your device. Not once.</p>
+            <p>Choose a passphrase. Morrigan derives an encryption key via Argon2id — memory-hard, GPU-resistant. Your key never leaves your device.</p>
             <span class="step-tag">Argon2id · client-side only</span>
           </div>
         </div>
@@ -545,12 +556,16 @@
           <div class="step-number">02</div>
           <div class="step-content">
             <div class="step-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+                <circle cx="8" cy="7" r="3"/>
+                <circle cx="16" cy="7" r="3"/>
+                <path d="M2 21v-1a6 6 0 016-6h1"/>
+                <path d="M22 21v-1a6 6 0 00-6-6h-1"/>
+                <circle cx="12" cy="13" r="2" fill="currentColor" opacity="0.4"/>
               </svg>
             </div>
             <h3>Name your beneficiaries</h3>
-            <p>Assign trusted people — family, friends, a lawyer. Each receives one shard of your key. You choose how many shards are needed to unlock your vault. <em>No single shard is enough.</em></p>
+            <p>Assign trusted people. Each gets one shard of your key. You set how many shards are needed to unlock — no single person can act alone.</p>
             <span class="step-tag">Shamir's Secret Sharing · K-of-N threshold</span>
           </div>
         </div>
@@ -559,12 +574,14 @@
           <div class="step-number">03</div>
           <div class="step-content">
             <div class="step-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+                <rect x="4" y="2" width="16" height="20" rx="2"/>
+                <path d="M8 7h8M8 11h8M8 15h5" stroke-linecap="round"/>
+                <path d="M16 15l2 2 4-3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
             <h3>Store what matters</h3>
-            <p>Upload files, write encrypted messages, add passwords, record final instructions. Everything is encrypted before upload using XChaCha20-Poly1305. Morrigan's servers see only ciphertext.</p>
+            <p>Upload files, write messages, add passwords. Everything is encrypted before upload. Our servers see only ciphertext.</p>
             <span class="step-tag">XChaCha20-Poly1305 · BYOS compatible</span>
           </div>
         </div>
@@ -573,12 +590,14 @@
           <div class="step-number">04</div>
           <div class="step-content">
             <div class="step-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 7v5l3.5 2" stroke-linecap="round"/>
+                <path d="M4.2 4.2l1.4 1.4M19.8 4.2l-1.4 1.4" stroke-linecap="round" opacity="0.4"/>
               </svg>
             </div>
             <h3>Set the switch</h3>
-            <p>Configure a dead man's switch. If you do not check in within your chosen window, Morrigan notifies your beneficiaries. They combine their shards. Your vault opens. Your legacy is delivered.</p>
+            <p>Configure a dead man's switch. Miss a check-in and Morrigan notifies your beneficiaries. They combine shards. Your legacy is delivered.</p>
             <span class="step-tag">Dead man's switch · Configurable grace period</span>
           </div>
         </div>
@@ -677,7 +696,7 @@
       <div class="donate-inner fade-in">
         <div class="section-label">Non-Profit Foundation</div>
         <h2 class="section-heading">Morrigan is free. Forever.</h2>
-        <p class="section-subtext">We are building a non-profit foundation to ensure Morrigan's independence and longevity. The software will always be open-source and free to use. If you believe everyone deserves digital sovereignty, please consider supporting us.</p>
+        <p class="section-subtext">A non-profit foundation ensuring Morrigan's independence forever. Open-source, free to use. If you believe everyone deserves digital sovereignty — this is how you help build it.</p>
 
         <div class="funding-model fade-in">
           <div class="funding-item">
@@ -769,7 +788,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p class="footer-copy">© 2025 Morrigan Foundation. All rights reserved.</p>
+        <p class="footer-copy">© 2026 Morrigan Foundation. All rights reserved.</p>
         <p class="footer-copy footer-domains">
           <a href="https://morrigan.life">morrigan.life</a>
           <span aria-hidden="true">·</span>
