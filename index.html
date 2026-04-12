@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Morrigan — Your Digital Will, Encrypted Forever</title>
+  <meta name="description" content="Morrigan helps you store, encrypt, and share your digital legacy — files, messages, passwords — with the people you trust. Zero-knowledge. No backdoors. Open source." />
+  <meta property="og:title" content="Morrigan — Your Digital Will, Encrypted Forever" />
+  <meta property="og:description" content="Prepare your digital legacy with dignity. End-to-end encrypted. Zero-knowledge. Open source." />
+  <meta property="og:image" content="assets/hero-bg.png" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0d1a1b" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════ -->
+  <header class="site-header" id="site-header">
+    <nav class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="Morrigan home">
+        <!-- SVG Logo: Raven within shield / vault mark -->
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <!-- Shield outline -->
+          <path d="M18 2L4 7.5V18.5C4 25.8 10.2 32.3 18 34C25.8 32.3 32 25.8 32 18.5V7.5L18 2Z" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.6"/>
+          <!-- Raven silhouette -->
+          <path d="M18 10C16.2 10 15 11.2 15 12.5C15 13 15.2 13.4 15.5 13.8L12 16L13.5 16.5L12.5 18L14.5 17.5L14 19.5L16 18.5C16.5 19.2 17.2 19.8 18 20C19.5 20 21 18.8 21 17C21 15.8 20.3 14.8 19.3 14.3L21.5 12.5C20.8 11 19.6 10 18 10Z" fill="currentColor"/>
+          <!-- Celtic corner accents -->
+          <path d="M8 9L10 11" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+          <path d="M28 9L26 11" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+        </svg>
+        <span class="nav-wordmark">Morrigan</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#why" class="nav-link">Our Story</a>
+        <a href="#what" class="nav-link">The Stack</a>
+        <a href="#how" class="nav-link">How It Works</a>
+        <a href="#donate" class="nav-link">Donate</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="btn btn-ghost btn-sm" data-theme-toggle aria-label="Switch to light mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="#" class="btn btn-primary btn-sm">Early Access</a>
+      </div>
+
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+      <a href="#why" class="nav-mobile-link">Our Story</a>
+      <a href="#what" class="nav-mobile-link">The Stack</a>
+      <a href="#how" class="nav-mobile-link">How It Works</a>
+      <a href="#donate" class="nav-mobile-link">Donate</a>
+      <a href="#" class="btn btn-primary" style="margin-top: var(--space-4);">Early Access</a>
+    </div>
+  </header>
+
+
+  <!-- ═══════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <img src="assets/hero-bg.png" alt="Ancient standing stones in teal mist with a raven silhouette, symbolizing Morrigan's watchful guardianship" class="hero-img" />
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="hero-content container">
+      <div class="hero-eyebrow fade-in">
+        <span class="eyebrow-dot"></span>
+        Zero-knowledge · Open source · Non-profit
+      </div>
+      <h1 class="hero-heading fade-in">
+        Your digital will.<br />
+        <em>Encrypted forever.</em>
+      </h1>
+      <p class="hero-subtext fade-in">
+        Morrigan helps you store and protect what matters most — files, passwords, final messages — and ensures they reach the right people after you're gone. No corporation holds your keys. No backdoor exists.
+      </p>
+      <div class="hero-actions fade-in">
+        <a href="#" class="btn btn-primary btn-lg">Get Early Access</a>
+        <a href="#how" class="btn btn-outline btn-lg">See How It Works</a>
+      </div>
+      <div class="hero-trust fade-in">
+        <span class="trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          AES-256 / XChaCha20 encryption
+        </span>
+        <span class="trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Shamir's Secret Sharing
+        </span>
+        <span class="trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Free &amp; open source forever
+        </span>
+      </div>
+    </div>
+
+    <a href="#why" class="hero-scroll-hint" aria-label="Scroll down">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </a>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       WHY — MY STORY
+  ═══════════════════════════════════════ -->
+  <section class="section section-why" id="why">
+    <div class="container">
+      <div class="section-label fade-in">Why Morrigan</div>
+      <h2 class="section-heading fade-in">The moment that changed everything</h2>
+
+      <div class="story-layout fade-in">
+        <div class="story-text">
+          <p class="story-lead">
+            Someone close to me died suddenly. No warning, no time to prepare. What followed was months of painful uncertainty — digital accounts nobody could access, passwords lost to the void, messages they had always meant to send but never did.
+          </p>
+          <p>
+            That experience made something clear: we prepare our physical estates with lawyers and notaries. But our digital lives — the photos, the writings, the financial access, the final words — exist in a lawless limbo, locked behind encryption that dies with us.
+          </p>
+          <p>
+            I built Morrigan because no company should hold the keys to your last words. No algorithm should decide what survives you. This is personal sovereignty over the one thing no one can take from you: your legacy.
+          </p>
+          <p class="story-attribution">
+            — <em>Paul Fleury, founder</em>
+          </p>
+        </div>
+        <div class="story-aside fade-in">
+          <blockquote class="pull-quote">
+            <p>"She is not evil — she embodies the natural, inevitable cycle of life and death. She sees what is coming and prepares for it."</p>
+            <cite>On the Morrígan, Irish mythology</cite>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       WHAT — THE STACK
+  ═══════════════════════════════════════ -->
+  <section class="section section-what" id="what">
+    <div class="container">
+      <div class="section-label fade-in">The Stack</div>
+      <h2 class="section-heading fade-in">Built on truth, not trust</h2>
+      <p class="section-subtext fade-in">Every component is auditable. No proprietary black boxes. The architecture is designed so that even Morrigan's own servers cannot read your data.</p>
+
+      <div class="stack-visual fade-in">
+        <img src="assets/encryption-visual.png" alt="Abstract Celtic-inspired cryptographic architecture visualization" class="stack-img" />
+        <div class="stack-overlay-grid">
+          <div class="stack-badge stack-badge--tl">Zero-knowledge</div>
+          <div class="stack-badge stack-badge--tr">Client-side</div>
+          <div class="stack-badge stack-badge--bl">Open source</div>
+          <div class="stack-badge stack-badge--br">Auditable</div>
+        </div>
+      </div>
+
+      <div class="stack-cards fade-in">
+
+        <div class="stack-card">
+          <div class="stack-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+          <h3>Client-Side Encryption</h3>
+          <p>Your data is encrypted on <em>your device</em> before it ever touches a network. We evaluate AES-256-GCM and XChaCha20-Poly1305 via libsodium — industry-standard, cryptographically audited.</p>
+          <div class="stack-card-tag">AES-256-GCM · XChaCha20</div>
+        </div>
+
+        <div class="stack-card">
+          <div class="stack-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3>Shamir's Secret Sharing</h3>
+          <p>Your encryption key is mathematically split into N shares. Any K-of-N combination reconstructs it. No single person — not your beneficiaries, not us — can access your data alone.</p>
+          <div class="stack-card-tag">K-of-N threshold · No single point of failure</div>
+        </div>
+
+        <div class="stack-card">
+          <div class="stack-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            </svg>
+          </div>
+          <h3>Bring Your Own Storage</h3>
+          <p>Store your encrypted vault on our servers, or connect any S3-compatible endpoint, SFTP server, or WebDAV host. Morrigan never stores unencrypted data. Ever.</p>
+          <div class="stack-card-tag">S3 · SFTP · WebDAV · Self-hosted</div>
+        </div>
+
+        <div class="stack-card">
+          <div class="stack-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+          </div>
+          <h3>Free &amp; Open Source</h3>
+          <p>Every line of code is public. Audit it. Fork it. Run your own instance. Morrigan is a non-profit project — the software will always be free, the architecture always transparent.</p>
+          <div class="stack-card-tag">AGPLv3 · GitHub · Community-audited</div>
+        </div>
+
+      </div>
+
+      <div class="zero-knowledge-promise fade-in">
+        <div class="zkp-inner">
+          <div class="zkp-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+            </svg>
+          </div>
+          <div class="zkp-text">
+            <strong>The zero-knowledge promise</strong>
+            <p>If you lose your key, your data is irrecoverable. No reset. No backdoor. No exceptions. That's not a limitation — it's the guarantee.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       HOW — THE PROCESS
+  ═══════════════════════════════════════ -->
+  <section class="section section-how" id="how">
+    <div class="container">
+      <div class="section-label fade-in">How It Works</div>
+      <h2 class="section-heading fade-in">Four steps to sovereign peace of mind</h2>
+      <p class="section-subtext fade-in">Morrigan makes cryptographic security human. The hard parts are handled automatically — you stay in control of the meaning.</p>
+
+      <div class="steps-grid fade-in">
+
+        <div class="step">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <div class="step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+              </svg>
+            </div>
+            <h3>Create your space</h3>
+            <p>Upload files, write letters, record voice messages, save passwords. Anything you want to preserve — documents, photos, final words. Rich text, audio, any file format.</p>
+          </div>
+        </div>
+
+        <div class="step-connector" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+
+        <div class="step">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <div class="step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+            </div>
+            <h3>Encrypt everything</h3>
+            <p>Your vault is encrypted client-side with a unique key. You download and safeguard this key file. We never see it. Without it, the data is mathematically irretrievable — by anyone.</p>
+          </div>
+        </div>
+
+        <div class="step-connector" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+
+        <div class="step">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <div class="step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <h3>Set your conditions</h3>
+            <p>Define what gets shared, with whom, and when. Configure a dead man's switch: if you stop responding for 7, 14, or 30 days, access is triggered. You stay in control until the very end.</p>
+          </div>
+        </div>
+
+        <div class="step-connector" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+
+        <div class="step">
+          <div class="step-number">04</div>
+          <div class="step-content">
+            <div class="step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h3>Share with your people</h3>
+            <p>Beneficiaries receive a private link with instructions. Your key is distributed via Shamir's Secret Sharing — no single person has full access. Only together, only when needed, does the vault open.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="deadman-switch-explainer fade-in">
+        <div class="dms-inner">
+          <h3 class="dms-heading">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            The dead man's switch, explained
+          </h3>
+          <div class="dms-flow">
+            <div class="dms-step">
+              <span class="dms-dot dms-dot--active"></span>
+              <span>Beneficiary triggers a request</span>
+            </div>
+            <div class="dms-arrow">→</div>
+            <div class="dms-step">
+              <span class="dms-dot"></span>
+              <span>You receive: <em>"Confirm you're OK"</em></span>
+            </div>
+            <div class="dms-arrow">→</div>
+            <div class="dms-step">
+              <span class="dms-dot"></span>
+              <span>Repeats daily for X days (your choice)</span>
+            </div>
+            <div class="dms-arrow">→</div>
+            <div class="dms-step">
+              <span class="dms-dot dms-dot--final"></span>
+              <span>No response → access granted</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       LANGUAGES
+  ═══════════════════════════════════════ -->
+  <section class="section section-languages" id="languages">
+    <div class="container">
+      <div class="languages-inner fade-in">
+        <div class="languages-text">
+          <div class="section-label">Global Reach</div>
+          <h2 class="section-heading">Available in 30+ languages</h2>
+          <p>Morrigan is built for everyone, not just English speakers. The most important things you'll ever write deserve to be expressed in your mother tongue.</p>
+        </div>
+        <div class="languages-grid" aria-label="Supported languages">
+          <span>English</span><span>Français</span><span>Español</span><span>Deutsch</span>
+          <span>Português</span><span>Italiano</span><span>Nederlands</span><span>Polski</span>
+          <span>Русский</span><span>中文</span><span>日本語</span><span>한국어</span>
+          <span>العربية</span><span>हिन्दी</span><span>Türkçe</span><span>Svenska</span>
+          <span>Norsk</span><span>Dansk</span><span>Suomi</span><span>Čeština</span>
+          <span>Magyar</span><span>Română</span><span>Ελληνικά</span><span>עברית</span>
+          <span>Bahasa</span><span>ภาษาไทย</span><span>Tiếng Việt</span><span>Filipino</span>
+          <span>Kiswahili</span><span>+ more</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       DONATE
+  ═══════════════════════════════════════ -->
+  <section class="section section-donate" id="donate">
+    <div class="container container-narrow">
+      <div class="donate-inner fade-in">
+        <div class="section-label">Non-Profit Foundation</div>
+        <h2 class="section-heading">Morrigan is free. Forever.</h2>
+        <p class="section-subtext">We are building a non-profit foundation to ensure Morrigan's independence and longevity. The software will always be open-source and free to use. If you believe everyone deserves digital sovereignty, please consider supporting us.</p>
+
+        <div class="funding-model fade-in">
+          <div class="funding-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <strong>Non-profit foundation</strong>
+            <span>Establishing in France, Switzerland, or US</span>
+          </div>
+          <div class="funding-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <strong>Transparent salaries</strong>
+            <span>Capped at 3× local median wage</span>
+          </div>
+          <div class="funding-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <strong>Free software, always</strong>
+            <span>Donations fund infrastructure, not paywalls</span>
+          </div>
+        </div>
+
+        <div class="donate-actions">
+          <a href="#" class="btn btn-primary btn-lg">Donate to Morrigan</a>
+          <a href="#" class="btn btn-outline">Become a Sponsor</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo footer-logo" aria-label="Morrigan">
+            <svg width="30" height="30" viewBox="0 0 36 36" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 2L4 7.5V18.5C4 25.8 10.2 32.3 18 34C25.8 32.3 32 25.8 32 18.5V7.5L18 2Z" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.6"/>
+              <path d="M18 10C16.2 10 15 11.2 15 12.5C15 13 15.2 13.4 15.5 13.8L12 16L13.5 16.5L12.5 18L14.5 17.5L14 19.5L16 18.5C16.5 19.2 17.2 19.8 18 20C19.5 20 21 18.8 21 17C21 15.8 20.3 14.8 19.3 14.3L21.5 12.5C20.8 11 19.6 10 18 10Z" fill="currentColor"/>
+              <path d="M8 9L10 11" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+              <path d="M28 9L26 11" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+            </svg>
+            <span>Morrigan</span>
+          </a>
+          <p class="footer-tagline">Prepare for the inevitable — with dignity and sovereignty.</p>
+          <div class="footer-badges">
+            <a href="#" class="footer-badge" aria-label="View source on GitHub">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              Open Source
+            </a>
+            <span class="footer-badge footer-badge--status">
+              <span class="status-dot"></span>
+              In development
+            </span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-heading">Product</h4>
+          <ul role="list">
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#what">The Stack</a></li>
+            <li><a href="#languages">Languages</a></li>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">GitHub</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-heading">Foundation</h4>
+          <ul role="list">
+            <li><a href="#why">Our Story</a></li>
+            <li><a href="#donate">Donate</a></li>
+            <li><a href="#">Sponsors</a></li>
+            <li><a href="#">Grants</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-heading">Legal</h4>
+          <ul role="list">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Security</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 Morrigan Foundation. All rights reserved.</p>
+        <p class="footer-copy footer-domains">
+          <a href="https://morrigan.life">morrigan.life</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://morrigan.one">morrigan.one</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Favicon SVG embedded inline reference (also see favicon.svg) -->
+  <script src="main.js" defer></script>
+</body>
+</html>

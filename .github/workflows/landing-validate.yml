@@ -1,0 +1,53 @@
+name: Landing Page Validation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "landing/**"
+  pull_request:
+    branches: [main]
+    paths:
+      - "landing/**"
+
+jobs:
+  validate-html:
+    name: Validate HTML
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install html-validate
+        run: npm install -g html-validate
+
+      - name: Validate landing page HTML
+        run: html-validate landing/index.html || true
+        # || true until we have a clean baseline; remove when ready
+
+  check-links:
+    name: Check external links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check links
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: --no-progress --exclude-all-private landing/index.html
+          fail: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  lighthouse:
+    name: Lighthouse audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v11
+        with:
+          configPath: ".github/lighthouserc.json"
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+        continue-on-error: true
