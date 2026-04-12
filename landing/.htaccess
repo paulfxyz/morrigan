@@ -22,34 +22,42 @@ ErrorDocument 401 /401.html
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
 
-  # Rewrite clean URLs to .html files
-  RewriteRule ^about/?$                   /about.html [L]
-  RewriteRule ^features/?$                /features.html [L]
-  RewriteRule ^pricing/?$                 /pricing.html [L]
-  RewriteRule ^blog/?$                    /blog.html [L]
-  RewriteRule ^contact/?$                 /contact.html [L]
-  RewriteRule ^career/?$                  /career.html [L]
-  RewriteRule ^integration/?$             /integration.html [L]
-  RewriteRule ^home-02/?$                 /home-02.html [L]
-  RewriteRule ^privacy-policy/?$          /privacy-policy.html [L]
-  RewriteRule ^terms-condition/?$         /terms-condition.html [L]
-  RewriteRule ^404/?$                     /404.html [L]
-  RewriteRule ^401/?$                     /401.html [L]
+  # Core pages
+  RewriteRule ^about/?$                           /about.html [L]
+  RewriteRule ^features/?$                        /features.html [L]
+  RewriteRule ^pricing/?$                         /pricing.html [L]
+  RewriteRule ^blog/?$                            /blog.html [L]
+  RewriteRule ^contact/?$                         /contact.html [L]
+  RewriteRule ^career/?$                          /career.html [L]
+  RewriteRule ^integration/?$                     /integration.html [L]
+  RewriteRule ^home-02/?$                         /home-02.html [L]
+  RewriteRule ^privacy-policy/?$                  /privacy-policy.html [L]
+  RewriteRule ^terms-condition/?$                 /terms-condition.html [L]
+  RewriteRule ^404/?$                             /404.html [L]
+  RewriteRule ^401/?$                             /401.html [L]
 
-  # Blog posts
-  RewriteRule ^blog/how-to-build-processes.*$ /blog-post-1.html [L]
-  RewriteRule ^blog/creating-a-data-driven.*$ /blog-post-2.html [L]
-  RewriteRule ^blog/building-a-culture.*$     /blog-post-3.html [L]
-  RewriteRule ^blog-post-1/?$                 /blog-post-1.html [L]
-  RewriteRule ^blog-post-2/?$                 /blog-post-2.html [L]
-  RewriteRule ^blog-post-3/?$                 /blog-post-3.html [L]
+  # Blog posts — clean slugs AND direct filenames
+  RewriteRule ^blog/how-to-build-processes.*$     /blog-post-1.html [L]
+  RewriteRule ^blog/creating-a-data-driven.*$     /blog-post-2.html [L]
+  RewriteRule ^blog/building-a-culture.*$         /blog-post-3.html [L]
+  RewriteRule ^blog-post-1/?$                     /blog-post-1.html [L]
+  RewriteRule ^blog-post-2/?$                     /blog-post-2.html [L]
+  RewriteRule ^blog-post-3/?$                     /blog-post-3.html [L]
 
-  # Integration detail pages
-  RewriteRule ^integration/overlay/?$         /integration-detail-1.html [L]
-  RewriteRule ^integration/frameflow/?$       /integration-detail-2.html [L]
-  RewriteRule ^integration/dataflow/?$        /integration-dataflow.html [L]
-  RewriteRule ^integration/blazelo/?$         /integration-blazelo.html [L]
+  # Integration detail pages — BOTH /integration/slug AND direct /slug forms
+  RewriteRule ^integration/overlay/?$             /integration-detail-1.html [L]
+  RewriteRule ^integration-detail-1/?$            /integration-detail-1.html [L]
+  RewriteRule ^integration/frameflow/?$           /integration-frameflow.html [L]
+  RewriteRule ^integration-frameflow/?$           /integration-frameflow.html [L]
+  RewriteRule ^integration/dataflow/?$            /integration-dataflow.html [L]
+  RewriteRule ^integration-dataflow/?$            /integration-dataflow.html [L]
+  RewriteRule ^integration/blazelo/?$             /integration-blazelo.html [L]
+  RewriteRule ^integration-blazelo/?$             /integration-blazelo.html [L]
+  RewriteRule ^integration/bightly/?$             /integration-detail-2.html [L]
+  RewriteRule ^integration-detail-2/?$            /integration-detail-2.html [L]
+  RewriteRule ^integration/clodey/?$              /integration-detail-1.html [L]
 
-  # Career detail
-  RewriteRule ^career/digital-marketing.*$    /career-detail.html [L]
+  # Career detail — clean slug AND direct
+  RewriteRule ^career/digital-marketing.*$        /career-detail.html [L]
+  RewriteRule ^career-detail/?$                   /career-detail.html [L]
 </IfModule>

@@ -7,6 +7,16 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [v1.5.0] — 2026-04-12 — Clover Logo, Morrígan Accent + 404 Fixes
+
+### Changed
+- **Logo mark:** Four-leaf clover (trèfle à quatre feuilles) — white on black square — replaces raven wings in all 22 pages nav/footer
+- **Favicon/app icon:** White clover on black square (32×32 PNG + 180×180 apple-touch-icon + 512×512)
+- **Brand name:** "Morrigan" → "Morrígan" (Irish fada accent) in all page titles, meta tags, headings, and visible text
+- **`.htaccess`:** Added missing clean URL rules for `/integration-detail-1`, `/integration-detail-2`, `/integration-frameflow`, `/integration-dataflow`, `/integration-blazelo`, `/career-detail` — fixing 6 previously 404ing pages
+
+---
+
 ## [v1.4.0] — 2026-04-12 — Full Blue Rebrand: Logo, Favicon + All Assets
 
 ### Changed
