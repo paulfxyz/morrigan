@@ -86,6 +86,19 @@ document.addEventListener("DOMContentLoaded",function(){
   }
 });
 </script>
+
+<style>
+/* Morrígan nav compact fix */
+.navbar-desktop-center .nav-left-menu-wrap { gap: 4px !important; }
+.navbar-desktop-left, .navbar-desktop-right { gap: 8px !important; }
+.nav-menu { padding: 8px 10px !important; }
+.nav-menu .paragraph-02.nav-text { font-size: 14px !important; white-space: nowrap !important; }
+.navbar-desktop-center { flex: 1 1 auto !important; justify-content: center !important; }
+.nav-container { gap: 8px !important; }
+/* Ensure "How it Works" doesn't wrap */
+a[href="/how-it-works"] .nav-text,
+a[href="/security"] .nav-text { white-space: nowrap !important; }
+</style>
 </head><body><div class="page-wrapper"><section class="navbar" style="opacity:1;transform:translate3d(0px,0px,0px) scale3d(1,1,1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg,0deg);transform-style:preserve-3d;">
 <div class="nav-container">
 <div class="navbar-wrap">
