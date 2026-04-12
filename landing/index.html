@@ -4,15 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Morrigan — Your Digital Will, Encrypted Forever</title>
-  <meta name="description" content="Morrigan helps you store, encrypt, and share your digital legacy — files, messages, passwords — with the people you trust. Zero-knowledge. No backdoors. Open source." />
+  <meta name="description" content="Morrigan helps you store, encrypt, and pass on what matters most — files, messages, passwords — to the people you trust. Zero-knowledge. Open source. Non-profit." />
   <meta property="og:title" content="Morrigan — Your Digital Will, Encrypted Forever" />
   <meta property="og:description" content="Prepare your digital legacy with dignity. End-to-end encrypted. Zero-knowledge. Open source." />
-  <meta property="og:image" content="assets/hero-bg.png" />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#EDEAE2" />
+  <meta name="theme-color" content="#F7F3EA" />
 
-  <!-- Fonts -->
-  <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700,400i,500i&f[]=satoshi@300,400,500&display=swap" rel="stylesheet" />
+  <!-- Fonts: Cormorant Garamond (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -25,13 +26,13 @@
   <header class="site-header" id="site-header">
     <nav class="nav-inner">
       <a href="#" class="nav-logo" aria-label="Morrigan home">
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-          <path d="M18 2L4 7.5V18.5C4 25.8 10.2 32.3 18 34C25.8 32.3 32 25.8 32 18.5V7.5L18 2Z" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.6"/>
-          <path d="M18 10C16.2 10 15 11.2 15 12.5C15 13 15.2 13.4 15.5 13.8L12 16L13.5 16.5L12.5 18L14.5 17.5L14 19.5L16 18.5C16.5 19.2 17.2 19.8 18 20C19.5 20 21 18.8 21 17C21 15.8 20.3 14.8 19.3 14.3L21.5 12.5C20.8 11 19.6 10 18 10Z" fill="currentColor"/>
-          <path d="M8 9L10 11" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-          <path d="M28 9L26 11" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+        <!-- Raven glyph -->
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 3C13 3 11 5 11 7.5C11 8.2 11.2 8.8 11.5 9.3L8 12L9.5 12.6L8.5 14.5L10.5 13.8L10 16L12.5 14.8C13 15.6 13.9 16.3 16 16.3C18.5 16.3 20.5 14.5 20.5 12C20.5 10.5 19.7 9.2 18.5 8.5L21 6.5C20 4.5 18.2 3 16 3Z" fill="currentColor"/>
+          <path d="M7 8L9 10M25 8L23 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/>
+          <path d="M16 16.3L13 22L16 20.5L19 22L16 16.3Z" fill="currentColor" opacity="0.3"/>
         </svg>
-        <span class="nav-wordmark">Morrigan</span>
+        <span>Morrigan</span>
       </a>
 
       <div class="nav-links">
@@ -44,14 +45,13 @@
       </div>
 
       <div class="nav-actions">
-        <a href="#" class="btn btn-primary btn-sm">Early Access</a>
+        <a href="#" class="btn btn-primary btn-sm">Request Early Access</a>
       </div>
 
       <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </nav>
-
     <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
       <a href="#why" class="nav-mobile-link">Our Story</a>
       <a href="#what" class="nav-mobile-link">The Stack</a>
@@ -59,7 +59,7 @@
       <a href="#how" class="nav-mobile-link">How It Works</a>
       <a href="donate.html" class="nav-mobile-link">Donate</a>
       <a href="security.html" class="nav-mobile-link">Security</a>
-      <a href="#" class="btn btn-primary" style="margin-top: var(--space-4);">Early Access</a>
+      <a href="#" class="btn btn-primary" style="margin-top:1rem;width:fit-content;">Early Access</a>
     </div>
   </header>
 
@@ -68,34 +68,82 @@
        HERO
   ═══════════════════════════════════════ -->
   <section class="hero" id="hero">
-    <!-- Raven particle canvas — rendered by main.js -->
-    <canvas id="raven-canvas" aria-hidden="true"></canvas>
+    <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
 
     <div class="container hero-inner">
-      <div class="hero-left fade-in">
+
+      <!-- Left: copy -->
+      <div class="hero-left">
         <span class="hero-eyebrow">Zero-knowledge · Open source · Non-profit</span>
         <h1 class="hero-heading">
-          Your digital will.<br />
+          Your digital will.<br/>
           <em>Encrypted forever.</em>
         </h1>
-      </div>
-      <div class="hero-right fade-in">
-        <p class="hero-body">Morrigan helps you store and protect what matters most — files, passwords, final messages — and ensures they reach the right people after you're gone. No corporation holds your keys. No backdoor exists.</p>
+        <p class="hero-body">Store what matters — files, passwords, final words. Encrypt it beyond reach. Share access only with the people you trust, only when the time comes.</p>
         <div class="hero-actions">
-          <a href="#" class="btn btn-primary btn-pill">Get Early Access</a>
-          <a href="#how" class="btn btn-text">See how it works →</a>
+          <a href="#" class="btn btn-primary btn-lg">Get Early Access</a>
+          <a href="#how" class="btn btn-ghost btn-lg">See how it works →</a>
         </div>
         <div class="hero-trust">
           <span>XChaCha20-Poly1305</span>
-          <span>·</span>
+          <span class="hero-trust-dot"></span>
           <span>Shamir's Secret Sharing</span>
-          <span>·</span>
+          <span class="hero-trust-dot"></span>
           <span>Dead man's switch</span>
-          <span>·</span>
-          <span>Ed25519 signatures</span>
-          <span>·</span>
+          <span class="hero-trust-dot"></span>
           <span>Post-quantum ready</span>
         </div>
+      </div>
+
+      <!-- Right: hand-drawn raven illustration -->
+      <div class="hero-illustration float-illo" aria-hidden="true">
+        <svg viewBox="0 0 480 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Celtic shield outer ring -->
+          <circle cx="240" cy="260" r="180" stroke="#1A1714" stroke-width="1" stroke-dasharray="4 8" opacity="0.08"/>
+          <circle cx="240" cy="260" r="200" stroke="#C4785A" stroke-width="0.5" opacity="0.12"/>
+
+          <!-- Raven body - large, gestural ink lines -->
+          <path class="draw-path" d="M240 80 C220 80 195 95 185 120 C175 145 178 165 170 180 C162 195 145 205 140 225 C135 245 145 265 155 275 C165 285 180 285 195 290 C210 295 220 305 230 320 C240 335 245 355 245 375 C245 395 238 410 235 425" stroke="#1A1714" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+          <!-- Raven wings spread -->
+          <path class="draw-path" d="M195 190 C175 178 155 165 130 158 C105 151 75 155 58 168 C45 178 42 195 50 210 C58 225 75 228 95 222 C115 216 130 202 150 198 C168 194 185 198 195 205" stroke="#1A1714" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path class="draw-path" d="M230 185 C252 170 278 158 305 152 C332 146 362 150 380 165 C395 177 398 196 388 210 C378 224 360 226 340 220 C318 213 302 198 280 195 C260 192 242 196 230 205" stroke="#1A1714" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+          <!-- Wing feather details -->
+          <path d="M75 180 C80 175 88 172 95 175" stroke="#1A1714" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <path d="M105 168 C110 163 118 161 124 165" stroke="#1A1714" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <path d="M360 172 C355 167 348 165 342 168" stroke="#1A1714" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <path d="M340 182 C335 177 328 175 322 178" stroke="#1A1714" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+
+          <!-- Raven head -->
+          <path class="draw-path" d="M200 125 C195 108 205 92 218 86 C231 80 247 82 255 92 C263 102 262 118 255 128 C248 138 235 143 222 140 C209 137 202 133 200 125Z" stroke="#1A1714" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+
+          <!-- Beak -->
+          <path class="draw-path" d="M255 95 C265 90 275 88 280 92 C275 99 265 102 255 100" stroke="#1A1714" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+          <!-- Eye — terracotta accent -->
+          <circle cx="244" cy="106" r="4.5" stroke="#C4785A" stroke-width="1.8" fill="none"/>
+          <circle cx="244" cy="106" r="1.5" fill="#C4785A"/>
+
+          <!-- Tail feathers -->
+          <path class="draw-path" d="M235 425 C228 445 220 460 215 472 C225 465 238 455 245 445 C252 455 258 468 265 478 C262 462 256 448 255 432" stroke="#1A1714" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <path class="draw-path" d="M238 430 C230 448 222 462 216 476" stroke="#1A1714" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.5"/>
+          <path class="draw-path" d="M248 430 C256 448 263 462 268 476" stroke="#1A1714" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.5"/>
+
+          <!-- Legs and talons -->
+          <path d="M228 390 C222 405 218 415 215 425 C210 428 202 430 196 432 M215 425 C218 428 222 432 224 436" stroke="#1A1714" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.6"/>
+          <path d="M248 388 C254 403 258 413 260 423 C265 426 273 428 278 430 M260 423 C257 426 253 430 251 434" stroke="#1A1714" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.6"/>
+
+          <!-- Decorative swirl — Celtic knot hint -->
+          <path d="M80 320 C70 310 68 295 75 285 C82 275 95 273 105 280 C115 287 117 300 112 310 C107 320 95 325 85 320 C75 315 72 303 78 295" stroke="#C4785A" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.3"/>
+          <path d="M385 340 C395 330 397 315 390 305 C383 295 370 293 360 300 C350 307 348 320 353 330 C358 340 370 345 380 340" stroke="#C4785A" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.3"/>
+
+          <!-- Floating dots -->
+          <circle cx="120" cy="250" r="2.5" fill="#C4785A" opacity="0.2"/>
+          <circle cx="370" cy="200" r="2" fill="#1A1714" opacity="0.12"/>
+          <circle cx="160" cy="380" r="3" fill="#C4785A" opacity="0.15"/>
+          <circle cx="340" cy="390" r="2" fill="#1A1714" opacity="0.1"/>
+        </svg>
       </div>
     </div>
   </section>
@@ -104,421 +152,372 @@
   <!-- ═══════════════════════════════════════
        WHY — MY STORY
   ═══════════════════════════════════════ -->
-  <section class="section section-why" id="why">
+  <section class="section section-linen" id="why">
     <div class="container">
-      <div class="section-label fade-in reveal-up">Why Morrigan</div>
-      <h2 class="section-heading fade-in reveal-up">Death entered slowly, then all at once.</h2>
+      <span class="label fade-in">Why Morrigan</span>
+      <h2 class="heading fade-in">Death entered slowly,<br/>then all at once.</h2>
 
       <div class="story-layout">
         <div class="story-text fade-in">
-          <p class="story-lead">
-            In the winter of 2019, my mentor was killed in Damascus. He was a man who had shaped how I saw the world — precise, humane, irreplaceable. ISIS took him without warning. That same Christmas, my father died.
-          </p>
-          <p>
-            Two losses in one year broke open something I'd carried without knowing: the comfortable illusion that there would be time. There wouldn't be time.
-          </p>
-          <p>
-            What I found myself asking wasn't philosophical. It was practical: <em>what happens to the things we leave behind?</em> My mentor left a lifetime of knowledge — inaccessible. My father left passwords on slips of paper nobody could find.
-          </p>
-          <p>
-            Morrigan is not a product born from a pitch deck. It is an answer to a question I could not stop asking: <em>what happens to the things we meant to say?</em>
-          </p>
-          <p class="story-attribution">— Paul Fleury, founder</p>
+          <p class="story-lead">In the winter of 2019, my mentor was killed in Damascus. ISIS took him without warning. That same Christmas, my father died.</p>
+          <p>Two losses in one year broke open something I had carried without knowing — the comfortable illusion that there would be time. There would not be time.</p>
+          <p>What I found myself asking was not philosophical. It was practical: <em>what happens to the things we leave behind?</em> My mentor left a lifetime of knowledge — inaccessible. My father left passwords on slips of paper nobody could find.</p>
+          <p>We prepare for physical death — wills, estates, notaries. We do almost nothing to prepare for our digital selves. That, I have come to believe, is a failure of love as much as logistics.</p>
+          <p>Morrigan is not a product born from a pitch deck. It is an answer to a question I could not stop asking.</p>
+          <p class="story-attr">— Paul Fleury, founder</p>
 
-          <!-- Year markers — editorial style -->
-          <div class="story-year-markers">
-            <div class="year-marker">
-              <span class="year-number">2019</span>
+          <div class="year-marks">
+            <div class="year-mark fade-in">
+              <span class="year-num">2019</span>
               <span class="year-note">Damascus. My mentor. Gone.</span>
             </div>
-            <div class="year-marker">
-              <span class="year-number">2019</span>
+            <div class="year-mark fade-in">
+              <span class="year-num">2019</span>
               <span class="year-note">Christmas. My father. Gone.</span>
             </div>
-            <div class="year-marker">
-              <span class="year-number">Now</span>
+            <div class="year-mark fade-in">
+              <span class="year-num">Now</span>
               <span class="year-note">Building something that endures.</span>
             </div>
           </div>
         </div>
 
         <div class="story-aside fade-in">
-          <blockquote class="pull-quote">
+          <div class="pull-quote">
             <p>"She is not evil — she embodies the natural, inevitable cycle of life and death. She sees what is coming and prepares for it."</p>
-            <cite>On the Morrígan, Irish mythology</cite>
-          </blockquote>
-          <blockquote class="pull-quote" style="margin-top: var(--space-6);">
+            <cite>On the Morrígan · Irish mythology</cite>
+          </div>
+          <div class="pull-quote" style="margin-top:2rem;">
             <p>"The dead don't disappear. They become the things we can no longer ask."</p>
             <cite>On grief &amp; the digital self</cite>
-          </blockquote>
+          </div>
+
+          <!-- Hourglass illustration -->
+          <div class="story-illo" aria-hidden="true">
+            <svg viewBox="0 0 120 160" fill="none">
+              <path class="draw-path" d="M20 10 H100 L65 78 L100 150 H20 L55 78 Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M20 10 Q60 15 100 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.4"/>
+              <path d="M20 150 Q60 145 100 150" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.4"/>
+              <!-- Sand grains top -->
+              <ellipse cx="60" cy="40" rx="22" ry="10" fill="currentColor" opacity="0.08"/>
+              <path d="M48 45 Q55 52 60 50 Q65 48 70 53" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.25"/>
+              <!-- Sand grains bottom -->
+              <ellipse cx="60" cy="128" rx="18" ry="8" fill="currentColor" opacity="0.08"/>
+              <!-- Falling grain -->
+              <line x1="60" y1="78" x2="60" y2="100" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3" opacity="0.3"/>
+              <!-- Decorative dots -->
+              <circle cx="35" cy="78" r="1.5" fill="currentColor" opacity="0.2"/>
+              <circle cx="85" cy="78" r="1.5" fill="currentColor" opacity="0.2"/>
+            </svg>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-
-  <div class="section-divider" aria-hidden="true">
-    <svg viewBox="0 0 1200 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0 20 Q300 0 600 20 Q900 40 1200 20" stroke="var(--color-border)" stroke-width="1" fill="none" opacity="0.6"/>
-      <circle cx="600" cy="20" r="3" fill="var(--color-teal)" opacity="0.4"/>
-      <circle cx="300" cy="10" r="1.5" fill="var(--color-border)" opacity="0.8"/>
-      <circle cx="900" cy="30" r="1.5" fill="var(--color-border)" opacity="0.8"/>
-    </svg>
-  </div>
 
   <!-- ═══════════════════════════════════════
        WHAT — THE STACK
   ═══════════════════════════════════════ -->
-  <section class="section section-what" id="what">
+  <section class="section section-linen-deep" id="what">
     <div class="container">
-      <div class="section-label fade-in reveal-up">The Stack</div>
-      <h2 class="section-heading fade-in reveal-up">Built on truth, not trust</h2>
-      <p class="section-subtext fade-in">Every component is auditable. No proprietary black boxes. The architecture is designed so that even Morrigan's own servers cannot read your data.</p>
+      <span class="label fade-in">The Stack</span>
+      <h2 class="heading fade-in">Built on truth, not trust.</h2>
+      <p class="subtext fade-in">Every component is open and auditable. The architecture ensures that even Morrigan's own servers cannot read your data.</p>
 
-      <div class="stack-visual fade-in">
-        <picture>
-          <source srcset="assets/encryption-visual.webp" type="image/webp" />
-          <img src="assets/encryption-visual.jpg" alt="Abstract Celtic-inspired cryptographic architecture visualization" class="stack-img" />
-        </picture>
-        <div class="stack-overlay-grid">
-          <div class="stack-badge stack-badge--tl">Zero-knowledge</div>
-          <div class="stack-badge stack-badge--tr">Client-side</div>
-          <div class="stack-badge stack-badge--bl">Open source</div>
-          <div class="stack-badge stack-badge--br">Auditable</div>
-        </div>
-      </div>
-
-      <div class="stack-cards stagger-children fade-in">
+      <div class="stack-grid stagger fade-in">
 
         <div class="stack-card">
-          <div class="stack-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-              <path d="M12 2l8 4v6c0 5-3.6 9.7-8 11-4.4-1.3-8-6-8-11V6l8-4z"/>
-              <path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
-            </svg>
-          </div>
+          <!-- Lock + shield illustration -->
+          <svg class="stack-card-illo" viewBox="0 0 52 52" fill="none">
+            <path d="M26 4L8 12V27C8 37 16 45.5 26 48C36 45.5 44 37 44 27V12L26 4Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="18" y="24" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M21 24V20.5A5 5 0 0 1 31 20.5V24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="26" cy="30" r="1.5" fill="currentColor"/>
+          </svg>
           <h3>Client-Side Encryption</h3>
-          <p>Your data is encrypted on your device before it touches any network. The server only ever sees ciphertext.</p>
-          <div class="stack-card-tag">XChaCha20-Poly1305 · libsodium</div>
+          <p>Your data is encrypted on your device before it touches any network. Our servers see only ciphertext — never the original.</p>
+          <span class="stack-card-tag">XChaCha20-Poly1305 · libsodium</span>
         </div>
 
         <div class="stack-card">
-          <div class="stack-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-              <circle cx="12" cy="5" r="2.5"/>
-              <circle cx="5" cy="19" r="2.5"/>
-              <circle cx="19" cy="19" r="2.5"/>
-              <path d="M12 7.5L5 16.5M12 7.5L19 16.5M5 16.5h14" opacity="0.5"/>
-            </svg>
-          </div>
+          <!-- Constellation / secret sharing illustration -->
+          <svg class="stack-card-illo" viewBox="0 0 52 52" fill="none">
+            <circle cx="26" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="8" cy="40" r="4" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="44" cy="40" r="4" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M26 12L10 37M26 12L42 37M10 40H42" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/>
+            <circle cx="26" cy="26" r="3" fill="currentColor" opacity="0.2"/>
+            <path d="M26 12L26 23M10 37L23 27M42 37L29 27" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-dasharray="2 3" opacity="0.5"/>
+          </svg>
           <h3>Shamir's Secret Sharing</h3>
-          <p>Your key is split into N shares. Any K-of-N reconstructs it. No single person — beneficiary or Morrigan — holds the whole key.</p>
-          <div class="stack-card-tag">K-of-N threshold · No single point of failure</div>
+          <p>Your key is split into N shares. Any K-of-N reconstructs it. No single person — not a beneficiary, not Morrigan — holds the whole key.</p>
+          <span class="stack-card-tag">K-of-N threshold · No single point of failure</span>
         </div>
 
         <div class="stack-card">
-          <div class="stack-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-              <rect x="2" y="6" width="20" height="13" rx="2"/>
-              <path d="M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
-              <circle cx="12" cy="13" r="2.5"/>
-              <path d="M12 10.5v1M12 15v1M9.6 11.5l.8.5M13.6 14l.8.5M9.6 14.5l.8-.5M13.6 12l.8-.5" opacity="0.5"/>
-            </svg>
-          </div>
+          <!-- Storage / vault illustration -->
+          <svg class="stack-card-illo" viewBox="0 0 52 52" fill="none">
+            <rect x="6" y="14" width="40" height="28" rx="3" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M6 22H46" stroke="currentColor" stroke-width="1.2" opacity="0.3"/>
+            <circle cx="18" cy="28" r="4" stroke="currentColor" stroke-width="1.3"/>
+            <circle cx="18" cy="28" r="1.5" fill="currentColor" opacity="0.3"/>
+            <path d="M28 26H40M28 30H36" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M20 6H32M26 6V14" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity="0.4"/>
+          </svg>
           <h3>Bring Your Own Storage</h3>
-          <p>Connect any S3-compatible endpoint, SFTP, or WebDAV. Or use Morrigan-hosted storage. Unencrypted data never leaves your device.</p>
-          <div class="stack-card-tag">S3 · SFTP · WebDAV · Self-hosted</div>
+          <p>Use Morrigan-hosted storage or connect any S3-compatible endpoint, SFTP, or WebDAV. Unencrypted data never leaves your device.</p>
+          <span class="stack-card-tag">S3 · SFTP · WebDAV · Self-hosted</span>
         </div>
 
         <div class="stack-card">
-          <div class="stack-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
-            </svg>
-          </div>
+          <!-- Open book / open source illustration -->
+          <svg class="stack-card-illo" viewBox="0 0 52 52" fill="none">
+            <path d="M26 10C26 10 16 8 8 12V42C16 38 26 40 26 40C26 40 36 38 44 42V12C36 8 26 10 26 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="26" y1="10" x2="26" y2="40" stroke="currentColor" stroke-width="1.2" opacity="0.4"/>
+            <path d="M12 18H22M12 23H20M12 28H18" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" opacity="0.5"/>
+            <path d="M30 18H40M32 23H40M34 28H40" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" opacity="0.5"/>
+          </svg>
           <h3>Free &amp; Open Source</h3>
-          <p>Every line of code is public. Audit it, fork it, run your own instance. Non-profit — free forever.</p>
-          <div class="stack-card-tag">AGPLv3 · GitHub · Community-audited</div>
+          <p>Every line of code is public. Audit it, fork it, run your own instance. Non-profit — free forever, no shareholders to appease.</p>
+          <span class="stack-card-tag">AGPLv3 · GitHub · Community-audited</span>
         </div>
 
       </div>
 
-      <div class="zero-knowledge-promise fade-in">
-        <div class="zkp-inner">
-          <div class="zkp-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-            </svg>
-          </div>
-          <div class="zkp-text">
-            <strong>The zero-knowledge promise</strong>
-            <p>If you lose your key, your data is irrecoverable. No reset. No backdoor. No exceptions. That's not a bug — it's the guarantee.</p>
-          </div>
+      <!-- ZKP promise banner -->
+      <div class="zkp-banner fade-in">
+        <svg class="zkp-banner-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        </svg>
+        <div>
+          <strong>The zero-knowledge promise</strong>
+          <p>If you lose your key, your data is irrecoverable. No reset. No backdoor. No exceptions. That's not a limitation — it's the guarantee.</p>
         </div>
+        <a href="security.html" class="btn btn-inv btn-sm" style="flex-shrink:0;">Security details →</a>
       </div>
-
     </div>
   </section>
 
 
-  <div class="section-divider section-divider--inv" aria-hidden="true">
-    <svg viewBox="0 0 1200 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0 20 Q300 40 600 20 Q900 0 1200 20" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="none"/>
-      <circle cx="600" cy="20" r="3" fill="rgba(27,122,130,0.4)"/>
-      <circle cx="300" cy="30" r="1.5" fill="rgba(255,255,255,0.12)"/>
-      <circle cx="900" cy="10" r="1.5" fill="rgba(255,255,255,0.12)"/>
-    </svg>
-  </div>
-
   <!-- ═══════════════════════════════════════
        ENCRYPTION — THE CRYPTOGRAPHY
   ═══════════════════════════════════════ -->
-  <section class="section section-encryption" id="encryption">
+  <section class="section section-ink" id="encryption">
     <div class="container">
-      <div class="section-label fade-in reveal-up">Under the Hood</div>
-      <h2 class="section-heading fade-in reveal-up">Cryptography worthy of what you're protecting.</h2>
-      <p class="section-subtext fade-in">
-        Marketing words like "military-grade" are meaningless. Cryptographic choices are engineering decisions — they have consequences, tradeoffs, and histories. Morrigan doesn't hide behind abstractions. Here is exactly what we use, and why we chose it.
-      </p>
+      <span class="label fade-in">Under the Hood</span>
+      <h2 class="heading fade-in">Cryptography worthy of what you're protecting.</h2>
+      <p class="subtext fade-in">Marketing words like "military-grade" are meaningless. Here is exactly what we use, and why.</p>
 
-      <div class="crypto-cards stagger-children fade-in">
+      <div class="crypto-grid stagger fade-in">
 
         <!-- 1. XChaCha20-Poly1305 -->
         <div class="crypto-card">
           <div class="crypto-card-top">
-            <div class="crypto-card-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-                <path d="M2 12 Q4 6 6 12 Q8 18 10 12 Q12 6 14 12 Q16 18 18 12 Q20 6 22 12"/>
-              </svg>
-            </div>
-            <div class="crypto-card-badge" data-count="256">256-bit</div>
+            <svg class="crypto-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M2 12 Q4 6 6 12 Q8 18 10 12 Q12 6 14 12 Q16 18 18 12 Q20 6 22 12"/>
+            </svg>
+            <span class="crypto-badge">256-bit</span>
           </div>
-          <h3 class="crypto-card-name">XChaCha20-Poly1305</h3>
-          <p class="crypto-card-desc">256-bit key, 192-bit nonce. Poly1305 MAC delivers authenticated encryption — integrity and confidentiality in one pass. Constant-time on every platform, no hardware dependency required.</p>
-          <div class="crypto-card-footer">
-            <code class="crypto-lib-tag">libsodium</code>
-            <code class="crypto-lib-tag">crypto_secretstream</code>
+          <h3>XChaCha20-Poly1305</h3>
+          <p>Primary cipher. 192-bit nonce — safe for random generation with negligible collision probability. Authenticated encryption: integrity and confidentiality in one pass. Constant-time on all hardware.</p>
+          <div class="crypto-card-libs">
+            <code class="lib-tag">libsodium</code>
+            <code class="lib-tag">crypto_secretstream</code>
           </div>
         </div>
 
-        <!-- 2. Curve25519 / X25519 -->
+        <!-- 2. X25519 -->
         <div class="crypto-card">
           <div class="crypto-card-top">
-            <div class="crypto-card-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-                <ellipse cx="12" cy="12" rx="10" ry="6" transform="rotate(-30 12 12)"/>
-                <circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.6"/>
-              </svg>
-            </div>
-            <div class="crypto-card-badge" data-count="128">128-bit equiv.</div>
+            <svg class="crypto-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <ellipse cx="12" cy="12" rx="10" ry="6" transform="rotate(-30 12 12)"/>
+              <circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.5"/>
+            </svg>
+            <span class="crypto-badge">128-bit</span>
           </div>
-          <h3 class="crypto-card-name">Curve25519 / X25519</h3>
-          <p class="crypto-card-desc">Elliptic-curve key exchange. 128-bit security at 3,000× the speed of RSA-2048. Used to encrypt key shards to each beneficiary's public key. The de facto modern standard.</p>
-          <div class="crypto-card-footer">
-            <code class="crypto-lib-tag">libsodium</code>
-            <code class="crypto-lib-tag">crypto_box</code>
+          <h3>Curve25519 / X25519</h3>
+          <p>Elliptic-curve key exchange. 128-bit security at 3,000× the speed of RSA-2048. Used to encrypt key shards to each beneficiary's public key.</p>
+          <div class="crypto-card-libs">
+            <code class="lib-tag">libsodium</code>
+            <code class="lib-tag">crypto_box</code>
           </div>
         </div>
 
         <!-- 3. Ed25519 -->
         <div class="crypto-card">
           <div class="crypto-card-top">
-            <div class="crypto-card-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-                <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
-                <path d="m15 5 4 4"/>
-              </svg>
-            </div>
-            <div class="crypto-card-badge" data-count="128">128-bit equiv.</div>
+            <svg class="crypto-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+              <path d="m15 5 4 4"/>
+            </svg>
+            <span class="crypto-badge">128-bit</span>
           </div>
-          <h3 class="crypto-card-name">Ed25519</h3>
-          <p class="crypto-card-desc">Deterministic digital signatures — no random nonce, no fault-attack surface. Used to sign vault manifests and cryptographically prove authorship. Immune to the ECDSA vulnerability class.</p>
-          <div class="crypto-card-footer">
-            <code class="crypto-lib-tag">libsodium</code>
-            <code class="crypto-lib-tag">crypto_sign</code>
+          <h3>Ed25519</h3>
+          <p>Deterministic digital signatures. No random nonce — no fault-attack surface. Signs vault manifests to cryptographically prove authorship of your instructions.</p>
+          <div class="crypto-card-libs">
+            <code class="lib-tag">libsodium</code>
+            <code class="lib-tag">crypto_sign</code>
           </div>
         </div>
 
         <!-- 4. Argon2id -->
         <div class="crypto-card">
           <div class="crypto-card-top">
-            <div class="crypto-card-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-                <rect x="2" y="6" width="20" height="12" rx="2"/>
-                <path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h.01M10 14h.01M14 14h.01M18 14h.01"/>
-              </svg>
-            </div>
-            <div class="crypto-card-badge" data-count="64">64 MB memory</div>
+            <svg class="crypto-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="6" width="20" height="12" rx="2"/>
+              <path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h.01M10 14h.01M14 14h.01M18 14h.01"/>
+            </svg>
+            <span class="crypto-badge">64 MB</span>
           </div>
-          <h3 class="crypto-card-name">Argon2id</h3>
-          <p class="crypto-card-desc">Winner of the Password Hashing Competition. Memory-hard against GPU and ASIC attacks. Parameters: time=3, memory=64MB, parallelism=4. Your passphrase is never stored — only its derived key.</p>
-          <div class="crypto-card-footer">
-            <code class="crypto-lib-tag">argon2-browser</code>
-            <code class="crypto-lib-tag">PHC winner</code>
+          <h3>Argon2id</h3>
+          <p>Winner of the Password Hashing Competition. Memory-hard against GPU and ASIC attacks. Your passphrase is never stored — only its derived key. Irrecoverable even if servers are seized.</p>
+          <div class="crypto-card-libs">
+            <code class="lib-tag">argon2-browser</code>
+            <code class="lib-tag">PHC winner</code>
           </div>
         </div>
 
-        <!-- 5. Shamir's Secret Sharing -->
+        <!-- 5. Shamir -->
         <div class="crypto-card">
           <div class="crypto-card-top">
-            <div class="crypto-card-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-                <path d="M3 20 Q8 4 12 12 Q16 20 21 4"/>
-                <circle cx="3" cy="20" r="1.5" fill="currentColor"/>
-                <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
-                <circle cx="21" cy="4" r="1.5" fill="currentColor"/>
-              </svg>
-            </div>
-            <div class="crypto-card-badge" data-count="256">256-bit secret</div>
+            <svg class="crypto-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 20 Q8 4 12 12 Q16 20 21 4"/>
+              <circle cx="3" cy="20" r="1.5" fill="currentColor"/>
+              <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+              <circle cx="21" cy="4" r="1.5" fill="currentColor"/>
+            </svg>
+            <span class="crypto-badge">256-bit</span>
           </div>
-          <h3 class="crypto-card-name">Shamir's Secret Sharing</h3>
-          <p class="crypto-card-desc">A 256-bit secret split into N shares via Lagrange interpolation over GF(2⁸). Any K shares reconstruct it. K−1 shares reveal nothing. Independently audited implementation.</p>
-          <div class="crypto-card-footer">
-            <code class="crypto-lib-tag">secrets.js-grempe</code>
-            <code class="crypto-lib-tag">GF(2⁸)</code>
+          <h3>Shamir's Secret Sharing</h3>
+          <p>Lagrange interpolation over GF(2⁸). A 256-bit secret split into N shares; any K reconstruct it. K−1 shares reveal absolutely nothing. Independently audited.</p>
+          <div class="crypto-card-libs">
+            <code class="lib-tag">secrets.js-grempe</code>
+            <code class="lib-tag">GF(2⁸)</code>
           </div>
         </div>
 
-        <!-- 6. libsodium / TweetNaCl -->
+        <!-- 6. libsodium -->
         <div class="crypto-card">
           <div class="crypto-card-top">
-            <div class="crypto-card-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                <line x1="9" y1="7" x2="15" y2="7"/>
-                <line x1="9" y1="11" x2="13" y2="11"/>
-              </svg>
-            </div>
-            <div class="crypto-card-badge" data-count="10">10 yrs audited</div>
+            <svg class="crypto-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              <line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="13" y2="11"/>
+            </svg>
+            <span class="crypto-badge">10 yrs</span>
           </div>
-          <h3 class="crypto-card-name">libsodium &amp; TweetNaCl</h3>
-          <p class="crypto-card-desc">The implementation layer. A decade of production hardening, used by Signal, WhatsApp, and Cloudflare. TweetNaCl.js for in-browser: minimal attack surface, no OpenSSL, no legacy ciphers.</p>
-          <div class="crypto-card-footer">
-            <code class="crypto-lib-tag">libsodium 1.0.x</code>
-            <code class="crypto-lib-tag">TweetNaCl.js</code>
+          <h3>libsodium &amp; TweetNaCl</h3>
+          <p>A decade of production hardening, used by Signal, WhatsApp, and Cloudflare. TweetNaCl.js for in-browser: minimal attack surface, no OpenSSL dependency.</p>
+          <div class="crypto-card-libs">
+            <code class="lib-tag">libsodium 1.0.x</code>
+            <code class="lib-tag">TweetNaCl.js</code>
           </div>
         </div>
 
-      </div><!-- /.crypto-cards -->
+      </div>
 
-      <!-- ─── Transformation — Post-Quantum Commitment ─── -->
-      <div class="transformation-block fade-in">
-        <div class="transformation-myth">
-          <span class="transformation-rune" aria-hidden="true">᚛</span>
+      <!-- Transformation / Post-Quantum block -->
+      <div class="transform-block fade-in">
+        <div class="transform-myth">
+          <!-- Spiral transformation SVG illustration -->
+          <svg class="transform-myth-illo" viewBox="0 0 48 48" fill="none">
+            <path d="M24 24 C24 18 30 14 34 18 C38 22 36 30 30 32 C24 34 18 30 18 24 C18 18 22 14 28 14 C34 14 38 20 36 26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <path d="M36 26 C34 30 30 34 26 34 C20 34 16 30 16 24 C16 18 20 12 28 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.5"/>
+            <circle cx="28" cy="10" r="2" fill="currentColor" opacity="0.6"/>
+            <path d="M28 8L30 6M28 8L26 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+          </svg>
           <blockquote>
             <p>"She shifts form — she is never trapped in one state."</p>
             <cite>On the Morrígan · the power of Transformation</cite>
           </blockquote>
         </div>
 
-        <div class="transformation-body">
-          <div class="transformation-eyebrow">Foundation Commitment</div>
-          <h3 class="transformation-heading">The stack transforms. Always.</h3>
-          <p>
-            Algorithms age. Paradigms shift. As a non-profit with no commercial pressure, Morrigan is constitutionally committed to one principle: <strong>we will always migrate to the strongest available cryptographic standards.</strong>
-          </p>
-          <p>
-            Not a roadmap item. A founding obligation.
-          </p>
+        <div class="transform-body">
+          <div class="transform-eyebrow">Foundation Commitment</div>
+          <h3 class="transform-heading">The stack transforms. Always.</h3>
+          <p>Algorithms age. Paradigms shift. As a non-profit with no commercial pressure, Morrigan is constitutionally committed: <strong>we will always migrate to the strongest available cryptographic standards.</strong></p>
+          <p>Not a roadmap item. A founding obligation.</p>
 
-          <div class="pqc-grid stagger-children">
+          <div class="pqc-grid">
             <div class="pqc-card">
-              <div class="pqc-card-top">
-                <span class="pqc-status pqc-status--nist">NIST PQC Final</span>
-              </div>
+              <span class="pqc-badge pqc-badge--final">NIST Final</span>
               <strong>CRYSTALS-Kyber</strong>
               <span class="pqc-role">Key Encapsulation</span>
-              <p>Lattice-based KEM. Replaces X25519 for asymmetric key exchange. NIST FIPS 203 (ML-KEM). Secure against both classical and quantum adversaries.</p>
+              <p>Lattice-based KEM. Replaces X25519. NIST FIPS 203 (ML-KEM).</p>
             </div>
             <div class="pqc-card">
-              <div class="pqc-card-top">
-                <span class="pqc-status pqc-status--nist">NIST PQC Final</span>
-              </div>
+              <span class="pqc-badge pqc-badge--final">NIST Final</span>
               <strong>CRYSTALS-Dilithium</strong>
               <span class="pqc-role">Digital Signatures</span>
-              <p>Lattice-based signature scheme. Replaces Ed25519 for vault manifest signing. NIST FIPS 204 (ML-DSA). Compact signatures, fast verification.</p>
+              <p>Replaces Ed25519 for vault signing. NIST FIPS 204 (ML-DSA).</p>
             </div>
             <div class="pqc-card">
-              <div class="pqc-card-top">
-                <span class="pqc-status pqc-status--nist">NIST PQC Final</span>
-              </div>
+              <span class="pqc-badge pqc-badge--final">NIST Final</span>
               <strong>SPHINCS+</strong>
               <span class="pqc-role">Hash-Based Signatures</span>
-              <p>Stateless hash-based fallback. No lattice assumptions — pure hash security. NIST FIPS 205 (SLH-DSA). The belt alongside the braces.</p>
+              <p>Stateless fallback. No lattice assumptions. FIPS 205 (SLH-DSA).</p>
             </div>
             <div class="pqc-card">
-              <div class="pqc-card-top">
-                <span class="pqc-status pqc-status--watch">On watch</span>
-              </div>
+              <span class="pqc-badge pqc-badge--watch">On watch</span>
               <strong>HQC &amp; BIKE</strong>
               <span class="pqc-role">Code-Based Diversity</span>
-              <p>NIST Round 4 candidates. Code-based cryptography from a completely different mathematical family — redundancy against any single algorithm break.</p>
+              <p>NIST Round 4. Different mathematical family — redundancy against any single algorithm break.</p>
             </div>
           </div>
 
-          <p class="transformation-footnote">
-            XChaCha20-Poly1305 is symmetric and already quantum-resistant. Migration targets are asymmetric primitives only: X25519 → Kyber for key exchange, Ed25519 → Dilithium + SPHINCS+ for signatures.
-          </p>
+          <p class="transform-footnote">XChaCha20-Poly1305 is symmetric and already quantum-resistant at 256-bit. Migration targets are asymmetric primitives only: X25519 → Kyber, Ed25519 → Dilithium + SPHINCS+.</p>
         </div>
       </div>
 
-      <!-- Why not X? callout -->
-      <div class="why-not-box fade-in">
+      <!-- Why not X -->
+      <div class="why-not fade-in">
         <h3 class="why-not-heading">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           Why not X?
         </h3>
         <div class="why-not-grid">
           <div class="why-not-item">
             <strong>Why not AES-GCM?</strong>
-            <p>Requires hardware AES acceleration for constant-time operation. XChaCha20 is constant-time on every platform by design — no exceptions.</p>
+            <p>Requires hardware AES acceleration for constant-time operation. XChaCha20 is constant-time on every platform by design.</p>
           </div>
           <div class="why-not-item">
             <strong>Why not RSA?</strong>
-            <p>3072-bit keys for 128-bit security, significantly slower, no forward secrecy. X25519 matches the security level at a fraction of the cost.</p>
+            <p>3072-bit keys for 128-bit security, significantly slower, no forward secrecy. X25519 matches security at a fraction of the cost.</p>
           </div>
           <div class="why-not-item">
             <strong>Why not bcrypt or scrypt?</strong>
-            <p>Argon2id dominates both. bcrypt maxes at 72-byte passwords. scrypt lacks side-channel resistance. Argon2id wins on both axes simultaneously.</p>
+            <p>Argon2id dominates both. bcrypt maxes at 72-byte passwords. scrypt lacks side-channel resistance. Argon2id wins on both axes.</p>
           </div>
         </div>
       </div>
 
-      <!-- Open source audit callout -->
-      <div class="audit-callout fade-in">
-        <div class="audit-callout-inner">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            <polyline points="9 12 11 14 15 10"/>
-          </svg>
-          <div>
-            <strong>All cryptographic code is open source and auditable.</strong>
-            <p>Every line. No obfuscation. No proprietary black boxes. You can read, fork, and verify everything at <a href="https://github.com/paulfxyz/morrigan" target="_blank" rel="noopener">github.com/paulfxyz/morrigan</a>.</p>
-          </div>
-          <a href="security.html" class="btn btn-outline btn-sm">Security page →</a>
+      <!-- Open source row -->
+      <div class="audit-row fade-in">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--terra);flex-shrink:0;">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <polyline points="9 12 11 14 15 10" stroke-width="2"/>
+        </svg>
+        <div>
+          <strong>All cryptographic code is open source and auditable.</strong>
+          <p>Every line. No obfuscation. No proprietary black boxes. Read, fork, and verify at <a href="https://github.com/paulfxyz/morrigan" target="_blank" rel="noopener">github.com/paulfxyz/morrigan</a>.</p>
         </div>
+        <a href="security.html" class="btn btn-inv-outline btn-sm" style="flex-shrink:0;">Security page →</a>
       </div>
 
-      <!-- Library stack row -->
-      <div class="lib-stack fade-in" aria-label="Library dependencies">
-        <span class="lib-stack-label">Dependency stack:</span>
-        <a href="https://libsodium.gitbook.io/doc/" class="lib-pill" target="_blank" rel="noopener">
-          libsodium 1.0.x
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </a>
-        <a href="https://github.com/nicktindall/cyclon.p2p-common/tree/master/src/crypto" class="lib-pill" target="_blank" rel="noopener">
-          secrets.js-grempe 2.x
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </a>
-        <a href="https://github.com/nicowillis/argon2-browser" class="lib-pill" target="_blank" rel="noopener">
-          argon2-browser
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </a>
-        <a href="https://tweetnacl.js.org/" class="lib-pill" target="_blank" rel="noopener">
-          TweetNaCl.js
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </a>
+      <!-- Blockchain + dual-auth trust row -->
+      <div class="audit-row fade-in" style="margin-top:var(--space-5);">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--terra);flex-shrink:0;">
+          <!-- Chain links -->
+          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+        </svg>
+        <div>
+          <strong>Blockchain-anchored integrity + dual-channel identity.</strong>
+          <p>Every vault modification is cryptographically fingerprinted and anchored to public blockchains (Bitcoin via OpenTimestamps). Every sensitive action requires confirmation on both your registered email <em>and</em> phone number — no single vector.</p>
+        </div>
+        <a href="security.html#blockchain" class="btn btn-inv-outline btn-sm" style="flex-shrink:0;">Ledger →</a>
       </div>
 
     </div>
@@ -528,132 +527,99 @@
   <!-- ═══════════════════════════════════════
        HOW — THE PROCESS
   ═══════════════════════════════════════ -->
-  <section class="section section-how" id="how">
+  <section class="section section-linen" id="how">
     <div class="container">
-      <div class="section-label fade-in reveal-up">How It Works</div>
-      <h2 class="section-heading fade-in reveal-up">Four steps to sovereign peace of mind</h2>
-      <p class="section-subtext fade-in">Morrigan makes cryptographic security human. The hard parts are handled automatically — you stay in control of the meaning.</p>
+      <span class="label fade-in">How It Works</span>
+      <h2 class="heading fade-in">Four steps to sovereign peace of mind.</h2>
+      <p class="subtext fade-in">The hard cryptographic parts happen automatically. You stay in control of the meaning.</p>
 
-      <div class="steps-grid stagger-children fade-in">
+      <div class="steps-grid stagger fade-in">
 
         <div class="step">
-          <div class="step-number">01</div>
-          <div class="step-content">
-            <div class="step-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-                <path d="M12 2C9.24 2 7 4.24 7 7v2H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2v-9a2 2 0 00-2-2h-2V7c0-2.76-2.24-5-5-5z"/>
-                <circle cx="12" cy="16" r="1.5" fill="currentColor"/>
-                <path d="M12 14v1.5" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3>Create your vault</h3>
-            <p>Choose a passphrase. Morrigan derives an encryption key via Argon2id — memory-hard, GPU-resistant. Your key never leaves your device.</p>
-            <span class="step-tag">Argon2id · client-side only</span>
-          </div>
+          <span class="step-num">01</span>
+          <!-- Lock illustration -->
+          <svg class="step-illo" viewBox="0 0 64 64" fill="none">
+            <rect x="12" y="28" width="40" height="28" rx="4" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M20 28V22A12 12 0 0 1 44 22V28" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="32" cy="42" r="4" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="32" y1="46" x2="32" y2="50" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- Key detail -->
+            <path d="M48 12C48 12 52 8 56 10 C60 12 60 18 56 20C52 22 48 20 48 16L42 22L38 20L40 18L38 16L42 12L48 12Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.35"/>
+          </svg>
+          <h3>Create your vault</h3>
+          <p>Choose a passphrase. Morrigan derives an encryption key via Argon2id — memory-hard, GPU-resistant. Your key never leaves your device.</p>
+          <span class="step-tag">Argon2id · client-side only</span>
         </div>
 
         <div class="step">
-          <div class="step-number">02</div>
-          <div class="step-content">
-            <div class="step-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-                <circle cx="8" cy="7" r="3"/>
-                <circle cx="16" cy="7" r="3"/>
-                <path d="M2 21v-1a6 6 0 016-6h1"/>
-                <path d="M22 21v-1a6 6 0 00-6-6h-1"/>
-                <circle cx="12" cy="13" r="2" fill="currentColor" opacity="0.4"/>
-              </svg>
-            </div>
-            <h3>Name your beneficiaries</h3>
-            <p>Assign trusted people. Each gets one shard of your key. You set how many shards are needed to unlock — no single person can act alone.</p>
-            <span class="step-tag">Shamir's Secret Sharing · K-of-N threshold</span>
-          </div>
+          <span class="step-num">02</span>
+          <!-- People / trust illustration -->
+          <svg class="step-illo" viewBox="0 0 64 64" fill="none">
+            <circle cx="20" cy="20" r="8" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="44" cy="20" r="8" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M4 56V52A12 12 0 0 1 16 40H26" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M60 56V52A12 12 0 0 0 48 40H38" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <!-- Center connecting node -->
+            <circle cx="32" cy="44" r="5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M27 44H26M37 44H38M32 39V38M32 49V50" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity="0.5"/>
+          </svg>
+          <h3>Name your beneficiaries</h3>
+          <p>Assign trusted people. Each receives one shard of your key. You set how many shards are needed to unlock — no single person can act alone.</p>
+          <span class="step-tag">Shamir's Secret Sharing · K-of-N threshold</span>
         </div>
 
         <div class="step">
-          <div class="step-number">03</div>
-          <div class="step-content">
-            <div class="step-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-                <rect x="4" y="2" width="16" height="20" rx="2"/>
-                <path d="M8 7h8M8 11h8M8 15h5" stroke-linecap="round"/>
-                <path d="M16 15l2 2 4-3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h3>Store what matters</h3>
-            <p>Upload files, write messages, add passwords. Everything is encrypted before upload. Our servers see only ciphertext.</p>
-            <span class="step-tag">XChaCha20-Poly1305 · BYOS compatible</span>
-          </div>
+          <span class="step-num">03</span>
+          <!-- Document / files illustration -->
+          <svg class="step-illo" viewBox="0 0 64 64" fill="none">
+            <path d="M14 8H38L50 20V56H14V8Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M38 8V20H50" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M22 30H42M22 37H38M22 44H34" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- Encryption padlock on doc -->
+            <rect x="33" y="40" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.2" opacity="0.5"/>
+            <path d="M36 40V38A4 4 0 0 1 44 38V40" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+          </svg>
+          <h3>Store what matters</h3>
+          <p>Upload files, write messages, add passwords. Everything is encrypted before upload. Our servers see only ciphertext.</p>
+          <span class="step-tag">XChaCha20-Poly1305 · BYOS compatible</span>
         </div>
 
         <div class="step">
-          <div class="step-number">04</div>
-          <div class="step-content">
-            <div class="step-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-                <circle cx="12" cy="12" r="9"/>
-                <path d="M12 7v5l3.5 2" stroke-linecap="round"/>
-                <path d="M4.2 4.2l1.4 1.4M19.8 4.2l-1.4 1.4" stroke-linecap="round" opacity="0.4"/>
-              </svg>
-            </div>
-            <h3>Set the switch</h3>
-            <p>Configure a dead man's switch. Miss a check-in and Morrigan notifies your beneficiaries. They combine shards. Your legacy is delivered.</p>
-            <span class="step-tag">Dead man's switch · Configurable grace period</span>
-          </div>
+          <span class="step-num">04</span>
+          <!-- Clock / switch illustration -->
+          <svg class="step-illo" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="22" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M32 16V32L42 38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <!-- Tick marks -->
+            <path d="M32 10V13M32 51V54M10 32H13M51 32H54" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+            <!-- Warning dot -->
+            <circle cx="48" cy="16" r="5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+            <path d="M48 13V16.5M48 19h.01" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+          <h3>Set the switch</h3>
+          <p>Configure a dead man's switch. Miss a check-in and Morrigan notifies your beneficiaries. They combine shards. Your legacy is delivered.</p>
+          <span class="step-tag">Dead man's switch · Configurable grace period</span>
         </div>
 
       </div>
 
-      <!-- Dead man's switch detail callout -->
-      <div class="dms-detail fade-in">
-        <div class="dms-detail-heading">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          Dead man's switch — three stages
-        </div>
-        <div class="dms-mini-flow">
-          <div class="dms-mini-step">
+      <!-- Dead man's switch flow -->
+      <div class="dms-flow fade-in">
+        <h3 class="dms-flow-heading">The dead man's switch — three stages</h3>
+        <div class="dms-steps">
+          <div class="dms-step">
             <strong>Stage 1</strong>
             <span>Scheduled check-in ping</span>
           </div>
-          <span class="dms-mini-arrow">→</span>
-          <div class="dms-mini-step">
+          <span class="dms-arrow">→</span>
+          <div class="dms-step">
             <strong>Stage 2</strong>
             <span>No response after grace period</span>
           </div>
-          <span class="dms-mini-arrow">→</span>
-          <div class="dms-mini-step">
+          <span class="dms-arrow">→</span>
+          <div class="dms-step">
             <strong>Stage 3</strong>
-            <span>Key fragments released to beneficiaries</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="deadman-switch-explainer fade-in" style="margin-top: var(--space-6);">
-        <div class="dms-inner">
-          <h3 class="dms-heading">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            The dead man's switch, explained
-          </h3>
-          <div class="dms-flow">
-            <div class="dms-step">
-              <span class="dms-dot dms-dot--active"></span>
-              <span>Beneficiary triggers a request</span>
-            </div>
-            <div class="dms-arrow">→</div>
-            <div class="dms-step">
-              <span class="dms-dot"></span>
-              <span>You receive: <em>"Confirm you're OK"</em></span>
-            </div>
-            <div class="dms-arrow">→</div>
-            <div class="dms-step">
-              <span class="dms-dot"></span>
-              <span>Repeats daily for X days (your choice)</span>
-            </div>
-            <div class="dms-arrow">→</div>
-            <div class="dms-step">
-              <span class="dms-dot dms-dot--final"></span>
-              <span>No response → access granted</span>
-            </div>
+            <span>Key shards released to beneficiaries</span>
           </div>
         </div>
       </div>
@@ -665,23 +631,30 @@
   <!-- ═══════════════════════════════════════
        LANGUAGES
   ═══════════════════════════════════════ -->
-  <section class="section section-languages" id="languages">
+  <section class="section section-ink-soft" id="languages">
     <div class="container">
       <div class="languages-inner fade-in">
-        <div class="languages-text">
-          <div class="section-label">Global Reach</div>
-          <h2 class="section-heading">Available in 30+ languages</h2>
-          <p>Morrigan is built for everyone, not just English speakers. The most important things you'll ever write deserve to be expressed in your mother tongue.</p>
+        <div>
+          <span class="label">Global Reach</span>
+          <h2 class="heading">Available in 30+ languages.</h2>
+          <p class="subtext">The most important things you'll ever write deserve to be expressed in your mother tongue.</p>
         </div>
-        <div class="languages-grid" aria-label="Supported languages">
-          <span>English</span><span>Français</span><span>Español</span><span>Deutsch</span>
-          <span>Português</span><span>Italiano</span><span>Nederlands</span><span>Polski</span>
-          <span>Русский</span><span>中文</span><span>日本語</span><span>한국어</span>
-          <span>العربية</span><span>हिन्दी</span><span>Türkçe</span><span>Svenska</span>
-          <span>Norsk</span><span>Dansk</span><span>Suomi</span><span>Čeština</span>
-          <span>Magyar</span><span>Română</span><span>Ελληνικά</span><span>עברית</span>
-          <span>Bahasa</span><span>ภาษาไทย</span><span>Tiếng Việt</span><span>Filipino</span>
-          <span>Kiswahili</span><span>+ more</span>
+        <div class="lang-grid">
+          <span class="lang-pill">English</span><span class="lang-pill">Français</span>
+          <span class="lang-pill">Español</span><span class="lang-pill">Deutsch</span>
+          <span class="lang-pill">Português</span><span class="lang-pill">Italiano</span>
+          <span class="lang-pill">Nederlands</span><span class="lang-pill">Polski</span>
+          <span class="lang-pill">Русский</span><span class="lang-pill">中文</span>
+          <span class="lang-pill">日本語</span><span class="lang-pill">한국어</span>
+          <span class="lang-pill">العربية</span><span class="lang-pill">हिन्दी</span>
+          <span class="lang-pill">Türkçe</span><span class="lang-pill">Svenska</span>
+          <span class="lang-pill">Norsk</span><span class="lang-pill">Dansk</span>
+          <span class="lang-pill">Suomi</span><span class="lang-pill">Čeština</span>
+          <span class="lang-pill">Magyar</span><span class="lang-pill">Română</span>
+          <span class="lang-pill">Ελληνικά</span><span class="lang-pill">עברית</span>
+          <span class="lang-pill">Bahasa</span><span class="lang-pill">ภาษาไทย</span>
+          <span class="lang-pill">Tiếng Việt</span><span class="lang-pill">Filipino</span>
+          <span class="lang-pill">Kiswahili</span><span class="lang-pill">+ more</span>
         </div>
       </div>
     </div>
@@ -691,34 +664,42 @@
   <!-- ═══════════════════════════════════════
        DONATE
   ═══════════════════════════════════════ -->
-  <section class="section section-donate" id="donate">
-    <div class="container container-narrow">
+  <section class="section section-ink" id="donate">
+    <div class="container-narrow">
       <div class="donate-inner fade-in">
-        <div class="section-label">Non-Profit Foundation</div>
-        <h2 class="section-heading">Morrigan is free. Forever.</h2>
-        <p class="section-subtext">A non-profit foundation ensuring Morrigan's independence forever. Open-source, free to use. If you believe everyone deserves digital sovereignty — this is how you help build it.</p>
+        <span class="label">Non-Profit Foundation</span>
+        <h2 class="heading" style="text-align:center;">Morrigan is free.<br/><em>Forever.</em></h2>
+        <p class="subtext" style="margin:1.5rem auto 0;text-align:center;">A non-profit foundation ensuring Morrigan's independence forever. If you believe everyone deserves digital sovereignty — this is how you help build it.</p>
 
-        <div class="funding-model fade-in">
-          <div class="funding-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <div class="fund-pillars">
+          <div class="fund-pillar">
+            <svg class="fund-pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
             <strong>Non-profit foundation</strong>
-            <span>Establishing in France, Switzerland, or US</span>
+            <span>France · Switzerland · United States</span>
           </div>
-          <div class="funding-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <div class="fund-pillar">
+            <svg class="fund-pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <line x1="12" y1="1" x2="12" y2="23"/>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
             <strong>Transparent salaries</strong>
             <span>Capped at 3× local median wage</span>
           </div>
-          <div class="funding-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <div class="fund-pillar">
+            <svg class="fund-pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
             <strong>Free software, always</strong>
             <span>Donations fund infrastructure, not paywalls</span>
           </div>
         </div>
 
         <div class="donate-actions">
-          <a href="donate.html" class="btn btn-primary btn-lg">Donate to Morrigan</a>
-          <a href="donate.html#sponsors" class="btn btn-outline-inv btn-pill">Become a Sponsor</a>
+          <a href="donate.html" class="btn btn-terra btn-lg">Donate to Morrigan</a>
+          <a href="donate.html#sponsors" class="btn btn-inv-outline btn-lg">Become a Sponsor</a>
         </div>
       </div>
     </div>
@@ -731,23 +712,21 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="#" class="nav-logo footer-logo" aria-label="Morrigan">
-            <svg width="30" height="30" viewBox="0 0 36 36" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-              <path d="M18 2L4 7.5V18.5C4 25.8 10.2 32.3 18 34C25.8 32.3 32 25.8 32 18.5V7.5L18 2Z" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.6"/>
-              <path d="M18 10C16.2 10 15 11.2 15 12.5C15 13 15.2 13.4 15.5 13.8L12 16L13.5 16.5L12.5 18L14.5 17.5L14 19.5L16 18.5C16.5 19.2 17.2 19.8 18 20C19.5 20 21 18.8 21 17C21 15.8 20.3 14.8 19.3 14.3L21.5 12.5C20.8 11 19.6 10 18 10Z" fill="currentColor"/>
-              <path d="M8 9L10 11" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-              <path d="M28 9L26 11" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+        <div>
+          <div class="footer-brand-logo">
+            <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <path d="M16 3C13 3 11 5 11 7.5C11 8.2 11.2 8.8 11.5 9.3L8 12L9.5 12.6L8.5 14.5L10.5 13.8L10 16L12.5 14.8C13 15.6 13.9 16.3 16 16.3C18.5 16.3 20.5 14.5 20.5 12C20.5 10.5 19.7 9.2 18.5 8.5L21 6.5C20 4.5 18.2 3 16 3Z" fill="currentColor"/>
+              <path d="M16 16.3L13 22L16 20.5L19 22L16 16.3Z" fill="currentColor" opacity="0.3"/>
             </svg>
             <span>Morrigan</span>
-          </a>
+          </div>
           <p class="footer-tagline">Prepare for the inevitable — with dignity and sovereignty.</p>
-          <div class="footer-badges">
-            <a href="https://github.com/paulfxyz/morrigan" class="footer-badge" target="_blank" rel="noopener" aria-label="View source on GitHub">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          <div class="footer-badge-row">
+            <a href="https://github.com/paulfxyz/morrigan" class="footer-badge" target="_blank" rel="noopener">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
               Open Source
             </a>
-            <span class="footer-badge footer-badge--status">
+            <span class="footer-badge">
               <span class="status-dot"></span>
               In development
             </span>
@@ -755,19 +734,18 @@
         </div>
 
         <div class="footer-col">
-          <h4 class="footer-col-heading">Product</h4>
+          <h4>Product</h4>
           <ul role="list">
             <li><a href="#how">How It Works</a></li>
             <li><a href="#what">The Stack</a></li>
             <li><a href="#encryption">Encryption</a></li>
             <li><a href="#languages">Languages</a></li>
-            <li><a href="https://github.com/paulfxyz/morrigan" target="_blank" rel="noopener">Documentation</a></li>
             <li><a href="https://github.com/paulfxyz/morrigan" target="_blank" rel="noopener">GitHub</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4 class="footer-col-heading">Foundation</h4>
+          <h4>Foundation</h4>
           <ul role="list">
             <li><a href="#why">Our Story</a></li>
             <li><a href="donate.html">Donate</a></li>
@@ -777,11 +755,11 @@
         </div>
 
         <div class="footer-col">
-          <h4 class="footer-col-heading">Legal</h4>
+          <h4>Legal</h4>
           <ul role="list">
             <li><a href="security.html">Privacy Policy</a></li>
-            <li><a href="security.html">Terms of Service</a></li>
             <li><a href="security.html">Security</a></li>
+            <li><a href="security.html">Terms</a></li>
             <li><a href="mailto:hello@morrigan.life">Contact</a></li>
           </ul>
         </div>
@@ -789,9 +767,9 @@
 
       <div class="footer-bottom">
         <p class="footer-copy">© 2026 Morrigan Foundation. All rights reserved.</p>
-        <p class="footer-copy footer-domains">
+        <p class="footer-copy">
           <a href="https://morrigan.life">morrigan.life</a>
-          <span aria-hidden="true">·</span>
+          &nbsp;·&nbsp;
           <a href="https://morrigan.one">morrigan.one</a>
         </p>
       </div>

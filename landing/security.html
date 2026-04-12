@@ -8,10 +8,12 @@
   <meta property="og:title" content="Morrigan — Security &amp; Responsible Disclosure" />
   <meta property="og:description" content="Morrigan is built on the premise that security is not a feature — it is the product." />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#EDEAE2" />
+  <meta name="theme-color" content="#F7F3EA" />
 
-  <!-- Fonts -->
-  <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700,400i,500i&f[]=satoshi@300,400,500&display=swap" rel="stylesheet" />
+  <!-- Fonts: Cormorant Garamond (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -36,8 +38,9 @@
       <div class="nav-links">
         <a href="index.html#why" class="nav-link">Our Story</a>
         <a href="index.html#what" class="nav-link">The Stack</a>
-        <a href="index.html#encryption" class="nav-link">Encryption</a>
-        <a href="index.html#how" class="nav-link">How It Works</a>
+        <a href="#crypto" class="nav-link">Architecture</a>
+        <a href="#blockchain" class="nav-link">Ledger</a>
+        <a href="#dual-auth" class="nav-link">Identity</a>
         <a href="donate.html" class="nav-link">Donate</a>
         <a href="security.html" class="nav-link" aria-current="page">Security</a>
       </div>
@@ -109,6 +112,155 @@
         </div>
 
       </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       DUAL-FACTOR IDENTITY
+  ═══════════════════════════════════════ -->
+  <section class="section fade-in" style="background: var(--linen);" id="dual-auth">
+    <div class="container">
+      <div class="section-label fade-in">Account Identity</div>
+      <h2 class="section-heading fade-in">Email + phone, always in pair</h2>
+      <p class="section-subtext fade-in">A single contact channel is a single point of failure. Morrigan ties every account to both a verified email address and a verified phone number. No sensitive action proceeds without confirmation from both.</p>
+
+      <!-- WHY TWO -->
+      <div class="dual-auth-why fade-in">
+        <div class="dual-auth-why-col">
+          <svg viewBox="0 0 48 48" fill="none" class="dual-auth-illo">
+            <!-- Email envelope -->
+            <rect x="4" y="10" width="40" height="28" rx="4" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M4 14l20 14 20-14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>Email</h3>
+          <p>Account notifications, dead man's switch pings, beneficiary alerts, and all asynchronous communication. A durable, auditable channel you control.</p>
+          <ul class="dual-auth-list">
+            <li>Sign-up verification</li>
+            <li>Dead man's switch check-ins</li>
+            <li>Beneficiary access requests</li>
+            <li>Security alerts &amp; audit log digests</li>
+          </ul>
+        </div>
+
+        <div class="dual-auth-plus" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M16 6v20M6 16h20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <div class="dual-auth-why-col">
+          <svg viewBox="0 0 48 48" fill="none" class="dual-auth-illo">
+            <!-- Phone -->
+            <rect x="12" y="4" width="24" height="40" rx="5" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="24" cy="38" r="2" fill="currentColor" opacity="0.4"/>
+            <path d="M18 10h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.35"/>
+          </svg>
+          <h3>Phone (SMS)</h3>
+          <p>The second channel. Out-of-band from email — a completely different infrastructure path. Confirms that you, specifically, are holding the device registered to the account.</p>
+          <ul class="dual-auth-list">
+            <li>Login confirmation code</li>
+            <li>Sensitive setting changes</li>
+            <li>Dead man's switch override</li>
+            <li>Beneficiary trigger confirmation</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ACTION TABLE -->
+      <div class="dual-auth-table-wrap fade-in">
+        <h3 class="dual-auth-table-heading">Which actions require which channel</h3>
+        <table class="security-table">
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>Email required</th>
+              <th>SMS required</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Create account</td>
+              <td><span class="pqc-badge pqc-badge--final">Yes</span></td>
+              <td><span class="pqc-badge pqc-badge--final">Yes</span></td>
+              <td>Both channels verified before account is active</td>
+            </tr>
+            <tr>
+              <td>Sign in</td>
+              <td><span class="pqc-badge pqc-badge--final">Yes</span></td>
+              <td><span class="pqc-badge pqc-badge--final">Yes</span></td>
+              <td>Email + SMS OTP required simultaneously</td>
+            </tr>
+            <tr>
+              <td>Change email address</td>
+              <td><span class="pqc-badge pqc-badge--final">Yes</span></td>
+              <td><span class="pqc-badge pqc-badge--final">Yes</span></td>
+              <td>Confirm on old email + SMS before update applies</td>
+            </tr>
+            <tr>
+              <td>Change phone number</td>
+              <td><span class="pqc-badge pqc-badge--final">Yes</span></td>
+              <td><span class="pqc-badge pqc-badge--final">Yes</span></td>
+              <td>Confirm on existing phone + email before update applies</td>
+            </tr>
+            <tr>
+              <td>Update beneficiaries</td>
+              <td><span class="pqc-badge pqc-badge--final">Yes</span></td>
+              <td><span class="pqc-badge pqc-badge--final">Yes</span></td>
+              <td>Any change to who holds your key shards</td>
+            </tr>
+            <tr>
+              <td>Dismiss a switch trigger</td>
+              <td><span class="pqc-badge pqc-badge--final">Yes</span></td>
+              <td><span class="pqc-badge pqc-badge--final">Yes</span></td>
+              <td>Prove you're alive on both channels</td>
+            </tr>
+            <tr>
+              <td>Dead man's switch check-in</td>
+              <td><span class="pqc-badge pqc-badge--final">Yes</span></td>
+              <td><span class="tag">Optional</span></td>
+              <td>Email sufficient for routine pings; SMS escalates if email ignored</td>
+            </tr>
+            <tr>
+              <td>Export vault / download key</td>
+              <td><span class="pqc-badge pqc-badge--final">Yes</span></td>
+              <td><span class="pqc-badge pqc-badge--final">Yes</span></td>
+              <td>Highest-sensitivity action — both required, no exceptions</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- WHY NOT TOTP / HARDWARE -->
+      <div class="dual-auth-faq fade-in">
+        <h3 class="dual-auth-faq-heading">Why email + SMS and not TOTP / hardware keys?</h3>
+        <div class="dual-auth-faq-grid">
+          <div class="dual-auth-faq-item">
+            <strong>TOTP (authenticator apps) — coming in v0.5.0</strong>
+            <p>TOTP is excellent and will be supported as an upgrade path. But it requires app setup that excludes less technical users, and app loss means lockout. Email+SMS covers everyone on day one.</p>
+          </div>
+          <div class="dual-auth-faq-item">
+            <strong>Hardware keys (WebAuthn / FIDO2) — coming in v0.6.0</strong>
+            <p>Passkeys and hardware tokens will be supported. They are the gold standard for authentication. They will be additive — not a replacement for email+SMS, which remains the universal baseline.</p>
+          </div>
+          <div class="dual-auth-faq-item">
+            <strong>Why not email-only?</strong>
+            <p>Email accounts get compromised. A stolen email is a single vector to take over your entire Morrigan account. SMS on a registered physical device adds a second, independent layer that a remote attacker cannot easily replicate.</p>
+          </div>
+          <div class="dual-auth-faq-item">
+            <strong>SIM-swap attacks?</strong>
+            <p>Known risk. That's exactly why SMS alone is not sufficient either. The combination matters: an attacker needs both your email account AND your physical SIM simultaneously. This is a significantly harder attack surface than either alone.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRIVACY NOTE -->
+      <div class="chain-privacy fade-in">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--terra);flex-shrink:0;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10" stroke-width="2"/></svg>
+        <p><strong>Your phone number is never sold, shared, or used for marketing.</strong> It exists solely as an out-of-band identity confirmation channel. It is stored encrypted at rest and is never linked to any advertising, analytics, or third-party service.</p>
+      </div>
+
     </div>
   </section>
 
@@ -296,17 +448,17 @@
 
       <div style="margin-top: var(--space-8); display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-5);" class="fade-in">
         <div class="funding-item" style="background: var(--color-bg); border: 1px solid var(--color-border);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-teal);" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--terra);" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           <strong style="color: var(--color-text);">Q3 2025</strong>
           <span>Target date for first security audit funding allocation</span>
         </div>
         <div class="funding-item" style="background: var(--color-bg); border: 1px solid var(--color-border);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-teal);" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--terra);" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <strong style="color: var(--color-text);">Open source</strong>
           <span>Full codebase available now — audit on GitHub at any time</span>
         </div>
         <div class="funding-item" style="background: var(--color-bg); border: 1px solid var(--color-border);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-teal);" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--terra);" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           <strong style="color: var(--color-text);">Bug bounty</strong>
           <span>Bug bounty program planned once MVP is released publicly</span>
         </div>
@@ -381,13 +533,194 @@
 
 
   <!-- ═══════════════════════════════════════
+       BLOCKCHAIN ANCHORING
+  ═══════════════════════════════════════ -->
+  <section class="section fade-in" style="background: var(--linen-deep);" id="blockchain">
+    <div class="container">
+      <div class="section-label fade-in">Immutable Record</div>
+      <h2 class="section-heading fade-in">Blockchain anchoring</h2>
+      <p class="section-subtext fade-in">Every encrypted vault modification generates a cryptographic fingerprint — anchored to public blockchains. Your data stays private. Its integrity is provable by anyone, forever.</p>
+
+      <!-- HOW IT WORKS ROW -->
+      <div class="chain-flow fade-in">
+
+        <div class="chain-step">
+          <!-- Hash icon -->
+          <svg class="chain-step-illo" viewBox="0 0 56 56" fill="none">
+            <rect x="8" y="8" width="40" height="40" rx="6" stroke="currentColor" stroke-width="1.6"/>
+            <text x="28" y="32" text-anchor="middle" font-family="monospace" font-size="11" fill="currentColor" opacity="0.7">#</text>
+            <path d="M14 20h12M14 28h18M14 36h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity="0.35"/>
+          </svg>
+          <strong>1. Hash your vault state</strong>
+          <p>A SHA-256 fingerprint of your encrypted vault is computed client-side. Content is never exposed — only the hash travels outside your device.</p>
+        </div>
+
+        <div class="chain-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 8" fill="none"><path d="M0 4h20M16 1l4 3-4 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <div class="chain-step">
+          <!-- Merkle tree -->
+          <svg class="chain-step-illo" viewBox="0 0 56 56" fill="none">
+            <circle cx="28" cy="10" r="5" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="14" cy="30" r="5" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="42" cy="30" r="5" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="8" cy="48" r="4" stroke="currentColor" stroke-width="1.3" opacity="0.5"/>
+            <circle cx="20" cy="48" r="4" stroke="currentColor" stroke-width="1.3" opacity="0.5"/>
+            <circle cx="36" cy="48" r="4" stroke="currentColor" stroke-width="1.3" opacity="0.5"/>
+            <circle cx="48" cy="48" r="4" stroke="currentColor" stroke-width="1.3" opacity="0.5"/>
+            <path d="M28 15L14 25M28 15L42 25M14 35L8 44M14 35L20 44M42 35L36 44M42 35L48 44" stroke="currentColor" stroke-width="1.2" opacity="0.4"/>
+          </svg>
+          <strong>2. Batched via Merkle tree</strong>
+          <p>Your hash joins thousands of others in a Merkle tree. A single root — representing all — is written to the blockchain. Cost approaches zero.</p>
+        </div>
+
+        <div class="chain-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 8" fill="none"><path d="M0 4h20M16 1l4 3-4 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <div class="chain-step">
+          <!-- Chain link -->
+          <svg class="chain-step-illo" viewBox="0 0 56 56" fill="none">
+            <path class="chain-link-path" d="M20 36 C14 36 8 30 8 24 C8 18 14 12 20 12 L26 12 C28 12 30 13 31 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <path class="chain-link-path" d="M36 20 C42 20 48 26 48 32 C48 38 42 44 36 44 L30 44 C28 44 26 43 25 42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <path d="M22 28 L34 28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+          </svg>
+          <strong>3. Written to the blockchain</strong>
+          <p>The Merkle root is embedded in a Bitcoin (or Ethereum) transaction via OP_RETURN. Immutable, public, and independently verifiable — no Morrigan server required.</p>
+        </div>
+
+        <div class="chain-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 8" fill="none"><path d="M0 4h20M16 1l4 3-4 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <div class="chain-step">
+          <!-- Proof receipt -->
+          <svg class="chain-step-illo" viewBox="0 0 56 56" fill="none">
+            <path d="M10 6H38L46 14V50H10V6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M38 6V14H46" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <path d="M18 24H38M18 30H34M18 36H28" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            <circle cx="36" cy="38" r="7" fill="var(--terra)" opacity="0.15"/>
+            <path d="M32 38L35 41L40 35" stroke="var(--terra)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <strong>4. Proof receipt issued</strong>
+          <p>You receive a verifiable proof file (.ots or Chainpoint JSON). Store it anywhere. Verify it offline in 10 years — no account, no server, no trust required.</p>
+        </div>
+
+      </div>
+
+      <!-- WHAT GETS ANCHORED -->
+      <div class="chain-events fade-in">
+        <h3 class="chain-events-heading">What gets anchored</h3>
+        <div class="chain-events-grid">
+          <div class="chain-event">
+            <span class="chain-event-dot"></span>
+            <strong>Vault creation</strong>
+            <span>Initial encrypted vault fingerprint</span>
+          </div>
+          <div class="chain-event">
+            <span class="chain-event-dot"></span>
+            <strong>Each modification</strong>
+            <span>Any update to contents, beneficiaries, or switch settings</span>
+          </div>
+          <div class="chain-event">
+            <span class="chain-event-dot"></span>
+            <strong>Key shard distribution</strong>
+            <span>Proof of delivery timestamp per beneficiary shard</span>
+          </div>
+          <div class="chain-event">
+            <span class="chain-event-dot"></span>
+            <strong>Dead man's switch trigger</strong>
+            <span>Immutable record of when and why the switch activated</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRIVACY NOTE -->
+      <div class="chain-privacy fade-in">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--terra);flex-shrink:0;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10" stroke-width="2"/></svg>
+        <p><strong>Zero content exposure.</strong> Only a SHA-256 hash is ever published on-chain — mathematically indistinguishable from random bytes. It proves that a specific vault state existed at a specific time without revealing any of its contents. Not your name. Not your files. Not your beneficiaries.</p>
+      </div>
+
+      <!-- CHAIN COMPARISON TABLE -->
+      <div class="chain-table-wrap fade-in">
+        <h3 style="font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-6); color: var(--ink);">Supported anchoring layers</h3>
+        <table class="security-table">
+          <thead>
+            <tr>
+              <th>Protocol</th>
+              <th>Chain</th>
+              <th>Open Source</th>
+              <th>Vendor Lock-in</th>
+              <th>Verification</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>OpenTimestamps</strong></td>
+              <td>Bitcoin (primary)</td>
+              <td><span class="tag">Yes</span></td>
+              <td><span class="cve-clean">None</span></td>
+              <td>Offline, independently verifiable</td>
+              <td><span class="pqc-badge pqc-badge--final">Default</span></td>
+            </tr>
+            <tr>
+              <td><strong>Chainpoint v3</strong></td>
+              <td>Bitcoin + Ethereum</td>
+              <td><span class="tag">Yes</span></td>
+              <td><span class="cve-clean">None</span></td>
+              <td>JSON proof, no third-party dependency</td>
+              <td><span class="pqc-badge pqc-badge--final">Supported</span></td>
+            </tr>
+            <tr>
+              <td><strong>OriginStamp</strong></td>
+              <td>Bitcoin + Ethereum + TRON</td>
+              <td><span class="tag">API</span></td>
+              <td><span class="cve-clean">Minimal</span></td>
+              <td>Proof file + blockchain TX</td>
+              <td><span class="pqc-badge pqc-badge--watch">Roadmap</span></td>
+            </tr>
+            <tr>
+              <td><strong>Custom EVM chain</strong></td>
+              <td>User-defined (Polygon, Base, etc.)</td>
+              <td><span class="tag">Yes</span></td>
+              <td><span class="cve-clean">None</span></td>
+              <td>Smart contract event log</td>
+              <td><span class="pqc-badge pqc-badge--watch">Roadmap</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- TRANSFORMATION MYTH TIE-IN -->
+      <div class="zkp-security fade-in" style="margin-top:var(--space-12);">
+        <p>"She shifts form — she is never trapped in one state. Morrigan's ledger anchor transforms too: as blockchains evolve, we will always migrate to the most secure and verifiable record layer available."</p>
+        <cite>On the Morrígan · Transformation — Foundation commitment</cite>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
        SECURITY FAQ
   ═══════════════════════════════════════ -->
   <section class="section fade-in" style="background: var(--color-dark);" id="faq">
     <div class="container">
-      <div class="section-label fade-in" style="color: var(--color-teal);">Common Questions</div>
+      <div class="section-label fade-in" style="color: var(--terra);">Common Questions</div>
       <h2 class="section-heading fade-in" style="color: var(--color-text-inv);">Security FAQ</h2>
       <p class="section-subtext fade-in" style="color: var(--color-text-inv-muted);">Honest answers to the questions we hear most often about Morrigan's security model.</p>
+
+        <details class="accordion-item" role="listitem" style="border-color: var(--color-border-dark);">
+          <summary style="background: var(--color-dark-2); color: var(--color-text-inv);">
+            Will my vault record be anchored to a blockchain?
+            <svg class="accordion-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="accordion-body" style="background: var(--color-dark); border-top: 1px solid var(--color-border-dark);">
+            <p style="color: var(--color-text-inv-muted);">Yes — this is a planned feature. Every encrypted vault modification (creation, update, access event) will optionally generate a cryptographic hash anchored to one or more public blockchains. This creates an immutable, tamper-evident audit trail that proves the state of your vault at any point in time, verifiable by anyone, independent of Morrigan's servers. The hash is a privacy-preserving fingerprint — it proves integrity without revealing content.</p>
+          </div>
+        </details>
 
       <div class="accordion fade-in" role="list" style="border-color: var(--color-border-dark);">
 

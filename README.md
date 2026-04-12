@@ -6,7 +6,7 @@
 
 *Store files, messages, passwords, and final words. Encrypt them beyond recovery. Share access only with the people you trust, only when the time comes.*
 
-[![Version](https://img.shields.io/badge/version-0.1.0-0d1518?style=flat-square&logo=github&logoColor=3a9faa)](https://github.com/paulfxyz/morrigan/releases/tag/v0.1.0)
+[![Version](https://img.shields.io/badge/version-0.3.0-0d1518?style=flat-square&logo=github&logoColor=3a9faa)](https://github.com/paulfxyz/morrigan/releases/tag/v0.1.0)
 [![License: AGPLv3](https://img.shields.io/badge/license-AGPLv3-3a9faa?style=flat-square)](LICENSE)
 [![Non-Profit](https://img.shields.io/badge/non--profit-foundation-c9a64a?style=flat-square)](https://morrigan.life/foundation)
 [![Zero Knowledge](https://img.shields.io/badge/zero--knowledge-architecture-1a3a3f?style=flat-square)](docs/architecture/encryption.md)
@@ -60,8 +60,10 @@
 5. [Architecture overview](#-architecture-overview)
 6. [Encryption deep-dive](#-encryption-deep-dive)
 7. [Shamir's Secret Sharing](#-shamirs-secret-sharing)
-8. [Transformation — Post-Quantum Commitment](#-transformation--post-quantum-commitment)
-8. [The dead man's switch](#-the-dead-mans-switch)
+8. [Blockchain Anchoring — Immutable Record](#%EF%B8%8F-blockchain-anchoring--immutable-record)
+9. [Dual-Channel Identity — Email + Phone](#-dual-channel-identity--email--phone)
+10. [Transformation — Post-Quantum Commitment](#-transformation--post-quantum-commitment)
+11. [The dead man's switch](#-the-dead-mans-switch)
 9. [Storage model](#-storage-model)
 10. [Key management philosophy](#-key-management-philosophy)
 11. [Non-profit foundation](#-non-profit-foundation)
@@ -141,6 +143,8 @@ The experience is designed to feel like writing a letter, not configuring a cryp
 | 📧 | **Beneficiary notification** | Designate recipients by email. They receive a private link with instructions for triggering the release. |
 | 🌐 | **Bring Your Own Storage (BYOS)** | Connect any S3-compatible, SFTP, or WebDAV endpoint. We never need to host your ciphertext. |
 | 🔒 | **Zero-knowledge architecture** | Morrigan's servers never see plaintext. Encryption keys never transit our infrastructure. |
+| ⛓️ | **Blockchain-anchored integrity** | Every vault modification is SHA-256 fingerprinted and anchored to Bitcoin via OpenTimestamps (Chainpoint/OriginStamp on roadmap). Immutable, independently verifiable proof-of-existence — no trust in Morrigan required. |
+| 📱 | **Dual-channel identity** | Account tied to email + phone number. Every sensitive action (sign-in, key export, beneficiary change, switch override) requires confirmation on both channels simultaneously. No single-vector compromise. |
 | 🌍 | **30+ languages** | Full i18n from day one. Localized UI and content in 30+ languages. |
 | 📖 | **Open source, always** | AGPLv3 licensed. Audit the code. Fork it. Run your own instance. |
 | 🏛️ | **Non-profit foundation** | Not a company. Funded by donations and grants. Transparent salary structure. |
@@ -372,6 +376,95 @@ This is not a limitation of the implementation. It is the guarantee. The moment 
 
 ---
 
+## ⛓️ Blockchain Anchoring — Immutable Record
+
+Every encrypted vault modification generates a cryptographic fingerprint anchored to one or more public blockchains. Your data stays private. Its integrity is provable by anyone, forever — without depending on Morrigan's servers.
+
+### How it works
+
+```
+1. Hash           Your encrypted vault state → SHA-256 fingerprint (client-side)
+2. Merkle tree    Your hash joins thousands in a batch Merkle tree
+3. On-chain       The Merkle root is written to a Bitcoin transaction (OP_RETURN)
+4. Proof receipt  You receive a .ots or Chainpoint JSON — verify offline, any time
+```
+
+### What gets anchored
+
+| Event | Anchored data | Notes |
+|---|---|---|
+| Vault creation | SHA-256 of initial encrypted blob | First proof-of-existence |
+| Each modification | SHA-256 of updated encrypted blob | Change history, immutable |
+| Key shard distribution | Proof-of-delivery timestamp per shard | Who received what, when |
+| Dead man's switch trigger | Trigger event + timestamp | Why and when access was released |
+
+### Privacy model
+
+Only a hash is ever published on-chain — mathematically indistinguishable from random bytes. It proves that a specific vault state existed at a specific time without revealing:
+- Any file contents
+- Beneficiary names
+- Your identity
+- Any plaintext metadata
+
+### Supported anchoring layers
+
+| Protocol | Chain | Open source | Status |
+|---|---|---|---|
+| **OpenTimestamps** | Bitcoin | Yes — fully open | Default |
+| **Chainpoint v3** | Bitcoin + Ethereum | Yes | Supported |
+| **OriginStamp** | Bitcoin + Ethereum + TRON | API | Roadmap |
+| **Custom EVM** | User-defined (Polygon, Base, etc.) | Yes | Roadmap |
+
+> The choice of Bitcoin as the primary anchor reflects its unmatched security and longevity. As the Morrígan's power of Transformation demands: if a better ledger emerges, we migrate. The proof format is open — your receipts remain verifiable regardless of which service generated them.
+
+---
+
+## 📱 Dual-Channel Identity — Email + Phone
+
+A single contact channel is a single point of failure. Morrigan ties every account to both a verified email address and a verified phone number. No sensitive action proceeds without confirmation from both.
+
+### The principle
+
+Email and SMS are entirely independent infrastructure paths. Compromising one does not compromise the other. An attacker needs both your email account **and** your physical SIM card simultaneously — a significantly harder attack surface.
+
+### Which actions require which channel
+
+| Action | Email | SMS | Notes |
+|---|---|---|---|
+| Create account | ✅ | ✅ | Both verified before account is active |
+| Sign in | ✅ | ✅ | Email + SMS OTP simultaneously |
+| Change email address | ✅ | ✅ | Confirm on old email + SMS first |
+| Change phone number | ✅ | ✅ | Confirm on existing phone + email first |
+| Update beneficiaries | ✅ | ✅ | Any change to who holds key shards |
+| Dismiss switch trigger | ✅ | ✅ | Prove alive on both channels |
+| Dead man's switch check-in | ✅ | Optional | SMS escalates only if email is ignored |
+| Export vault / download key | ✅ | ✅ | Highest-sensitivity — both required, no exceptions |
+
+### Authentication roadmap
+
+| Method | Status | Notes |
+|---|---|---|
+| Email OTP | ✅ Default | Universal, durable |
+| SMS OTP | ✅ Default | Out-of-band from email |
+| TOTP (authenticator app) | v0.5.0 | Additive upgrade for power users |
+| WebAuthn / FIDO2 / Passkeys | v0.6.0 | Gold standard — additive, not replacing baseline |
+
+### What we don't do with your phone number
+
+Your phone number:
+- Is stored encrypted at rest
+- Is never sold, shared, or used for marketing
+- Is never linked to advertising, analytics, or third-party services
+- Exists solely as an out-of-band identity confirmation channel
+
+### SIM-swap risk
+
+SIM-swap attacks are a known class of threat against SMS-based authentication. This is precisely why SMS alone is never sufficient — and why Morrigan requires **both** channels. Compromising only the phone means you still need the email. Compromising only the email means you still need the physical SIM. The combination is what provides the security property.
+
+For users with elevated threat models, TOTP and hardware key support is on the roadmap (v0.5.0–v0.6.0).
+
+---
+
 ## 🔮 Transformation — Post-Quantum Commitment
 
 Encryption is not a fixed artefact. It is a living discipline.
@@ -483,21 +576,31 @@ The `landing/` directory in this repository contains the full source of [morriga
 - [x] Brand identity (logo, colors, typography)
 - [x] Architecture design documents
 
-### v0.2.0 — Transformation *(this release)*
-- [x] Landing page full Anthropic-inspired design rebuild
+### v0.2.0 — Transformation *(2026-04-12)*
+- [x] Landing page full Ink & Linen design rebuild (Cormorant Garamond + DM Sans)
 - [x] Post-quantum cryptography section on landing page
 - [x] Foundation charter: commitment to always upgrade cryptographic stack
 - [x] CRYSTALS-Kyber, CRYSTALS-Dilithium, SPHINCS+ roadmap documented
 - [x] "Post-quantum ready" trust signal in hero
 - [x] README: Transformation narrative and PQC migration roadmap
 
-### v0.3.0 — Foundation
+### v0.3.0 — Ledger & Dual-Factor Identity *(this release)*
+- [x] Blockchain anchoring architecture documented (OpenTimestamps default, Chainpoint supported)
+- [x] Blockchain anchoring section on security page — 4-step flow, event table, protocol comparison
+- [x] Dual-channel identity system: email + phone required for all sensitive actions
+- [x] Dual-channel auth table in security page
+- [x] README: blockchain anchoring deep-dive and dual-channel identity sections
+- [x] Landing page: blockchain + dual-auth trust signal in encryption section
+- [x] main.js: complete rewrite — SVG stroke-draw, hero particles, stagger, counter animation
+- [x] donate.html + security.html: migrated to Google Fonts (Ink & Linen system)
+
+### v0.4.0 — Foundation
 - [ ] Non-profit foundation registration
 - [ ] Early Access waitlist and email capture
 - [ ] Donation page (Stripe / GitHub Sponsors)
 - [ ] Community Discord / Matrix server
 
-### v0.3.0 — Core Encryption
+### v0.5.0 — Core Encryption
 - [ ] Client-side encryption library (libsodium.js integration)
 - [ ] Key generation and export UI
 - [ ] Local vault proof of concept (no server)
@@ -574,8 +677,18 @@ open index.html
 
 ## 📋 Changelog
 
+### v0.3.0 — Ledger & Dual-Factor Identity *(2026-04-12)*
+- Blockchain anchoring: OpenTimestamps (Bitcoin) as default, Chainpoint v3 supported, OriginStamp + custom EVM on roadmap
+- Security page: full blockchain anchoring section (4-step flow, event table, privacy model, protocol comparison)
+- Dual-channel identity: email + phone required simultaneously for all sensitive actions
+- Security page: dual-auth section with action table, TOTP/WebAuthn roadmap, SIM-swap transparency
+- Landing page: blockchain + dual-auth trust signal added to encryption section
+- main.js: complete rewrite — draw-path SVG animation, hero canvas particles, stagger reveals, counter animation, accordion
+- Font migration: donate.html + security.html moved from Fontshare (Zodiak/Satoshi) to Google Fonts (Cormorant Garamond + DM Sans)
+- README: blockchain anchoring deep-dive, dual-channel identity documentation
+
 ### v0.2.0 — Transformation *(2026-04-12)*
-- Anthropic-inspired design system: Playfair Display + Inter, warm parchment palette, alternating sections
+- Ink & Linen design system: Cormorant Garamond + DM Sans, warm linen/terracotta palette
 - Post-quantum cryptography commitment section added to landing page
 - CRYSTALS-Kyber, CRYSTALS-Dilithium, SPHINCS+ roadmap documented
 - "Post-quantum ready" trust badge added to hero
@@ -584,7 +697,7 @@ open index.html
 ### v0.1.0 — Landing *(initial release)*
 See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
-**Latest:** [v0.1.0](CHANGELOG.md#v010--2026-04-12) — Initial public release. Landing page. Architecture documentation. Repository scaffolding.
+**Latest:** [v0.3.0](CHANGELOG.md#v030--2026-04-12) — Blockchain anchoring + dual-factor identity.
 
 ---
 
