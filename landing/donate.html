@@ -8,12 +8,12 @@
   <meta property="og:title" content="Morrigan — Support the Foundation" />
   <meta property="og:description" content="Morrigan is free forever. If you believe in digital sovereignty, please consider supporting our work." />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#fafaf8" />
+  <meta name="theme-color" content="#EDEAE2" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -70,7 +70,7 @@
   ═══════════════════════════════════════ -->
   <section class="page-hero" aria-label="Page header">
     <div class="page-hero-inner">
-      <div class="page-hero-eyebrow">Non-Profit Foundation</div>
+      <span class="page-hero-eyebrow">Non-Profit Foundation</span>
       <h1 class="page-hero-heading"><em>Support the Foundation</em></h1>
       <p class="page-hero-sub">
         Morrigan is a non-profit project. It will always be free. If you believe everyone deserves sovereignty over their digital legacy, please consider supporting our work.
@@ -82,9 +82,9 @@
   <!-- ═══════════════════════════════════════
        MISSION STATEMENT
   ═══════════════════════════════════════ -->
-  <section class="section fade-in" style="background: var(--color-bg); padding-block: clamp(var(--space-12), 8vw, var(--space-24));">
+  <section class="section" style="background: var(--color-bg); padding-block: var(--section-pad);">
     <div class="container">
-      <div class="section-label fade-in" style="justify-content: center;">Our Commitment</div>
+      <div class="section-label fade-in" style="text-align: center;">Our Commitment</div>
       <blockquote class="mission-statement fade-in">
         We are building Morrigan as a public good — open-source, non-profit, and free forever. Every euro donated goes to infrastructure, security audits, and translations. No investor pressure. No paywalls. No compromise.
       </blockquote>
@@ -95,7 +95,7 @@
   <!-- ═══════════════════════════════════════
        WHY WE'RE A FOUNDATION
   ═══════════════════════════════════════ -->
-  <section class="section fade-in" style="background: var(--color-surface); border-block: 1px solid var(--color-border);">
+  <section class="section" style="background: var(--color-dark); padding-block: var(--section-pad);">
     <div class="container">
       <div class="why-foundation-callout fade-in">
         <p>"We deliberately chose non-profit status. A startup must eventually extract value from users. A foundation must serve them. That alignment is not incidental — it is the structure."</p>
@@ -107,7 +107,7 @@
   <!-- ═══════════════════════════════════════
        HOW FUNDS ARE USED
   ═══════════════════════════════════════ -->
-  <section class="section fade-in" style="background: var(--color-bg); border-bottom: 1px solid var(--color-border);">
+  <section class="section fade-in" style="background: var(--color-bg-alt);">
     <div class="container">
       <div class="section-label fade-in">Financial Transparency</div>
       <h2 class="section-heading fade-in">How funds are used</h2>
@@ -121,7 +121,7 @@
             <span class="fund-bar-pct">40%</span>
           </div>
           <div class="fund-bar-track">
-            <div class="fund-bar-fill" style="width: 40%;"></div>
+            <div class="fund-bar-fill" style="--target-w: 40%;"></div>
           </div>
         </div>
 
@@ -131,7 +131,7 @@
             <span class="fund-bar-pct">35%</span>
           </div>
           <div class="fund-bar-track">
-            <div class="fund-bar-fill" style="width: 35%; animation-delay: 0.45s;"></div>
+            <div class="fund-bar-fill" style="--target-w: 35%; animation-delay: 0.15s;"></div>
           </div>
         </div>
 
@@ -141,7 +141,7 @@
             <span class="fund-bar-pct">15%</span>
           </div>
           <div class="fund-bar-track">
-            <div class="fund-bar-fill" style="width: 15%; animation-delay: 0.6s;"></div>
+            <div class="fund-bar-fill" style="--target-w: 15%; animation-delay: 0.3s;"></div>
           </div>
         </div>
 
@@ -151,7 +151,7 @@
             <span class="fund-bar-pct">10%</span>
           </div>
           <div class="fund-bar-track">
-            <div class="fund-bar-fill" style="width: 10%; animation-delay: 0.75s;"></div>
+            <div class="fund-bar-fill" style="--target-w: 10%; animation-delay: 0.45s;"></div>
           </div>
         </div>
 
@@ -163,7 +163,7 @@
   <!-- ═══════════════════════════════════════
        DONATION TIERS
   ═══════════════════════════════════════ -->
-  <section class="section fade-in" style="background: var(--color-surface); border-bottom: 1px solid var(--color-border);">
+  <section class="section" style="background: var(--color-bg);">
     <div class="container">
       <div class="section-label fade-in">Support Tiers</div>
       <h2 class="section-heading fade-in">Choose your level of support</h2>
@@ -194,7 +194,7 @@
             <li>Gratitude from the whole team</li>
           </ul>
           <div class="tier-cta">
-            <a href="#" class="btn btn-outline" style="width: 100%; justify-content: center;">Donate freely</a>
+            <a href="#" class="btn btn-outline">Donate freely</a>
           </div>
         </div>
 
@@ -215,7 +215,7 @@
             <li>Eternal gratitude</li>
           </ul>
           <div class="tier-cta">
-            <a href="#" class="btn btn-outline" style="width: 100%; justify-content: center;">Become a Friend</a>
+            <a href="#" class="btn btn-outline">Become a Friend</a>
           </div>
         </div>
 
@@ -238,7 +238,7 @@
             <li>Named in the annual report</li>
           </ul>
           <div class="tier-cta">
-            <a href="#" class="btn btn-primary" style="width: 100%; justify-content: center;">Become a Guardian</a>
+            <a href="#" class="btn btn-primary">Become a Guardian</a>
           </div>
         </div>
 
@@ -260,7 +260,7 @@
             <li>Named in the annual financial report</li>
           </ul>
           <div class="tier-cta">
-            <a href="#" class="btn btn-outline" style="width: 100%; justify-content: center;">Become a Patron</a>
+            <a href="#" class="btn btn-outline">Become a Patron</a>
           </div>
         </div>
 
@@ -272,7 +272,7 @@
   <!-- ═══════════════════════════════════════
        CRYPTO DONATIONS
   ═══════════════════════════════════════ -->
-  <section class="section fade-in" style="background: var(--color-bg); border-bottom: 1px solid var(--color-border);">
+  <section class="section" style="background: var(--color-bg-alt);">
     <div class="container">
       <div class="section-label fade-in">Cryptocurrency</div>
       <h2 class="section-heading fade-in">We also accept crypto</h2>
@@ -321,7 +321,7 @@
   <!-- ═══════════════════════════════════════
        TRANSPARENCY PLEDGE
   ═══════════════════════════════════════ -->
-  <section class="section fade-in" style="background: var(--color-surface); border-bottom: 1px solid var(--color-border);">
+  <section class="section fade-in" style="background: var(--color-bg);">
     <div class="container">
       <div class="section-label fade-in">Accountability</div>
       <h2 class="section-heading fade-in">Our transparency pledge</h2>
@@ -340,19 +340,19 @@
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-5); margin-top: var(--space-8);" class="fade-in">
-        <div class="funding-item">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          <strong>Annual report</strong>
+        <div class="funding-item" style="background: var(--color-bg-alt); border: 1px solid var(--color-border);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-teal);" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <strong style="color: var(--color-text);">Annual report</strong>
           <span>Published every January, covering the prior fiscal year</span>
         </div>
-        <div class="funding-item">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          <strong>Capped salaries</strong>
+        <div class="funding-item" style="background: var(--color-bg-alt); border: 1px solid var(--color-border);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-teal);" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <strong style="color: var(--color-text);">Capped salaries</strong>
           <span>No team member earns more than 3× the local median wage</span>
         </div>
-        <div class="funding-item">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <strong>Real-time ledger</strong>
+        <div class="funding-item" style="background: var(--color-bg-alt); border: 1px solid var(--color-border);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-teal);" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <strong style="color: var(--color-text);">Real-time ledger</strong>
           <span>Major expenditures tracked and published quarterly</span>
         </div>
       </div>
@@ -363,7 +363,7 @@
   <!-- ═══════════════════════════════════════
        SPONSORS
   ═══════════════════════════════════════ -->
-  <section class="section fade-in" id="sponsors" style="background: var(--color-bg);">
+  <section class="section fade-in" id="sponsors" style="background: var(--color-bg-alt);">
     <div class="container">
       <div class="section-label fade-in">Organizational Support</div>
       <h2 class="section-heading fade-in">Become a sponsor</h2>
@@ -379,7 +379,7 @@
       </div>
 
       <div style="text-align: center; margin-top: var(--space-8);" class="fade-in">
-        <p style="font-size: var(--text-sm); color: var(--color-text-muted); max-width: 50ch; margin-inline: auto; margin-bottom: var(--space-6); line-height: 1.7;">Sponsorship slots are reviewed to ensure alignment with Morrigan's values. We do not accept sponsors from surveillance technology, data brokerage, or adtech industries.</p>
+        <p style="font-family: var(--font-body); font-size: var(--text-sm); color: var(--color-text-muted); max-width: 50ch; margin-inline: auto; margin-bottom: var(--space-6); line-height: 1.7;">Sponsorship slots are reviewed to ensure alignment with Morrigan's values. We do not accept sponsors from surveillance technology, data brokerage, or adtech industries.</p>
         <a href="mailto:sponsors@morrigan.life" class="btn btn-outline btn-lg">Get in touch about sponsorship</a>
       </div>
     </div>
@@ -431,7 +431,7 @@
           <h4 class="footer-col-heading">Foundation</h4>
           <ul role="list">
             <li><a href="index.html#why">Our Story</a></li>
-            <li><a href="donate.html" style="color: var(--color-primary);">Donate</a></li>
+            <li><a href="donate.html" style="color: var(--color-teal);">Donate</a></li>
             <li><a href="donate.html#sponsors">Sponsors</a></li>
             <li><a href="donate.html">Grants</a></li>
           </ul>

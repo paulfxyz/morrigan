@@ -66,7 +66,7 @@
 
 
   // ─── RAVEN PARTICLE CANVAS ───────────────────
-  // Subtle teal dots that drift upward across the hero background.
+  // Subtle faint-teal dots that drift upward across the hero background.
   (function initRavenCanvas() {
     const canvas = document.getElementById('raven-canvas');
     if (!canvas) return;
@@ -74,7 +74,7 @@
     const ctx = canvas.getContext('2d');
     let W, H, particles;
     const PARTICLE_COUNT = 22;
-    const BASE_COLOR = 'rgba(58, 159, 170, ';
+    const BASE_COLOR = 'rgba(27, 122, 130, '; // muted deep teal — very faint
 
     function resize() {
       W = canvas.width = canvas.offsetWidth;
@@ -88,7 +88,7 @@
         r: Math.random() * 1.8 + 0.5,       // radius 0.5–2.3
         speed: Math.random() * 0.35 + 0.1,   // drift speed upward
         drift: (Math.random() - 0.5) * 0.15, // gentle horizontal drift
-        alpha: Math.random() * 0.25 + 0.05,  // max opacity 0.05–0.3
+        alpha: Math.random() * 0.12 + 0.02,  // max opacity 0.02–0.14 — very faint
         phase: Math.random() * Math.PI * 2,  // for alpha pulse
         phaseSpeed: Math.random() * 0.008 + 0.003,
       };
@@ -152,6 +152,30 @@
         initParticles();
       }, 150);
     });
+  }());
+
+
+  // ─── SCROLL-TRIGGERED FADE-IN ─────────────────
+  // Triggers .fade-in → .fade-in.visible on scroll.
+  (function initFadeIns() {
+    const els = document.querySelectorAll('.fade-in');
+    if (!els.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(el => el.classList.add('visible'));
+      return;
+    }
+
+    const io = new IntersectionObserver((records) => {
+      records.forEach(record => {
+        if (record.isIntersecting) {
+          record.target.classList.add('visible');
+          io.unobserve(record.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    els.forEach(el => io.observe(el));
   }());
 
 
@@ -312,7 +336,7 @@
           navigator.clipboard.writeText(text).then(() => {
             const icon = row.querySelector('.crypto-copy-icon');
             if (icon) {
-              icon.style.color = 'var(--color-primary)';
+              icon.style.color = 'var(--color-teal)';
               setTimeout(() => { icon.style.color = ''; }, 1200);
             }
           }).catch(() => {});

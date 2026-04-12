@@ -9,12 +9,12 @@
   <meta property="og:description" content="Prepare your digital legacy with dignity. End-to-end encrypted. Zero-knowledge. Open source." />
   <meta property="og:image" content="assets/hero-bg.png" />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#fafaf8" />
+  <meta name="theme-color" content="#EDEAE2" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -70,76 +70,49 @@
        HERO
   ═══════════════════════════════════════ -->
   <section class="hero" id="hero">
-    <div class="hero-bg">
-      <!-- Raven particle canvas — rendered by main.js -->
-      <canvas id="raven-canvas" aria-hidden="true"></canvas>
-      <picture>
-        <source srcset="assets/hero-bg.webp" type="image/webp" />
-        <img src="assets/hero-bg.jpg" alt="Ancient standing stones in teal mist with a raven silhouette, symbolizing Morrigan's watchful guardianship" class="hero-img" />
-      </picture>
-      <div class="hero-overlay"></div>
-    </div>
+    <!-- Raven particle canvas — rendered by main.js -->
+    <canvas id="raven-canvas" aria-hidden="true"></canvas>
 
-    <div class="hero-content container">
-      <div class="hero-eyebrow fade-in">
-        <span class="eyebrow-dot"></span>
-        Zero-knowledge · Open source · Non-profit
+    <div class="container hero-inner">
+      <div class="hero-left fade-in">
+        <span class="hero-eyebrow">Zero-knowledge · Open source · Non-profit</span>
+        <h1 class="hero-heading">
+          Your digital will.<br />
+          <em>Encrypted forever.</em>
+        </h1>
       </div>
-      <h1 class="hero-heading fade-in">
-        Your digital will.<br />
-        <em>Encrypted forever.</em>
-      </h1>
-      <p class="hero-subtext fade-in">
-        Morrigan helps you store and protect what matters most — files, passwords, final messages — and ensures they reach the right people after you're gone. No corporation holds your keys. No backdoor exists.
-      </p>
-      <div class="hero-actions fade-in">
-        <a href="#" class="btn btn-primary btn-lg">Get Early Access</a>
-        <a href="#how" class="btn btn-outline btn-lg">See How It Works</a>
-      </div>
-      <div class="hero-trust fade-in">
-        <span class="trust-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          XChaCha20-Poly1305 encryption
-        </span>
-        <span class="trust-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          Shamir's Secret Sharing
-        </span>
-        <span class="trust-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          Free &amp; open source forever
-        </span>
-        <span class="trust-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          Ed25519 signatures
-        </span>
-        <span class="trust-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          Dead man's switch
-        </span>
+      <div class="hero-right fade-in">
+        <p class="hero-body">Morrigan helps you store and protect what matters most — files, passwords, final messages — and ensures they reach the right people after you're gone. No corporation holds your keys. No backdoor exists.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn btn-primary btn-pill">Get Early Access</a>
+          <a href="#how" class="btn btn-text">See how it works →</a>
+        </div>
+        <div class="hero-trust">
+          <span>XChaCha20-Poly1305</span>
+          <span>·</span>
+          <span>Shamir's Secret Sharing</span>
+          <span>·</span>
+          <span>Dead man's switch</span>
+          <span>·</span>
+          <span>Ed25519 signatures</span>
+          <span>·</span>
+          <span>Post-quantum ready</span>
+        </div>
       </div>
     </div>
-
-    <a href="#why" class="hero-scroll-hint" aria-label="Scroll down">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-    </a>
   </section>
-
-  <!-- Section divider -->
-  <div class="section-divider" aria-hidden="true"><svg width="100%" height="2" preserveAspectRatio="none"><pattern id="knotwork-1" x="0" y="0" width="40" height="2" patternUnits="userSpaceOnUse"><line x1="0" y1="1" x2="12" y2="1" stroke="currentColor" stroke-width="0.5" opacity="0.3"/><circle cx="14" cy="1" r="1" fill="currentColor" opacity="0.4"/><line x1="16" y1="1" x2="24" y2="1" stroke="currentColor" stroke-width="0.5" opacity="0.3"/><circle cx="26" cy="1" r="1" fill="currentColor" opacity="0.4"/><line x1="28" y1="1" x2="40" y2="1" stroke="currentColor" stroke-width="0.5" opacity="0.3"/></pattern><rect width="100%" height="2" fill="url(#knotwork-1)"/></svg></div>
 
 
   <!-- ═══════════════════════════════════════
        WHY — MY STORY
   ═══════════════════════════════════════ -->
-  <section class="section section-why fade-in" id="why">
-    <div class="glow-orb" style="width: 500px; height: 500px; top: 10%; left: -10%; opacity: 0.08;" aria-hidden="true"></div>
+  <section class="section section-why" id="why">
     <div class="container">
       <div class="section-label fade-in">Why Morrigan</div>
       <h2 class="section-heading fade-in">Death entered slowly, then all at once.</h2>
 
-      <div class="story-layout fade-in">
-        <div class="story-text">
+      <div class="story-layout">
+        <div class="story-text fade-in">
           <p class="story-lead">
             In the winter of 2019, I received word that my mentor had been killed in Damascus. He was a man who had shaped how I understood the world — someone who had moved through military intelligence with a rare combination of precision and humanity. ISIS took him without warning. There was no farewell. There rarely is.
           </p>
@@ -190,7 +163,7 @@
             <p>"She is not evil — she embodies the natural, inevitable cycle of life and death. She sees what is coming and prepares for it."</p>
             <cite>On the Morrígan, Irish mythology</cite>
           </blockquote>
-          <blockquote class="pull-quote pull-quote--secondary" style="margin-top: var(--space-6);">
+          <blockquote class="pull-quote" style="margin-top: var(--space-6);">
             <p>"The dead don't disappear. They become the things we can no longer ask."</p>
             <cite>On grief &amp; the digital self</cite>
           </blockquote>
@@ -199,14 +172,11 @@
     </div>
   </section>
 
-  <!-- Section divider -->
-  <div class="section-divider" aria-hidden="true"><svg width="100%" height="2" preserveAspectRatio="none"><rect width="100%" height="2" fill="url(#knotwork-1)"/></svg></div>
-
 
   <!-- ═══════════════════════════════════════
        WHAT — THE STACK
   ═══════════════════════════════════════ -->
-  <section class="section section-what fade-in" id="what">
+  <section class="section section-what" id="what">
     <div class="container">
       <div class="section-label fade-in">The Stack</div>
       <h2 class="section-heading fade-in">Built on truth, not trust</h2>
@@ -290,15 +260,11 @@
     </div>
   </section>
 
-  <!-- Section divider -->
-  <div class="section-divider" aria-hidden="true"><svg width="100%" height="2" preserveAspectRatio="none"><rect width="100%" height="2" fill="url(#knotwork-1)"/></svg></div>
-
 
   <!-- ═══════════════════════════════════════
        ENCRYPTION — THE CRYPTOGRAPHY
   ═══════════════════════════════════════ -->
-  <section class="section section-encryption fade-in" id="encryption">
-    <div class="glow-orb" style="width: 600px; height: 600px; top: 20%; right: -15%; opacity: 0.07;" aria-hidden="true"></div>
+  <section class="section section-encryption" id="encryption">
     <div class="container">
       <div class="section-label fade-in">Under the Hood</div>
       <h2 class="section-heading fade-in">Cryptography worthy of what you're protecting.</h2>
@@ -427,6 +393,67 @@
 
       </div><!-- /.crypto-cards -->
 
+      <!-- ─── Transformation — Post-Quantum Commitment ─── -->
+      <div class="transformation-block fade-in">
+        <div class="transformation-myth">
+          <span class="transformation-rune" aria-hidden="true">᚛</span>
+          <blockquote>
+            <p>"She shifts form — she is never trapped in one state."</p>
+            <cite>On the Morrígan · the power of Transformation</cite>
+          </blockquote>
+        </div>
+
+        <div class="transformation-body">
+          <div class="transformation-eyebrow">Foundation Commitment</div>
+          <h3 class="transformation-heading">The stack transforms. Always.</h3>
+          <p>
+            Encryption is not a fixed artefact — it is a living discipline. Algorithms age, computing paradigms shift, threat models evolve. As a non-profit foundation with no commercial pressure to preserve legacy choices, Morrigan commits to an absolute principle: <strong>we will always migrate to the strongest available cryptographic standards, no matter the cost of doing so.</strong>
+          </p>
+          <p>
+            This is not a roadmap item. It is a constitutional obligation, written into the foundation's charter from day one.
+          </p>
+
+          <div class="pqc-grid">
+            <div class="pqc-card">
+              <div class="pqc-card-top">
+                <span class="pqc-status pqc-status--nist">NIST PQC Final</span>
+              </div>
+              <strong>CRYSTALS-Kyber</strong>
+              <span class="pqc-role">Key Encapsulation</span>
+              <p>Lattice-based KEM. Replaces X25519 for asymmetric key exchange. NIST FIPS 203 (ML-KEM). Secure against both classical and quantum adversaries.</p>
+            </div>
+            <div class="pqc-card">
+              <div class="pqc-card-top">
+                <span class="pqc-status pqc-status--nist">NIST PQC Final</span>
+              </div>
+              <strong>CRYSTALS-Dilithium</strong>
+              <span class="pqc-role">Digital Signatures</span>
+              <p>Lattice-based signature scheme. Replaces Ed25519 for vault manifest signing. NIST FIPS 204 (ML-DSA). Compact signatures, fast verification.</p>
+            </div>
+            <div class="pqc-card">
+              <div class="pqc-card-top">
+                <span class="pqc-status pqc-status--nist">NIST PQC Final</span>
+              </div>
+              <strong>SPHINCS+</strong>
+              <span class="pqc-role">Hash-Based Signatures</span>
+              <p>Stateless hash-based fallback. No lattice assumptions — pure hash security. NIST FIPS 205 (SLH-DSA). The belt alongside the braces.</p>
+            </div>
+            <div class="pqc-card">
+              <div class="pqc-card-top">
+                <span class="pqc-status pqc-status--watch">On watch</span>
+              </div>
+              <strong>HQC &amp; BIKE</strong>
+              <span class="pqc-role">Code-Based Diversity</span>
+              <p>NIST Round 4 candidates. Code-based cryptography from a completely different mathematical family — redundancy against any single algorithm break.</p>
+            </div>
+          </div>
+
+          <p class="transformation-footnote">
+            XChaCha20-Poly1305 is symmetric and already quantum-resistant at 256-bit. The transition path targets asymmetric primitives: key exchange (X25519 → Kyber) and signatures (Ed25519 → Dilithium + SPHINCS+). Timelines follow NIST standardisation and ecosystem readiness — never commercial convenience.
+          </p>
+        </div>
+      </div>
+
       <!-- Why not X? callout -->
       <div class="why-not-box fade-in">
         <h3 class="why-not-heading">
@@ -488,14 +515,11 @@
     </div>
   </section>
 
-  <!-- Section divider -->
-  <div class="section-divider" aria-hidden="true"><svg width="100%" height="2" preserveAspectRatio="none"><rect width="100%" height="2" fill="url(#knotwork-1)"/></svg></div>
-
 
   <!-- ═══════════════════════════════════════
        HOW — THE PROCESS
   ═══════════════════════════════════════ -->
-  <section class="section section-how fade-in" id="how">
+  <section class="section section-how" id="how">
     <div class="container">
       <div class="section-label fade-in">How It Works</div>
       <h2 class="section-heading fade-in">Four steps to sovereign peace of mind</h2>
@@ -507,63 +531,55 @@
           <div class="step-number">01</div>
           <div class="step-content">
             <div class="step-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
               </svg>
             </div>
-            <h3>Create your space</h3>
-            <p>Upload files, write letters, record voice messages, save passwords. Anything you want to preserve — documents, photos, final words. Rich text, audio, any file format.</p>
+            <h3>Create your vault</h3>
+            <p>Generate a strong passphrase. Morrigan derives an encryption key using Argon2id — memory-hard, GPU-resistant. Your key never leaves your device. Not once.</p>
+            <span class="step-tag">Argon2id · client-side only</span>
           </div>
-        </div>
-
-        <div class="step-connector" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </div>
 
         <div class="step">
           <div class="step-number">02</div>
           <div class="step-content">
             <div class="step-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
               </svg>
             </div>
-            <h3>Encrypt everything</h3>
-            <p>Your vault is encrypted client-side with a unique key. You download and safeguard this key file. We never see it. Without it, the data is mathematically irretrievable — by anyone.</p>
+            <h3>Name your beneficiaries</h3>
+            <p>Assign trusted people — family, friends, a lawyer. Each receives one shard of your key. You choose how many shards are needed to unlock your vault. <em>No single shard is enough.</em></p>
+            <span class="step-tag">Shamir's Secret Sharing · K-of-N threshold</span>
           </div>
-        </div>
-
-        <div class="step-connector" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </div>
 
         <div class="step">
           <div class="step-number">03</div>
           <div class="step-content">
             <div class="step-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
               </svg>
             </div>
-            <h3>Set your conditions</h3>
-            <p>Define what gets shared, with whom, and when. Configure a dead man's switch: if you stop responding for 7, 14, or 30 days, access is triggered. You stay in control until the very end.</p>
+            <h3>Store what matters</h3>
+            <p>Upload files, write encrypted messages, add passwords, record final instructions. Everything is encrypted before upload using XChaCha20-Poly1305. Morrigan's servers see only ciphertext.</p>
+            <span class="step-tag">XChaCha20-Poly1305 · BYOS compatible</span>
           </div>
-        </div>
-
-        <div class="step-connector" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </div>
 
         <div class="step">
           <div class="step-number">04</div>
           <div class="step-content">
             <div class="step-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
               </svg>
             </div>
-            <h3>Share with your people</h3>
-            <p>Beneficiaries receive a private link with instructions. Your key is distributed via Shamir's Secret Sharing — no single person has full access. Only together, only when needed, does the vault open.</p>
+            <h3>Set the switch</h3>
+            <p>Configure a dead man's switch. If you do not check in within your chosen window, Morrigan notifies your beneficiaries. They combine their shards. Your vault opens. Your legacy is delivered.</p>
+            <span class="step-tag">Dead man's switch · Configurable grace period</span>
           </div>
         </div>
 
@@ -626,14 +642,11 @@
     </div>
   </section>
 
-  <!-- Section divider -->
-  <div class="section-divider" aria-hidden="true"><svg width="100%" height="2" preserveAspectRatio="none"><rect width="100%" height="2" fill="url(#knotwork-1)"/></svg></div>
-
 
   <!-- ═══════════════════════════════════════
        LANGUAGES
   ═══════════════════════════════════════ -->
-  <section class="section section-languages fade-in" id="languages">
+  <section class="section section-languages" id="languages">
     <div class="container">
       <div class="languages-inner fade-in">
         <div class="languages-text">
@@ -659,7 +672,7 @@
   <!-- ═══════════════════════════════════════
        DONATE
   ═══════════════════════════════════════ -->
-  <section class="section section-donate fade-in" id="donate">
+  <section class="section section-donate" id="donate">
     <div class="container container-narrow">
       <div class="donate-inner fade-in">
         <div class="section-label">Non-Profit Foundation</div>
@@ -686,7 +699,7 @@
 
         <div class="donate-actions">
           <a href="donate.html" class="btn btn-primary btn-lg">Donate to Morrigan</a>
-          <a href="donate.html#sponsors" class="btn btn-outline">Become a Sponsor</a>
+          <a href="donate.html#sponsors" class="btn btn-outline-inv btn-pill">Become a Sponsor</a>
         </div>
       </div>
     </div>

@@ -60,6 +60,7 @@
 5. [Architecture overview](#-architecture-overview)
 6. [Encryption deep-dive](#-encryption-deep-dive)
 7. [Shamir's Secret Sharing](#-shamirs-secret-sharing)
+8. [Transformation — Post-Quantum Commitment](#-transformation--post-quantum-commitment)
 8. [The dead man's switch](#-the-dead-mans-switch)
 9. [Storage model](#-storage-model)
 10. [Key management philosophy](#-key-management-philosophy)
@@ -85,6 +86,12 @@ Her abilities:
 - **Sovereignty** — she grants or withdraws power; she cannot be owned
 - **Transformation** — she shifts form; she is never trapped in one state
 - **The boundary** — she exists at the edge between life and death, the seen and unseen
+
+Each of these abilities maps to a design principle of this project. The one worth dwelling on is **Transformation**.
+
+> *"She is never trapped in one state."*
+
+As a foundation, Morrigan is constitutionally committed to always migrating to the strongest available cryptographic standards — including post-quantum cryptography. Algorithms are not permanent choices. They age, break, and are superseded. The Morrígan transforms. So does our stack.
 
 This project is named in her honour. Morrigan helps you prepare — with dignity and intelligence — for the one boundary everyone will eventually cross.
 
@@ -365,6 +372,50 @@ This is not a limitation of the implementation. It is the guarantee. The moment 
 
 ---
 
+## 🔮 Transformation — Post-Quantum Commitment
+
+Encryption is not a fixed artefact. It is a living discipline.
+
+As computing paradigms shift — particularly with the rise of quantum computing — the cryptographic primitives that are strong today may become vulnerable tomorrow. The Morrígan's power of **Transformation** is not metaphor: it is a constitutional obligation written into the foundation's charter. Morrigan will always migrate to the strongest available standards, regardless of the effort or cost.
+
+### Why this matters
+
+For-profit companies face commercial pressure to defer cryptographic upgrades. Legacy integrations, enterprise contracts, and engineering bandwidth trade-offs all conspire against doing the right thing. As a non-profit foundation with no investors and no exit to protect, Morrigan has no such pressure. The stack transforms.
+
+### Current stack (quantum-classical hybrid baseline)
+
+| Primitive | Algorithm | Security level | Quantum status |
+|---|---|---|---|
+| Symmetric cipher | XChaCha20-Poly1305 | 256-bit | **Quantum-resistant** (symmetric, 128-bit post-quantum) |
+| Key exchange | X25519 (Curve25519) | 128-bit classical | Vulnerable to Shor's algorithm |
+| Signatures | Ed25519 | 128-bit classical | Vulnerable to Shor's algorithm |
+| KDF | Argon2id | Memory-hard | Not affected by quantum computing |
+| Secret sharing | Shamir over GF(2⁸) | 256-bit secret | Not affected by quantum computing |
+
+> Note: XChaCha20-Poly1305 is already quantum-resistant. The asymmetric primitives (X25519, Ed25519) are the migration targets.
+
+### Post-quantum roadmap
+
+NIST finalised its first post-quantum cryptography standards in 2024 (FIPS 203/204/205). Morrigan's migration path:
+
+| Algorithm | Role | NIST standard | Status | Notes |
+|---|---|---|---|---|
+| **CRYSTALS-Kyber** (ML-KEM) | Key Encapsulation | FIPS 203 | On roadmap | Replaces X25519 for asymmetric key wrapping |
+| **CRYSTALS-Dilithium** (ML-DSA) | Digital signatures | FIPS 204 | On roadmap | Replaces Ed25519 for vault manifest signing |
+| **SPHINCS+** (SLH-DSA) | Hash-based signatures | FIPS 205 | On roadmap | Stateless fallback — no lattice assumptions |
+| **HQC** | Code-based KEM | NIST Round 4 | Watching | Alternative mathematical family for diversity |
+
+### Migration philosophy
+
+1. **Hybrid mode first** — new vaults will support both classical and post-quantum primitives in parallel, ensuring backward compatibility during the transition
+2. **Migration tooling** — existing vaults will receive a re-encryption path that allows seamless upgrade without data loss
+3. **Ecosystem gating** — we will not force migration until browser WebAssembly support for PQC libraries is production-stable
+4. **Transparency** — every cryptographic decision and timeline will be documented publicly in this repository
+
+> *"We are not locked into today's choices. The stack transforms."*
+
+---
+
 ## 🏛️ Non-Profit Foundation
 
 Morrigan will be established as a non-profit foundation. Not a startup. Not a company with investors. Not a product that will be acquired.
@@ -432,7 +483,15 @@ The `landing/` directory in this repository contains the full source of [morriga
 - [x] Brand identity (logo, colors, typography)
 - [x] Architecture design documents
 
-### v0.2.0 — Foundation
+### v0.2.0 — Transformation *(this release)*
+- [x] Landing page full Anthropic-inspired design rebuild
+- [x] Post-quantum cryptography section on landing page
+- [x] Foundation charter: commitment to always upgrade cryptographic stack
+- [x] CRYSTALS-Kyber, CRYSTALS-Dilithium, SPHINCS+ roadmap documented
+- [x] "Post-quantum ready" trust signal in hero
+- [x] README: Transformation narrative and PQC migration roadmap
+
+### v0.3.0 — Foundation
 - [ ] Non-profit foundation registration
 - [ ] Early Access waitlist and email capture
 - [ ] Donation page (Stripe / GitHub Sponsors)
@@ -515,6 +574,14 @@ open index.html
 
 ## 📋 Changelog
 
+### v0.2.0 — Transformation *(2026-04-12)*
+- Anthropic-inspired design system: Playfair Display + Inter, warm parchment palette, alternating sections
+- Post-quantum cryptography commitment section added to landing page
+- CRYSTALS-Kyber, CRYSTALS-Dilithium, SPHINCS+ roadmap documented
+- "Post-quantum ready" trust badge added to hero
+- README: Transformation narrative, PQC migration tables, migration philosophy
+
+### v0.1.0 — Landing *(initial release)*
 See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
 **Latest:** [v0.1.0](CHANGELOG.md#v010--2026-04-12) — Initial public release. Landing page. Architecture documentation. Repository scaffolding.
