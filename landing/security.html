@@ -13,7 +13,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -41,6 +41,7 @@
         <a href="index.html#encryption" class="nav-link">Encryption</a>
         <a href="index.html#how" class="nav-link">How It Works</a>
         <a href="donate.html" class="nav-link">Donate</a>
+        <a href="security.html" class="nav-link" aria-current="page">Security</a>
       </div>
 
       <div class="nav-actions">
@@ -61,6 +62,7 @@
       <a href="index.html#encryption" class="nav-mobile-link">Encryption</a>
       <a href="index.html#how" class="nav-mobile-link">How It Works</a>
       <a href="donate.html" class="nav-mobile-link">Donate</a>
+      <a href="security.html" class="nav-mobile-link" aria-current="page">Security</a>
       <a href="#" class="btn btn-primary" style="margin-top: var(--space-4);">Early Access</a>
     </div>
   </header>
@@ -81,9 +83,45 @@
 
 
   <!-- ═══════════════════════════════════════
+       SECURITY PRINCIPLES
+  ═══════════════════════════════════════ -->
+  <section class="section fade-in" style="background: var(--color-bg);">
+    <div class="container">
+      <div class="section-label fade-in">Our Foundations</div>
+      <h2 class="section-heading fade-in">Security principles</h2>
+      <p class="section-subtext fade-in">Four non-negotiable principles that govern every decision in Morrigan's design. These are not aspirations — they are constraints.</p>
+
+      <div class="security-principles fade-in">
+
+        <div class="security-principle">
+          <div class="security-principle-num">01</div>
+          <h3>Zero-knowledge by design, not policy</h3>
+        </div>
+
+        <div class="security-principle">
+          <div class="security-principle-num">02</div>
+          <h3>Client-side encryption, always</h3>
+        </div>
+
+        <div class="security-principle">
+          <div class="security-principle-num">03</div>
+          <h3>Open source, always auditable</h3>
+        </div>
+
+        <div class="security-principle">
+          <div class="security-principle-num">04</div>
+          <h3>No recovery mechanism — sovereignty requires consequence</h3>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
        THREAT MODEL
   ═══════════════════════════════════════ -->
-  <section class="section" style="background: var(--color-bg);" id="threat-model">
+  <section class="section fade-in" style="background: var(--color-surface); border-block: 1px solid var(--color-border);" id="threat-model">
     <div class="container">
       <div class="section-label fade-in">Adversary Model</div>
       <h2 class="section-heading fade-in">Threat model</h2>
@@ -161,7 +199,7 @@
   <!-- ═══════════════════════════════════════
        CRYPTOGRAPHIC ARCHITECTURE
   ═══════════════════════════════════════ -->
-  <section class="section" style="background: var(--color-surface); border-block: 1px solid var(--color-border);" id="crypto">
+  <section class="section fade-in" style="background: var(--color-bg);" id="crypto">
     <div class="container">
       <div class="section-label fade-in">Cryptographic Reference</div>
       <h2 class="section-heading fade-in">Cryptographic architecture</h2>
@@ -176,6 +214,7 @@
               <th scope="col">Library</th>
               <th scope="col">Security Level</th>
               <th scope="col">Notes</th>
+              <th scope="col">CVE / Notable Attacks</th>
             </tr>
           </thead>
           <tbody>
@@ -185,6 +224,7 @@
               <td>libsodium</td>
               <td><span class="tag">256-bit</span></td>
               <td>AEAD, nonce-safe, 192-bit nonce prevents reuse</td>
+              <td><span class="cve-clean">None known for this config</span></td>
             </tr>
             <tr>
               <td>Key exchange</td>
@@ -192,6 +232,7 @@
               <td>libsodium</td>
               <td><span class="tag">128-bit equiv.</span></td>
               <td>ECDH, forward secrecy per session</td>
+              <td><span class="cve-clean">None known for this config</span></td>
             </tr>
             <tr>
               <td>Signatures</td>
@@ -199,6 +240,7 @@
               <td>libsodium</td>
               <td><span class="tag">128-bit equiv.</span></td>
               <td>Deterministic, resistant to fault attacks</td>
+              <td><span class="cve-clean">None known for this config</span></td>
             </tr>
             <tr>
               <td>Key derivation</td>
@@ -206,6 +248,7 @@
               <td>argon2-browser</td>
               <td><span class="tag">Memory-hard</span></td>
               <td>PHC winner; t=3, m=65536 minimum</td>
+              <td><span class="cve-clean">None known for this config</span></td>
             </tr>
             <tr>
               <td>Secret splitting</td>
@@ -213,6 +256,7 @@
               <td>secrets.js-grempe</td>
               <td><span class="tag">Threshold scheme</span></td>
               <td>Independently audited; K-of-N configurable</td>
+              <td><span class="cve-clean">None known for this config</span></td>
             </tr>
             <tr>
               <td>Randomness</td>
@@ -220,6 +264,7 @@
               <td>Web Crypto API</td>
               <td><span class="tag">OS-seeded</span></td>
               <td><code>crypto.getRandomValues()</code> — never Math.random()</td>
+              <td><span class="cve-clean">None known for this config</span></td>
             </tr>
           </tbody>
         </table>
@@ -235,7 +280,7 @@
   <!-- ═══════════════════════════════════════
        AUDIT HISTORY
   ═══════════════════════════════════════ -->
-  <section class="section" style="background: var(--color-bg);" id="audits">
+  <section class="section fade-in" style="background: var(--color-surface); border-block: 1px solid var(--color-border);" id="audits">
     <div class="container">
       <div class="section-label fade-in">External Review</div>
       <h2 class="section-heading fade-in">Audit history</h2>
@@ -278,7 +323,7 @@
   <!-- ═══════════════════════════════════════
        RESPONSIBLE DISCLOSURE
   ═══════════════════════════════════════ -->
-  <section class="section" style="background: var(--color-surface); border-block: 1px solid var(--color-border);" id="disclosure">
+  <section class="section fade-in" style="background: var(--color-bg);" id="disclosure">
     <div class="container">
       <div class="section-label fade-in">Vulnerability Reporting</div>
       <h2 class="section-heading fade-in">Responsible disclosure</h2>
@@ -343,7 +388,7 @@
   <!-- ═══════════════════════════════════════
        SECURITY FAQ
   ═══════════════════════════════════════ -->
-  <section class="section" style="background: var(--color-bg);" id="faq">
+  <section class="section fade-in" style="background: var(--color-surface); border-block: 1px solid var(--color-border);" id="faq">
     <div class="container">
       <div class="section-label fade-in">Common Questions</div>
       <h2 class="section-heading fade-in">Security FAQ</h2>
@@ -407,9 +452,36 @@
 
 
   <!-- ═══════════════════════════════════════
+       SECURITY HALL OF FAME
+  ═══════════════════════════════════════ -->
+  <section class="section fade-in" style="background: var(--color-bg);" id="hall-of-fame">
+    <div class="container">
+      <div class="section-label fade-in">Acknowledgements</div>
+      <h2 class="section-heading fade-in">Security Hall of Fame</h2>
+      <p class="section-subtext fade-in">We publicly thank security researchers who responsibly disclose vulnerabilities.</p>
+
+      <div class="hall-of-fame fade-in">
+        <div class="hall-of-fame-empty">
+          <div class="hall-of-fame-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M8 8l-4 4 1.5 6h9L16 12l-4-4"/>
+              <path d="M12 12v6"/>
+            </svg>
+          </div>
+          <h3>None yet</h3>
+          <p>No vulnerabilities have been responsibly disclosed to date. We are building in public, writing honest security documentation, and waiting.</p>
+          <span class="be-first">Be the first. Email <a href="mailto:security@morrigan.life" style="color: var(--color-primary);">security@morrigan.life</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
        PGP KEY
   ═══════════════════════════════════════ -->
-  <section class="section" style="background: var(--color-surface); border-top: 1px solid var(--color-border);" id="pgp">
+  <section class="section fade-in" style="background: var(--color-surface); border-top: 1px solid var(--color-border);" id="pgp">
     <div class="container">
       <div class="section-label fade-in">PGP</div>
       <h2 class="section-heading fade-in">Security team PGP key</h2>
@@ -460,7 +532,7 @@
           </a>
           <p class="footer-tagline">Prepare for the inevitable — with dignity and sovereignty.</p>
           <div class="footer-badges">
-            <a href="#" class="footer-badge" aria-label="View source on GitHub">
+            <a href="https://github.com/paulfxyz/morrigan" class="footer-badge" target="_blank" rel="noopener" aria-label="View source on GitHub">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
               Open Source
             </a>
@@ -476,9 +548,10 @@
           <ul role="list">
             <li><a href="index.html#how">How It Works</a></li>
             <li><a href="index.html#what">The Stack</a></li>
+            <li><a href="index.html#encryption">Encryption</a></li>
             <li><a href="index.html#languages">Languages</a></li>
-            <li><a href="#">Documentation</a></li>
-            <li><a href="#">GitHub</a></li>
+            <li><a href="https://github.com/paulfxyz/morrigan" target="_blank" rel="noopener">Documentation</a></li>
+            <li><a href="https://github.com/paulfxyz/morrigan" target="_blank" rel="noopener">GitHub</a></li>
           </ul>
         </div>
 
@@ -487,18 +560,18 @@
           <ul role="list">
             <li><a href="index.html#why">Our Story</a></li>
             <li><a href="donate.html">Donate</a></li>
-            <li><a href="#">Sponsors</a></li>
-            <li><a href="#">Grants</a></li>
+            <li><a href="donate.html#sponsors">Sponsors</a></li>
+            <li><a href="donate.html">Grants</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4 class="footer-col-heading">Legal</h4>
           <ul role="list">
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
+            <li><a href="security.html" style="color: var(--color-primary);">Privacy Policy</a></li>
+            <li><a href="security.html" style="color: var(--color-primary);">Terms of Service</a></li>
             <li><a href="security.html" style="color: var(--color-primary);">Security</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="mailto:hello@morrigan.life">Contact</a></li>
           </ul>
         </div>
       </div>

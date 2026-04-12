@@ -14,7 +14,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -27,13 +27,9 @@
   <header class="site-header" id="site-header">
     <nav class="nav-inner">
       <a href="#" class="nav-logo" aria-label="Morrigan home">
-        <!-- SVG Logo: Raven within shield / vault mark -->
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-          <!-- Shield outline -->
           <path d="M18 2L4 7.5V18.5C4 25.8 10.2 32.3 18 34C25.8 32.3 32 25.8 32 18.5V7.5L18 2Z" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.6"/>
-          <!-- Raven silhouette -->
           <path d="M18 10C16.2 10 15 11.2 15 12.5C15 13 15.2 13.4 15.5 13.8L12 16L13.5 16.5L12.5 18L14.5 17.5L14 19.5L16 18.5C16.5 19.2 17.2 19.8 18 20C19.5 20 21 18.8 21 17C21 15.8 20.3 14.8 19.3 14.3L21.5 12.5C20.8 11 19.6 10 18 10Z" fill="currentColor"/>
-          <!-- Celtic corner accents -->
           <path d="M8 9L10 11" stroke="currentColor" stroke-width="1" opacity="0.4"/>
           <path d="M28 9L26 11" stroke="currentColor" stroke-width="1" opacity="0.4"/>
         </svg>
@@ -45,7 +41,8 @@
         <a href="#what" class="nav-link">The Stack</a>
         <a href="#encryption" class="nav-link">Encryption</a>
         <a href="#how" class="nav-link">How It Works</a>
-        <a href="#donate" class="nav-link">Donate</a>
+        <a href="donate.html" class="nav-link">Donate</a>
+        <a href="security.html" class="nav-link">Security</a>
       </div>
 
       <div class="nav-actions">
@@ -65,7 +62,8 @@
       <a href="#what" class="nav-mobile-link">The Stack</a>
       <a href="#encryption" class="nav-mobile-link">Encryption</a>
       <a href="#how" class="nav-mobile-link">How It Works</a>
-      <a href="#donate" class="nav-mobile-link">Donate</a>
+      <a href="donate.html" class="nav-mobile-link">Donate</a>
+      <a href="security.html" class="nav-mobile-link">Security</a>
       <a href="#" class="btn btn-primary" style="margin-top: var(--space-4);">Early Access</a>
     </div>
   </header>
@@ -114,6 +112,14 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           Free &amp; open source forever
         </span>
+        <span class="trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Ed25519 signatures
+        </span>
+        <span class="trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Dead man's switch
+        </span>
       </div>
     </div>
 
@@ -129,7 +135,8 @@
   <!-- ═══════════════════════════════════════
        WHY — MY STORY
   ═══════════════════════════════════════ -->
-  <section class="section section-why" id="why">
+  <section class="section section-why fade-in" id="why">
+    <div class="glow-orb" style="width: 500px; height: 500px; top: 10%; left: -10%; opacity: 0.08;" aria-hidden="true"></div>
     <div class="container">
       <div class="section-label fade-in">Why Morrigan</div>
       <h2 class="section-heading fade-in">Death entered slowly, then all at once.</h2>
@@ -157,32 +164,26 @@
           <p>
             I did not build Morrigan because I believe in privacy in the abstract. I built it because I lived through what it means when the people you love cannot get to the things you meant to leave them. This is personal. It is supposed to be.
           </p>
+          <p>
+            Morrigan is not a product born from a pitch deck. It is an answer to a question I could not stop asking: what happens to the things we meant to say?
+          </p>
           <p class="story-attribution">
-            — <em>Paul Fleury, founder</em>
+            — Paul Fleury, founder
           </p>
 
-          <!-- Timeline -->
-          <div class="story-timeline" aria-label="Personal timeline">
-            <div class="timeline-entry" data-timeline>
-              <div class="timeline-marker"></div>
-              <div class="timeline-content">
-                <span class="timeline-year">2019</span>
-                <span class="timeline-event">Mentor killed in Damascus</span>
-              </div>
+          <!-- Year markers — editorial style -->
+          <div class="story-year-markers">
+            <div class="year-marker">
+              <span class="year-number">2019</span>
+              <span class="year-note">Damascus. My mentor. Gone.</span>
             </div>
-            <div class="timeline-entry" data-timeline>
-              <div class="timeline-marker"></div>
-              <div class="timeline-content">
-                <span class="timeline-year">2019</span>
-                <span class="timeline-event">Father passed, Christmas</span>
-              </div>
+            <div class="year-marker">
+              <span class="year-number">2019</span>
+              <span class="year-note">Christmas. My father. Gone.</span>
             </div>
-            <div class="timeline-entry timeline-entry--present" data-timeline>
-              <div class="timeline-marker"></div>
-              <div class="timeline-content">
-                <span class="timeline-year">Today</span>
-                <span class="timeline-event">Building something that endures</span>
-              </div>
+            <div class="year-marker">
+              <span class="year-number">Now</span>
+              <span class="year-note">Building something that endures.</span>
             </div>
           </div>
         </div>
@@ -192,7 +193,7 @@
             <p>"She is not evil — she embodies the natural, inevitable cycle of life and death. She sees what is coming and prepares for it."</p>
             <cite>On the Morrígan, Irish mythology</cite>
           </blockquote>
-          <blockquote class="pull-quote pull-quote--secondary">
+          <blockquote class="pull-quote pull-quote--secondary" style="margin-top: var(--space-6);">
             <p>"The dead don't disappear. They become the things we can no longer ask."</p>
             <cite>On grief &amp; the digital self</cite>
           </blockquote>
@@ -202,13 +203,13 @@
   </section>
 
   <!-- Section divider -->
-  <div class="section-divider" aria-hidden="true"><svg width="100%" height="2" preserveAspectRatio="none"><use href="#knotwork-1"/><rect width="100%" height="2" fill="url(#knotwork-1)"/></svg></div>
+  <div class="section-divider" aria-hidden="true"><svg width="100%" height="2" preserveAspectRatio="none"><rect width="100%" height="2" fill="url(#knotwork-1)"/></svg></div>
 
 
   <!-- ═══════════════════════════════════════
        WHAT — THE STACK
   ═══════════════════════════════════════ -->
-  <section class="section section-what" id="what">
+  <section class="section section-what fade-in" id="what">
     <div class="container">
       <div class="section-label fade-in">The Stack</div>
       <h2 class="section-heading fade-in">Built on truth, not trust</h2>
@@ -299,7 +300,8 @@
   <!-- ═══════════════════════════════════════
        ENCRYPTION — THE CRYPTOGRAPHY
   ═══════════════════════════════════════ -->
-  <section class="section section-encryption" id="encryption">
+  <section class="section section-encryption fade-in" id="encryption">
+    <div class="glow-orb" style="width: 600px; height: 600px; top: 20%; right: -15%; opacity: 0.07;" aria-hidden="true"></div>
     <div class="container">
       <div class="section-label fade-in">Under the Hood</div>
       <h2 class="section-heading fade-in">Cryptography worthy of what you're protecting.</h2>
@@ -313,7 +315,6 @@
         <div class="crypto-card">
           <div class="crypto-card-top">
             <div class="crypto-card-icon" aria-hidden="true">
-              <!-- Stream cipher / waveform icon -->
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
                 <path d="M2 12 Q4 6 6 12 Q8 18 10 12 Q12 6 14 12 Q16 18 18 12 Q20 6 22 12"/>
               </svg>
@@ -332,7 +333,6 @@
         <div class="crypto-card">
           <div class="crypto-card-top">
             <div class="crypto-card-icon" aria-hidden="true">
-              <!-- Elliptic curve icon -->
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
                 <ellipse cx="12" cy="12" rx="10" ry="6" transform="rotate(-30 12 12)"/>
                 <circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.6"/>
@@ -352,7 +352,6 @@
         <div class="crypto-card">
           <div class="crypto-card-top">
             <div class="crypto-card-icon" aria-hidden="true">
-              <!-- Signature / pen icon -->
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
                 <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
                 <path d="m15 5 4 4"/>
@@ -372,7 +371,6 @@
         <div class="crypto-card">
           <div class="crypto-card-top">
             <div class="crypto-card-icon" aria-hidden="true">
-              <!-- Memory/RAM icon -->
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
                 <rect x="2" y="6" width="20" height="12" rx="2"/>
                 <path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h.01M10 14h.01M14 14h.01M18 14h.01"/>
@@ -392,7 +390,6 @@
         <div class="crypto-card">
           <div class="crypto-card-top">
             <div class="crypto-card-icon" aria-hidden="true">
-              <!-- Polynomial / graph icon -->
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
                 <path d="M3 20 Q8 4 12 12 Q16 20 21 4"/>
                 <circle cx="3" cy="20" r="1.5" fill="currentColor"/>
@@ -414,7 +411,6 @@
         <div class="crypto-card">
           <div class="crypto-card-top">
             <div class="crypto-card-icon" aria-hidden="true">
-              <!-- Library / book stack icon -->
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
@@ -456,6 +452,21 @@
         </div>
       </div>
 
+      <!-- Open source audit callout -->
+      <div class="audit-callout fade-in">
+        <div class="audit-callout-inner">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+          <div>
+            <strong>All cryptographic code is open source and auditable.</strong>
+            <p>Every line. No obfuscation. No proprietary black boxes. You can read, fork, and verify everything at <a href="https://github.com/paulfxyz/morrigan" target="_blank" rel="noopener">github.com/paulfxyz/morrigan</a>.</p>
+          </div>
+          <a href="security.html" class="btn btn-outline btn-sm">Security page →</a>
+        </div>
+      </div>
+
       <!-- Library stack row -->
       <div class="lib-stack fade-in" aria-label="Library dependencies">
         <span class="lib-stack-label">Dependency stack:</span>
@@ -487,7 +498,7 @@
   <!-- ═══════════════════════════════════════
        HOW — THE PROCESS
   ═══════════════════════════════════════ -->
-  <section class="section section-how" id="how">
+  <section class="section section-how fade-in" id="how">
     <div class="container">
       <div class="section-label fade-in">How It Works</div>
       <h2 class="section-heading fade-in">Four steps to sovereign peace of mind</h2>
@@ -561,7 +572,31 @@
 
       </div>
 
-      <div class="deadman-switch-explainer fade-in">
+      <!-- Dead man's switch detail callout -->
+      <div class="dms-detail fade-in">
+        <div class="dms-detail-heading">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Dead man's switch — three stages
+        </div>
+        <div class="dms-mini-flow">
+          <div class="dms-mini-step">
+            <strong>Stage 1</strong>
+            <span>Scheduled check-in ping</span>
+          </div>
+          <span class="dms-mini-arrow">→</span>
+          <div class="dms-mini-step">
+            <strong>Stage 2</strong>
+            <span>No response after grace period</span>
+          </div>
+          <span class="dms-mini-arrow">→</span>
+          <div class="dms-mini-step">
+            <strong>Stage 3</strong>
+            <span>Key fragments released to beneficiaries</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="deadman-switch-explainer fade-in" style="margin-top: var(--space-6);">
         <div class="dms-inner">
           <h3 class="dms-heading">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
@@ -601,7 +636,7 @@
   <!-- ═══════════════════════════════════════
        LANGUAGES
   ═══════════════════════════════════════ -->
-  <section class="section section-languages" id="languages">
+  <section class="section section-languages fade-in" id="languages">
     <div class="container">
       <div class="languages-inner fade-in">
         <div class="languages-text">
@@ -627,7 +662,7 @@
   <!-- ═══════════════════════════════════════
        DONATE
   ═══════════════════════════════════════ -->
-  <section class="section section-donate" id="donate">
+  <section class="section section-donate fade-in" id="donate">
     <div class="container container-narrow">
       <div class="donate-inner fade-in">
         <div class="section-label">Non-Profit Foundation</div>
@@ -653,8 +688,8 @@
         </div>
 
         <div class="donate-actions">
-          <a href="#" class="btn btn-primary btn-lg">Donate to Morrigan</a>
-          <a href="#" class="btn btn-outline">Become a Sponsor</a>
+          <a href="donate.html" class="btn btn-primary btn-lg">Donate to Morrigan</a>
+          <a href="donate.html#sponsors" class="btn btn-outline">Become a Sponsor</a>
         </div>
       </div>
     </div>
@@ -679,7 +714,7 @@
           </a>
           <p class="footer-tagline">Prepare for the inevitable — with dignity and sovereignty.</p>
           <div class="footer-badges">
-            <a href="#" class="footer-badge" aria-label="View source on GitHub">
+            <a href="https://github.com/paulfxyz/morrigan" class="footer-badge" target="_blank" rel="noopener" aria-label="View source on GitHub">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
               Open Source
             </a>
@@ -697,8 +732,8 @@
             <li><a href="#what">The Stack</a></li>
             <li><a href="#encryption">Encryption</a></li>
             <li><a href="#languages">Languages</a></li>
-            <li><a href="#">Documentation</a></li>
-            <li><a href="#">GitHub</a></li>
+            <li><a href="https://github.com/paulfxyz/morrigan" target="_blank" rel="noopener">Documentation</a></li>
+            <li><a href="https://github.com/paulfxyz/morrigan" target="_blank" rel="noopener">GitHub</a></li>
           </ul>
         </div>
 
@@ -706,8 +741,8 @@
           <h4 class="footer-col-heading">Foundation</h4>
           <ul role="list">
             <li><a href="#why">Our Story</a></li>
-            <li><a href="#donate">Donate</a></li>
-            <li><a href="donate.html">Sponsors</a></li>
+            <li><a href="donate.html">Donate</a></li>
+            <li><a href="donate.html#sponsors">Sponsors</a></li>
             <li><a href="donate.html">Grants</a></li>
           </ul>
         </div>
@@ -718,7 +753,7 @@
             <li><a href="security.html">Privacy Policy</a></li>
             <li><a href="security.html">Terms of Service</a></li>
             <li><a href="security.html">Security</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="mailto:hello@morrigan.life">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -734,7 +769,6 @@
     </div>
   </footer>
 
-  <!-- Favicon SVG embedded inline reference (also see favicon.svg) -->
   <script src="main.js" defer></script>
 </body>
 </html>

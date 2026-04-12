@@ -13,7 +13,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -40,7 +40,8 @@
         <a href="index.html#what" class="nav-link">The Stack</a>
         <a href="index.html#encryption" class="nav-link">Encryption</a>
         <a href="index.html#how" class="nav-link">How It Works</a>
-        <a href="donate.html" class="nav-link" aria-current="page" style="color: var(--color-primary);">Donate</a>
+        <a href="donate.html" class="nav-link" aria-current="page">Donate</a>
+        <a href="security.html" class="nav-link">Security</a>
       </div>
 
       <div class="nav-actions">
@@ -60,7 +61,8 @@
       <a href="index.html#what" class="nav-mobile-link">The Stack</a>
       <a href="index.html#encryption" class="nav-mobile-link">Encryption</a>
       <a href="index.html#how" class="nav-mobile-link">How It Works</a>
-      <a href="donate.html" class="nav-mobile-link" style="color: var(--color-primary);">Donate</a>
+      <a href="donate.html" class="nav-mobile-link" aria-current="page">Donate</a>
+      <a href="security.html" class="nav-mobile-link">Security</a>
       <a href="#" class="btn btn-primary" style="margin-top: var(--space-4);">Early Access</a>
     </div>
   </header>
@@ -83,9 +85,9 @@
   <!-- ═══════════════════════════════════════
        MISSION STATEMENT
   ═══════════════════════════════════════ -->
-  <section class="section" style="background: var(--color-bg); padding-block: clamp(var(--space-12), 8vw, var(--space-24));">
+  <section class="section fade-in" style="background: var(--color-bg); padding-block: clamp(var(--space-12), 8vw, var(--space-24));">
     <div class="container">
-      <div class="section-label fade-in" style="text-align: center;">Our Commitment</div>
+      <div class="section-label fade-in" style="justify-content: center;">Our Commitment</div>
       <blockquote class="mission-statement fade-in">
         We are building Morrigan as a public good — open-source, non-profit, and free forever. Every euro donated goes to infrastructure, security audits, and translations. No investor pressure. No paywalls. No compromise.
       </blockquote>
@@ -94,9 +96,21 @@
 
 
   <!-- ═══════════════════════════════════════
+       WHY WE'RE A FOUNDATION
+  ═══════════════════════════════════════ -->
+  <section class="section fade-in" style="background: var(--color-surface); border-block: 1px solid var(--color-border);">
+    <div class="container">
+      <div class="why-foundation-callout fade-in">
+        <p>"We deliberately chose non-profit status. A startup must eventually extract value from users. A foundation must serve them. That alignment is not incidental — it is the structure."</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
        HOW FUNDS ARE USED
   ═══════════════════════════════════════ -->
-  <section class="section" style="background: var(--color-surface); border-block: 1px solid var(--color-border);">
+  <section class="section fade-in" style="background: var(--color-bg); border-bottom: 1px solid var(--color-border);">
     <div class="container">
       <div class="section-label fade-in">Financial Transparency</div>
       <h2 class="section-heading fade-in">How funds are used</h2>
@@ -152,11 +166,17 @@
   <!-- ═══════════════════════════════════════
        DONATION TIERS
   ═══════════════════════════════════════ -->
-  <section class="section" style="background: var(--color-bg);">
+  <section class="section fade-in" style="background: var(--color-surface); border-bottom: 1px solid var(--color-border);">
     <div class="container">
       <div class="section-label fade-in">Support Tiers</div>
       <h2 class="section-heading fade-in">Choose your level of support</h2>
       <p class="section-subtext fade-in">Every contribution matters, regardless of size. Choose what fits your means and your commitment to the mission.</p>
+
+      <!-- Personal note from Paul -->
+      <div class="personal-note fade-in">
+        <p>"I have been asked what drives me to build this for free. The answer is in the story section. If you have also felt the weight of things left unsaid, you understand why this matters."</p>
+        <cite>— Paul Fleury, founder</cite>
+      </div>
 
       <div class="donation-tier-cards fade-in">
 
@@ -255,7 +275,7 @@
   <!-- ═══════════════════════════════════════
        CRYPTO DONATIONS
   ═══════════════════════════════════════ -->
-  <section class="section" style="background: var(--color-surface); border-block: 1px solid var(--color-border);">
+  <section class="section fade-in" style="background: var(--color-bg); border-bottom: 1px solid var(--color-border);">
     <div class="container">
       <div class="section-label fade-in">Cryptocurrency</div>
       <h2 class="section-heading fade-in">We also accept crypto</h2>
@@ -268,8 +288,8 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9 8h4.5a2.5 2.5 0 0 1 0 5H9zm0 5h5a2.5 2.5 0 0 1 0 5H9z"/></svg>
             Bitcoin (BTC)
           </div>
-          <div class="crypto-address" title="Bitcoin donation address">
-            <span class="crypto-address-text">bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</span>
+          <div class="crypto-address" title="Bitcoin donation address — placeholder, not a real address">
+            <span class="crypto-address-text is-placeholder">[Your BTC address here]</span>
             <svg class="crypto-copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </div>
         </div>
@@ -279,8 +299,8 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/></svg>
             Ethereum (ETH)
           </div>
-          <div class="crypto-address" title="Ethereum donation address">
-            <span class="crypto-address-text">0x71C7656EC7ab88b098defB751B7401B5f6d8976F</span>
+          <div class="crypto-address" title="Ethereum donation address — placeholder, not a real address">
+            <span class="crypto-address-text is-placeholder">[Your ETH address here]</span>
             <svg class="crypto-copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </div>
         </div>
@@ -290,8 +310,8 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             Monero (XMR)
           </div>
-          <div class="crypto-address" title="Monero donation address">
-            <span class="crypto-address-text">48edfHu7V9Z84YzzMa6fUueoELghf8MTqwx1FAQmGr7t9yxnq56arAbdjnriBg4AgXYjgDAvGcNDKN7xHcyDSed4X3AEXMP</span>
+          <div class="crypto-address" title="Monero donation address — placeholder, not a real address">
+            <span class="crypto-address-text is-placeholder">[Your XMR address here]</span>
             <svg class="crypto-copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </div>
         </div>
@@ -304,7 +324,7 @@
   <!-- ═══════════════════════════════════════
        TRANSPARENCY PLEDGE
   ═══════════════════════════════════════ -->
-  <section class="section" style="background: var(--color-bg);">
+  <section class="section fade-in" style="background: var(--color-surface); border-bottom: 1px solid var(--color-border);">
     <div class="container">
       <div class="section-label fade-in">Accountability</div>
       <h2 class="section-heading fade-in">Our transparency pledge</h2>
@@ -346,7 +366,7 @@
   <!-- ═══════════════════════════════════════
        SPONSORS
   ═══════════════════════════════════════ -->
-  <section class="section" style="background: var(--color-surface); border-block: 1px solid var(--color-border);">
+  <section class="section fade-in" id="sponsors" style="background: var(--color-bg);">
     <div class="container">
       <div class="section-label fade-in">Organizational Support</div>
       <h2 class="section-heading fade-in">Become a sponsor</h2>
@@ -387,7 +407,7 @@
           </a>
           <p class="footer-tagline">Prepare for the inevitable — with dignity and sovereignty.</p>
           <div class="footer-badges">
-            <a href="#" class="footer-badge" aria-label="View source on GitHub">
+            <a href="https://github.com/paulfxyz/morrigan" class="footer-badge" target="_blank" rel="noopener" aria-label="View source on GitHub">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
               Open Source
             </a>
@@ -403,9 +423,10 @@
           <ul role="list">
             <li><a href="index.html#how">How It Works</a></li>
             <li><a href="index.html#what">The Stack</a></li>
+            <li><a href="index.html#encryption">Encryption</a></li>
             <li><a href="index.html#languages">Languages</a></li>
-            <li><a href="#">Documentation</a></li>
-            <li><a href="#">GitHub</a></li>
+            <li><a href="https://github.com/paulfxyz/morrigan" target="_blank" rel="noopener">Documentation</a></li>
+            <li><a href="https://github.com/paulfxyz/morrigan" target="_blank" rel="noopener">GitHub</a></li>
           </ul>
         </div>
 
@@ -414,18 +435,18 @@
           <ul role="list">
             <li><a href="index.html#why">Our Story</a></li>
             <li><a href="donate.html" style="color: var(--color-primary);">Donate</a></li>
-            <li><a href="#">Sponsors</a></li>
-            <li><a href="#">Grants</a></li>
+            <li><a href="donate.html#sponsors">Sponsors</a></li>
+            <li><a href="donate.html">Grants</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4 class="footer-col-heading">Legal</h4>
           <ul role="list">
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
+            <li><a href="security.html">Privacy Policy</a></li>
+            <li><a href="security.html">Terms of Service</a></li>
             <li><a href="security.html">Security</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="mailto:hello@morrigan.life">Contact</a></li>
           </ul>
         </div>
       </div>

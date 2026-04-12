@@ -183,6 +183,42 @@
   }());
 
 
+  // ─── YEAR MARKER ENTRANCE ANIMATION ──────────
+  // Stagger-animates the editorial year markers on scroll into view.
+  (function initYearMarkers() {
+    const markers = document.querySelectorAll('.year-marker');
+    if (!markers.length) return;
+
+    // Set initial state
+    markers.forEach((marker, i) => {
+      marker.style.opacity = '0';
+      marker.style.transform = 'translateY(24px)';
+      marker.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      marker.style.transitionDelay = (i * 0.12) + 's';
+    });
+
+    if (!('IntersectionObserver' in window)) {
+      markers.forEach(m => {
+        m.style.opacity = '1';
+        m.style.transform = 'none';
+      });
+      return;
+    }
+
+    const io = new IntersectionObserver((records) => {
+      records.forEach(record => {
+        if (record.isIntersecting) {
+          record.target.style.opacity = '1';
+          record.target.style.transform = 'translateY(0)';
+          io.unobserve(record.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    markers.forEach(marker => io.observe(marker));
+  }());
+
+
   // ─── TIMELINE STAGGER-REVEAL ────────────────
   // Slides timeline entries in from the left with staggered delay.
   (function initTimelineReveal() {
@@ -261,6 +297,55 @@
 
     badges.forEach(badge => {
       if (badge.dataset.target) io.observe(badge);
+    });
+  }());
+
+
+  // ─── FUND BAR ANIMATION ───────────────────────
+  // Triggers fund-bar-fill animations when they scroll into view.
+  (function initFundBars() {
+    const fills = document.querySelectorAll('.fund-bar-fill');
+    if (!fills.length) return;
+    if (!('IntersectionObserver' in window)) return;
+
+    // Hide bars initially, reveal on intersect
+    fills.forEach(fill => {
+      fill.style.animationPlayState = 'paused';
+    });
+
+    const io = new IntersectionObserver((records) => {
+      records.forEach(record => {
+        if (record.isIntersecting) {
+          record.target.style.animationPlayState = 'running';
+          io.unobserve(record.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    fills.forEach(fill => io.observe(fill));
+  }());
+
+
+  // ─── CRYPTO ADDRESS COPY ──────────────────────
+  // Click any .crypto-address to copy the address text to clipboard.
+  (function initCryptoCopy() {
+    document.querySelectorAll('.crypto-address').forEach(row => {
+      row.addEventListener('click', () => {
+        const textEl = row.querySelector('.crypto-address-text');
+        if (!textEl) return;
+        const text = textEl.textContent.trim();
+        // Don't copy placeholder text
+        if (text.startsWith('[')) return;
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(text).then(() => {
+            const icon = row.querySelector('.crypto-copy-icon');
+            if (icon) {
+              icon.style.color = 'var(--color-primary)';
+              setTimeout(() => { icon.style.color = ''; }, 1200);
+            }
+          }).catch(() => {});
+        }
+      });
     });
   }());
 
