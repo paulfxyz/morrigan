@@ -204,3 +204,21 @@ Until v1.0.0, the API is unstable and minor versions may include breaking change
 - Lottie JSON animation: all colour arrays desaturated to luminance-equivalent grey
 - 53 AVIF images + 56 WebP images: fully desaturated via ffmpeg `hue=s=0`
 - Utility pages: badges, borders, links all converted to greyscale palette
+
+## v2.0.0 — April 2026
+
+### Added
+- **5 new pages:** Security, Donate, Login, Signup, How it Works
+- Full Morrígan nav: Home | How it Works | Security | Features | Pricing | Blog | About + Login + Get Started
+- Full Morrígan footer: 3 columns (Product, Company, Legal) + proper copyright
+- Morrígan-branded copy on ALL 18 active pages (no more Setrex/fintech/placeholder text)
+
+### Changed
+- Homepage hero copy: "Secure your digital legacy — forever."
+- All pages: meta titles, OG tags, descriptions updated to Morrígan context
+- Blog posts rewritten: digital legacy, dead man's switch, zero-knowledge encryption
+- Pricing tiers: Personal £0 / Guardian £5/mo / Legacy £12/mo
+- .htaccess: redirects old career/integration routes → about/features
+
+### Removed (backed up)
+- home-02.html, career.html, career-detail.html, integration*.html → /backup/

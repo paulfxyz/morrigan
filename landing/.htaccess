@@ -22,55 +22,54 @@ ErrorDocument 401 /401.html
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
 
-  # Core pages
+  # ── Core pages ─────────────────────────────────────────
   RewriteRule ^about/?$                           /about.html [L]
   RewriteRule ^features/?$                        /features.html [L]
   RewriteRule ^pricing/?$                         /pricing.html [L]
   RewriteRule ^blog/?$                            /blog.html [L]
   RewriteRule ^contact/?$                         /contact.html [L]
-  RewriteRule ^career/?$                          /career.html [L]
-  RewriteRule ^integration/?$                     /integration.html [L]
-  RewriteRule ^home-02/?$                         /home-02.html [L]
   RewriteRule ^privacy-policy/?$                  /privacy-policy.html [L]
   RewriteRule ^terms-condition/?$                 /terms-condition.html [L]
+  RewriteRule ^terms/?$                           /terms-condition.html [L]
   RewriteRule ^404/?$                             /404.html [L]
   RewriteRule ^401/?$                             /401.html [L]
 
-  # Utility pages
+  # ── New Morrígan pages ─────────────────────────────────
+  RewriteRule ^security/?$                        /security.html [L]
+  RewriteRule ^donate/?$                          /donate.html [L]
+  RewriteRule ^login/?$                           /login.html [L]
+  RewriteRule ^signup/?$                          /signup.html [L]
+  RewriteRule ^register/?$                        /signup.html [L]
+  RewriteRule ^how-it-works/?$                    /how-it-works.html [L]
+  RewriteRule ^how-it-works/.*$                   /how-it-works.html [L]
+
+  # ── Utility pages ─────────────────────────────────────
   RewriteRule ^utility-pages/style-guide/?$       /utility-pages/style-guide.html [L]
   RewriteRule ^utility-pages/changelog/?$         /utility-pages/changelog.html [L]
   RewriteRule ^utility-pages/license/?$           /utility-pages/license.html [L]
 
-  # Blog posts — clean slugs AND direct filenames
-  RewriteRule ^blog/how-to-build-processes.*$                    /blog-post-1.html [L]
-  RewriteRule ^blog/creating-a-data-driven.*$                    /blog-post-2.html [L]
-  RewriteRule ^blog/building-a-culture.*$                        /blog-post-3.html [L]
-  RewriteRule ^blog/how-to-leverage-data.*$                      /blog-post-1.html [L]
-  RewriteRule ^blog/creating-workflows.*$                        /blog-post-2.html [L]
-  RewriteRule ^blog/designing-systems.*$                         /blog-post-3.html [L]
-  RewriteRule ^blog/implementing-strategies.*$                   /blog-post-1.html [L]
-  RewriteRule ^blog/optimizing-operations.*$                     /blog-post-2.html [L]
-  RewriteRule ^blog/building-scalable.*$                         /blog-post-3.html [L]
-  RewriteRule ^blog-post-1/?$                     /blog-post-1.html [L]
-  RewriteRule ^blog-post-2/?$                     /blog-post-2.html [L]
-  RewriteRule ^blog-post-3/?$                     /blog-post-3.html [L]
+  # ── Blog posts — clean slugs ──────────────────────────
+  RewriteRule ^blog/why-your-digital-life.*$           /blog-post-1.html [L]
+  RewriteRule ^blog/dead-mans-switch.*$                /blog-post-2.html [L]
+  RewriteRule ^blog/zero-knowledge.*$                  /blog-post-3.html [L]
+  RewriteRule ^blog/how-to-leverage-data.*$            /blog-post-1.html [L]
+  RewriteRule ^blog/creating-workflows.*$              /blog-post-2.html [L]
+  RewriteRule ^blog/designing-systems.*$               /blog-post-3.html [L]
+  RewriteRule ^blog/implementing-strategies.*$         /blog-post-1.html [L]
+  RewriteRule ^blog/optimizing-operations.*$           /blog-post-2.html [L]
+  RewriteRule ^blog/building-scalable.*$               /blog-post-3.html [L]
+  RewriteRule ^blog-post-1/?$                          /blog-post-1.html [L]
+  RewriteRule ^blog-post-2/?$                          /blog-post-2.html [L]
+  RewriteRule ^blog-post-3/?$                          /blog-post-3.html [L]
+  # Catch all other /blog/* → blog listing
+  RewriteRule ^blog/.*$                                /blog.html [L]
 
-  # Integration detail pages — BOTH /integration/slug AND direct /slug forms
-  RewriteRule ^integration/overlay/?$             /integration-detail-1.html [L]
-  RewriteRule ^integration-detail-1/?$            /integration-detail-1.html [L]
-  RewriteRule ^integration/frameflow/?$           /integration-frameflow.html [L]
-  RewriteRule ^integration-frameflow/?$           /integration-frameflow.html [L]
-  RewriteRule ^integration/dataflow/?$            /integration-dataflow.html [L]
-  RewriteRule ^integration-dataflow/?$            /integration-dataflow.html [L]
-  RewriteRule ^integration/blazelo/?$             /integration-blazelo.html [L]
-  RewriteRule ^integration-blazelo/?$             /integration-blazelo.html [L]
-  RewriteRule ^integration/bightly/?$             /integration-detail-2.html [L]
-  RewriteRule ^integration-detail-2/?$            /integration-detail-2.html [L]
-  RewriteRule ^integration/clodey/?$              /integration-detail-1.html [L]
-
-  # Career detail — clean slug AND direct
-  RewriteRule ^career/digital-marketing.*$        /career-detail.html [L]
-  RewriteRule ^career/project-manager.*$          /career-detail.html [L]
-  RewriteRule ^career/ux-ui-designer.*$           /career-detail.html [L]
-  RewriteRule ^career-detail/?$                   /career-detail.html [L]
+  # ── Backed-up pages: redirect to home ─────────────────
+  RewriteRule ^home-02/?$                         / [R=301,L]
+  RewriteRule ^career/?$                          /about.html [R=301,L]
+  RewriteRule ^career/.*$                         /about.html [R=301,L]
+  RewriteRule ^career-detail.*$                   /about.html [R=301,L]
+  RewriteRule ^integration/?$                     /features.html [R=301,L]
+  RewriteRule ^integration/.*$                    /features.html [R=301,L]
+  RewriteRule ^integration-.*$                    /features.html [R=301,L]
 </IfModule>
