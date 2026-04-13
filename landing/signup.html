@@ -199,18 +199,118 @@ section.navbar{opacity:0;transform:translateY(-18px);}
 </div>
 </div>
 </section>
+<!-- Passphrase Generator Modal -->
+<div id="pp-modal" onclick="if(event.target===this)closePPModal()" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.78);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px;">
+  <div style="background:#111114;border:1px solid rgba(255,255,255,0.1);border-radius:20px;max-width:480px;width:100%;padding:36px;position:relative;box-shadow:0 40px 100px rgba(0,0,0,0.7);">
+
+    <!-- Close -->
+    <button onclick="closePPModal()" aria-label="Close" style="position:absolute;top:18px;right:20px;background:none;border:none;color:rgba(255,255,255,0.35);font-size:22px;cursor:pointer;line-height:1;transition:color .15s;" onmouseover="this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">&#x2715;</button>
+
+    <!-- Header -->
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
+      <div style="width:36px;height:36px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1.2" fill="rgba(255,255,255,0.7)" stroke="none"/></svg>
+      </div>
+      <h2 style="font-family:'BDO Grotesk','Inter',sans-serif;font-size:18px;font-weight:600;color:#fff;letter-spacing:-0.02em;margin:0;">Strong passphrase generated</h2>
+    </div>
+    <p style="font-family:'BDO Grotesk','Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.4);margin:0 0 24px;line-height:1.5;">4 random words + a number — easy to remember, hard to crack.</p>
+
+    <!-- Passphrase display -->
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);border-radius:12px;padding:20px 20px 16px;margin-bottom:16px;">
+      <div style="font-family:'Courier New',monospace;font-size:17px;font-weight:600;color:#fff;letter-spacing:0.04em;word-break:break-all;line-height:1.5;margin-bottom:14px;" id="pp-display">—</div>
+      <div style="display:flex;gap:10px;">
+        <button id="pp-copy-btn" onclick="copyPassphrase()" style="flex:1;padding:9px 14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:rgba(255,255,255,0.75);font-family:'BDO Grotesk','Inter',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:7px;" onmouseover="this.style.background='rgba(255,255,255,0.11)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy
+        </button>
+        <button onclick="generatePassphrase()" style="flex:1;padding:9px 14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:rgba(255,255,255,0.75);font-family:'BDO Grotesk','Inter',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:7px;" onmouseover="this.style.background='rgba(255,255,255,0.11)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          Generate another
+        </button>
+      </div>
+    </div>
+
+    <!-- Warning -->
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:14px 16px;margin-bottom:22px;display:flex;gap:12px;align-items:flex-start;">
+      <svg style="flex-shrink:0;margin-top:1px;" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <p style="font-family:'BDO Grotesk','Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.38);line-height:1.65;margin:0;">Write this down or store it in a password manager <strong style="color:rgba(255,255,255,0.55);">before continuing</strong>. Morrígan is zero-knowledge — we can never recover it for you.</p>
+    </div>
+
+    <!-- CTA -->
+    <button onclick="usePassphrase()" style="width:100%;padding:14px;background:#fff;border:none;border-radius:10px;color:#0c0c0f;font-family:'BDO Grotesk','Inter',sans-serif;font-size:15px;font-weight:600;cursor:pointer;letter-spacing:-0.01em;transition:opacity .15s;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+      Use this passphrase &rarr;
+    </button>
+
+  </div>
+</div>
+
 <script>
-document.getElementById("generate-btn").addEventListener("click", function() {
-  var words = ["correct","horse","battery","staple","crimson","falcon","marble","silver","thunder","ocean","forest","canyon","mirror","shadow","frost","ember","lunar","cedar","granite","velvet","amber","cobalt","ridge","compass","anchor","signal","beacon","delta","echo","folio","harbor","inlet","jasper","knoll","lantern","manor","nexus","orbit","prism","quartz","raven","scout","terra","umbra","vault","willow","xenon","yarrow","zenith"];
-  var selected = [];
-  for(var i=0;i<4;i++){selected.push(words[Math.floor(Math.random()*words.length)]);}
-  var pp = selected.join("-") + "-" + Math.floor(Math.random()*900+100);
-  var field = document.getElementById("passphrase");
-  field.type = "text";
-  field.value = pp;
-  setTimeout(function(){field.type="password";}, 5000);
-  alert("Generated passphrase (write this down):\n\n" + pp + "\n\nThis will be hidden again in 5 seconds.");
-});
+(function(){
+  var WORDS = ["correct","horse","battery","staple","crimson","falcon","marble","silver","thunder","ocean","forest","canyon","mirror","shadow","frost","ember","lunar","cedar","granite","velvet","amber","cobalt","ridge","compass","anchor","signal","beacon","delta","echo","folio","harbor","inlet","jasper","knoll","lantern","manor","nexus","orbit","prism","quartz","raven","scout","terra","umbra","vault","willow","xenon","yarrow","zenith","alpine","birch","cinder","dusk","equinox","fern","gust","haze","isle","jade","kite","loft","mist","nova","opal","pine","reef","sage","tide","urn","vale","wave","yew","zinc"];
+  var current = '';
+
+  function rnd(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+
+  window.generatePassphrase = function(){
+    var w = [];
+    var pool = WORDS.slice();
+    for(var i=0;i<4;i++){
+      var idx = Math.floor(Math.random()*pool.length);
+      w.push(pool.splice(idx,1)[0]);
+    }
+    current = w.join('-') + '-' + (Math.floor(Math.random()*900)+100);
+    var el = document.getElementById('pp-display');
+    if(el) el.textContent = current;
+    // Reset copy button
+    var cb = document.getElementById('pp-copy-btn');
+    if(cb) cb.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy';
+    return current;
+  };
+
+  window.copyPassphrase = function(){
+    if(!current) return;
+    navigator.clipboard.writeText(current).then(function(){
+      var cb = document.getElementById('pp-copy-btn');
+      if(cb) cb.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
+    }).catch(function(){
+      // Fallback for non-HTTPS / old browsers
+      var ta = document.createElement('textarea');
+      ta.value = current;
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      var cb = document.getElementById('pp-copy-btn');
+      if(cb) cb.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
+    });
+  };
+
+  window.usePassphrase = function(){
+    if(!current) return;
+    var f1 = document.getElementById('passphrase');
+    var f2 = document.getElementById('passphrase-confirm');
+    if(f1){ f1.value = current; f1.type = 'password'; }
+    if(f2){ f2.value = current; f2.type = 'password'; }
+    closePPModal();
+  };
+
+  window.closePPModal = function(){
+    var m = document.getElementById('pp-modal');
+    if(m) m.style.display = 'none';
+  };
+
+  // Trigger
+  document.getElementById('generate-btn').addEventListener('click', function(){
+    generatePassphrase();
+    var m = document.getElementById('pp-modal');
+    if(m) m.style.display = 'flex';
+  });
+
+  // Escape closes
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closePPModal();
+  });
+})();
 </script>
 <section class="footer">
 <div class="container">
