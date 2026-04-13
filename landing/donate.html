@@ -64,7 +64,7 @@ section.about > section.navbar{opacity:0;transform:translateY(-20px);}
 <body>
 
 <div class="page-wrapper">
-<section class="about"><section class="navbar" style="opacity:1;">
+<section class="about"><section class="navbar" style="opacity:0;transform:translateY(-18px);">
 <div class="nav-container">
 <div class="navbar-wrap">
 <div class="navbar-desktop-wrap">
@@ -394,13 +394,13 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){var m=docum
   }
 })();
 </script>
-<script>/* Morrígan hero animation v2.2.0 */
+<script>/* Morrígan hero animation v2.2.1 */
 (function(){
-  var EASE='cubic-bezier(0.22,1,0.36,1)';
-  function show(el,delay,dur,fromY){
+  var E='cubic-bezier(0.22,1,0.36,1)';
+  function go(el,delay,dur){
     if(!el)return;
     requestAnimationFrame(function(){requestAnimationFrame(function(){
-      el.style.transition='opacity '+dur+'ms '+EASE+' '+delay+'ms,transform '+dur+'ms '+EASE+' '+delay+'ms';
+      el.style.transition='opacity '+dur+'ms '+E+' '+delay+'ms,transform '+dur+'ms '+E+' '+delay+'ms';
       el.style.opacity='1';
       el.style.transform='translateY(0px)';
     });});
@@ -408,15 +408,13 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){var m=docum
   document.addEventListener('DOMContentLoaded',function(){
     var nav=document.querySelector('section.about > section.navbar,section.about > .navbar');
     if(nav){requestAnimationFrame(function(){requestAnimationFrame(function(){
-      nav.style.transition='opacity 500ms '+EASE+',transform 500ms '+EASE;
+      nav.style.transition='opacity 320ms '+E+',transform 320ms '+E;
       nav.style.opacity='1';nav.style.transform='translateY(0px)';
-    });});}
+    });})}
     var vid=document.querySelector('.about-video-wrap');
-    if(vid){requestAnimationFrame(function(){requestAnimationFrame(function(){
-      vid.style.transition='opacity 1400ms ease';vid.style.opacity='1';
-    });});}
-    show(document.querySelector('.hero-badge-wrap'),  80, 580);
-    show(document.querySelector('.hero-text-wrap'),  220, 680);
+    if(vid){vid.style.opacity='1';}
+    go(document.querySelector('.hero-badge-wrap'), 60, 280);
+    go(document.querySelector('.hero-text-wrap'), 140, 280);
   });
 })();
 </script>

@@ -14,7 +14,7 @@
 a[href="/how-it-works"] .nav-text,
 a[href="/security"] .nav-text { white-space: nowrap !important; }
 </style>
-</head><body><div class="page-wrapper"><section class="features-hero"><section class="navbar" style="opacity:1;transform:translate3d(0px,0px,0px) scale3d(1,1,1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg,0deg);transform-style:preserve-3d;">
+</head><body><div class="page-wrapper"><section class="features-hero"><section class="navbar" style="opacity:0;transform:translateY(-18px);">
 <div class="nav-container">
 <div class="navbar-wrap">
 <div class="navbar-desktop-wrap">
@@ -163,5 +163,18 @@ a[href="/security"] .nav-text { white-space: nowrap !important; }
 <script>
 function openLegalModal(){var m=document.getElementById('legal-modal');m.style.display='flex';}
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){var m=document.getElementById('legal-modal');if(m)m.style.display='none';}});
+</script>
+<script>/* Morrígan nav-in v2.2.1 */
+(function(){
+  var nav=document.querySelector('section.navbar');
+  if(!nav)return;
+  document.addEventListener('DOMContentLoaded',function(){
+    requestAnimationFrame(function(){requestAnimationFrame(function(){
+      nav.style.transition='opacity 320ms cubic-bezier(0.22,1,0.36,1),transform 320ms cubic-bezier(0.22,1,0.36,1)';
+      nav.style.opacity='1';
+      nav.style.transform='translateY(0px)';
+    });});
+  });
+})();
 </script>
 </body></html>

@@ -88,8 +88,7 @@ a[href="/security"] .nav-text { white-space: nowrap !important; }
 <style>/* mig-form-init v2.1.9 */
 section.navbar{opacity:0;transform:translateY(-18px);}
 </style>
-<style id="mig-fouc">.mig-hero-section{opacity:0;}.mig-hero-title{opacity:0;transform:translateY(24px);}.mig-hero-sub{opacity:0;transform:translateY(16px);}</style>
-</head><body><div class="page-wrapper"><section class="navbar" style="opacity:1;transform:translate3d(0px,0px,0px) scale3d(1,1,1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg,0deg);transform-style:preserve-3d;">
+</head><body><div class="page-wrapper"><section class="navbar" style="opacity:0;transform:translateY(-18px);">
 <div class="nav-container">
 <div class="navbar-wrap">
 <div class="navbar-desktop-wrap">
@@ -146,65 +145,6 @@ section.navbar{opacity:0;transform:translateY(-18px);}
 </div>
 </div>
 </div>
-</div>
-</section>
-<section class="mig-hero-section" style="position:relative;background:var(--colors--bg-color,#0c0c0f);overflow:hidden;height:380px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding-bottom:52px;">
-<canvas id="mig-bg" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.5;" aria-hidden="true"></canvas>
-<script>
-(function(){
-  var c=document.getElementById('mig-bg'),ctx=c.getContext('2d');
-  var W,H;
-  function resize(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;}
-  resize();window.addEventListener('resize',resize);
-  var t=0,speed=0.6;
-  // EKG shape definition (normalised 0..1 x, relative y offsets)
-  var EKG=[
-    [0,0],[0.08,0],[0.12,-0.04],[0.14,0.12],[0.17,-0.28],[0.19,0.08],[0.21,-0.04],[0.25,0],[1,0]
-  ];
-  var PERIOD=W||800; // px per full cycle
-  var TRAIL=420;     // px of visible trail
-  function getY(xNorm){
-    for(var i=0;i<EKG.length-1;i++){
-      var a=EKG[i],b=EKG[i+1];
-      if(xNorm>=a[0]&&xNorm<=b[0]){
-        var frac=(xNorm-a[0])/(b[0]-a[0]);
-        return (a[1]+frac*(b[1]-a[1]))*H*0.18;
-      }
-    }
-    return 0;
-  }
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    t+=speed;
-    if(t>PERIOD*3)t=0;
-    var cy=H*0.5;
-    var headX=(t%PERIOD);
-    ctx.beginPath();
-    var started=false;
-    for(var px=0;px<TRAIL;px++){
-      var x=headX-px;
-      if(x<0)x+=PERIOD;
-      var xNorm=(headX-px+(PERIOD-(headX%(PERIOD))))/PERIOD;
-      xNorm=((t-px)/PERIOD)%1;
-      if(xNorm<0)xNorm+=1;
-      var y=cy+getY(xNorm);
-      var screenX=headX-px; // draw right-to-left from headX
-      if(screenX<0)break;
-      var alpha=(1-px/TRAIL)*0.5*(px<20?px/20:1);
-      if(!started){ctx.moveTo(screenX,y);started=true;}
-      else ctx.lineTo(screenX,y);
-    }
-    ctx.strokeStyle='rgba(255,255,255,0.45)';
-    ctx.lineWidth=1.2;
-    ctx.stroke();
-    requestAnimationFrame(draw);
-  }
-  draw();
-})();
-</script>
-<div style="position:relative;z-index:2;text-align:center;padding:0 24px;">
-<p class="mig-hero-sub" style="opacity:0;transform:translateY(16px);font-family:'Inter','SF Pro Display',-apple-system,sans-serif;font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin:0 0 20px;">Morrígan — Secure Vault Access</p>
-<h1 class="mig-hero-title" style="opacity:0;transform:translateY(24px);font-family:'BDO Grotesk','Inter',sans-serif;font-size:clamp(36px,5vw,64px);font-weight:700;letter-spacing:-1.5px;color:#fff;margin:0;line-height:1.05;">Your vault.<br>Your keys. Always.</h1>
 </div>
 </section>
 <section style="background:var(--colors--bg-color,#0c0c0f);min-height:calc(100vh - 80px);display:flex;align-items:center;padding:80px 0;">
@@ -369,24 +309,16 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){var m=docum
   });
 })();
 </script>
-<script>/* Morrígan form-hero animation v2.2.0 */
+<script>/* Morrígan nav-in v2.2.1 */
 (function(){
-  var EASE='cubic-bezier(0.22,1,0.36,1)';
+  var nav=document.querySelector('section.navbar');
+  if(!nav)return;
   document.addEventListener('DOMContentLoaded',function(){
-    var hero=document.querySelector('.mig-hero-section');
-    var title=document.querySelector('.mig-hero-title');
-    var sub=document.querySelector('.mig-hero-sub');
-    function show(el,delay,dur,fromY){
-      if(!el)return;
-      requestAnimationFrame(function(){requestAnimationFrame(function(){
-        el.style.transition='opacity '+dur+'ms '+EASE+' '+delay+'ms'+(fromY?',transform '+dur+'ms '+EASE+' '+delay+'ms':'');
-        el.style.opacity='1';
-        if(fromY)el.style.transform='translateY(0px)';
-      });});
-    }
-    show(hero,0,600);
-    show(title,100,580,true);
-    show(sub,240,580,true);
+    requestAnimationFrame(function(){requestAnimationFrame(function(){
+      nav.style.transition='opacity 320ms cubic-bezier(0.22,1,0.36,1),transform 320ms cubic-bezier(0.22,1,0.36,1)';
+      nav.style.opacity='1';
+      nav.style.transform='translateY(0px)';
+    });});
   });
 })();
 </script>
