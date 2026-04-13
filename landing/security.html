@@ -116,55 +116,128 @@ section.about > section.navbar{opacity:0;transform:translateY(-20px);}
 <script>
 (function(){
   var c=document.getElementById('mig-bg'),ctx=c.getContext('2d');
-  var W,H;
-  function resize(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;initCols();}
-  var CHARS='01アイウエオカキクケコABCDEF0123456789';
-  var cols=[];
-  function initCols(){
-    cols=[];
-    var spacing=40;
-    var n=Math.ceil(W/spacing)+1;
-    for(var i=0;i<n;i++){
-      cols.push({
-        x:i*spacing+4,
-        y:Math.random()*H*1.4-H*0.2,
-        speed:Math.random()*0.20+0.07,
-        chars:[],
-        len:Math.floor(Math.random()*5)+3,
-        alpha:Math.random()*0.05+0.018
-      });
-    }
+  var W,H,nodes=[],t=0;
+
+  // Hex cell radius — smaller = more cells, better coverage
+  var R=56;
+
+  function resize(){
+    W=c.width=c.offsetWidth;
+    H=c.height=c.offsetHeight;
+    buildGrid();
   }
-  resize();window.addEventListener('resize',resize);
-  function rndCh(){return CHARS[Math.floor(Math.random()*CHARS.length)];}
-  var t=0;
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    ctx.font='11px "Courier New",monospace';
-    for(var i=0;i<cols.length;i++){
-      var col=cols[i];
-      col.y+=col.speed;
-      if(col.y>H+col.len*16){col.y=-(col.len*16)-Math.random()*H*0.3;}
-      for(var j=0;j<col.len;j++){
-        var yy=col.y-j*16;
-        if(yy<-16||yy>H+8)continue;
-        var fade=j===0?1:Math.pow(1-j/col.len,1.5);
-        var a=col.alpha*fade*(j===0?2.2:1);
-        if(a>0.11)a=0.11;
-        ctx.fillStyle='rgba(255,255,255,'+a.toFixed(3)+')';
-        if(j===0&&Math.random()<0.12)col.chars[j]=rndCh();
-        if(!col.chars[j])col.chars[j]=rndCh();
-        ctx.fillText(col.chars[j],col.x,yy);
+
+  function buildGrid(){
+    nodes=[];
+    // Hexagonal grid: flat-top layout, full canvas coverage
+    var colW=R*Math.sqrt(3);   // horizontal distance between col centres
+    var rowH=R*1.5;            // vertical distance between row centres
+    var cols=Math.ceil(W/colW)+3;
+    var rows=Math.ceil(H/rowH)+3;
+    for(var row=-1;row<rows;row++){
+      for(var col=-1;col<cols;col++){
+        // Offset every other row by half a column width
+        var x=col*colW + (row%2===0 ? 0 : colW*0.5);
+        var y=row*rowH;
+        nodes.push({x:x, y:y, phase:Math.random()*Math.PI*2});
       }
     }
-    // Faint horizontal grid lines — evoke data layers
-    ctx.strokeStyle='rgba(255,255,255,0.020)';
-    ctx.lineWidth=0.5;
+  }
+
+  // Pointy-top hexagon path
+  function hexPath(cx,cy,r){
     ctx.beginPath();
-    var gs=H/5;
-    for(var y=gs;y<H;y+=gs){ctx.moveTo(0,y);ctx.lineTo(W,y);}
-    ctx.stroke();
-    t++;
+    for(var k=0;k<6;k++){
+      var ang=Math.PI/3*k - Math.PI/6; // pointy top: offset -30°
+      var px=cx+r*Math.cos(ang), py=cy+r*Math.sin(ang);
+      k===0 ? ctx.moveTo(px,py) : ctx.lineTo(px,py);
+    }
+    ctx.closePath();
+  }
+
+  // Slowly-drifting origin that sweeps wide across canvas
+  var ox, oy, ovx, ovy;
+  function resetOrigin(){
+    ox=W*0.5; oy=H*0.5;
+    ovx=(Math.random()-0.5)*0.30;
+    ovy=(Math.random()-0.5)*0.18;
+  }
+
+  resize();
+  resetOrigin();
+  window.addEventListener('resize',function(){resize();resetOrigin();});
+
+  var maxDist;
+  function updateMaxDist(){maxDist=Math.sqrt(W*W+H*H)*0.60;}
+  updateMaxDist();
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    t+=0.007;
+
+    // Move origin, bounce at margins
+    ox+=ovx; oy+=ovy;
+    if(ox<W*0.05||ox>W*0.95) ovx*=-1;
+    if(oy<H*0.05||oy>H*0.95) ovy*=-1;
+
+    for(var i=0;i<nodes.length;i++){
+      var n=nodes[i];
+      var dx=n.x-ox, dy=n.y-oy;
+      var dist=Math.sqrt(dx*dx+dy*dy);
+      var proximity=Math.max(0,1-dist/maxDist);
+
+      // Ripple wave radiating from origin
+      var wave=Math.sin(dist*0.022-t*3.2)*0.5+0.5;
+
+      // Combined pulse: ripple * proximity boost
+      var pulse=wave*(0.12+proximity*0.70);
+      pulse+=Math.sin(t*1.1+n.phase)*0.04;
+      pulse=Math.max(0,Math.min(1,pulse));
+
+      // Hex outline — alpha driven by pulse
+      var outlineA=pulse*0.20+0.018;
+      ctx.strokeStyle='rgba(255,255,255,'+outlineA.toFixed(3)+')';
+      ctx.lineWidth=0.7;
+      hexPath(n.x,n.y,R*0.94);
+      ctx.stroke();
+
+      // Inner glow fill for bright hexes
+      if(pulse>0.45){
+        var fillA=(pulse-0.45)*0.13;
+        ctx.fillStyle='rgba(255,255,255,'+fillA.toFixed(3)+')';
+        hexPath(n.x,n.y,R*0.94);
+        ctx.fill();
+      }
+
+      // Vertex dots near origin — evoke circuit nodes
+      if(proximity>0.35 && pulse>0.38){
+        var dotA=pulse*proximity*0.42;
+        ctx.fillStyle='rgba(255,255,255,'+dotA.toFixed(3)+')';
+        for(var k=0;k<6;k++){
+          var ang=Math.PI/3*k-Math.PI/6;
+          ctx.beginPath();
+          ctx.arc(n.x+R*Math.cos(ang), n.y+R*Math.sin(ang), 1.3, 0, Math.PI*2);
+          ctx.fill();
+        }
+      }
+    }
+
+    // Radial glow at origin
+    var maxR=Math.min(W,H)*0.30;
+    var gr=ctx.createRadialGradient(ox,oy,0,ox,oy,maxR);
+    gr.addColorStop(0,'rgba(255,255,255,0.07)');
+    gr.addColorStop(0.5,'rgba(255,255,255,0.025)');
+    gr.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle=gr;
+    ctx.beginPath();ctx.arc(ox,oy,maxR,0,Math.PI*2);ctx.fill();
+
+    // Edge vignette — adds depth/darkness at edges
+    var vg=ctx.createRadialGradient(W*0.5,H*0.5,H*0.2,W*0.5,H*0.5,Math.max(W,H)*0.75);
+    vg.addColorStop(0,'rgba(12,12,15,0)');
+    vg.addColorStop(1,'rgba(12,12,15,0.55)');
+    ctx.fillStyle=vg;
+    ctx.fillRect(0,0,W,H);
+
     requestAnimationFrame(draw);
   }
   draw();

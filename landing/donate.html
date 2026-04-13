@@ -103,47 +103,86 @@ section.about > section.navbar{opacity:0;transform:translateY(-20px);}
 <script>
 (function(){
   var c=document.getElementById('mig-bg'),ctx=c.getContext('2d');
-  var W,H;
+  var W,H,t=0;
+
   function resize(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;}
   resize();window.addEventListener('resize',resize);
-  // Orbs
-  var orbs=[];
-  for(var i=0;i<8;i++){
-    orbs.push({x:Math.random()*0.82+0.09,y:Math.random()*0.82+0.09,baseR:Math.random()*55+30,vx:(Math.random()-0.5)*0.00011,vy:(Math.random()-0.5)*0.00009,alpha:Math.random()*0.038+0.018,sp:Math.random()*0.0009+0.0006,ph:Math.random()*Math.PI*2});
+
+  // Lightweight smooth noise — sum of sine waves at different freq/angle
+  function noise(x,y,time){
+    return (
+      Math.sin(x*0.008 + time*0.55 + Math.cos(y*0.006))*0.38 +
+      Math.sin(y*0.010 - time*0.38 + Math.sin(x*0.005))*0.28 +
+      Math.sin((x+y)*0.006 + time*0.72)*0.20 +
+      Math.sin((x-y)*0.005 - time*0.29 + Math.cos(x*0.009+y*0.007))*0.14
+    ); // range roughly -1 to 1
   }
-  // Dust
-  var dust=[];
-  for(var d=0;d<50;d++){
-    dust.push({x:Math.random(),y:Math.random(),r:Math.random()*1.0+0.3,a:Math.random()*0.055+0.01,vx:(Math.random()-0.5)*0.00007,vy:-(Math.random()*0.00011+0.00004)});
+
+  // Beating heart rhythm — lub-dub
+  function heartbeat(time){
+    var p=time%(Math.PI*5.5);
+    var v=Math.max(0,Math.sin(p)*0.9)+Math.max(0,Math.sin(p*2.1+0.5)*0.5);
+    return Math.min(1,v);
   }
-  var t=0;
+
+  // Render as a grid of glowing circles (no off-screen canvas — direct draw)
+  var CELL=28; // grid cell size — controls resolution
+
   function draw(){
     ctx.clearRect(0,0,W,H);
-    t++;
-    function pulse(sp,ph){var p=(t*sp+ph)%(Math.PI*2);return Math.max(0,Math.sin(p)*0.55)+Math.max(0,Math.sin(p*2+0.5)*0.35)+0.90;}
-    for(var i=0;i<orbs.length;i++){
-      var o=orbs[i];
-      o.x+=o.vx;o.y+=o.vy;
-      if(o.x<0.06)o.vx=Math.abs(o.vx);if(o.x>0.94)o.vx=-Math.abs(o.vx);
-      if(o.y<0.06)o.vy=Math.abs(o.vy);if(o.y>0.94)o.vy=-Math.abs(o.vy);
-      var pl=pulse(o.sp,o.ph);
-      var r=(o.baseR*pl)*Math.min(W,H)/520;
-      var cx=o.x*W,cy=o.y*H;
-      var g=ctx.createRadialGradient(cx,cy,0,cx,cy,r);
-      g.addColorStop(0,'rgba(255,255,255,'+(o.alpha*1.7).toFixed(3)+')');
-      g.addColorStop(0.3,'rgba(255,255,255,'+o.alpha.toFixed(3)+')');
-      g.addColorStop(1,'rgba(255,255,255,0)');
-      ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);
-      ctx.fillStyle=g;ctx.fill();
+    t+=0.014;
+
+    var beat=heartbeat(t*2.2);
+    var cols=Math.ceil(W/CELL)+1;
+    var rows=Math.ceil(H/CELL)+1;
+
+    for(var row=0;row<rows;row++){
+      for(var col=0;col<cols;col++){
+        var px=col*CELL - CELL*0.5;
+        var py=row*CELL - CELL*0.5;
+
+        // Stagger odd rows
+        if(row%2===1) px+=CELL*0.5;
+
+        var n=noise(px,py,t);
+        // n is -1..1; remap to 0..1
+        var v=(n+1)*0.5;
+
+        // Heartbeat modulation — global brightness pulses
+        var beatBoost=beat*0.22;
+        v=Math.min(1,v+beatBoost*v); // lift bright areas more
+
+        // Distance from centre — vignette brightening in middle
+        var cx=px-W*0.5, cy=py-H*0.5;
+        var distN=Math.sqrt(cx*cx+cy*cy)/Math.sqrt(W*W+H*H)*2;
+        var vignette=Math.max(0,1-distN*0.9);
+        v=v*(0.55+vignette*0.45);
+
+        if(v<0.12) continue; // skip very dark cells
+
+        // Glow size — brighter = larger
+        var r=CELL*0.62*v;
+        // Alpha — subtle cap
+        var a=v*0.14;
+
+        var g=ctx.createRadialGradient(px,py,0,px,py,r);
+        g.addColorStop(0,'rgba(255,255,255,'+(a*1.8).toFixed(3)+')');
+        g.addColorStop(0.4,'rgba(255,255,255,'+a.toFixed(3)+')');
+        g.addColorStop(1,'rgba(255,255,255,0)');
+        ctx.fillStyle=g;
+        ctx.beginPath();ctx.arc(px,py,r,0,Math.PI*2);ctx.fill();
+      }
     }
-    for(var d=0;d<dust.length;d++){
-      var p=dust[d];
-      p.x+=p.vx;p.y+=p.vy;
-      if(p.y<-0.02){p.y=1.02;p.x=Math.random();}
-      if(p.x<0||p.x>1)p.vx*=-1;
-      ctx.beginPath();ctx.arc(p.x*W,p.y*H,p.r,0,Math.PI*2);
-      ctx.fillStyle='rgba(255,255,255,'+p.a.toFixed(3)+')';ctx.fill();
-    }
+
+    // Slow horizontal light beam — like a moon reflection on water
+    var beamY=H*(0.38+Math.sin(t*0.4)*0.12);
+    var beam=ctx.createLinearGradient(0,beamY-60,0,beamY+60);
+    beam.addColorStop(0,'rgba(255,255,255,0)');
+    beam.addColorStop(0.5,'rgba(255,255,255,'+(0.025+beat*0.018).toFixed(3)+')');
+    beam.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle=beam;
+    ctx.fillRect(0,beamY-60,W,120);
+
     requestAnimationFrame(draw);
   }
   draw();
