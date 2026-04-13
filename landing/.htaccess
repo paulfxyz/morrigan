@@ -24,7 +24,8 @@ ErrorDocument 401 /401.html
 
   # ── Core pages ─────────────────────────────────────────
   RewriteRule ^about/?$                           /about.html [L]
-  RewriteRule ^features/?$                        /features.html [L]
+  RewriteRule ^features/?$                        /beyond.html [R=301,L]
+  RewriteRule ^beyond/?$                          /beyond.html [L]
   RewriteRule ^pricing/?$                         /pricing.html [L]
   RewriteRule ^blog/?$                            /blog.html [L]
   RewriteRule ^contact/?$                         /contact.html [L]

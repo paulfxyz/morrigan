@@ -68,12 +68,12 @@ a[href="/security"] .nav-text { white-space: nowrap !important; }
 </div>
 <div class="navbar-desktop-center">
   <div class="nav-left-menu-wrap">
-    <a href="/" class="nav-menu w-inline-block"><div class="paragraph-02 nav-text">Home</div></a>
+    
     <a href="/how-it-works" class="nav-menu w-inline-block"><div class="paragraph-02 nav-text">How it Works</div></a>
     <a href="/security" class="nav-menu w-inline-block"><div class="paragraph-02 nav-text">Security</div></a>
-    <a href="/features" class="nav-menu w-inline-block"><div class="paragraph-02 nav-text">Features</div></a>
+    <a href="/beyond" class="nav-menu w-inline-block"><div class="paragraph-02 nav-text">Beyond</div></a>
     <a href="/donate" class="nav-menu w-inline-block w--current"><div class="paragraph-02 nav-text">Donate</div></a>
-    <a href="/blog" class="nav-menu w-inline-block"><div class="paragraph-02 nav-text">Blog</div></a>
+    
     <a href="/about" class="nav-menu w-inline-block"><div class="paragraph-02 nav-text">About</div></a>
     <div class="nav-divider"></div>
   </div>
@@ -243,7 +243,7 @@ a[href="/security"] .nav-text { white-space: nowrap !important; }
   <div class="footer-col">
     <div class="footer-col-title paragraph-02" style="color:white;font-weight:600;margin-bottom:20px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;">Product</div>
     <div class="footer-col-links" style="display:flex;flex-direction:column;gap:12px;">
-      <a class="footer-link paragraph-02" href="/features" style="color:rgba(210,210,210,0.6);text-decoration:none;font-size:14px;transition:color .15s;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(210,210,210,0.6)'">Features</a>
+      <a class="footer-link paragraph-02" href="/beyond" style="color:rgba(210,210,210,0.6);text-decoration:none;font-size:14px;transition:color .15s;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(210,210,210,0.6)'">Beyond</a>
       <a class="footer-link paragraph-02" href="/security" style="color:rgba(210,210,210,0.6);text-decoration:none;font-size:14px;transition:color .15s;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(210,210,210,0.6)'">Security</a>
       <a class="footer-link paragraph-02" href="/how-it-works" style="color:rgba(210,210,210,0.6);text-decoration:none;font-size:14px;transition:color .15s;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(210,210,210,0.6)'">How it Works</a>
       <a class="footer-link paragraph-02" href="/donate" style="color:rgba(210,210,210,0.6);text-decoration:none;font-size:14px;transition:color .15s;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(210,210,210,0.6)'">Membership</a>
@@ -253,7 +253,7 @@ a[href="/security"] .nav-text { white-space: nowrap !important; }
     <div class="footer-col-title paragraph-02" style="color:white;font-weight:600;margin-bottom:20px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;">Community</div>
     <div class="footer-col-links" style="display:flex;flex-direction:column;gap:12px;">
       <a class="footer-link paragraph-02" href="/about" style="color:rgba(210,210,210,0.6);text-decoration:none;font-size:14px;transition:color .15s;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(210,210,210,0.6)'">About</a>
-      <a class="footer-link paragraph-02" href="/blog" style="color:rgba(210,210,210,0.6);text-decoration:none;font-size:14px;transition:color .15s;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(210,210,210,0.6)'">Blog</a>
+      
       <a class="footer-link paragraph-02" href="/contact" style="color:rgba(210,210,210,0.6);text-decoration:none;font-size:14px;transition:color .15s;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(210,210,210,0.6)'">Contact</a>
       <a class="footer-link paragraph-02" href="https://github.com/paulfxyz/morrigan" target="_blank" rel="noopener" style="color:rgba(210,210,210,0.6);text-decoration:none;font-size:14px;transition:color .15s;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(210,210,210,0.6)'">GitHub ↗</a>
     </div>
@@ -280,5 +280,41 @@ a[href="/security"] .nav-text { white-space: nowrap !important; }
 </div>
 </section>
 </div>
+
+<!-- Legal Terms Modal -->
+<div id="legal-modal" onclick="if(event.target===this)this.style.display='none'" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.72);backdrop-filter:blur(6px);align-items:center;justify-content:center;">
+  <div style="background:#111114;border:1px solid rgba(255,255,255,0.1);border-radius:16px;max-width:520px;width:90%;padding:40px;position:relative;box-shadow:0 32px 80px rgba(0,0,0,0.6);">
+    <button onclick="document.getElementById('legal-modal').style.display='none'" style="position:absolute;top:16px;right:20px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:22px;cursor:pointer;line-height:1;">&#x2715;</button>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:28px;">
+      <svg width="28" height="28" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="40" height="40" rx="5" fill="black" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        <g transform="translate(22,22)">
+          <ellipse cx="0" cy="-7" rx="4.2" ry="6.5" fill="white" transform="rotate(0)"/>
+          <ellipse cx="0" cy="-7" rx="4.2" ry="6.5" fill="white" transform="rotate(90)"/>
+          <ellipse cx="0" cy="-7" rx="4.2" ry="6.5" fill="white" transform="rotate(180)"/>
+          <ellipse cx="0" cy="-7" rx="4.2" ry="6.5" fill="white" transform="rotate(270)"/>
+          <circle cx="0" cy="0" r="1.8" fill="white"/>
+        </g>
+      </svg>
+      <span style="font-family:'BDO Grotesk','Inter',sans-serif;font-size:18px;font-weight:600;color:#fff;letter-spacing:-0.02em;">Legal information</span>
+    </div>
+    <p style="font-family:'BDO Grotesk','Inter',sans-serif;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0 0 24px;">Morrígan is operated by a non-profit foundation registered in Switzerland. The foundation exists solely to maintain, develop, and protect Morrígan as a free and open-source public good.</p>
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:20px;margin-bottom:24px;">
+      <div style="font-family:'BDO Grotesk','Inter',sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,0.8);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.06em;">Foundation details</div>
+      <div style="font-family:'BDO Grotesk','Inter',sans-serif;font-size:14px;color:rgba(255,255,255,0.5);line-height:1.9;">
+        <div><span style="color:rgba(255,255,255,0.25);">Name</span> &nbsp; Fondation Morrígan</div>
+        <div><span style="color:rgba(255,255,255,0.25);">Type</span> &nbsp; Non-profit foundation (art. 80 CC)</div>
+        <div><span style="color:rgba(255,255,255,0.25);">Address</span> &nbsp; Rue de la Croix-d'Or 14, 1204 Genève, Switzerland</div>
+        <div><span style="color:rgba(255,255,255,0.25);">Email</span> &nbsp; <a href="mailto:bonjour@morrigan.org" style="color:rgba(255,255,255,0.5);text-decoration:underline;text-underline-offset:3px;">bonjour@morrigan.org</a></div>
+        <div><span style="color:rgba(255,255,255,0.25);">Phone</span> &nbsp; +41 22 510 38 74</div>
+      </div>
+    </div>
+    <p style="font-family:'BDO Grotesk','Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.3);line-height:1.6;margin:0;">Use of Morrígan is subject to our <a href="/privacy-policy" style="color:rgba(255,255,255,0.4);text-underline-offset:3px;">Privacy Policy</a> and <a href="/terms-condition" style="color:rgba(255,255,255,0.4);text-underline-offset:3px;">Terms of Service</a>. The core product is open-source and licensed under AGPLv3.</p>
+  </div>
+</div>
+<script>
+function openLegalModal(){var m=document.getElementById('legal-modal');m.style.display='flex';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){var m=document.getElementById('legal-modal');if(m)m.style.display='none';}});
+</script>
 </body>
 </html>
