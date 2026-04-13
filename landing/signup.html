@@ -98,6 +98,9 @@ document.addEventListener("DOMContentLoaded",function(){
 a[href="/how-it-works"] .nav-text,
 a[href="/security"] .nav-text { white-space: nowrap !important; }
 </style>
+<style>/* mig-form-init v2.1.9 */
+section.navbar{opacity:0;transform:translateY(-18px);}
+</style>
 </head><body><div class="page-wrapper"><section class="navbar" style="opacity:1;transform:translate3d(0px,0px,0px) scale3d(1,1,1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg,0deg);transform-style:preserve-3d;">
 <div class="nav-container">
 <div class="navbar-wrap">
@@ -300,5 +303,46 @@ document.getElementById("generate-btn").addEventListener("click", function() {
 <script>
 function openLegalModal(){var m=document.getElementById('legal-modal');m.style.display='flex';}
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){var m=document.getElementById('legal-modal');if(m)m.style.display='none';}});
+</script>
+<script>/* Morrígan form load animation v2.1.9 */
+(function(){
+  var EASE = 'cubic-bezier(0.22,1,0.36,1)';
+  function fadeUp(el, delay, duration) {
+    if (!el) return;
+    el.style.transition = 'none';
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(28px)';
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){
+      el.style.transition =
+        'opacity ' + duration + 'ms ' + EASE + ' ' + delay + 'ms,' +
+        'transform ' + duration + 'ms ' + EASE + ' ' + delay + 'ms';
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0px)';
+    }); });
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    // Navbar
+    var nav = document.querySelector('section.navbar, .navbar');
+    if (nav) {
+      nav.style.transition = 'none';
+      nav.style.opacity = '0';
+      nav.style.transform = 'translateY(-18px)';
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){
+        nav.style.transition = 'opacity 600ms ' + EASE + ', transform 600ms ' + EASE;
+        nav.style.opacity = '1';
+        nav.style.transform = 'translateY(0px)';
+      }); });
+    }
+    // Form heading (h1 or first h in form section)
+    var heading = document.querySelector('section:not(.navbar) h1, section:not(.navbar) h2');
+    fadeUp(heading, 120, 720);
+    // Form card / wrapper
+    var form = document.querySelector('form, .form-wrap');
+    fadeUp(form, 260, 750);
+    // Security note / info box
+    var note = document.querySelector('form + div, form ~ div');
+    fadeUp(note, 380, 700);
+  });
+})();
 </script>
 </body></html>
