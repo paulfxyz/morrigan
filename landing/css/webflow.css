@@ -351,7 +351,7 @@ pre.w-code-block code {
   visibility: visible !important;
   opacity: 1 !important;
   z-index: 2147483647 !important;
-  color: #aaadb0 !important;
+  color: #aaaaaa !important;
   overflow: unset !important;
   background-color: #fff !important;
   border-radius: 3px !important;
@@ -1025,7 +1025,7 @@ textarea.w-input, textarea.w-select {
   vertical-align: top;
   text-align: center;
   background: #fff;
-  border: 1px solid #758696;
+  border: 1px solid #888888;
   border-radius: 3px;
   width: 28px;
   height: 20px;
@@ -1085,7 +1085,7 @@ textarea.w-input, textarea.w-select {
 
 .w-widget-twitter-count-shim:not(.w--vertical):before {
   border-width: 4px;
-  border-color: #75869600 #5d6c7b #75869600 #75869600;
+  border-color: #88888800 #777777 #88888800 #88888800;
   margin-top: -4px;
   margin-left: -9px;
 }
@@ -1128,7 +1128,7 @@ textarea.w-input, textarea.w-select {
 
 .w-widget-twitter-count-shim.w--vertical:before {
   border-width: 5px;
-  border-color: #5d6c7b #75869600 #75869600;
+  border-color: #777777 #88888800 #88888800;
   margin-left: -5px;
 }
 
@@ -1690,7 +1690,7 @@ textarea.w-input, textarea.w-select {
 }
 
 .w-richtext .w-richtext-figure-selected.w-richtext-figure-type-video div:after, .w-richtext .w-richtext-figure-selected[data-rt-type="video"] div:after, .w-richtext .w-richtext-figure-selected.w-richtext-figure-type-image div, .w-richtext .w-richtext-figure-selected[data-rt-type="image"] div {
-  outline: 2px solid #2895f7;
+  outline: 2px solid #ffffff;
 }
 
 .w-richtext figure.w-richtext-figure-type-video > div:after, .w-richtext figure[data-rt-type="video"] > div:after {
@@ -6164,7 +6164,7 @@ blockquote {
 
 .error-message {
   color: var(--colors--black);
-  background-color: #ffd5d5;
+  background-color: #1a1a1a;
 }
 
 .contact-info-wrap {

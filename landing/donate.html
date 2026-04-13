@@ -96,9 +96,9 @@ a[href="/security"] .nav-text { white-space: nowrap !important; }
 <div class="container"><div class="about-wrap"><div class="hero-header-wrap"><div class="hero-badge-wrap" style="transform:translate3d(0px,0px,0px) scale3d(1,1,1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg,0deg);opacity:1;transform-style:preserve-3d;"><div class="badge-wrap" data-wf--badge--variant="base"><div class="badge-inner-wrap"><div class="badge-content"><div class="badge-dot"></div><div class="tagline-01 badge-text">Donate</div></div><div class="badge-inner-bg"></div></div><div class="badge-outline"></div></div></div><div class="hero-text-wrap" style="transform:translate3d(0px,0px,0px) scale3d(1,1,1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg,0deg);opacity:1;transform-style:preserve-3d;"><div class="hero-heading-wrap"><h1 class="text-center">Support Morrígan.<br>Shape its future.</h1></div></div></div></div></div><div class="about-video-wrap"><div class="about-video w-background-video w-background-video-atom" data-autoplay="true" data-loop="true" data-poster-url="assets/donate_video-poster-00001.jpg" data-wf-ignore="true"><video autoplay="" data-object-fit="cover" data-wf-ignore="true" loop="" muted="" playsinline="" style='background-image:url("assets/donate_video-poster-00001.jpg_quot;")'><source data-wf-ignore="true" src="assets/donate_video-transcode.mp4"/><source data-wf-ignore="true" src="assets/donate_video-transcode.webm"/></video></div><div class="about-video-cover"></div><div class="about-video-shadow"></div></div></section>
 
 <!-- What membership means -->
-<section style="padding:80px 0;background:rgba(255,255,255,0.015);border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);">
+<section style="padding:80px 0;background:rgba(255,255,255,0.015);border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);" class="mig-reveal">
   <div class="container">
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:32px;">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:32px;" class="mig-reveal">
       <div style="text-align:center;padding:0 16px;">
         <div style="font-size:32px;margin-bottom:12px;">🗳️</div>
         <div style="font-size:15px;font-weight:600;color:#fff;margin-bottom:8px;">One vote</div>
@@ -124,13 +124,13 @@ a[href="/security"] .nav-text { white-space: nowrap !important; }
 </section>
 
 <!-- Membership tiers -->
-<section style="padding:100px 0;">
+<section style="padding:100px 0;" class="mig-reveal">
   <div class="container">
     <div style="text-align:center;margin-bottom:64px;">
       <h2 style="font-size:42px;font-weight:500;letter-spacing:-.04em;margin:0 0 16px;color:#fff;">Choose your level of support.</h2>
       <p style="font-size:16px;color:rgba(210,210,210,0.5);max-width:480px;margin:0 auto;">All memberships are annual or monthly. You can cancel at any time.</p>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;max-width:960px;margin:0 auto 60px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;max-width:960px;margin:0 auto 60px;" class="mig-reveal">
       <!-- Personal -->
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:36px;display:flex;flex-direction:column;">
         <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:16px;font-family:'Inter',sans-serif;">Personal</div>
@@ -190,13 +190,13 @@ a[href="/security"] .nav-text { white-space: nowrap !important; }
 </section>
 
 <!-- Where money goes -->
-<section style="padding:80px 0;background:rgba(255,255,255,0.015);border-top:1px solid rgba(255,255,255,0.05);">
+<section style="padding:80px 0;background:rgba(255,255,255,0.015);border-top:1px solid rgba(255,255,255,0.05);" class="mig-reveal">
   <div class="container">
     <div style="text-align:center;margin-bottom:48px;">
       <h2 style="font-size:36px;font-weight:500;letter-spacing:-.04em;margin:0 0 16px;color:#fff;">Where every dollar goes.</h2>
       <p style="font-size:16px;color:rgba(210,210,210,0.5);max-width:460px;margin:0 auto;">100% of membership funds go directly to the project. Paul takes no salary from Morrígan. We publish a full transparency report annually.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:720px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:720px;margin:0 auto;" class="mig-reveal">
       <div style="text-align:center;padding:32px 20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:16px;">
         <div style="font-size:36px;font-weight:600;color:#fff;letter-spacing:-.03em;margin-bottom:8px;">60%</div>
         <div style="font-size:13px;color:rgba(210,210,210,0.5);line-height:1.5;">Server infrastructure &amp; encrypted storage</div>
@@ -307,6 +307,46 @@ a[href="/security"] .nav-text { white-space: nowrap !important; }
 <script>
 function openLegalModal(){var m=document.getElementById('legal-modal');m.style.display='flex';}
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){var m=document.getElementById('legal-modal');if(m)m.style.display='none';}});
+</script>
+<script>
+/* Morrígan scroll-reveal v2.1.7 */
+(function(){
+  var DURATION = '0.7s';
+  var EASING   = 'cubic-bezier(0.22,1,0.36,1)';
+  var DISTANCE = '44px';
+
+  function initReveal(){
+    var els = document.querySelectorAll('.mig-reveal');
+    if(!els.length) return;
+
+    // Set initial hidden state
+    els.forEach(function(el, i){
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(' + DISTANCE + ')';
+      el.style.transition = 'opacity ' + DURATION + ' ' + EASING + ', transform ' + DURATION + ' ' + EASING;
+      el.style.transitionDelay = (i % 6) * 0.08 + 's';
+    });
+
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          var el = entry.target;
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    els.forEach(function(el){ observer.observe(el); });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initReveal);
+  } else {
+    initReveal();
+  }
+})();
 </script>
 </body>
 </html>
