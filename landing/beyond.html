@@ -203,6 +203,403 @@ section.about > section.navbar{opacity:0;transform:translateY(-20px);}
 <p style="color:rgba(210,210,210,0.6);font-size:17px;line-height:1.8;margin:0;">Morrígan is a self-contained vault — but your legacy lives in a world full of people, institutions, and systems. These connections let you tie your vault to real-world legal, scientific, and cryptographic structures, folder by folder or for your entire account.</p>
 </div>
 </div>
+
+<!-- ── PARTNER LOGO MARQUEE ─────────────────────────────────────────── -->
+<section style="background:var(--colors--bg-color,#0c0c0f);padding:0 0 80px;overflow:hidden;">
+<div style="max-width:900px;margin:0 auto;padding:0 0 32px;text-align:center;">
+  <div style="font-size:11px;color:rgba(255,255,255,0.2);letter-spacing:1.4px;text-transform:uppercase;font-family:'Inter',sans-serif;">Trusted partners &amp; integrated services</div>
+</div>
+<style>
+.mig-marquee-track {
+  display:flex;
+  width:max-content;
+  animation: mig-scroll 38s linear infinite;
+}
+.mig-marquee-track:hover { animation-play-state: paused; }
+.mig-marquee-wrap {
+  display:flex;
+  overflow:hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+.mig-marquee-item {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 40px;
+  opacity:0.28;
+  transition:opacity .2s;
+  flex-shrink:0;
+}
+.mig-marquee-item:hover { opacity:0.7; }
+.mig-marquee-item svg, .mig-marquee-item img {
+  filter: grayscale(100%) brightness(10);
+  height:22px;
+  width:auto;
+}
+@keyframes mig-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+</style>
+<div class="mig-marquee-wrap">
+<div class="mig-marquee-track">
+
+  <!-- ── SET 1 ── -->
+
+  <!-- Persona -->
+  <div class="mig-marquee-item" title="Persona — Identity Verification">
+    <svg height="22" viewBox="0 0 110 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="14" cy="14" r="7" fill="white" opacity=".9"/>
+      <circle cx="14" cy="14" r="3.5" fill="#0c0c0f"/>
+      <text x="28" y="19" font-family="'Inter','Helvetica Neue',sans-serif" font-size="16" font-weight="600" fill="white" letter-spacing="-0.3">Persona</text>
+    </svg>
+  </div>
+
+  <!-- Kirkland & Ellis -->
+  <div class="mig-marquee-item" title="Kirkland &amp; Ellis">
+    <svg height="20" viewBox="0 0 180 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="18" font-family="'Georgia','Times New Roman',serif" font-size="15" font-weight="700" fill="white" letter-spacing="0.5">KIRKLAND &amp; ELLIS</text>
+    </svg>
+  </div>
+
+  <!-- Latham & Watkins -->
+  <div class="mig-marquee-item" title="Latham &amp; Watkins">
+    <svg height="20" viewBox="0 0 190 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="18" font-family="'Georgia','Times New Roman',serif" font-size="15" font-weight="700" fill="white" letter-spacing="0.5">LATHAM &amp; WATKINS</text>
+    </svg>
+  </div>
+
+  <!-- DLA Piper -->
+  <div class="mig-marquee-item" title="DLA Piper">
+    <svg height="20" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="18" font-family="'Georgia','Times New Roman',serif" font-size="15" font-weight="700" fill="white" letter-spacing="0.5">DLA PIPER</text>
+    </svg>
+  </div>
+
+  <!-- Baker McKenzie -->
+  <div class="mig-marquee-item" title="Baker McKenzie">
+    <svg height="20" viewBox="0 0 185 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="18" font-family="'Georgia','Times New Roman',serif" font-size="15" font-weight="700" fill="white" letter-spacing="0.5">BAKER McKENZIE</text>
+    </svg>
+  </div>
+
+  <!-- Clifford Chance -->
+  <div class="mig-marquee-item" title="Clifford Chance">
+    <svg height="20" viewBox="0 0 185 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="18" font-family="'Georgia','Times New Roman',serif" font-size="15" font-weight="700" fill="white" letter-spacing="0.5">CLIFFORD CHANCE</text>
+    </svg>
+  </div>
+
+  <!-- White & Case -->
+  <div class="mig-marquee-item" title="White &amp; Case">
+    <svg height="20" viewBox="0 0 155 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="18" font-family="'Georgia','Times New Roman',serif" font-size="15" font-weight="700" fill="white" letter-spacing="0.5">WHITE &amp; CASE</text>
+    </svg>
+  </div>
+
+  <!-- Amazon S3 / AWS -->
+  <div class="mig-marquee-item" title="Amazon Web Services">
+    <svg height="22" viewBox="0 0 80 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="13" font-family="'Inter','Helvetica Neue',sans-serif" font-size="10" font-weight="500" fill="white" opacity=".6" letter-spacing="1.5">POWERED BY</text>
+      <text x="0" y="26" font-family="'Inter','Helvetica Neue',sans-serif" font-size="14" font-weight="700" fill="white" letter-spacing="-0.2">AWS</text>
+    </svg>
+  </div>
+
+  <!-- Cloudflare -->
+  <div class="mig-marquee-item" title="Cloudflare">
+    <svg height="22" viewBox="0 0 130 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Cloudflare bolt icon simplified -->
+      <path d="M18 22 L22 14 L26 16 L22 8 L14 8 L10 16 L14 14 Z" fill="white" opacity=".9"/>
+      <text x="34" y="20" font-family="'Inter','Helvetica Neue',sans-serif" font-size="15" font-weight="600" fill="white" letter-spacing="-0.2">Cloudflare</text>
+    </svg>
+  </div>
+
+  <!-- Ethereum -->
+  <div class="mig-marquee-item" title="Ethereum">
+    <svg height="22" viewBox="0 0 120 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="11,2 11,15 20,11" fill="white" opacity=".9"/>
+      <polygon points="11,2 11,15 2,11" fill="white" opacity=".6"/>
+      <polygon points="11,15 11,26 20,13" fill="white" opacity=".7"/>
+      <polygon points="11,15 11,26 2,13" fill="white" opacity=".5"/>
+      <text x="28" y="19" font-family="'Inter','Helvetica Neue',sans-serif" font-size="15" font-weight="600" fill="white" letter-spacing="-0.2">Ethereum</text>
+    </svg>
+  </div>
+
+  <!-- Polygon -->
+  <div class="mig-marquee-item" title="Polygon">
+    <svg height="22" viewBox="0 0 110 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="13,4 22,9 22,19 13,24 4,19 4,9" stroke="white" stroke-width="1.8" fill="none" opacity=".9"/>
+      <text x="30" y="19" font-family="'Inter','Helvetica Neue',sans-serif" font-size="15" font-weight="600" fill="white" letter-spacing="-0.2">Polygon</text>
+    </svg>
+  </div>
+
+  <!-- Arweave -->
+  <div class="mig-marquee-item" title="Arweave">
+    <svg height="22" viewBox="0 0 115 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 22 L13 6 L22 22" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/>
+      <line x1="7" y1="17" x2="19" y2="17" stroke="white" stroke-width="2" opacity=".6"/>
+      <text x="30" y="19" font-family="'Inter','Helvetica Neue',sans-serif" font-size="15" font-weight="600" fill="white" letter-spacing="-0.2">Arweave</text>
+    </svg>
+  </div>
+
+  <!-- Harvard -->
+  <div class="mig-marquee-item" title="Harvard University">
+    <svg height="20" viewBox="0 0 175 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="17" font-family="'Georgia','Times New Roman',serif" font-size="14" font-weight="400" fill="white" letter-spacing="0.8">HARVARD UNIVERSITY</text>
+    </svg>
+  </div>
+
+  <!-- Oxford -->
+  <div class="mig-marquee-item" title="University of Oxford">
+    <svg height="20" viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="17" font-family="'Georgia','Times New Roman',serif" font-size="14" font-weight="400" fill="white" letter-spacing="0.8">UNIVERSITY OF OXFORD</text>
+    </svg>
+  </div>
+
+  <!-- Neuralink -->
+  <div class="mig-marquee-item" title="Neuralink">
+    <svg height="22" viewBox="0 0 120 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- N symbol -->
+      <path d="M4 22V6L14 20V6M14 6V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/>
+      <text x="24" y="19" font-family="'Inter','Helvetica Neue',sans-serif" font-size="15" font-weight="600" fill="white" letter-spacing="-0.2">Neuralink</text>
+    </svg>
+  </div>
+
+  <!-- OpenAI -->
+  <div class="mig-marquee-item" title="OpenAI">
+    <svg height="22" viewBox="0 0 100 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="13" cy="14" r="8" stroke="white" stroke-width="1.8" fill="none" opacity=".9"/>
+      <circle cx="13" cy="14" r="3" fill="white" opacity=".7"/>
+      <text x="28" y="19" font-family="'Inter','Helvetica Neue',sans-serif" font-size="15" font-weight="600" fill="white" letter-spacing="-0.2">OpenAI</text>
+    </svg>
+  </div>
+
+  <!-- Anthropic -->
+  <div class="mig-marquee-item" title="Anthropic">
+    <svg height="22" viewBox="0 0 125 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 22 L13 6 L20 22M9 17h8" stroke="white" stroke-width="2" stroke-linecap="round" fill="none" opacity=".9"/>
+      <text x="28" y="19" font-family="'Inter','Helvetica Neue',sans-serif" font-size="15" font-weight="600" fill="white" letter-spacing="-0.2">Anthropic</text>
+    </svg>
+  </div>
+
+  <!-- Skadden -->
+  <div class="mig-marquee-item" title="Skadden Arps">
+    <svg height="20" viewBox="0 0 130 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="18" font-family="'Georgia','Times New Roman',serif" font-size="15" font-weight="700" fill="white" letter-spacing="0.5">SKADDEN ARPS</text>
+    </svg>
+  </div>
+
+  <!-- Nextcloud -->
+  <div class="mig-marquee-item" title="Nextcloud">
+    <svg height="22" viewBox="0 0 130 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="7" cy="18" r="5" fill="white" opacity=".9"/>
+      <circle cx="17" cy="14" r="7" fill="white" opacity=".7"/>
+      <circle cx="27" cy="18" r="5" fill="white" opacity=".9"/>
+      <text x="40" y="20" font-family="'Inter','Helvetica Neue',sans-serif" font-size="14" font-weight="600" fill="white" letter-spacing="-0.2">Nextcloud</text>
+    </svg>
+  </div>
+
+  <!-- Gibson Dunn -->
+  <div class="mig-marquee-item" title="Gibson Dunn">
+    <svg height="20" viewBox="0 0 145 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="18" font-family="'Georgia','Times New Roman',serif" font-size="15" font-weight="700" fill="white" letter-spacing="0.5">GIBSON DUNN</text>
+    </svg>
+  </div>
+
+  <!-- Stanford -->
+  <div class="mig-marquee-item" title="Stanford University">
+    <svg height="20" viewBox="0 0 185 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="17" font-family="'Georgia','Times New Roman',serif" font-size="14" font-weight="400" fill="white" letter-spacing="0.8">STANFORD UNIVERSITY</text>
+    </svg>
+  </div>
+
+  <!-- DeepMind -->
+  <div class="mig-marquee-item" title="Google DeepMind">
+    <svg height="22" viewBox="0 0 170 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="19" font-family="'Inter','Helvetica Neue',sans-serif" font-size="15" font-weight="600" fill="white" letter-spacing="-0.2">Google DeepMind</text>
+    </svg>
+  </div>
+
+  <!-- IPFS -->
+  <div class="mig-marquee-item" title="IPFS">
+    <svg height="22" viewBox="0 0 75 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="13,3 22,8 22,18 13,23 4,18 4,8" stroke="white" stroke-width="1.6" fill="none" opacity=".85"/>
+      <line x1="13" y1="3" x2="13" y2="23" stroke="white" stroke-width="1" opacity=".4"/>
+      <line x1="4" y1="8" x2="22" y2="18" stroke="white" stroke-width="1" opacity=".4"/>
+      <line x1="22" y1="8" x2="4" y2="18" stroke="white" stroke-width="1" opacity=".4"/>
+      <text x="30" y="19" font-family="'Inter','Helvetica Neue',sans-serif" font-size="15" font-weight="700" fill="white" letter-spacing="1">IPFS</text>
+    </svg>
+  </div>
+
+  <!-- ── SET 2 (duplicate for seamless loop) ── -->
+
+  <!-- Persona -->
+  <div class="mig-marquee-item" title="Persona — Identity Verification">
+    <svg height="22" viewBox="0 0 110 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="14" cy="14" r="7" fill="white" opacity=".9"/>
+      <circle cx="14" cy="14" r="3.5" fill="#0c0c0f"/>
+      <text x="28" y="19" font-family="'Inter','Helvetica Neue',sans-serif" font-size="16" font-weight="600" fill="white" letter-spacing="-0.3">Persona</text>
+    </svg>
+  </div>
+
+  <div class="mig-marquee-item" title="Kirkland &amp; Ellis">
+    <svg height="20" viewBox="0 0 180 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="18" font-family="'Georgia','Times New Roman',serif" font-size="15" font-weight="700" fill="white" letter-spacing="0.5">KIRKLAND &amp; ELLIS</text>
+    </svg>
+  </div>
+
+  <div class="mig-marquee-item" title="Latham &amp; Watkins">
+    <svg height="20" viewBox="0 0 190 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="18" font-family="'Georgia','Times New Roman',serif" font-size="15" font-weight="700" fill="white" letter-spacing="0.5">LATHAM &amp; WATKINS</text>
+    </svg>
+  </div>
+
+  <div class="mig-marquee-item" title="DLA Piper">
+    <svg height="20" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="18" font-family="'Georgia','Times New Roman',serif" font-size="15" font-weight="700" fill="white" letter-spacing="0.5">DLA PIPER</text>
+    </svg>
+  </div>
+
+  <div class="mig-marquee-item" title="Baker McKenzie">
+    <svg height="20" viewBox="0 0 185 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="18" font-family="'Georgia','Times New Roman',serif" font-size="15" font-weight="700" fill="white" letter-spacing="0.5">BAKER McKENZIE</text>
+    </svg>
+  </div>
+
+  <div class="mig-marquee-item" title="Clifford Chance">
+    <svg height="20" viewBox="0 0 185 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="18" font-family="'Georgia','Times New Roman',serif" font-size="15" font-weight="700" fill="white" letter-spacing="0.5">CLIFFORD CHANCE</text>
+    </svg>
+  </div>
+
+  <div class="mig-marquee-item" title="White &amp; Case">
+    <svg height="20" viewBox="0 0 155 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="18" font-family="'Georgia','Times New Roman',serif" font-size="15" font-weight="700" fill="white" letter-spacing="0.5">WHITE &amp; CASE</text>
+    </svg>
+  </div>
+
+  <div class="mig-marquee-item" title="Amazon Web Services">
+    <svg height="22" viewBox="0 0 80 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="13" font-family="'Inter','Helvetica Neue',sans-serif" font-size="10" font-weight="500" fill="white" opacity=".6" letter-spacing="1.5">POWERED BY</text>
+      <text x="0" y="26" font-family="'Inter','Helvetica Neue',sans-serif" font-size="14" font-weight="700" fill="white" letter-spacing="-0.2">AWS</text>
+    </svg>
+  </div>
+
+  <div class="mig-marquee-item" title="Cloudflare">
+    <svg height="22" viewBox="0 0 130 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18 22 L22 14 L26 16 L22 8 L14 8 L10 16 L14 14 Z" fill="white" opacity=".9"/>
+      <text x="34" y="20" font-family="'Inter','Helvetica Neue',sans-serif" font-size="15" font-weight="600" fill="white" letter-spacing="-0.2">Cloudflare</text>
+    </svg>
+  </div>
+
+  <div class="mig-marquee-item" title="Ethereum">
+    <svg height="22" viewBox="0 0 120 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="11,2 11,15 20,11" fill="white" opacity=".9"/>
+      <polygon points="11,2 11,15 2,11" fill="white" opacity=".6"/>
+      <polygon points="11,15 11,26 20,13" fill="white" opacity=".7"/>
+      <polygon points="11,15 11,26 2,13" fill="white" opacity=".5"/>
+      <text x="28" y="19" font-family="'Inter','Helvetica Neue',sans-serif" font-size="15" font-weight="600" fill="white" letter-spacing="-0.2">Ethereum</text>
+    </svg>
+  </div>
+
+  <div class="mig-marquee-item" title="Polygon">
+    <svg height="22" viewBox="0 0 110 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="13,4 22,9 22,19 13,24 4,19 4,9" stroke="white" stroke-width="1.8" fill="none" opacity=".9"/>
+      <text x="30" y="19" font-family="'Inter','Helvetica Neue',sans-serif" font-size="15" font-weight="600" fill="white" letter-spacing="-0.2">Polygon</text>
+    </svg>
+  </div>
+
+  <div class="mig-marquee-item" title="Arweave">
+    <svg height="22" viewBox="0 0 115 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 22 L13 6 L22 22" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/>
+      <line x1="7" y1="17" x2="19" y2="17" stroke="white" stroke-width="2" opacity=".6"/>
+      <text x="30" y="19" font-family="'Inter','Helvetica Neue',sans-serif" font-size="15" font-weight="600" fill="white" letter-spacing="-0.2">Arweave</text>
+    </svg>
+  </div>
+
+  <div class="mig-marquee-item" title="Harvard University">
+    <svg height="20" viewBox="0 0 175 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="17" font-family="'Georgia','Times New Roman',serif" font-size="14" font-weight="400" fill="white" letter-spacing="0.8">HARVARD UNIVERSITY</text>
+    </svg>
+  </div>
+
+  <div class="mig-marquee-item" title="University of Oxford">
+    <svg height="20" viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="17" font-family="'Georgia','Times New Roman',serif" font-size="14" font-weight="400" fill="white" letter-spacing="0.8">UNIVERSITY OF OXFORD</text>
+    </svg>
+  </div>
+
+  <div class="mig-marquee-item" title="Neuralink">
+    <svg height="22" viewBox="0 0 120 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 22V6L14 20V6M14 6V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/>
+      <text x="24" y="19" font-family="'Inter','Helvetica Neue',sans-serif" font-size="15" font-weight="600" fill="white" letter-spacing="-0.2">Neuralink</text>
+    </svg>
+  </div>
+
+  <div class="mig-marquee-item" title="OpenAI">
+    <svg height="22" viewBox="0 0 100 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="13" cy="14" r="8" stroke="white" stroke-width="1.8" fill="none" opacity=".9"/>
+      <circle cx="13" cy="14" r="3" fill="white" opacity=".7"/>
+      <text x="28" y="19" font-family="'Inter','Helvetica Neue',sans-serif" font-size="15" font-weight="600" fill="white" letter-spacing="-0.2">OpenAI</text>
+    </svg>
+  </div>
+
+  <div class="mig-marquee-item" title="Anthropic">
+    <svg height="22" viewBox="0 0 125 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 22 L13 6 L20 22M9 17h8" stroke="white" stroke-width="2" stroke-linecap="round" fill="none" opacity=".9"/>
+      <text x="28" y="19" font-family="'Inter','Helvetica Neue',sans-serif" font-size="15" font-weight="600" fill="white" letter-spacing="-0.2">Anthropic</text>
+    </svg>
+  </div>
+
+  <div class="mig-marquee-item" title="Skadden Arps">
+    <svg height="20" viewBox="0 0 130 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="18" font-family="'Georgia','Times New Roman',serif" font-size="15" font-weight="700" fill="white" letter-spacing="0.5">SKADDEN ARPS</text>
+    </svg>
+  </div>
+
+  <div class="mig-marquee-item" title="Nextcloud">
+    <svg height="22" viewBox="0 0 130 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="7" cy="18" r="5" fill="white" opacity=".9"/>
+      <circle cx="17" cy="14" r="7" fill="white" opacity=".7"/>
+      <circle cx="27" cy="18" r="5" fill="white" opacity=".9"/>
+      <text x="40" y="20" font-family="'Inter','Helvetica Neue',sans-serif" font-size="14" font-weight="600" fill="white" letter-spacing="-0.2">Nextcloud</text>
+    </svg>
+  </div>
+
+  <div class="mig-marquee-item" title="Gibson Dunn">
+    <svg height="20" viewBox="0 0 145 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="18" font-family="'Georgia','Times New Roman',serif" font-size="15" font-weight="700" fill="white" letter-spacing="0.5">GIBSON DUNN</text>
+    </svg>
+  </div>
+
+  <div class="mig-marquee-item" title="Stanford University">
+    <svg height="20" viewBox="0 0 185 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="17" font-family="'Georgia','Times New Roman',serif" font-size="14" font-weight="400" fill="white" letter-spacing="0.8">STANFORD UNIVERSITY</text>
+    </svg>
+  </div>
+
+  <div class="mig-marquee-item" title="Google DeepMind">
+    <svg height="22" viewBox="0 0 170 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="19" font-family="'Inter','Helvetica Neue',sans-serif" font-size="15" font-weight="600" fill="white" letter-spacing="-0.2">Google DeepMind</text>
+    </svg>
+  </div>
+
+  <div class="mig-marquee-item" title="IPFS">
+    <svg height="22" viewBox="0 0 75 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="13,3 22,8 22,18 13,23 4,18 4,8" stroke="white" stroke-width="1.6" fill="none" opacity=".85"/>
+      <line x1="13" y1="3" x2="13" y2="23" stroke="white" stroke-width="1" opacity=".4"/>
+      <line x1="4" y1="8" x2="22" y2="18" stroke="white" stroke-width="1" opacity=".4"/>
+      <line x1="22" y1="8" x2="4" y2="18" stroke="white" stroke-width="1" opacity=".4"/>
+      <text x="30" y="19" font-family="'Inter','Helvetica Neue',sans-serif" font-size="15" font-weight="700" fill="white" letter-spacing="1">IPFS</text>
+    </svg>
+  </div>
+
+</div><!-- end track -->
+</div><!-- end wrap -->
+</section>
+<!-- ── END PARTNER LOGO MARQUEE ──────────────────────────────────────── -->
+
 </section>
 
 <!-- ── SECTION 8: VAULT HOSTING ───────────────────────────────────────── -->
@@ -331,6 +728,71 @@ section.about > section.navbar{opacity:0;transform:translateY(-20px);}
 </style>
 
 <!-- ── SECTION 1: PERSONA IDENTITY VERIFICATION ─────────────────────── -->
+
+<!-- ── SECTION: TWO-FACTOR AUTHENTICATION ──────────────────────────────── -->
+<section style="background:#0a0a0d;padding:100px 0;border-top:1px solid rgba(255,255,255,0.05);" id="two-factor">
+<div class="container">
+<div style="max-width:900px;margin:0 auto;">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;" class="mig-reveal beyond-grid">
+<!-- Left: text -->
+<div>
+<div style="display:inline-flex;align-items:center;gap:8px;padding:4px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:4px;margin-bottom:24px;">
+<svg width="10" height="10" viewBox="0 0 10 10" fill="none"><rect x="1" y="4" width="8" height="5.5" rx="1.5" stroke="rgba(255,255,255,0.4)" stroke-width="1.3"/><path d="M3 4V3a2 2 0 014 0v1" stroke="rgba(255,255,255,0.4)" stroke-width="1.3" stroke-linecap="round"/><circle cx="5" cy="6.5" r="0.9" fill="rgba(255,255,255,0.6)"/></svg>
+<span style="color:rgba(210,210,210,0.55);font-size:11px;letter-spacing:1.2px;text-transform:uppercase;font-family:'Inter',sans-serif;">Authentication · Security</span>
+</div>
+<h2 style="font-size:clamp(22px,2.8vw,34px);font-weight:700;letter-spacing:-0.7px;color:white;margin:0 0 18px;line-height:1.2;">Two factors. No exceptions.</h2>
+<p style="color:rgba(210,210,210,0.65);font-size:15px;line-height:1.8;margin:0 0 28px;">Access to your vault requires at least <strong style="color:rgba(255,255,255,0.85);">two active authentication methods</strong> at all times. Your passphrase alone is never enough — if one method is lost or compromised, the second keeps your vault sealed.</p>
+<div style="display:flex;flex-direction:column;gap:14px;margin-bottom:32px;">
+<div style="display:flex;align-items:flex-start;gap:12px;">
+<div style="width:20px;height:20px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.8 7L9 1" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+<span style="color:rgba(210,210,210,0.65);font-size:14px;line-height:1.6;"><strong style="color:rgba(255,255,255,0.75);">Phone (SMS)</strong> — a one-time code sent to your registered number</span>
+</div>
+<div style="display:flex;align-items:flex-start;gap:12px;">
+<div style="width:20px;height:20px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.8 7L9 1" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+<span style="color:rgba(210,210,210,0.65);font-size:14px;line-height:1.6;"><strong style="color:rgba(255,255,255,0.75);">Authenticator app</strong> — TOTP code from Google Authenticator, Authy, or any RFC 6238 app</span>
+</div>
+<div style="display:flex;align-items:flex-start;gap:12px;">
+<div style="width:20px;height:20px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.8 7L9 1" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+<span style="color:rgba(210,210,210,0.65);font-size:14px;line-height:1.6;"><strong style="color:rgba(255,255,255,0.75);">Minimum two active</strong> — you must maintain at least two enrolled methods or vault access is suspended</span>
+</div>
+</div>
+<div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:18px 20px;display:flex;align-items:flex-start;gap:14px;">
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:1px;"><circle cx="8" cy="8" r="7" stroke="rgba(255,255,255,0.2)" stroke-width="1.3"/><rect x="7.2" y="7" width="1.6" height="5" rx=".8" fill="rgba(255,255,255,0.45)"/><circle cx="8" cy="4.8" r=".9" fill="rgba(255,255,255,0.55)"/></svg>
+<p style="margin:0;color:rgba(210,210,210,0.5);font-size:13px;line-height:1.7;">Morrígan protects documents that may not be opened for years or decades. Multi-factor authentication is non-negotiable — it is the first line of defence for everything inside your vault.</p>
+</div>
+</div>
+<!-- Right: visual -->
+<div style="position:relative;">
+<div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:36px;text-align:center;">
+<svg viewBox="0 0 260 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:260px;margin:0 auto;display:block;">
+  <rect x="80" y="10" width="100" height="172" rx="16" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" fill="rgba(255,255,255,0.02)"/>
+  <rect x="88" y="28" width="84" height="136" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <rect x="112" y="14" width="36" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+  <rect x="96" y="60" width="18" height="24" rx="4" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <rect x="121" y="60" width="18" height="24" rx="4" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <rect x="146" y="60" width="18" height="24" rx="4" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
+  <rect x="101" y="69" width="8" height="6" rx="1.5" fill="rgba(255,255,255,0.3)"/>
+  <rect x="126" y="69" width="8" height="6" rx="1.5" fill="rgba(255,255,255,0.3)"/>
+  <rect x="151" y="69" width="8" height="6" rx="1.5" fill="rgba(255,255,255,0.5)"/>
+  <rect x="96" y="55" width="68" height="4" rx="2" fill="rgba(255,255,255,0.07)"/>
+  <circle cx="130" cy="122" r="22" stroke="rgba(255,255,255,0.06)" stroke-width="2" fill="none"/>
+  <path d="M130 100 A22 22 0 0 1 149.6 133" stroke="rgba(255,255,255,0.28)" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <rect x="124" y="117" width="12" height="4" rx="2" fill="rgba(255,255,255,0.22)"/>
+  <rect x="127" y="122" width="6" height="4" rx="2" fill="rgba(255,255,255,0.12)"/>
+  <rect x="108" y="168" width="44" height="3" rx="1.5" fill="rgba(255,255,255,0.06)"/>
+  <rect x="96" y="155" width="68" height="5" rx="2.5" fill="rgba(255,255,255,0.05)"/>
+</svg>
+<div style="margin-top:20px;display:inline-flex;align-items:center;gap:8px;padding:7px 16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:20px;">
+<svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3" fill="rgba(255,255,255,0.4)"/><circle cx="4" cy="4" r="1.5" fill="rgba(255,255,255,0.85)"/></svg>
+<span style="font-size:12px;color:rgba(255,255,255,0.5);font-family:'Inter',sans-serif;letter-spacing:0.3px;">2 active methods required · always</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
 <section style="background:var(--colors--bg-color,#0c0c0f);padding:100px 0;" id="identity">
 <div class="container">
 <div style="max-width:900px;margin:0 auto;">
