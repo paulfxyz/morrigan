@@ -52,7 +52,7 @@ a[href="/security"] .nav-text { white-space: nowrap !important; }
 .about-video-wrap{opacity:0;}
 section.about > section.navbar{opacity:0;transform:translateY(-20px);}
 </style>
-</head><body><div class="page-wrapper"><section class="about"><section class="navbar" style="opacity:0;transform:translateY(-18px);">
+</head><body><div class="page-wrapper"><section class="about"><section class="navbar" style="opacity:0;transform:translateY(-100px);">
 <div class="nav-container">
 <div class="navbar-wrap">
 <div class="navbar-desktop-wrap">
@@ -112,29 +112,59 @@ section.about > section.navbar{opacity:0;transform:translateY(-20px);}
 </div>
 </section>
 <div class="container"><div class="about-wrap"><div class="hero-header-wrap"><div class="hero-badge-wrap" style="transform:translate3d(0px,0px,0px) scale3d(1,1,1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg,0deg);opacity:0;transform-style:preserve-3d;"><div class="badge-wrap" data-wf--badge--variant="base"><div class="badge-inner-wrap"><div class="badge-content"><div class="badge-dot"></div><div class="tagline-01 badge-text">Security</div></div><div class="badge-inner-bg"></div></div><div class="badge-outline"></div></div></div><div class="hero-text-wrap" style="transform:translate3d(0px,0px,0px) scale3d(1,1,1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg,0deg);opacity:0;transform-style:preserve-3d;"><div class="hero-heading-wrap"><h1 class="text-center">Built to be incapable of betraying you.</h1></div></div></div></div></div><div class="about-video-wrap"><div class="about-video w-background-video w-background-video-atom" data-autoplay="true" data-loop="true" data-poster-url="assets/security_video-poster-00001.jpg" data-wf-ignore="true"><video autoplay="" data-object-fit="cover" data-wf-ignore="true" loop="" muted="" playsinline="" style='background-image:url("assets/security_video-poster-00001.jpg_quot;)'><source data-wf-ignore="true" src="assets/security_video-transcode.mp4"/><source data-wf-ignore="true" src="assets/security_video-transcode.webm"/></video></div>
-<canvas id="mig-bg" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.45;" aria-hidden="true"></canvas>
+<canvas id="mig-bg" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;" aria-hidden="true"></canvas>
 <script>
 (function(){
   var c=document.getElementById('mig-bg'),ctx=c.getContext('2d');
-  var W,H,cols=[],FONT=13,CHARS='01アイウエオカキクケコサシスセソタチツテトナニヌネノ';
-  function resize(){
-    W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;
-    var n=Math.floor(W/(FONT*1.6));
-    cols=[];for(var i=0;i<n;i++)cols.push({y:Math.random()*H/FONT|0,speed:Math.random()*0.4+0.15,opacity:Math.random()*0.12+0.04});
+  var W,H;
+  function resize(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;initCols();}
+  var CHARS='01アイウエオカキクケコABCDEF0123456789';
+  var cols=[];
+  function initCols(){
+    cols=[];
+    var spacing=40;
+    var n=Math.ceil(W/spacing)+1;
+    for(var i=0;i<n;i++){
+      cols.push({
+        x:i*spacing+4,
+        y:Math.random()*H*1.4-H*0.2,
+        speed:Math.random()*0.20+0.07,
+        chars:[],
+        len:Math.floor(Math.random()*5)+3,
+        alpha:Math.random()*0.05+0.018
+      });
+    }
   }
   resize();window.addEventListener('resize',resize);
+  function rndCh(){return CHARS[Math.floor(Math.random()*CHARS.length)];}
+  var t=0;
   function draw(){
-    ctx.fillStyle='rgba(12,12,15,0.18)';ctx.fillRect(0,0,W,H);
-    ctx.font=FONT+'px monospace';
+    ctx.clearRect(0,0,W,H);
+    ctx.font='11px "Courier New",monospace';
     for(var i=0;i<cols.length;i++){
       var col=cols[i];
-      var ch=CHARS[Math.random()*CHARS.length|0];
-      var x=i*FONT*1.6, y=col.y*FONT;
-      ctx.fillStyle='rgba(255,255,255,'+col.opacity.toFixed(3)+')';
-      ctx.fillText(ch,x,y);
       col.y+=col.speed;
-      if(col.y*FONT>H&&Math.random()>0.97)col.y=0;
+      if(col.y>H+col.len*16){col.y=-(col.len*16)-Math.random()*H*0.3;}
+      for(var j=0;j<col.len;j++){
+        var yy=col.y-j*16;
+        if(yy<-16||yy>H+8)continue;
+        var fade=j===0?1:Math.pow(1-j/col.len,1.5);
+        var a=col.alpha*fade*(j===0?2.2:1);
+        if(a>0.11)a=0.11;
+        ctx.fillStyle='rgba(255,255,255,'+a.toFixed(3)+')';
+        if(j===0&&Math.random()<0.12)col.chars[j]=rndCh();
+        if(!col.chars[j])col.chars[j]=rndCh();
+        ctx.fillText(col.chars[j],col.x,yy);
+      }
     }
+    // Faint horizontal grid lines — evoke data layers
+    ctx.strokeStyle='rgba(255,255,255,0.020)';
+    ctx.lineWidth=0.5;
+    ctx.beginPath();
+    var gs=H/5;
+    for(var y=gs;y<H;y+=gs){ctx.moveTo(0,y);ctx.lineTo(W,y);}
+    ctx.stroke();
+    t++;
     requestAnimationFrame(draw);
   }
   draw();
@@ -428,27 +458,26 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){var m=docum
   }
 })();
 </script>
-<script>/* Morrígan hero animation v2.2.1 */
+<script>/* Morrígan hero animation v2.2.2 */
 (function(){
   var E='cubic-bezier(0.22,1,0.36,1)';
   function go(el,delay,dur){
     if(!el)return;
     requestAnimationFrame(function(){requestAnimationFrame(function(){
       el.style.transition='opacity '+dur+'ms '+E+' '+delay+'ms,transform '+dur+'ms '+E+' '+delay+'ms';
-      el.style.opacity='1';
-      el.style.transform='translateY(0px)';
+      el.style.opacity='1';el.style.transform='translateY(0px)';
     });});
   }
   document.addEventListener('DOMContentLoaded',function(){
-    var nav=document.querySelector('section.about > section.navbar,section.about > .navbar');
+    var nav=document.querySelector('section.about>section.navbar,section.about>.navbar');
     if(nav){requestAnimationFrame(function(){requestAnimationFrame(function(){
-      nav.style.transition='opacity 320ms '+E+',transform 320ms '+E;
+      nav.style.transition='opacity 900ms '+E+',transform 900ms '+E;
       nav.style.opacity='1';nav.style.transform='translateY(0px)';
     });})}
     var vid=document.querySelector('.about-video-wrap');
     if(vid){vid.style.opacity='1';}
-    go(document.querySelector('.hero-badge-wrap'), 60, 280);
-    go(document.querySelector('.hero-text-wrap'), 140, 280);
+    go(document.querySelector('.hero-badge-wrap'),120,700);
+    go(document.querySelector('.hero-text-wrap'),260,700);
   });
 })();
 </script>
