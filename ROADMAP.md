@@ -59,7 +59,7 @@ The jump from v1.x.x to v2.0.0 marks the completion of an independent cryptograp
 - [x] **main.js audit** — comprehensive technical comments on all 12 features (621 lines)
 - [x] **"Built with Perplexity Computer" removed** — replaced with "Built with ❤️ + AI" + vibe coding explanation
 - [x] **GitHub release v1.1.0** — tag, release notes, badge updates
-- [x] **FTP deploy** — all updated files deployed to morrigan.life
+- [x] **FTP deploy** — all updated files deployed to morrigan.org
 
 ---
 

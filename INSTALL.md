@@ -132,7 +132,7 @@ No framework. No build step. No bundler. Audit by reading the file.
 
 ## FTP Deployment
 
-The production site is hosted on SiteGround at `morrigan.life`.
+The production site is hosted on SiteGround at `morrigan.org`.
 
 > **Important:** Use individual `put` commands in lftp — `mirror` has been observed to silently fail or skip files.
 
@@ -143,8 +143,8 @@ lftp -c "
 set ftp:ssl-allow no;
 set net:timeout 60;
 open ftp://es20.siteground.eu:21;
-user 'ftp@morrigan.life' 'PASSWORD_HERE';
-cd morrigan.life/public_html/;
+user 'ftp@morrigan.org' 'PASSWORD_HERE';
+cd morrigan.org/public_html/;
 put /path/to/morrigan/landing/index.html;
 put /path/to/morrigan/landing/style.css;
 put /path/to/morrigan/landing/main.js;
@@ -161,9 +161,9 @@ quit
 ### Verify deployment
 
 After deploying, check:
-1. [https://morrigan.life](https://morrigan.life) — homepage loads
-2. [https://morrigan.life/features.html](https://morrigan.life/features.html) — features page
-3. [https://morrigan.life/security.html](https://morrigan.life/security.html) — security page
+1. [https://morrigan.org](https://morrigan.org) — homepage loads
+2. [https://morrigan.org/features.html](https://morrigan.org/features.html) — features page
+3. [https://morrigan.org/security.html](https://morrigan.org/security.html) — security page
 4. Star canvas visible in hero, BDO Grotesk font loaded, lime (#207,254,37) accent visible
 
 ---
@@ -218,7 +218,7 @@ SMTP_HOST=
 SMTP_PORT=587
 SMTP_USER=
 SMTP_PASS=
-OTP_FROM=noreply@morrigan.life
+OTP_FROM=noreply@morrigan.org
 OTP_EXPIRY_MINUTES=10
 
 # SMS OTP
@@ -231,7 +231,7 @@ OTS_SERVER=https://a.pool.opentimestamps.org
 
 # Application
 NODE_ENV=production
-APP_URL=https://morrigan.life
+APP_URL=https://morrigan.org
 SESSION_SECRET=         # 64+ random bytes
 ```
 

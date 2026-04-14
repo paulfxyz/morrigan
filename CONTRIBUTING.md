@@ -41,7 +41,7 @@ Use the [Feature Request template](.github/ISSUE_TEMPLATE/feature_request.md). E
 | Area | What we need |
 |---|---|
 | **Cryptography review** | Independent audit of the encryption design in `docs/architecture/encryption.md`. Spot errors, edge cases, or improvements. |
-| **Security research** | Pen test the landing page and, eventually, the application. Responsible disclosure via `security@morrigan.life`. |
+| **Security research** | Pen test the landing page and, eventually, the application. Responsible disclosure via `security@morrigan.org`. |
 | **Accessibility** | WCAG AA compliance audit of the landing page and future app UI. |
 | **Translations** | 30+ languages — submit corrections or new language files. |
 | **Frontend** | Landing page improvements, future app UI. Static HTML/CSS/JS, no framework. |

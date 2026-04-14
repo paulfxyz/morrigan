@@ -15,12 +15,12 @@
 
 **Digital will. Encrypted legacy. Open-source.**
 
-[![Version](https://img.shields.io/badge/version-v2.1.0-ffffff?style=flat-square&labelColor=0c0c0f&color=ffffff)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-v2.3.31-ffffff?style=flat-square&labelColor=0c0c0f&color=ffffff)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-AGPLv3-ffffff?style=flat-square&labelColor=0c0c0f)](LICENSE)
 [![Status](https://img.shields.io/badge/status-active%20development-ffffff?style=flat-square&labelColor=0c0c0f)](ROADMAP.md)
-[![Built with ❤️ + AI](https://img.shields.io/badge/built_with-%E2%9D%A4%EF%B8%8F_%2B_AI-ffffff?style=flat-square&labelColor=0c0c0f)](https://morrigan.life)
+[![Built with ❤️ + AI](https://img.shields.io/badge/built_with-%E2%9D%A4%EF%B8%8F_%2B_AI-ffffff?style=flat-square&labelColor=0c0c0f)](https://morrigan.org)
 
-[morrigan.life](https://morrigan.life) · [morrigan.one](https://morrigan.one) · [Donate](https://morrigan.life/donate) · [Security](SECURITY.md) · [Changelog](CHANGELOG.md)
+[morrigan.org](https://morrigan.org) · [morrigan.org](https://morrigan.org) · [Donate](https://morrigan.org/donate) · [Security](SECURITY.md) · [Changelog](CHANGELOG.md)
 
 </div>
 
@@ -383,7 +383,7 @@ The governance model protects the project from capture by any single financial i
 
 Full financial reports are accessible to all members.
 
-→ [Become a member](https://morrigan.life/donate)
+→ [Become a member](https://morrigan.org/donate)
 
 ---
 
@@ -520,7 +520,7 @@ Areas where help is most needed:
 - Mobile browser testing
 - Technical writing / documentation
 
-**Security vulnerabilities:** Do not open public issues. See [SECURITY.md](SECURITY.md) for responsible disclosure instructions. Email `security@morrigan.life`.
+**Security vulnerabilities:** Do not open public issues. See [SECURITY.md](SECURITY.md) for responsible disclosure instructions. Email `security@morrigan.org`.
 
 ---
 
@@ -530,7 +530,7 @@ Morrígan takes security seriously. The cryptographic model is designed so that 
 
 Known limitations and in-scope concerns are documented in [SECURITY.md](SECURITY.md).
 
-**Do not open public issues for security vulnerabilities.** Email `security@morrigan.life` instead.
+**Do not open public issues for security vulnerabilities.** Email `security@morrigan.org` instead.
 
 ---
 
@@ -583,7 +583,7 @@ The cryptographic decisions, architecture, product philosophy, and ethical choic
 **Morrígan is for everyone who has ever thought:**
 *"What happens to everything I've built, if I'm suddenly gone?"*
 
-[morrigan.life](https://morrigan.life) · [Donate](https://morrigan.life/donate) · [Star this repo](https://github.com/paulfxyz/morrigan)
+[morrigan.org](https://morrigan.org) · [Donate](https://morrigan.org/donate) · [Star this repo](https://github.com/paulfxyz/morrigan)
 
 *Made with purpose in Lisbon. 🇵🇹*
 

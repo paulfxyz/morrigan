@@ -4,7 +4,7 @@
 
 **Do not open a public GitHub issue for security vulnerabilities.**
 
-Email `security@morrigan.life` with:
+Email `security@morrigan.org` with:
 - A description of the vulnerability
 - Steps to reproduce
 - Your assessment of severity and impact
@@ -40,8 +40,8 @@ Morrigan is in early development. The current version is a landing page only —
 
 ## In-Scope
 
-- The landing page at morrigan.life
-- The future application at app.morrigan.life (once deployed)
+- The landing page at morrigan.org
+- The future application at app.morrigan.org (once deployed)
 - The API server (once deployed)
 - The open-source repository and its configuration
 - The encryption implementation (client-side)
@@ -70,4 +70,4 @@ Morrigan's security model is based on the following non-negotiable principles:
 
 ## Bug Bounty
 
-A bug bounty program will be established once the application is in public beta. Details will be announced here and on the morrigan.life blog.
+A bug bounty program will be established once the application is in public beta. Details will be announced here and on the morrigan.org blog.

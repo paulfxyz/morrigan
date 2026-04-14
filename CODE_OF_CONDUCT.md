@@ -24,7 +24,7 @@ We are committed to making participation in this project a harassment-free exper
 
 ## Enforcement
 
-Violations can be reported to `conduct@morrigan.life`. All complaints will be reviewed and investigated promptly and fairly.
+Violations can be reported to `conduct@morrigan.org`. All complaints will be reviewed and investigated promptly and fairly.
 
 Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, and other contributions that do not align with this Code of Conduct, and to ban temporarily or permanently any contributor for behaviours they deem inappropriate.
 

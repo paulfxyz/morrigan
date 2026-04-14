@@ -124,7 +124,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - SVG assets (48 files): all icon, logo, cursor, shape SVGs fully recoloured
 - Browser mockup images (8 files): green dots pixel-replaced with royal blue
 - Meta tags: all Setrex-branded descriptions replaced with Morrígan copy
-- `data-wf-domain`: changed from `setrex-saas-template.webflow.io` → `morrigan.life`
+- `data-wf-domain`: changed from `setrex-saas-template.webflow.io` → `morrigan.org`
 
 ---
 
@@ -189,7 +189,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [v0.1.0] — 2026-04-12 — Initial Public Release
 
 ### Added
-- Full production landing page for [morrigan.life](https://morrigan.life)
+- Full production landing page for [morrigan.org](https://morrigan.org)
 - Dark/light mode toggle with system preference detection
 - Hero section with full-bleed atmospheric image (Celtic standing stones, raven silhouette)
 - Responsive layout (mobile-first, collapses at 768px)
