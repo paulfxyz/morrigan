@@ -7,6 +7,101 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [v2.3.32] — 2026-04-14 — Domain Migration: morrigan.life → morrigan.org
+
+### Changed
+
+**Domain:**
+- Primary domain moved from `morrigan.life` to `morrigan.org`
+- All 80 occurrences of `morrigan.life` replaced with `morrigan.org` across 60 files
+- `morrigan.one` references in docs also consolidated to `morrigan.org`
+- `data-wf-domain` attribute updated in all HTML files
+- New FTP target: `esm34.siteground.biz` / `ftp@morrigan.org` / `morrigan.org/public_html/`
+
+**Documentation:**
+- README.md: domain updated, version badge bumped to v2.3.32
+- CHANGELOG.md: domain updated throughout
+- CONTRIBUTING.md, SECURITY.md, CODE_OF_CONDUCT.md: all email addresses updated to `@morrigan.org`
+- INSTALL.md: FTP instructions updated to new host + credentials
+- ROADMAP.md: domain references updated
+
+**Git:**
+- Commit `8f30789` — 41 files changed
+
+---
+
+## [v2.3.31] — 2026-04-14 — security.html: Spacing Overhaul + Badge Chips
+
+### Changed
+
+**security.html — comprehensive layout overhaul:**
+- Section outer padding: `60px 0 80px` → `100px 0 120px` (more breathing room)
+- Max-width container: `840px` → `900px`
+- `.mig-reveal` bottom margins: `56px` → `88px`
+- H2 headlines: `clamp(24px,3vw,36px)` → `clamp(28px,3.5vw,42px)`, letter-spacing `−0.8px` → `−1px`
+- Body paragraphs: `16px / 1.8` → `17px / 1.9`, margin-bottom `32px` → `40px`
+- ZK cards: min-width `240px` → `280px`, padding `28px` → `36px 32px`, border-radius `12px` → `14px`
+- ZK card label: uppercase + tracked (`letter-spacing: 0.8px`)
+- ZK card value: `20px / 600` → `24px / 700`, letter-spacing `−0.3px`
+- ZK card description: `14px / 1.5` → `15px / 1.6`
+- Store/never-store cards: grid gap `20px` → `24px`, padding `28px` → `36px 32px`
+- CTA card: `48px 40px` → `64px 48px`
+
+### Added
+
+**Cryptography stack** — plain dot-separated text replaced with icon+badge chips:
+- `Argon2id` · `AES-256-GCM` · `Ed25519` · `TLS 1.3` · `WebAuthn` · `TOTP / RFC 6238` · `Cloudflare` · `AWS`
+
+**AI community stack** — plain text replaced with icon+badge chips:
+- `OpenAI` · `Anthropic` · `Google DeepMind` · `Mistral AI` · `Harvard` · `MIT` · `Oxford`
+
+**Infrastructure & identity partners** — plain text replaced with icon+badge chips:
+- `Cloudflare` · `AWS` · `Hetzner` · `OVHcloud` · `Persona` · `Twilio` · `YubiKey` · `WebAuthn`
+
+**Git:**
+- Commit `16ea7ce` — 1 file changed, 67 insertions, 35 deletions
+
+---
+
+## [v2.3.30] — 2026-04-14 — Spacing Audit + Per-Folder Encryption Content
+
+### Added
+
+**how-it-works.html:**
+- New "Per-folder encryption" content block inserted between "Secured from signup" badges and Step 2
+- 3 folder cards: Medical Records, Letters to Family, Passwords & Accounts
+- 4-column principle grid: Independent master keys · Choose your cipher & protocol · Granular access per folder · No shared secrets across folders
+
+**beyond.html:**
+- Per-folder encryption subsection added to Enhanced Cryptography section
+- Full-width block with border-top separator, before `</section>`
+- Same 3 folder cards + 4-column principle grid as how-it-works.html
+
+### Fixed
+
+**Spacing audit — all three pages:**
+- `beyond.html`: nav animation restored (inline style fixed), section-to-section gaps corrected
+- `security.html`: base spacing pass (padding bump prior to v2.3.31 full overhaul)
+- `how-it-works.html`: section margin/padding normalisation pass
+
+**Git:**
+- Commit `bb02cdd` — beyond.html (201,731 bytes), security.html (91,410 bytes), how-it-works.html (89,590 bytes)
+
+---
+
+## [v2.3.29] — 2026-04-13 — Nav Animation Fix (beyond.html / webflow.chunk2.js)
+
+### Fixed
+
+- Webflow IX2 event `e-37` removed from `webflow.chunk2.js` — was causing navbar on `beyond.html` (and other non-home pages) to slide in then immediately slide back out on page load
+- `beyond.html` inline navbar style corrected: was `opacity:0; transform:translateY(-20px)` — now removed so the nav animates correctly into view
+- Nav + logo hover/scroll effects now applied consistently on all pages (beyond, security, how-it-works, donate) — previously only active on index.html and about.html
+
+**Git:**
+- Commit `ef3e41e`
+
+---
+
 ## [v2.1.0] — 2026-04-12 — Homepage Cleanup, Membership Model + SVG Illustrations
 
 ### Added

@@ -15,7 +15,7 @@
 
 **Digital will. Encrypted legacy. Open-source.**
 
-[![Version](https://img.shields.io/badge/version-v2.3.31-ffffff?style=flat-square&labelColor=0c0c0f&color=ffffff)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-v2.3.32-ffffff?style=flat-square&labelColor=0c0c0f&color=ffffff)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-AGPLv3-ffffff?style=flat-square&labelColor=0c0c0f)](LICENSE)
 [![Status](https://img.shields.io/badge/status-active%20development-ffffff?style=flat-square&labelColor=0c0c0f)](ROADMAP.md)
 [![Built with ❤️ + AI](https://img.shields.io/badge/built_with-%E2%9D%A4%EF%B8%8F_%2B_AI-ffffff?style=flat-square&labelColor=0c0c0f)](https://morrigan.org)
@@ -500,9 +500,11 @@ npx serve .
 | v1.1.0 | Released | 3-channel identity (2-of-3), TOTP UI, extended docs, code audit |
 | v1.7.0 | Released | Full B&W greyscale — CSS, SVG, AVIF, WebP, Lottie |
 | v2.0.0 | Released | Full Morrígan content rebuild — 18 active pages, all Setrex text purged |
-| v2.1.0 | **Current** | Homepage cleanup, donate rewrite (membership model), SVG illustrations, nav/footer polish |
-| v2.2.0 | Planned | Full TOTP backend, Kyber-1024 PQC migration begins |
-| v2.3.0 | Planned | WebAuthn / hardware security keys (YubiKey, Passkeys) |
+| v2.1.0 | Released | Homepage cleanup, donate rewrite (membership model), SVG illustrations, nav/footer polish |
+| v2.2.x | Released | Page-by-page content build — beyond, security, how-it-works, donate |
+| v2.3.x | **Current** | UI/UX spacing overhaul, badge chips, per-folder encryption content, domain migration |
+| v2.4.0 | Planned | Full TOTP backend, Kyber-1024 PQC migration begins |
+| v2.5.0 | Planned | WebAuthn / hardware security keys (YubiKey, Passkeys) |
 | v3.0.0 | Planned | Independent cryptographic audit, bug bounty, foundation registration |
 
 Full milestone details in [ROADMAP.md](ROADMAP.md).

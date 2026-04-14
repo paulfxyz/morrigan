@@ -2,7 +2,7 @@
 
 This document describes the planned development trajectory for Morrigan, from its current state through the v2.0.0 foundation milestone. Versioning follows [Semantic Versioning](https://semver.org/).
 
-> **Current version:** v1.1.0  
+> **Current version:** v2.3.32  
 > **Last updated:** April 2026
 
 ---
@@ -42,7 +42,7 @@ The jump from v1.x.x to v2.0.0 marks the completion of an independent cryptograp
 
 ---
 
-## v1.1.0 — Current (April 2026)
+## v1.1.0 — Released (April 2026)
 
 **Theme:** 3-channel identity, documentation overhaul, code audit.
 
@@ -60,6 +60,32 @@ The jump from v1.x.x to v2.0.0 marks the completion of an independent cryptograp
 - [x] **"Built with Perplexity Computer" removed** — replaced with "Built with ❤️ + AI" + vibe coding explanation
 - [x] **GitHub release v1.1.0** — tag, release notes, badge updates
 - [x] **FTP deploy** — all updated files deployed to morrigan.org
+
+---
+
+## v2.3.x — Current (April 2026)
+
+**Theme:** UI/UX overhaul, spacing system, domain migration.
+
+- [x] **v2.3.29** — Nav animation fix: IX2 event `e-37` removed from `webflow.chunk2.js`; hover/scroll effects applied to all pages
+- [x] **v2.3.30** — Spacing audit across beyond.html, security.html, how-it-works.html; per-folder encryption content added to how-it-works + beyond
+- [x] **v2.3.31** — security.html full overhaul: 100/120px section padding, 42px headlines, 17px body, icon+badge chips on all 3 stacks (Cryptography, AI Community, Infrastructure)
+- [x] **v2.3.32** — Domain migration: `morrigan.life` → `morrigan.org`; 80 replacements across 60 files; all docs updated; new FTP host `esm34.siteground.biz`
+
+---
+
+## v2.2.x — Released (April 2026)
+
+**Theme:** Page-by-page content build, nav/footer polish, ZKP/security deep dives.
+
+- [x] beyond.html: full Zero-Knowledge Proof explainer, ZK proof section, enhanced cryptography, infrastructure section, CTA
+- [x] security.html: ZK cards, cryptographic stack, what-we-store/never-store, dead man's switch, AI community badges
+- [x] how-it-works.html: 5-step flow with SVGs, Morrígan-specific copy throughout
+- [x] donate.html: membership tiers, governance explainer, budget breakdown
+- [x] Nav + footer: hover/scroll effects propagated to all pages
+- [x] Per-folder encryption content integrated in how-it-works + beyond
+- [x] "Morrígan" fada accent enforced site-wide (í = U+00ED)
+- [x] "Built with Perplexity" removed everywhere → "Built with ❤️ + AI"
 
 ---
 
