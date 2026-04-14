@@ -498,36 +498,56 @@ section.about > section.navbar{opacity:0;transform:translateY(-20px);}
     <animate attributeName="opacity" values="0.22;0.55;0.22" dur="3s" repeatCount="indefinite"/>
   </text>
 </svg></div>Morrígan's dead man's switch is configurable, transparent, and designed with false positive prevention at every step.</p>
-<div style="margin-bottom:32px;">
-  <div style="display:flex;flex-direction:column;gap:20px;">
-    <div style="display:flex;gap:16px;align-items:flex-start;">
-      <span style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:white;color:#0c0c0f;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:'Inter',sans-serif;margin-top:1px;">1</span>
-      <div>
-        <p style="color:white;font-size:15px;font-weight:600;margin:0 0 4px;font-family:'Inter',sans-serif;">Set your check-in interval</p>
-        <p style="color:rgba(210,210,210,0.6);font-size:15px;line-height:1.6;margin:0;">Choose daily, weekly, monthly, or a custom interval. Morrígan sends you a reminder before the deadline.</p>
+<div style="margin-bottom:48px;margin-top:36px;">
+  <div style="display:flex;flex-direction:column;gap:0;">
+
+    <!-- Step 1 -->
+    <div style="display:flex;gap:28px;align-items:flex-start;padding-bottom:40px;position:relative;">
+      <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
+        <span style="width:36px;height:36px;border-radius:50%;background:white;color:#0c0c0f;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:'Inter',sans-serif;letter-spacing:0;flex-shrink:0;">1</span>
+        <div style="width:1px;flex:1;background:linear-gradient(to bottom,rgba(255,255,255,0.18),rgba(255,255,255,0.04));margin-top:12px;min-height:32px;"></div>
+      </div>
+      <div style="padding-top:6px;">
+        <p style="color:white;font-size:16px;font-weight:600;margin:0 0 10px;font-family:'Inter',sans-serif;letter-spacing:-0.01em;">Set your check-in interval</p>
+        <p style="color:rgba(200,200,200,0.55);font-size:14px;line-height:1.7;margin:0;">Choose daily, weekly, monthly, or a custom interval. Morrígan sends you a reminder before the deadline.</p>
       </div>
     </div>
-    <div style="display:flex;gap:16px;align-items:flex-start;">
-      <span style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.12);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:'Inter',sans-serif;margin-top:1px;">2</span>
-      <div>
-        <p style="color:white;font-size:15px;font-weight:600;margin:0 0 4px;font-family:'Inter',sans-serif;">Receive reminders</p>
-        <p style="color:rgba(210,210,210,0.6);font-size:15px;line-height:1.6;margin:0;">Multiple reminders are sent across your configured channels. We escalate — first email, then emergency contacts.</p>
+
+    <!-- Step 2 -->
+    <div style="display:flex;gap:28px;align-items:flex-start;padding-bottom:40px;position:relative;">
+      <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
+        <span style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.85);border:1px solid rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;font-family:'Inter',sans-serif;flex-shrink:0;">2</span>
+        <div style="width:1px;flex:1;background:linear-gradient(to bottom,rgba(255,255,255,0.1),rgba(255,255,255,0.02));margin-top:12px;min-height:32px;"></div>
+      </div>
+      <div style="padding-top:6px;">
+        <p style="color:white;font-size:16px;font-weight:600;margin:0 0 10px;font-family:'Inter',sans-serif;letter-spacing:-0.01em;">Receive reminders</p>
+        <p style="color:rgba(200,200,200,0.55);font-size:14px;line-height:1.7;margin:0;">Multiple reminders are sent across your configured channels. We escalate — first email, then emergency contacts.</p>
       </div>
     </div>
-    <div style="display:flex;gap:16px;align-items:flex-start;">
-      <span style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:'Inter',sans-serif;margin-top:1px;">3</span>
-      <div>
-        <p style="color:white;font-size:15px;font-weight:600;margin:0 0 4px;font-family:'Inter',sans-serif;">Grace period begins</p>
-        <p style="color:rgba(210,210,210,0.6);font-size:15px;line-height:1.6;margin:0;">If no response, a configurable grace period starts. Additional verification attempts are made. This prevents accidental triggering.</p>
+
+    <!-- Step 3 -->
+    <div style="display:flex;gap:28px;align-items:flex-start;padding-bottom:40px;position:relative;">
+      <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
+        <span style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;font-family:'Inter',sans-serif;flex-shrink:0;">3</span>
+        <div style="width:1px;flex:1;background:linear-gradient(to bottom,rgba(255,255,255,0.06),rgba(255,255,255,0.01));margin-top:12px;min-height:32px;"></div>
+      </div>
+      <div style="padding-top:6px;">
+        <p style="color:rgba(255,255,255,0.75);font-size:16px;font-weight:600;margin:0 0 10px;font-family:'Inter',sans-serif;letter-spacing:-0.01em;">Grace period begins</p>
+        <p style="color:rgba(200,200,200,0.45);font-size:14px;line-height:1.7;margin:0;">If no response, a configurable grace period starts. Additional verification attempts are made. This prevents accidental triggering.</p>
       </div>
     </div>
-    <div style="display:flex;gap:16px;align-items:flex-start;">
-      <span style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.35);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:'Inter',sans-serif;margin-top:1px;">4</span>
-      <div>
-        <p style="color:white;font-size:15px;font-weight:600;margin:0 0 4px;font-family:'Inter',sans-serif;">Legacy is delivered</p>
-        <p style="color:rgba(210,210,210,0.6);font-size:15px;line-height:1.6;margin:0;">Your vault or specific sections are delivered to your designated beneficiaries according to your access rules.</p>
+
+    <!-- Step 4 -->
+    <div style="display:flex;gap:28px;align-items:flex-start;">
+      <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
+        <span style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.03);color:rgba(255,255,255,0.3);border:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;font-family:'Inter',sans-serif;flex-shrink:0;">4</span>
+      </div>
+      <div style="padding-top:6px;">
+        <p style="color:rgba(255,255,255,0.5);font-size:16px;font-weight:600;margin:0 0 10px;font-family:'Inter',sans-serif;letter-spacing:-0.01em;">Legacy is delivered</p>
+        <p style="color:rgba(200,200,200,0.35);font-size:14px;line-height:1.7;margin:0;">Your vault or specific sections are delivered to your designated beneficiaries according to your access rules.</p>
       </div>
     </div>
+
   </div>
 </div>
 </div>
