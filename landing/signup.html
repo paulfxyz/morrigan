@@ -196,9 +196,38 @@ section.navbar{opacity:0;transform:translateY(-18px);}
   </div>
 </div>
 <!-- Terms — own row, single line -->
-<div style="display:flex;align-items:center;gap:10px;">
-  <input id="terms" name="terms" required="" type="checkbox" style="width:16px;height:16px;margin:0;accent-color:white;flex-shrink:0;cursor:pointer;"/>
-  <label for="terms" style="font-size:13px;color:rgba(210,210,210,0.5);line-height:1;cursor:pointer;white-space:nowrap;">I agree to the <a href="/terms-condition" style="color:rgba(210,210,210,0.82);text-decoration:underline;text-underline-offset:3px;">Terms of Service</a> and <a href="/privacy-policy" style="color:rgba(210,210,210,0.82);text-decoration:underline;text-underline-offset:3px;">Privacy Policy</a></label>
+<style>
+.mig-cb-wrap { display:flex; align-items:center; gap:11px; }
+.mig-cb-wrap input[type="checkbox"] { position:absolute; opacity:0; width:0; height:0; pointer-events:none; }
+.mig-cb-box {
+  width:18px; height:18px; border-radius:5px;
+  border:1.5px solid rgba(255,255,255,0.22);
+  background:rgba(255,255,255,0.04);
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; cursor:pointer;
+  transition:border-color .18s ease, background .18s ease, box-shadow .18s ease;
+  position:relative;
+}
+.mig-cb-wrap input[type="checkbox"]:checked + .mig-cb-box {
+  border-color:rgba(255,255,255,0.72);
+  background:rgba(255,255,255,0.1);
+  box-shadow:0 0 0 3px rgba(255,255,255,0.07);
+}
+.mig-cb-box svg { opacity:0; transform:scale(0.5) rotate(-10deg); transition:opacity .16s ease, transform .2s cubic-bezier(.34,1.56,.64,1); }
+.mig-cb-wrap input[type="checkbox"]:checked + .mig-cb-box svg { opacity:1; transform:scale(1) rotate(0deg); }
+.mig-cb-box:hover { border-color:rgba(255,255,255,0.4); background:rgba(255,255,255,0.07); }
+.mig-cb-label { font-size:13px; color:rgba(210,210,210,0.5); line-height:1; cursor:pointer; white-space:nowrap; user-select:none; }
+.mig-cb-label a { color:rgba(210,210,210,0.82); text-decoration:underline; text-underline-offset:3px; transition:color .15s; }
+.mig-cb-label a:hover { color:rgba(255,255,255,1); }
+</style>
+<div class="mig-cb-wrap">
+  <input id="terms" name="terms" required="" type="checkbox"/>
+  <label class="mig-cb-box" for="terms" aria-hidden="true">
+    <svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1 4L4.2 7.5L10 1" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </label>
+  <label class="mig-cb-label" for="terms">I agree to the <a href="/terms-condition">Terms of Service</a> and <a href="/privacy-policy">Privacy Policy</a></label>
 </div>
 <button class="btn-primary" type="submit">Create my vault</button>
 </form>
