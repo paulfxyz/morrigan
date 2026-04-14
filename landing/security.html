@@ -247,11 +247,11 @@ section.about > section.navbar{opacity:0;transform:translateY(-20px);}
 
 
 
-<section style="background:var(--colors--bg-color,#0c0c0f);padding:60px 0 100px;">
+<section style="background:var(--colors--bg-color,#0c0c0f);padding:60px 0 80px;">
 <div class="container">
 <div style="max-width:840px;margin:0 auto;">
 <!-- ZK Architecture -->
-<div style="margin-bottom:80px;" class="mig-reveal">
+<div style="margin-bottom:56px;" class="mig-reveal">
 <div style="display:inline-block;padding:4px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:4px;margin-bottom:20px;">
 <span style="color:rgba(210,210,210,0.6);font-size:11px;letter-spacing:1px;text-transform:uppercase;font-family:'Inter',sans-serif;">Zero-Knowledge</span>
 </div>
@@ -391,9 +391,146 @@ section.about > section.navbar{opacity:0;transform:translateY(-20px);}
 </div>
 </div>
 
-<div style="max-width:840px;margin:0 auto;padding:0 0 60px;"><div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);"><div style="font-size:13px;color:rgba(255,255,255,0.28);letter-spacing:1.5px;text-transform:uppercase;font-family:'Inter',sans-serif;margin-bottom:24px;">Cryptography stack</div><div style="display:flex;flex-wrap:wrap;align-items:center;gap:0;row-gap:10px;"><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">Argon2id</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">AES-256-GCM</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">Ed25519</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">TLS 1.3</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">WebAuthn</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">TOTP / RFC 6238</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M19 17.5L21 13l-4 1-4-6-4 6H7l-2 2h18l-1-2-3-1z" fill="rgba(255,255,255,0.6)"/></svg>Cloudflare</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">AWS</span></div></div></div>
+<!-- ── PER-FOLDER ENCRYPTION ─────────────────────────────────── -->
+<div style="margin-bottom:56px;" class="mig-reveal">
+<div style="display:inline-block;padding:4px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:4px;margin-bottom:20px;">
+<span style="color:rgba(210,210,210,0.6);font-size:11px;letter-spacing:1px;text-transform:uppercase;font-family:'Inter',sans-serif;font-weight:600;">Granular control</span>
+</div>
+<h2 style="font-size:clamp(24px,3vw,36px);font-weight:700;letter-spacing:-0.8px;color:white;margin:0 0 20px;">Every folder is its own vault.</h2>
+<p style="color:rgba(210,210,210,0.7);line-height:1.8;font-size:16px;margin:0 0 36px;">Morrígan doesn't encrypt your data as one monolithic blob. Each folder you create can carry its <em>own</em> encryption key, its own key-derivation settings, and its own access protocol. Your medical records can require a hardware token. Your passwords can use a separate passphrase your family never knows. Your letters can sit behind a 2-of-3 Shamir share that only unlocks when two people agree.</p>
+
+<!-- visual: folder stack with lock badges -->
+<div style="margin:0 0 40px;display:flex;gap:12px;flex-wrap:wrap;">
+
+  <!-- Folder card 1 -->
+  <div style="flex:1;min-width:200px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);border-radius:14px;padding:24px 22px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.8" stroke-linecap="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.8);font-family:'Inter',sans-serif;">Medical Records</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="display:flex;justify-content:space-between;font-size:12px;font-family:'Inter',sans-serif;">
+        <span style="color:rgba(210,210,210,0.4);">Cipher</span>
+        <span style="color:rgba(255,255,255,0.65);font-weight:500;">AES-256-GCM</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;font-family:'Inter',sans-serif;">
+        <span style="color:rgba(210,210,210,0.4);">Key derivation</span>
+        <span style="color:rgba(255,255,255,0.65);font-weight:500;">Argon2id · high cost</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;font-family:'Inter',sans-serif;">
+        <span style="color:rgba(210,210,210,0.4);">Access</span>
+        <span style="color:rgba(255,255,255,0.65);font-weight:500;">YubiKey required</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;font-family:'Inter',sans-serif;">
+        <span style="color:rgba(210,210,210,0.4);">Master key</span>
+        <span style="color:rgba(255,255,255,0.65);font-weight:500;">Unique per folder</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Folder card 2 -->
+  <div style="flex:1;min-width:200px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);border-radius:14px;padding:24px 22px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.8" stroke-linecap="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.8);font-family:'Inter',sans-serif;">Letters to Family</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="display:flex;justify-content:space-between;font-size:12px;font-family:'Inter',sans-serif;">
+        <span style="color:rgba(210,210,210,0.4);">Cipher</span>
+        <span style="color:rgba(255,255,255,0.65);font-weight:500;">AES-256-GCM</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;font-family:'Inter',sans-serif;">
+        <span style="color:rgba(210,210,210,0.4);">Key derivation</span>
+        <span style="color:rgba(255,255,255,0.65);font-weight:500;">Argon2id · standard</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;font-family:'Inter',sans-serif;">
+        <span style="color:rgba(210,210,210,0.4);">Access</span>
+        <span style="color:rgba(255,255,255,0.65);font-weight:500;">Shamir 2-of-3</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;font-family:'Inter',sans-serif;">
+        <span style="color:rgba(210,210,210,0.4);">Master key</span>
+        <span style="color:rgba(255,255,255,0.65);font-weight:500;">Unique per folder</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Folder card 3 -->
+  <div style="flex:1;min-width:200px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);border-radius:14px;padding:24px 22px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.8" stroke-linecap="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.8);font-family:'Inter',sans-serif;">Passwords &amp; Accounts</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="display:flex;justify-content:space-between;font-size:12px;font-family:'Inter',sans-serif;">
+        <span style="color:rgba(210,210,210,0.4);">Cipher</span>
+        <span style="color:rgba(255,255,255,0.65);font-weight:500;">AES-256-GCM</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;font-family:'Inter',sans-serif;">
+        <span style="color:rgba(210,210,210,0.4);">Key derivation</span>
+        <span style="color:rgba(255,255,255,0.65);font-weight:500;">Argon2id · high cost</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;font-family:'Inter',sans-serif;">
+        <span style="color:rgba(210,210,210,0.4);">Access</span>
+        <span style="color:rgba(255,255,255,0.65);font-weight:500;">Separate passphrase</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;font-family:'Inter',sans-serif;">
+        <span style="color:rgba(210,210,210,0.4);">Master key</span>
+        <span style="color:rgba(255,255,255,0.65);font-weight:500;">Unique per folder</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- four principle bullets -->
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;">
+
+  <div style="display:flex;gap:16px;align-items:flex-start;">
+    <div style="flex-shrink:0;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);display:flex;align-items:center;justify-content:center;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    </div>
+    <div>
+      <div style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.85);font-family:'Inter',sans-serif;margin-bottom:6px;">Independent master keys</div>
+      <div style="font-size:14px;color:rgba(210,210,210,0.55);line-height:1.65;">Each folder is encrypted under its own derived key. Compromising one folder's passphrase reveals nothing about any other.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:16px;align-items:flex-start;">
+    <div style="flex-shrink:0;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);display:flex;align-items:center;justify-content:center;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+    </div>
+    <div>
+      <div style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.85);font-family:'Inter',sans-serif;margin-bottom:6px;">Choose your cipher &amp; protocol</div>
+      <div style="font-size:14px;color:rgba(210,210,210,0.55);line-height:1.65;">Select AES-256-GCM, set Argon2id cost parameters, or layer on ChaCha20-Poly1305. Each folder is a fully configurable encryption context.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:16px;align-items:flex-start;">
+    <div style="flex-shrink:0;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);display:flex;align-items:center;justify-content:center;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    </div>
+    <div>
+      <div style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.85);font-family:'Inter',sans-serif;margin-bottom:6px;">Granular access per folder</div>
+      <div style="font-size:14px;color:rgba(210,210,210,0.55);line-height:1.65;">One folder can require a YubiKey. Another unlocks with Shamir shares split across three people. A third uses a passphrase only you and one beneficiary know.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:16px;align-items:flex-start;">
+    <div style="flex-shrink:0;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);display:flex;align-items:center;justify-content:center;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+    </div>
+    <div>
+      <div style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.85);font-family:'Inter',sans-serif;margin-bottom:6px;">No shared secrets across folders</div>
+      <div style="font-size:14px;color:rgba(210,210,210,0.55);line-height:1.65;">Your vault-level passphrase never derives folder keys. Every folder is isolated — so you can share one folder with a lawyer without exposing anything else.</div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<div style="max-width:840px;margin:0 auto;padding:0 0 32px;"><div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);"><div style="font-size:13px;color:rgba(255,255,255,0.28);letter-spacing:1.5px;text-transform:uppercase;font-family:'Inter',sans-serif;margin-bottom:24px;">Cryptography stack</div><div style="display:flex;flex-wrap:wrap;align-items:center;gap:0;row-gap:10px;"><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">Argon2id</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">AES-256-GCM</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">Ed25519</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">TLS 1.3</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">WebAuthn</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">TOTP / RFC 6238</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M19 17.5L21 13l-4 1-4-6-4 6H7l-2 2h18l-1-2-3-1z" fill="rgba(255,255,255,0.6)"/></svg>Cloudflare</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">AWS</span></div></div></div>
 <!-- Dead Man's Switch -->
-<div style="margin-bottom:80px;" class="mig-reveal">
+<div style="margin-bottom:56px;" class="mig-reveal">
 <div style="display:inline-block;padding:4px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:4px;margin-bottom:20px;">
 <span style="color:rgba(210,210,210,0.6);font-size:11px;letter-spacing:1px;text-transform:uppercase;font-family:'Inter',sans-serif;">Dead Man's Switch</span>
 </div>
@@ -552,7 +689,7 @@ section.about > section.navbar{opacity:0;transform:translateY(-20px);}
 </div>
 </div>
 <!-- Open Source -->
-<div style="margin-bottom:80px;" class="mig-reveal">
+<div style="margin-bottom:56px;" class="mig-reveal">
 <div style="display:inline-block;padding:4px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:4px;margin-bottom:20px;">
 <span style="color:rgba(210,210,210,0.6);font-size:11px;letter-spacing:1px;text-transform:uppercase;font-family:'Inter',sans-serif;">Open Source</span>
 </div>
@@ -569,9 +706,9 @@ section.about > section.navbar{opacity:0;transform:translateY(-20px);}
 </div>
 </div>
 
-<div style="max-width:840px;margin:0 auto;padding:0 0 60px;"><div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);"><div style="font-size:13px;color:rgba(255,255,255,0.28);letter-spacing:1.5px;text-transform:uppercase;font-family:'Inter',sans-serif;margin-bottom:24px;">Reviewed by the community — AI models used for audit assistance</div><div style="display:flex;flex-wrap:wrap;align-items:center;gap:0;row-gap:10px;"><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">OpenAI</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">Anthropic</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">Google DeepMind</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">Mistral AI</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">HARVARD UNIVERSITY</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">MIT</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">UNIVERSITY OF OXFORD</span></div></div></div>
+<div style="max-width:840px;margin:0 auto;padding:0 0 32px;"><div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);"><div style="font-size:13px;color:rgba(255,255,255,0.28);letter-spacing:1.5px;text-transform:uppercase;font-family:'Inter',sans-serif;margin-bottom:24px;">Reviewed by the community — AI models used for audit assistance</div><div style="display:flex;flex-wrap:wrap;align-items:center;gap:0;row-gap:10px;"><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">OpenAI</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">Anthropic</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">Google DeepMind</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">Mistral AI</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">HARVARD UNIVERSITY</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">MIT</span><span style="color:rgba(255,255,255,0.15);font-size:15px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">UNIVERSITY OF OXFORD</span></div></div></div>
 <!-- Server Architecture -->
-<div style="margin-bottom:80px;" class="mig-reveal">
+<div style="margin-bottom:56px;" class="mig-reveal">
 <div style="display:inline-block;padding:4px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:4px;margin-bottom:20px;">
 <span style="color:rgba(210,210,210,0.6);font-size:11px;letter-spacing:1px;text-transform:uppercase;font-family:'Inter',sans-serif;">Infrastructure</span>
 </div>
@@ -600,9 +737,9 @@ section.about > section.navbar{opacity:0;transform:translateY(-20px);}
 </div>
 </div>
 
-<div style="max-width:840px;margin:0 auto;padding:0 0 60px;"><div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);"><div style="font-size:13px;color:rgba(255,255,255,0.28);letter-spacing:1.5px;text-transform:uppercase;font-family:'Inter',sans-serif;margin-bottom:24px;">Infrastructure & identity partners</div><div style="display:flex;flex-wrap:wrap;align-items:center;gap:0;row-gap:10px;"><span style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;"><svg width="11" height="9" viewBox="0 0 22 18" fill="none"><path d="M16 14L19 9l-4 2-4-7-4 7H5l-2 3h18l-1-3-4-2z" fill="rgba(255,255,255,0.6)"/></svg>Cloudflare</span><span style="color:rgba(255,255,255,0.15);font-size:14px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">AWS</span><span style="color:rgba(255,255,255,0.15);font-size:14px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">Hetzner</span><span style="color:rgba(255,255,255,0.15);font-size:14px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">OVHcloud</span><span style="color:rgba(255,255,255,0.15);font-size:14px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;"><svg width="10" height="10" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" fill="rgba(255,255,255,0.55)"/><circle cx="11" cy="11" r="4.5" fill="#0c0c0f"/></svg>Persona</span><span style="color:rgba(255,255,255,0.15);font-size:14px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">Twilio</span><span style="color:rgba(255,255,255,0.15);font-size:14px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;"><svg width="10" height="10" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><circle cx="11" cy="11" r="4" fill="rgba(255,255,255,0.5)"/></svg>YubiKey</span><span style="color:rgba(255,255,255,0.15);font-size:14px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">WebAuthn</span></div></div></div>
+<div style="max-width:840px;margin:0 auto;padding:0 0 32px;"><div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);"><div style="font-size:13px;color:rgba(255,255,255,0.28);letter-spacing:1.5px;text-transform:uppercase;font-family:'Inter',sans-serif;margin-bottom:24px;">Infrastructure & identity partners</div><div style="display:flex;flex-wrap:wrap;align-items:center;gap:0;row-gap:10px;"><span style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;"><svg width="11" height="9" viewBox="0 0 22 18" fill="none"><path d="M16 14L19 9l-4 2-4-7-4 7H5l-2 3h18l-1-3-4-2z" fill="rgba(255,255,255,0.6)"/></svg>Cloudflare</span><span style="color:rgba(255,255,255,0.15);font-size:14px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">AWS</span><span style="color:rgba(255,255,255,0.15);font-size:14px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">Hetzner</span><span style="color:rgba(255,255,255,0.15);font-size:14px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">OVHcloud</span><span style="color:rgba(255,255,255,0.15);font-size:14px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;"><svg width="10" height="10" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" fill="rgba(255,255,255,0.55)"/><circle cx="11" cy="11" r="4.5" fill="#0c0c0f"/></svg>Persona</span><span style="color:rgba(255,255,255,0.15);font-size:14px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">Twilio</span><span style="color:rgba(255,255,255,0.15);font-size:14px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;"><svg width="10" height="10" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><circle cx="11" cy="11" r="4" fill="rgba(255,255,255,0.5)"/></svg>YubiKey</span><span style="color:rgba(255,255,255,0.15);font-size:14px;margin:0 10px;user-select:none;font-family:'Inter',sans-serif;">·</span><span style="color:rgba(255,255,255,0.48);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">WebAuthn</span></div></div></div>
 <!-- CTA -->
-<div style="text-align:center;padding:60px 40px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;" class="mig-reveal">
+<div style="text-align:center;padding:48px 40px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;" class="mig-reveal">
 <h2 style="font-size:clamp(24px,3vw,36px);font-weight:700;letter-spacing:-0.8px;color:white;margin:0 0 16px;">Ready to secure your legacy?</h2>
 <p style="color:rgba(210,210,210,0.6);font-size:16px;margin:0 0 32px;">Free for personal use. No credit card required.</p>
 <a href="/signup" style="display:inline-block;padding:14px 32px;background:white;color:black;text-decoration:none;border-radius:6px;font-size:16px;font-weight:600;font-family:'Inter',sans-serif;">Start for free</a>
