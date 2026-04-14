@@ -227,7 +227,7 @@ section.navbar{opacity:0;transform:translateY(-18px);}
       <path d="M1 4L4.2 7.5L10 1" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </label>
-  <label class="mig-cb-label" for="terms">I agree to the <a href="/terms-condition">Terms of Service</a> and <a href="/privacy-policy">Privacy Policy</a></label>
+  <label class="mig-cb-label" for="terms">I agree to the <a href="#" onclick="openModal('tos-modal');return false;">Terms of Service</a> and <a href="#" onclick="openModal('pp2-modal');return false;">Privacy Policy</a></label>
 </div>
 <button class="btn-primary" type="submit">Create my vault</button>
 </form>
@@ -392,8 +392,8 @@ section.navbar{opacity:0;transform:translateY(-18px);}
 <div class="footer-col">
 <div class="footer-col-title paragraph-02" style="color:white;font-weight:600;margin-bottom:20px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;">Legal</div>
 <div class="footer-col-links" style="display:flex;flex-direction:column;gap:12px;">
-<a class="footer-link paragraph-02" href="/privacy-policy" onmouseout="this.style.color='rgba(210,210,210,0.6)'" onmouseover="this.style.color='rgba(255,255,255,0.9)'" style="color:rgba(210,210,210,0.6);text-decoration:none;font-size:14px;transition:color .15s;">Privacy Policy</a>
-<a class="footer-link paragraph-02" href="/terms-condition" onmouseout="this.style.color='rgba(210,210,210,0.6)'" onmouseover="this.style.color='rgba(255,255,255,0.9)'" style="color:rgba(210,210,210,0.6);text-decoration:none;font-size:14px;transition:color .15s;">Terms</a>
+<a class="footer-link paragraph-02" href="#" onclick="openModal('pp2-modal');return false;" onmouseout="this.style.color='rgba(210,210,210,0.6)'" onmouseover="this.style.color='rgba(255,255,255,0.9)'" style="color:rgba(210,210,210,0.6);text-decoration:none;font-size:14px;transition:color .15s;">Privacy Policy</a>
+<a class="footer-link paragraph-02" href="#" onclick="openModal('tos-modal');return false;" onmouseout="this.style.color='rgba(210,210,210,0.6)'" onmouseover="this.style.color='rgba(255,255,255,0.9)'" style="color:rgba(210,210,210,0.6);text-decoration:none;font-size:14px;transition:color .15s;">Terms</a>
 <a class="footer-link paragraph-02" href="/utility-pages/license" onmouseout="this.style.color='rgba(210,210,210,0.6)'" onmouseover="this.style.color='rgba(255,255,255,0.9)'" style="color:rgba(210,210,210,0.6);text-decoration:none;font-size:14px;transition:color .15s;">License</a>
 <a class="footer-link paragraph-02" href="/utility-pages/changelog" onmouseout="this.style.color='rgba(210,210,210,0.6)'" onmouseover="this.style.color='rgba(255,255,255,0.9)'" style="color:rgba(210,210,210,0.6);text-decoration:none;font-size:14px;transition:color .15s;">Changelog</a>
 </div>
@@ -498,4 +498,183 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){var m=docum
   });
 })();
 </script>
+
+<!-- ── SHARED MODAL HELPERS ───────────────────────────────────────── -->
+<style>
+.mig-legal-modal {
+  display:none; position:fixed; inset:0; z-index:11000;
+  background:rgba(0,0,0,0.82); backdrop-filter:blur(10px);
+  align-items:center; justify-content:center; padding:20px;
+}
+.mig-legal-inner {
+  background:#111114; border:1px solid rgba(255,255,255,0.10);
+  border-radius:20px; max-width:560px; width:100%; max-height:82vh;
+  display:flex; flex-direction:column;
+  box-shadow:0 48px 120px rgba(0,0,0,0.75); position:relative;
+}
+.mig-legal-head {
+  padding:28px 28px 0;
+  display:flex; align-items:center; gap:12px; flex-shrink:0;
+}
+.mig-legal-icon {
+  width:36px; height:36px; border-radius:10px;
+  background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.mig-legal-title {
+  font-family:'BDO Grotesk','Inter',sans-serif;
+  font-size:17px; font-weight:600; color:#fff; letter-spacing:-0.02em; margin:0;
+}
+.mig-legal-close {
+  position:absolute; top:16px; right:18px;
+  background:none; border:none; color:rgba(255,255,255,0.32);
+  font-size:22px; cursor:pointer; line-height:1; transition:color .15s; padding:0;
+}
+.mig-legal-close:hover { color:rgba(255,255,255,0.85); }
+.mig-legal-body {
+  padding:16px 28px 28px; overflow-y:auto; flex:1;
+  scrollbar-width:thin; scrollbar-color:rgba(255,255,255,0.12) transparent;
+}
+.mig-legal-body::-webkit-scrollbar { width:4px; }
+.mig-legal-body::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.12); border-radius:2px; }
+.mig-legal-body h3 {
+  font-family:'BDO Grotesk','Inter',sans-serif;
+  font-size:13px; font-weight:600; color:rgba(255,255,255,0.75);
+  text-transform:uppercase; letter-spacing:1px; margin:20px 0 6px;
+}
+.mig-legal-body h3:first-child { margin-top:4px; }
+.mig-legal-body p {
+  font-family:'BDO Grotesk','Inter',sans-serif;
+  font-size:13.5px; color:rgba(210,210,210,0.52); line-height:1.75; margin:0 0 4px;
+}
+.mig-legal-footer {
+  padding:0 28px 22px; flex-shrink:0;
+}
+.mig-legal-footer button {
+  width:100%; padding:13px; background:#fff; border:none; border-radius:10px;
+  color:#0c0c0f; font-family:'BDO Grotesk','Inter',sans-serif;
+  font-size:14px; font-weight:600; cursor:pointer; letter-spacing:-0.01em;
+  transition:opacity .15s;
+}
+.mig-legal-footer button:hover { opacity:0.88; }
+</style>
+
+<!-- ── TERMS OF SERVICE MODAL ────────────────────────────────────── -->
+<div id="tos-modal" class="mig-legal-modal" onclick="if(event.target===this)closeModal('tos-modal')">
+  <div class="mig-legal-inner">
+    <button class="mig-legal-close" onclick="closeModal('tos-modal')" aria-label="Close">&#x2715;</button>
+    <div class="mig-legal-head">
+      <div class="mig-legal-icon">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <h2 class="mig-legal-title">Terms of Service</h2>
+    </div>
+    <div class="mig-legal-body">
+      <h3>1 · Acceptance</h3>
+      <p>By creating an account or using Morrígan, you agree to these Terms. If you do not agree, do not use the service.</p>
+
+      <h3>2 · Description of Service</h3>
+      <p>Morrígan provides a zero-knowledge encrypted vault for storing and delivering digital legacy content. The core product is open-source (AGPLv3). A hosted managed service is also offered under a paid subscription.</p>
+
+      <h3>3 · Eligibility</h3>
+      <p>You must be at least 18 years old to use Morrígan. By registering, you represent that you meet this requirement.</p>
+
+      <h3>4 · Zero-Knowledge Architecture</h3>
+      <p>Your vault is encrypted client-side. Morrígan has no access to your passphrase or plaintext data. You are solely responsible for keeping your passphrase safe — it cannot be recovered by us.</p>
+
+      <h3>5 · Acceptable Use</h3>
+      <p>You agree not to use Morrígan for unlawful purposes, to transmit malware, to circumvent security measures, or to infringe third-party rights.</p>
+
+      <h3>6 · Dead Man's Switch</h3>
+      <p>You acknowledge that failure to respond to check-in reminders will trigger delivery of your vault to your designated beneficiaries after the configured grace period. You are responsible for keeping contact information current.</p>
+
+      <h3>7 · Service Availability</h3>
+      <p>Morrígan is provided "as is." We do not guarantee uninterrupted availability. We will make reasonable efforts to maintain uptime and notify users of planned maintenance.</p>
+
+      <h3>8 · Termination</h3>
+      <p>You may delete your account at any time. We may suspend or terminate accounts that violate these Terms. On termination, your encrypted data will be permanently deleted.</p>
+
+      <h3>9 · Limitation of Liability</h3>
+      <p>To the maximum extent permitted by law, Morrígan is not liable for indirect, incidental, or consequential damages arising from your use of the service.</p>
+
+      <h3>10 · Changes</h3>
+      <p>We may update these Terms. We will notify users via email and in-app notice at least 30 days before material changes take effect.</p>
+
+      <h3>11 · Governing Law</h3>
+      <p>These Terms are governed by the laws of Portugal, without regard to conflict-of-law principles.</p>
+
+      <h3>12 · Contact</h3>
+      <p>Questions? Reach us at <a href="mailto:hello@morrigan.life" style="color:rgba(255,255,255,0.6);text-underline-offset:3px;">hello@morrigan.life</a>.</p>
+    </div>
+    <div class="mig-legal-footer">
+      <button onclick="closeModal('tos-modal')">Got it</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── PRIVACY POLICY MODAL ──────────────────────────────────────── -->
+<div id="pp2-modal" class="mig-legal-modal" onclick="if(event.target===this)closeModal('pp2-modal')">
+  <div class="mig-legal-inner">
+    <button class="mig-legal-close" onclick="closeModal('pp2-modal')" aria-label="Close">&#x2715;</button>
+    <div class="mig-legal-head">
+      <div class="mig-legal-icon">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h2 class="mig-legal-title">Privacy Policy</h2>
+    </div>
+    <div class="mig-legal-body">
+      <h3>Data We Collect</h3>
+      <p>We collect your email address, encrypted vault contents (ciphertext only), check-in activity, and payment metadata. We never collect your passphrase or plaintext data.</p>
+
+      <h3>How We Use Your Data</h3>
+      <p>Your email is used for account authentication, check-in reminders, and service communications. We do not sell your data to third parties.</p>
+
+      <h3>Zero-Knowledge Principle</h3>
+      <p>All vault content is encrypted client-side with AES-256-GCM before transmission. We store only ciphertext. Our servers cannot decrypt your data.</p>
+
+      <h3>Data Retention</h3>
+      <p>Active account data is retained for the duration of your subscription. On account deletion, all encrypted data is permanently purged within 30 days.</p>
+
+      <h3>Third-Party Services</h3>
+      <p>We use AWS and Cloudflare for infrastructure, Twilio for SMS notifications, and Persona for optional identity verification. Each provider is bound by data processing agreements.</p>
+
+      <h3>Security</h3>
+      <p>We use TLS 1.3 for data in transit, AES-256-GCM for data at rest, and Argon2id for key derivation. Our codebase is open-source and community-audited.</p>
+
+      <h3>Your Rights</h3>
+      <p>You have the right to access, correct, export, or delete your data at any time from your account settings. For GDPR/CCPA requests, email <a href="mailto:privacy@morrigan.life" style="color:rgba(255,255,255,0.6);text-underline-offset:3px;">privacy@morrigan.life</a>.</p>
+
+      <h3>Cookies</h3>
+      <p>We use only functional cookies required for authentication. No tracking or advertising cookies are used.</p>
+
+      <h3>Changes</h3>
+      <p>Material changes to this policy will be communicated via email with 30 days notice.</p>
+
+      <h3>Contact</h3>
+      <p>Privacy questions: <a href="mailto:privacy@morrigan.life" style="color:rgba(255,255,255,0.6);text-underline-offset:3px;">privacy@morrigan.life</a></p>
+    </div>
+    <div class="mig-legal-footer">
+      <button onclick="closeModal('pp2-modal')">Got it</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  window.openModal = function(id){
+    var m = document.getElementById(id);
+    if(m){ m.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+  };
+  window.closeModal = function(id){
+    var m = document.getElementById(id);
+    if(m){ m.style.display = 'none'; document.body.style.overflow = ''; }
+  };
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      ['tos-modal','pp2-modal'].forEach(function(id){ closeModal(id); });
+    }
+  });
+})();
+</script>
+
 </body></html>
